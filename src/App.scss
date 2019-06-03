@@ -1,0 +1,117 @@
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+input, textarea, select, button {
+  font-family: 'Inter var', sans-serif;
+  font-feature-settings: "zero", "ss02", "frac", "case", "ss01" 1;
+}
+
+h1 {
+  font-size: 1.6em;
+  line-height: 1.3em;
+  margin: 0.2em 0;
+  font-weight: 800;
+}
+
+li {
+    padding: 0.4em 0.6em;
+}
+
+:focus {
+  outline: #9980FA auto 5px;
+}
+
+.App {
+  font-family: 'Inter var', sans-serif;
+  font-feature-settings: "zero", "ss02", "frac", "case", "ss01" 1;
+//   background: #f4f4f4;
+
+  ::selection {
+    background: #9980FA;
+    color: white;
+    padding: 0.3em 0.8em;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2em;
+    padding: 0.6em 1em 0;
+
+    &__book {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      bottom: 1em;
+      right: 1em;
+      background: white;
+      padding: 0.4em 1em;
+      width: 9em;
+      font-size: 0.6em;
+      border-radius: 0.5em;
+      text-decoration: none;
+      box-shadow: rgba(44, 62, 80, 0.23) 0px 0.4em 0.8em -2px, rgba(102, 119, 136, 0.2) 0px 1px 2px;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        transform: translateY(-0.2em);
+        box-shadow: rgba(44, 62, 80, 0.25) 0px 0.6em 1em -2px, rgba(102, 119, 136, 0.2) 0px 1px 2px;
+      }
+
+      &__title {
+        font-size: 0.7em;
+        color: #9980FA;
+        margin: 0;
+        padding: 0;
+        padding-left: 0.6em;
+      }
+
+      &__image {
+        width: 4em;
+        margin-left: -2em;
+        height: 100%;
+        flex: 0 0 auto;
+      }
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__sidebar {
+    flex: 0 0 480px;
+    width: 480px;
+    max-height: 100%;
+    overflow: auto;
+
+    &__title {
+      display: flex;
+      justify-content: space-between;
+      font-size: 1.5em;
+      padding: 0 2rem;
+      font-weight: 600;
+      padding-top: 1em;
+
+      &__icon {
+        opacity: 0.3;
+        cursor: pointer;
+        transition: opacity 0.2s ease-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+

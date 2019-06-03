@@ -1,0 +1,50 @@
+.Code {
+  background: #485460;
+  padding: 1em 0;
+  max-height: 100%;
+  overflow: auto;
+  font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
+
+  &__line {
+    padding: 0 2em;
+    display: flex;
+    align-items: baseline;
+    // transition: all 0.03s ease-out;
+
+    &:hover {
+      background: #1e272e;
+    }
+
+    &--is-highlighted {
+      background: #1e272e;
+    }
+
+    &-number {
+      padding: 0.55em 0;
+      color: #fff;
+      opacity: 0.5;
+      // font-feature-settings: 'tnum' 1;
+      font-size: 0.8em;
+      flex: 0 0 3em;
+      user-select: none;
+    }
+
+    code[class*="language-"] {
+      padding: 0;
+    }
+  }
+}
+
+
+:not(pre) > code[class*="language-"] {
+  background: none;
+  border-radius: 0;
+  white-space: pre-wrap;
+  line-height: 1.5em;
+}
+
+code[class*="language-"], pre[class*="language-"] {
+  // font-family: 'Inter var', sans-serif;
+  // font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
+  font-feature-settings: "zero" 0;
+}

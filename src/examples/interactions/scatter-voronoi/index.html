@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="./styles.css"></link>
+        <title>My Updating Chart</title>
+    </head>
+    <body>
+        <h1 class="title">
+            Task estimation errors over ten years of commercial development
+        </h1>
+
+        <div id="wrapper" class="wrapper">
+
+            <div id="tooltip" class="tooltip">
+                <div class="tooltip-title" id="title">
+                </div>
+                <div class="tooltip-metric">
+                    <div>
+                        Actual Hours:
+                    </div>
+                    <div class="tooltip-value" id="actual"></div>
+                </div>
+                <div class="tooltip-metric">
+                    <div>
+                        Estimated Hours:
+                    </div>
+                    <div class="tooltip-value" id="estimated"></div>
+                </div>
+                <div class="tooltip-tasks" id="tasks">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="note">
+            Dataset from <a href="https://github.com/Derek-Jones/SiP_dataset">Derek M. Jones and Stephen Cullum</a>
+        </div>
+        <script src="./d3-delaunay.min.js"></script>
+        <script src="./../../d3.v5.js"></script>
+        <script src="./chart.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,55 @@
+.Interactions {
+    h1 {
+        line-height: 1.3em;
+        font-weight: 800;
+    }
+
+    &__content {
+        padding: 2em 2rem 10em;
+        padding-right: 45rem;
+        font-size: 1.3em;
+        line-height: 1.5em;
+    }
+
+    &__iframe {
+        width: 100%;
+        outline: none;
+        border: none;
+        height: 520px;
+        margin: 0 -2rem;
+        width: calc(100% + 4em);
+    }
+
+    &__fixed-code {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 45rem;
+        // overflow: auto;
+        padding-bottom: 2em;
+    }
+
+    &__step {
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -0.6em;
+            left: -2.1em;
+            background: #dff9fb;
+            z-index: -1;
+            opacity: 0;
+        }
+
+        &:hover {
+            &:before {
+                opacity: 1;
+            }
+
+        }
+    }
+}

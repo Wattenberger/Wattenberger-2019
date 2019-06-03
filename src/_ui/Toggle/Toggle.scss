@@ -1,0 +1,18 @@
+.Toggle {
+    &__button {
+        text-overflow: ellipsis;
+        line-height: 1.4em;
+
+        &--is-not-selected {
+            background: transparent;
+            border-color: transparent;
+            color: #596275;
+
+            &:hover {
+                background: transparent;
+                border-color: transparent;
+                color: #303952;
+            }
+        }
+    }
+}
