@@ -180,63 +180,7 @@ async function drawBars() {
 
   // 7. Set up interactions
 
-  binGroups.select("rect")
-      .on("mouseenter", onMouseEnter)
-      .on("mouseleave", onMouseLeave)
 
-  const tooltip = d3.select("#tooltip")
-  function onMouseEnter(datum) {
-
-    const formatBinBoundary = d => d3.format(",.0f")(Math.abs(d))
-    tooltip.select("#range")
-        .text([
-            datum.x0 < 0
-              ? `Under-estimated by`
-              : `Over-estimated by`,
-          formatBinBoundary(datum.x0),
-          "to",
-          formatBinBoundary(datum.x1),
-          "hours",
-        ].join(" "))
-
-    tooltip.select("#examples")
-        .html(
-          datum
-            .slice(0, 3)
-            .map(summaryAccessor)
-            .join("<br />")
-          )
-
-    tooltip.select("#count")
-      .text(Math.max(0, yAccessor(datum) - 2))
-
-    const percentDeveloperHoursValues = datum.map(d => (
-      (developerHoursAccessor(d) / actualHoursAccessor(d)) || 0
-    ))
-    const percentDeveloperHours = d3.mean(percentDeveloperHoursValues)
-    const formatHours = d => d3.format(",.2f")(Math.abs(d))
-    tooltip.select("#tooltip-bar-value")
-      .text(formatHours(percentDeveloperHours))
-    tooltip.select("#tooltip-bar-item-1")
-      .style("width", `${percentDeveloperHours * 100}%`)
-
-    const x = xScale(datum.x0)
-      + (xScale(datum.x1) - xScale(datum.x0)) / 2
-      + dimensions.margin.left
-    const y = yScale(yAccessor(datum))
-      + dimensions.margin.top
-
-    tooltip.style("transform", `translate(`
-      + `calc( -50% + ${x}px),`
-      + `calc(-100% + ${y}px)`
-      + `)`)
-
-    tooltip.style("opacity", 1)
-  }
-
-  function onMouseLeave() {
-    tooltip.style("opacity", 0)
-  }
 
 }
 drawBars()

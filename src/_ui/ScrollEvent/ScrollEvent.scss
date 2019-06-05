@@ -1,0 +1,25 @@
+@import "src/styles/lib";
+
+.ScrollEvent {
+    position: relative;
+
+    &__listener {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        pointer-events: none;
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: -1.3em;
+            top: 0.45em;
+            height: 0.6em;
+            width: 0.6em;
+            background: $a2;
+            border-radius: 100%;
+        }
+    }
+}

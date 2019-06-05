@@ -1,0 +1,9 @@
+@import "src/styles/lib";
+
+.Link {
+  color: $a1;
+
+  &:visited {
+    color: $a2;
+  }
+}

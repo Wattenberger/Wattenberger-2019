@@ -40,8 +40,12 @@ async function drawBars() {
       left: 50,
     },
   }
-  dimensions.boundedWidth = dimensions.width - dimensions.margin.left - dimensions.margin.right
-  dimensions.boundedHeight = dimensions.height - dimensions.margin.top - dimensions.margin.bottom
+  dimensions.boundedWidth = dimensions.width
+    - dimensions.margin.left
+    - dimensions.margin.right
+  dimensions.boundedHeight = dimensions.height
+    - dimensions.margin.top
+    - dimensions.margin.bottom
 
   // 3. Draw canvas
 
@@ -51,7 +55,11 @@ async function drawBars() {
       .attr("height", dimensions.height)
 
   const bounds = wrapper.append("g")
-      .style("transform", `translate(${dimensions.margin.left}px, ${dimensions.margin.top}px)`)
+      .style("transform", `translate(${
+        dimensions.margin.left
+      }px, ${
+        dimensions.margin.top
+      }px)`)
 
   const background = bounds.append("g")
 
@@ -62,7 +70,9 @@ async function drawBars() {
       .attr("class", "mean")
   bounds.append("g")
       .attr("class", "x-axis")
-      .style("transform", `translateY(${dimensions.boundedHeight}px)`)
+      .style("transform", `translateY(${
+        dimensions.boundedHeight
+      }px)`)
     .append("text")
       .attr("class", "x-axis-label")
 
@@ -108,7 +118,9 @@ async function drawBars() {
   const barRects = binGroups.select("rect")
       .attr("x", d => xScale(d.x0) + barPadding)
       .attr("y", d => yScale(yAccessor(d)))
-      .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
+      .attr("height", d => (
+        dimensions.boundedHeight - yScale(yAccessor(d))
+      ))
       .attr("width", d => d3.max([
         0,
         xScale(d.x1) - xScale(d.x0) - barPadding
@@ -178,8 +190,12 @@ async function drawBars() {
     const formatBinBoundary = d => d3.format(",.0f")(Math.abs(d))
     tooltip.select("#range")
         .text([
-            datum.x0 < 0 ? `Under-estimated by` : `Over-estimated by`,
-          `${formatBinBoundary(datum.x0)} to ${formatBinBoundary(datum.x1)}`,
+            datum.x0 < 0
+              ? `Under-estimated by`
+              : `Over-estimated by`,
+          formatBinBoundary(datum.x0),
+          "to",
+          formatBinBoundary(datum.x1),
           "hours",
         ].join(" "))
 
@@ -221,5 +237,6 @@ async function drawBars() {
   function onMouseLeave() {
     tooltip.style("opacity", 0)
   }
+
 }
 drawBars()

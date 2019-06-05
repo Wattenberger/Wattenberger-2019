@@ -3,6 +3,7 @@ import React from 'react'
 import './Icon.scss';
 
 const sizes = {
+    xs: 9,
     s: 12,
     m: 19,
     l: 25,

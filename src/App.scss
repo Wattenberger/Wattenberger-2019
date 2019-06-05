@@ -1,28 +1,4 @@
-@import url('https://rsms.me/inter/inter.css');
-html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
-
-input, textarea, select, button {
-  font-family: 'Inter var', sans-serif;
-  font-feature-settings: "zero", "ss02", "frac", "case", "ss01" 1;
-}
-
-h1 {
-  font-size: 1.6em;
-  line-height: 1.3em;
-  margin: 0.2em 0;
-  font-weight: 800;
-}
-
-li {
-    padding: 0.4em 0.6em;
-}
-
-:focus {
-  outline: #9980FA auto 5px;
-}
+@import "src/styles/lib";
 
 .App {
   font-family: 'Inter var', sans-serif;

@@ -1,11 +1,11 @@
 .Code {
   background: #485460;
-  padding: 1em 0;
+  padding: 1em 0 2em;
   max-height: 100%;
   overflow: auto;
   font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
 
-  &__line {
+  &Line {
     padding: 0 2em;
     display: flex;
     align-items: baseline;
@@ -19,7 +19,7 @@
       background: #1e272e;
     }
 
-    &-number {
+    &__number {
       padding: 0.55em 0;
       color: #fff;
       opacity: 0.5;
@@ -31,6 +31,103 @@
 
     code[class*="language-"] {
       padding: 0;
+    }
+  }
+
+  &Step {
+    position: relative;
+
+    &--is-collapsed {
+      cursor: pointer;
+
+      .CodeStep__lines {
+        max-height: 3.5em;
+        margin-top: -1em;
+        line-height: 0.6em;
+        opacity: 0.6;
+
+        .CodeLine {
+          pointer-events: none;
+        }
+
+        &:before {
+          opacity: 1;
+        }
+        .CodeLine__number {
+          opacity: 0;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__copyable-text {
+      user-select: contain;
+      font-size: 0;
+    }
+
+    &__top {
+      padding: 0 2em;
+      display: flex;
+      align-items: baseline;
+      user-select: none;
+    }
+
+    &__name {
+      display: flex;
+      align-items: baseline;
+      color: white;
+      font-size: 1.2em;
+      font-weight: 800;
+    }
+
+    &__number {
+      font-weight: 400;
+      margin-right: 0.5em;
+    }
+
+    &__close {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 1em;
+      background: #45aeb1;
+      cursor: pointer;
+      z-index: 20;
+      opacity: 0;
+      transition: all 0.3s ease-out;
+    }
+
+    &:hover {
+      .CodeStep__close {
+        opacity: 1;
+      }
+    }
+
+    &__lines {
+      position: relative;
+      max-height: 200em;
+      transition: all 0.3s ease-out;
+      overflow: hidden;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(to bottom,
+          rgba(#485460, 0),
+          #485460
+        );
+        opacity: 0;
+        transition: all 0.3s ease-out;
+        pointer-events: none;
+      }
     }
   }
 }
