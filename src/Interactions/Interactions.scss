@@ -4,6 +4,11 @@
     max-width: 100vw;
     overflow: hidden;
 
+    h1 {
+        position: relative;
+        z-index: 10;
+    }
+
     &__content {
         padding: 0 3rem 10em;
         padding-right: 43rem + 3rem;
