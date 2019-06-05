@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import * as d3 from "d3"
+import _ from "lodash"
 import Code from './../_ui/Code/Code'
 
 import './Interactions.scss'
@@ -28,6 +29,8 @@ const Interactions = () => {
 
   return (
     <div className={`Interactions Interactions--${!!code ? "code" : "start"}`}>
+      <WaveContainer />
+
       <div className="Interactions__fixed-code">
         {!!code ? (
           <Code className="Interactions__code" highlightedLines={highlightedLines} initialExpandedSteps={initialExpandedSteps}>
@@ -55,6 +58,7 @@ const Interactions = () => {
       </div>
 
       <div className="Interactions__content">
+
         <h1>
           Interactive Charts with D3.js
         </h1>
@@ -280,3 +284,35 @@ const steps = [{
   </>,
   // lines: d3.range(169, 224),
 }]
+
+
+const WaveContainer = () => {
+  const [iteration, setIteration] = useState(0)
+  return (
+    <Wave
+      iteration={iteration}
+      onMouseEnter={() => setIteration(Math.random())}
+    />
+  )
+}
+const points = 7
+const Wave = () => {
+  const [iteration, setIteration] = useState(0)
+  const d = d3.area()
+    .x((d, i) => i - 1)
+    .y0(d => d)
+    .y1(0)
+    .curve(d3.curveBasis)
+    (_.times(points + 2, i => Math.random()))
+  return (
+    <svg preserveAspectRatio="none" className="Wave" viewBox={`0 0 ${points} 1`} iteration={iteration} onMouseEnter={() => setIteration(Math.random())}>
+      <defs>
+        <linearGradient id="gradient" y1="1" x1="0" x2="1">
+          <stop stop-color="#12CBC4" />
+          <stop stop-color="#9980FA" offset="100%" />
+        </linearGradient>
+      </defs>
+      <path fill="url(#gradient)" className="Wave__path" d={d} />
+    </svg>
+  )
+}

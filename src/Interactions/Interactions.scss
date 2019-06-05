@@ -5,17 +5,27 @@
     overflow: hidden;
 
     &__content {
-        padding: 2em 3rem 10em;
+        padding: 0 3rem 10em;
         padding-right: 43rem + 3rem;
         font-size: 1.3em;
         line-height: 1.5em;
         transition: all 0.5s ease-out;
+
+        @media (max-width: 1300px) {
+            padding-right: 33rem + 3rem;
+        }
+        @media (max-width: 1000px) {
+            padding-right: 3rem;
+        }
     }
 
     &--start {
         .Interactions {
             &__content {
-                transform: translateX(10em);
+
+                @media (min-width: 1300px) {
+                    transform: translateX(10em);
+                }
             }
         }
     }
@@ -35,7 +45,7 @@
         animation: slideLeft 0.5s ease-out;
         animation-delay: 0.5s;
         animation-fill-mode: forwards;
-        border: 1px solid $grey1;
+        // border: 1px solid $grey1;
         padding: 0.8em 2em;
         max-width: 22em;
         background: linear-gradient(
@@ -43,7 +53,10 @@
             #efc4b7,
             #a0d8f8
         );
-        color: white;
+        background: $grey1;
+        // color: white;
+        color: $grey4;
+        font-weight: 500;
 
         &__book {
             width: 11em;
@@ -91,6 +104,14 @@
         padding-bottom: 3em;
         z-index: 100;
 
+        @media (max-width: 1300px) {
+            width: 33rem;
+            font-size: 0.8em;
+        }
+        @media (max-width: 1000px) {
+            width: 0;
+        }
+
         .Code {
             min-height: 100%;
         }
@@ -127,6 +148,19 @@
             font-size: 0.9em;
             color: $grey4;
             font-style: italic;
+        }
+    }
+
+    .Wave {
+        position: relative;
+        width: 100%;
+        // margin-bottom: 2em;
+        height: 15em;
+        margin-bottom: -6em;
+
+        &__path {
+            // fill: $grey1;
+            transition: all 0.3s ease-out;
         }
     }
 }
