@@ -1,7 +1,6 @@
 async function drawBars() {
 
   // 1. Access data
-
   let dataset = await d3.csv("./../data.csv")
 
   const summaryAccessor = d => d.Summary

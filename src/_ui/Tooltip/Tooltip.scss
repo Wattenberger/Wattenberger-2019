@@ -1,3 +1,5 @@
+@import "src/styles/lib";
+
 .Tooltip {
   position: relative;
 
@@ -8,6 +10,8 @@
     transform: translate(-50%, -100%);
     opacity: 0;
     background: white;
+    color: $tc;
+    font-size: 16px;
     margin-top: -0.5em;
     pointer-events: none;
   }

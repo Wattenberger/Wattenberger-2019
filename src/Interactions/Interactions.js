@@ -11,11 +11,22 @@ import Link from '../_ui/Link/Link';
 import Aside from '../_ui/Aside/Aside';
 
 import bookImage from './../images/book.png';
+import LocalExample from '../_ui/LocalExample/LocalExample';
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const dataCsv = require('!!raw-loader!./../examples/interactions/data.csv').default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const exampleBarsNone = require('!!raw-loader!./../examples/interactions/bars-none/chart.js').default
 // eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsNoneHtml = require('!!raw-loader!./../examples/interactions/bars-none/index.html').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsNoneCss = require('!!raw-loader!./../examples/interactions/bars-none/styles.css').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
 const exampleBars = require('!!raw-loader!./../examples/interactions/bars/chart.js').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsHtml = require('!!raw-loader!./../examples/interactions/bars/index.html').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsCss = require('!!raw-loader!./../examples/interactions/bars/styles.css').default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const exampleBarsFull = require('!!raw-loader!./../examples/interactions/bars-full/chart.js').default
 
@@ -24,6 +35,7 @@ const Interactions = () => {
   const [highlightedLines, setHighlightedLines] = useState([])
   const [initialExpandedSteps, setInitialExpandedSteps] = useState()
   const [code, setCode] = useState(null)
+  const [removedLines, setRemovedLines] = useState([])
 
   const onHighlightLinesLocal = lines => () => setHighlightedLines(lines)
 
@@ -33,7 +45,9 @@ const Interactions = () => {
 
       <div className="Interactions__fixed-code">
         {!!code ? (
-          <Code className="Interactions__code" highlightedLines={highlightedLines} initialExpandedSteps={initialExpandedSteps}>
+          <Code
+            className="Interactions__code"
+            {...{highlightedLines, removedLines, initialExpandedSteps}}>
             { code }
           </Code>
         ) : (
@@ -121,11 +135,19 @@ const Interactions = () => {
           Let's start out with a simple bar chart.
         </p>
 
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsNoneHtml}
+          css={exampleBarsNoneCss}
+          js={exampleBarsNone}
+          data={dataCsv}
+        />
+{/*
         <iframe
           className="Interactions__iframe"
           title="example"
           src={"./../examples/interactions/bars-none/index.html"}
-        />
+        /> */}
 
         <p>
           This histogram shows the difference between hours estimated and actual hours for specific tasks.
@@ -178,10 +200,11 @@ const Interactions = () => {
         </h3>
 
         <ScrollEvent isInViewChange={d => {
-            if (d < 1) setCode(exampleBarsNone)
+            setCode(d < 0 ? exampleBarsNone : exampleBars)
             setInitialExpandedSteps(d >= 0 ? [7] : null)
-            setHighlightedLines(d >= 0 ? [182, 183, 184] : [0])
-        }} percentageThreshold={0.8}>
+            setHighlightedLines(d >= 0 ? [182, 183] : [0])
+            setRemovedLines(d >= 0 ? d3.range(183, 240) : [])
+        }}>
           <p>
             To start, we'll be fleshing out the last step: <b>Set up interactions</b>.
           </p>
@@ -191,13 +214,61 @@ const Interactions = () => {
           Our goal is to add tooltips to each of our bars, giving more information on hover.
         </p>
 
-        <iframe
+        <LocalExample
           className="Interactions__iframe"
-          title="example"
-          src={"./../examples/interactions/bars/index.html"}
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            // js: d3.range(183, 240)
+          }}
         />
 
-{/*
+        <p>
+          Let's get started!
+        </p>
+
+        <p>
+
+        </p>
+
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            js: d3.range(183, 240)
+          }}
+        />
+
+
+        <ScrollEvent isInViewChange={d => {
+          if (d != 0) return
+          setInitialExpandedSteps([5, 7])
+          setHighlightedLines(d3.range(101, 1054))
+          setRemovedLines(d3.range(183, 240))
+        }}>
+          <p>
+            Notice that we're creating one bar for each item in a `bins` array.
+          </p>
+        </ScrollEvent>
+
+        <ScrollEvent isInViewChange={d => {
+            setCode(d < 0 ? exampleBarsNone : exampleBars)
+            setInitialExpandedSteps(d >= 0 ? [7] : null)
+            setHighlightedLines(d >= 0 ? d3.range(183, 193) : [0])
+            setRemovedLines(d >= 0 ? [187, ...d3.range(189, 234), 238] : [])
+        }}>
+        <p>
+          First, we'll
+        </p>
+        </ScrollEvent>
+
+
         <ScrollEvent isInViewChange={d => {
           if (d < 0) return
 
@@ -215,6 +286,17 @@ const Interactions = () => {
           </p>
         </ScrollEvent>
 
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            // js: d3.range(186, 240)
+          }}
+        />
+
         <ScrollEvent isInViewChange={d => {
           setCode(d == -1 ? exampleBars : exampleBarsFull)
           setInitialExpandedSteps([7])
@@ -230,7 +312,7 @@ const Interactions = () => {
               src={"./../examples/interactions/bars-full/index.html"}
             />
           </div>
-        </ScrollEvent> */}
+        </ScrollEvent>
 
       </div>
 

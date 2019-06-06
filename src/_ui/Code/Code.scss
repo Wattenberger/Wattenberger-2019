@@ -43,6 +43,10 @@
       cursor: pointer;
       cursor: row-resize;
 
+      .CodeLine--is-highlighted {
+        background: none;
+      }
+
       .CodeStep__lines {
         max-height: 3.5em;
         margin-top: -1em;

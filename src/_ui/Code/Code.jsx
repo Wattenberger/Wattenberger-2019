@@ -10,18 +10,25 @@ import { scrollTo } from "./../../utils.js"
 import './Code.scss';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
-const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, doScrollToTop=false, className, children, ...props }) => {
+const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, removedLines=[], doScrollToTop=false, className, children, ...props }) => {
     const wrapper = useRef()
     const [expandedSteps, setExpandedSteps] = useState([])
     const needsToScroll = useRef()
     const currentHighlightedLines = useRef()
     currentHighlightedLines.current = highlightedLines
     const debouncedOnChange = useRef()
+    const removedLinesString = removedLines.join(" ")
 
-    // highlight code on mount
+    const parsedCode = useMemo(() => {
+        return children.split("\n")
+            .filter((d, i) => !removedLines.includes(i + 1))
+            .join("\n")
+    }, [removedLinesString, children])
+
+    // highlight code
     useEffect(() => {
         Prism.highlightAll()
-    }, [children])
+    }, [parsedCode])
 
     const scrollToHighlightedCode = () => {
         const lines = currentHighlightedLines.current
@@ -71,7 +78,7 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, doScro
 
     // split steps
     const steps = useMemo(() => {
-        const codeSplitByLine = children.split("\n")
+        const codeSplitByLine = parsedCode.split("\n")
         const lastTwoLines = codeSplitByLine.slice(-2)
         const steps = codeSplitByLine.slice(0, -1).join("\n").split(stepRegex)
 
@@ -108,7 +115,7 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, doScro
         })
 
         return parsedSteps
-    }, [children])
+    }, [parsedCode])
 
     useEffect(() => {
         needsToScroll.current = true

@@ -11,15 +11,66 @@
         left: 0;
         pointer-events: none;
 
-        &:before {
-            content: "";
-            position: absolute;
-            left: -1.3em;
-            top: 0.45em;
-            height: 0.6em;
-            width: 0.6em;
-            background: $a2;
-            border-radius: 100%;
+        // &:before {
+        //     content: "";
+        //     position: absolute;
+        //     left: -1.3em;
+        //     top: 0.45em;
+        //     height: 0.6em;
+        //     width: 0.6em;
+        //     background: $a2;
+        //     border-radius: 100%;
+        // }
+    }
+
+    &__indicator {
+        &.Tooltip {
+            @include abs(0.1em, auto, auto, -1.6em);
+
+            .Tooltip__contents {
+                white-space: nowrap;
+            }
+        }
+
+        display: flex;
+        color: $a2;
+        border-radius: 100%;
+
+        .Icon {
+            position: relative;
+            z-index: 2;
+        }
+
+        &--is {
+            &-inactive {
+                cursor: pointer;
+            }
+
+            &-active {
+            // &-1 {
+                color: $a1;
+
+                @keyframes popIn {
+                      0% { transform: translate(-50%, -50%)   scale(0); opacity: 0; }
+                     90% { transform: translate(-50%, -50%)   scale(2); opacity: 1; }
+                    100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+                }
+
+                &:before {
+                    content: "";
+                    @include abs(50%, auto, auto, 50%);
+                    height: 1.5em;
+                    width: 1.5em;
+                    background: rgba($a1, 0.3);
+                    border-radius: 100%;
+                    transform: translate(-50%, -50%) scale(0);
+                    opacity: 0;
+                    z-index: 0;
+                    animation: popIn 0.4s ease-out;
+                    animation-fill-mode: forwards;
+                }
+
+            }
         }
     }
 }

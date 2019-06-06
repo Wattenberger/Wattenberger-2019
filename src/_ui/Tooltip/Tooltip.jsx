@@ -5,9 +5,11 @@ import './Tooltip.scss';
 const Tooltip = ({ position="top", contents, className, children, ...props }) => {
     return (
         <div className={`Tooltip Tooltip--position-${position} ${className}`} {...props}>
-            <div className="Tooltip__contents">
-                { contents }
-            </div>
+            {!!contents && (
+                <div className="Tooltip__contents">
+                    { contents }
+                </div>
+            )}
             { children }
         </div>
     )

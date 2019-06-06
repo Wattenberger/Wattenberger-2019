@@ -3,6 +3,8 @@ import PropTypes from "prop-types"
 import _ from "lodash"
 
 import "./ScrollEvent.scss"
+import Icon from "../Icon/Icon";
+import Tooltip from "../Tooltip/Tooltip";
 
 class ScrollEvent extends Component {
   state = {
@@ -90,11 +92,20 @@ class ScrollEvent extends Component {
   }
   onScrollDebounced = _.throttle(this.onScroll, 60)
 
+  setStatusLocal = status => () => {
+    this.props.isInViewChange(status)
+    this.setState({ viewStatus: status })
+  }
+
   render() {
     const { children } = this.props
+    const { viewStatus } = this.state
 
     return (
       <div className="ScrollEvent">
+        <Tooltip contents={viewStatus != 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus == 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
+          <Icon name="code" size="l" />
+        </Tooltip>
         <div className="ScrollEvent__listener" ref={this.elem} />
         { children }
       </div>
