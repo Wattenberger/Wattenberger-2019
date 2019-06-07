@@ -20,9 +20,6 @@ async function drawBars() {
     return actualHoursAccessor(d) > 10
   })
 
-  console.table(dataset[0])
-  console.log(dataset)
-
   const diffAccessor = d => +d.HoursEstimate - actualHoursAccessor(d)
   dataset = dataset.filter(d => (
     diffAccessor(d) >= -50
@@ -103,7 +100,6 @@ async function drawBars() {
       .attr("class", "bin")
 
   newBinGroups.append("rect")
-  newBinGroups.append("text")
 
   // update binGroups to include new points
   binGroups = newBinGroups.merge(binGroups)

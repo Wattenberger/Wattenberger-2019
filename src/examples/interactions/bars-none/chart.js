@@ -109,7 +109,6 @@ async function drawBars() {
       .attr("class", "bin")
 
   newBinGroups.append("rect")
-  newBinGroups.append("text")
 
   // update binGroups to include new points
   binGroups = newBinGroups.merge(binGroups)

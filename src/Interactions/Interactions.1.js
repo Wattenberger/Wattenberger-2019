@@ -104,14 +104,14 @@ const Interactions = () => {
         </h3>
 
         <ScrollEvent isInViewChange={d => {
-          if (d == 1) return
+          if (d === 1) return
 
           setInitialExpandedSteps(
-            d == -1 ? null
+            d === -1 ? null
             : [7]
           )
           setHighlightedLines(
-            d == -1 ? [0]
+            d === -1 ? [0]
             : d3.range(183, 186)
           )
         }}>
@@ -121,7 +121,7 @@ const Interactions = () => {
         </ScrollEvent>
 
         <ScrollEvent isInViewChange={d => {
-          setCode(d == -1 ? exampleBars : exampleBarsFull)
+          setCode(d === -1 ? exampleBars : exampleBarsFull)
           setInitialExpandedSteps([7])
           if (d >= 0) setHighlightedLines(d3.range(175, 188))
         }}>

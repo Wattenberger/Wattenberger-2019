@@ -19,8 +19,22 @@
         @media (max-width: 1300px) {
             padding-right: 33rem + 3rem;
         }
+
         @media (max-width: 1000px) {
             padding-right: 3rem;
+        }
+
+        pre {
+            display: inline-block;
+            margin: -0.3em 0;
+            padding: 0.16em 0.6em;
+            color: $a1;
+            background: rgba($a1, 0.1);
+            border-radius: 2px;
+        }
+
+        img {
+            max-width: 100%;
         }
     }
 
@@ -62,6 +76,10 @@
         // color: white;
         color: $grey4;
         font-weight: 500;
+
+        @media (max-width: 1000px) {
+            position: relative;
+        }
 
         &__book {
             width: 11em;
@@ -119,6 +137,8 @@
 
         .Code {
             min-height: 100%;
+            padding-bottom: 2em;
+            margin-bottom: 0;
         }
     }
 

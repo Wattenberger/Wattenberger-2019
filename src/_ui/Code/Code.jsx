@@ -10,7 +10,7 @@ import { scrollTo } from "./../../utils.js"
 import './Code.scss';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
-const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, removedLines=[], doScrollToTop=false, className, children, ...props }) => {
+const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, removedLines=[], doScrollToTop=false, hasLineNumbers=true, className, children, ...props }) => {
     const wrapper = useRef()
     const [expandedSteps, setExpandedSteps] = useState([])
     const needsToScroll = useRef()
@@ -125,7 +125,7 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, remove
     const onToggleStepLocal = number => () => {
         const stepIsExpanded = expandedSteps.includes(number)
         const newSteps = stepIsExpanded
-            ? expandedSteps.filter(d => d != number)
+            ? expandedSteps.filter(d => d !== number)
             : [...expandedSteps, number]
         setExpandedSteps(newSteps)
     }
@@ -137,15 +137,15 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, remove
             className,
         ].join(" ")} ref={wrapper}>
             {steps.map((step, i) => (
-                step.type == "string" ? (
+                step.type === "string" ? (
                     <CodeLines
                         key={i}
-                        {...{...step, highlightedLines}}
+                        {...{...step, highlightedLines, hasLineNumbers}}
                     />
                 ) : (
                     <CodeStep
                         key={step.name}
-                        {...{...step, highlightedLines}}
+                        {...{...step, highlightedLines, hasLineNumbers}}
                         isExpanded={expandedSteps.includes(step.number)}
                         onToggle={onToggleStepLocal(step.number)}
                     />
@@ -163,7 +163,7 @@ const languages = {
 
 const getLanguageString = lang => `language-${languages[lang] || lang}`
 
-const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, onToggle }) => (
+const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, hasLineNumbers, onToggle }) => (
     <div className={`CodeStep CodeStep--number-${number} CodeStep--is-${isExpanded ? "expanded" : "collapsed"}`} onClick={isExpanded ? () => {} : onToggle}>
         <div className="CodeStep__copyable-text">
             {`  // ${number}. ${name}`}
@@ -174,9 +174,11 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
         )}
 
         <div className="CodeStep__top" id={`CodeLine-${startLineIndex}`}>
-            <div className="CodeLine__number">
-                { startLineIndex }.
-            </div>
+            {hasLineNumbers && (
+                <div className="CodeLine__number">
+                    { startLineIndex }.
+                </div>
+            )}
 
             <div className="CodeStep__name">
                 <div className="CodeStep__number">
@@ -189,7 +191,7 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
 
         <div className="CodeStep__lines">
             <CodeLines
-                {...{ code, startLineIndex, highlightedLines }}
+                {...{ code, startLineIndex, highlightedLines, hasLineNumbers }}
             />
         </div>
 
@@ -207,15 +209,17 @@ const CodeLines = ({ code, startLineIndex, ...props }) => !code ? null : (
     ))
 )
 
-const CodeLine = ({ code, index, highlightedLines }) => (
+const CodeLine = ({ code, index, highlightedLines, hasLineNumbers }) => (
     <div className={[
         "CodeLine",
         `CodeLine--is-${highlightedLines.includes(index + 1) ? "highlighted" : "normal"}`,
     ].join(" ")}
     id={`CodeLine-${index + 1}`}>
-        <div className="CodeLine__number">
-            { index + 1 }.
-        </div>
+        {hasLineNumbers && (
+            <div className="CodeLine__number">
+                { index + 1 }.
+            </div>
+        )}
 
         <code>
             { code }

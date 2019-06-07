@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "d3": "^5.9.2",
+    "intersection-observer": "^0.7.0",
     "node-sass": "^4.12.0",
     "prismjs": "^1.16.0",
     "raw-loader": "^2.0.0",

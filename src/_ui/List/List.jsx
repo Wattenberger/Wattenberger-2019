@@ -3,12 +3,18 @@ import Icon from '../Icon/Icon'
 
 import './List.scss';
 
-const List = ({ items=[], className, ...props }) => {
+const List = ({ items=[], hasNumbers=false, className, ...props }) => {
     return (
         <ul className={`List ${className}`} {...props}>
-            { items.map(item => (
-                <li className="List__item">
-                    <Icon className="List__item__icon" name="asterisk" size="m" />
+            { items.map((item, i) => (
+                <li className="List__item" key={i}>
+                    {hasNumbers ? (
+                        <div className="List__item__number">
+                            { i + 1 }.
+                        </div>
+                    ) : (
+                        <Icon className="List__item__icon" name="asterisk" size="m" />
+                    )}
                     <div className="List__item__text">
                         { item }
                     </div>

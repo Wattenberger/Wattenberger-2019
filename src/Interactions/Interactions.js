@@ -11,6 +11,7 @@ import Link from '../_ui/Link/Link';
 import Aside from '../_ui/Aside/Aside';
 
 import bookImage from './../images/book.png';
+import d3SelectionImage from './../images/d3-selection.png';
 import LocalExample from '../_ui/LocalExample/LocalExample';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -36,8 +37,9 @@ const Interactions = () => {
   const [initialExpandedSteps, setInitialExpandedSteps] = useState()
   const [code, setCode] = useState(null)
   const [removedLines, setRemovedLines] = useState([])
+  // const [removedLinesCss, setRemovedLinesCss] = useState([])
 
-  const onHighlightLinesLocal = lines => () => setHighlightedLines(lines)
+  // const onHighlightLinesLocal = lines => () => setHighlightedLines(lines)
 
   return (
     <div className={`Interactions Interactions--${!!code ? "code" : "start"}`}>
@@ -200,10 +202,11 @@ const Interactions = () => {
         </h3>
 
         <ScrollEvent isInViewChange={d => {
-            setCode(d < 0 ? exampleBarsNone : exampleBars)
-            setInitialExpandedSteps(d >= 0 ? [7] : null)
-            setHighlightedLines(d >= 0 ? [182, 183] : [0])
-            setRemovedLines(d >= 0 ? d3.range(183, 240) : [])
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([181, 182])
+          setRemovedLines(d3.range(182, 239))
         }}>
           <p>
             To start, we'll be fleshing out the last step: <b>Set up interactions</b>.
@@ -221,68 +224,101 @@ const Interactions = () => {
           js={exampleBars}
           data={dataCsv}
           removedLines={{
-            // js: d3.range(183, 240)
+            css: d3.range(29, 32),
+            js: d3.range(182, 239)
           }}
         />
-
-        <p>
-          Let's get started!
-        </p>
-
-        <p>
-
-        </p>
-
-
-        <LocalExample
-          className="Interactions__iframe"
-          html={exampleBarsHtml}
-          css={exampleBarsCss}
-          js={exampleBars}
-          data={dataCsv}
-          removedLines={{
-            js: d3.range(183, 240)
-          }}
-        />
-
 
         <ScrollEvent isInViewChange={d => {
-          if (d != 0) return
+          if (d !== 0) return
+          setCode(exampleBars)
           setInitialExpandedSteps([5, 7])
-          setHighlightedLines(d3.range(101, 1054))
-          setRemovedLines(d3.range(183, 240))
+          setHighlightedLines(d3.range(102, 111))
+          setRemovedLines(d3.range(182, 239))
         }}>
           <p>
-            Notice that we're creating one bar for each item in a `bins` array.
+            First, let's look at how we're drawing our bars.
+          </p>
+
+          <p>
+              In our <b>Draw data</b> step, we're creating one group (<pre>{"<g>"}</pre> element) for each item in a <pre>bins</pre> array. Notice that we're storing a <b>d3 selection object</b> containing these groups in the variable <pre>binGroups</pre>.
           </p>
         </ScrollEvent>
 
-        <ScrollEvent isInViewChange={d => {
-            setCode(d < 0 ? exampleBarsNone : exampleBars)
-            setInitialExpandedSteps(d >= 0 ? [7] : null)
-            setHighlightedLines(d >= 0 ? d3.range(183, 193) : [0])
-            setRemovedLines(d >= 0 ? [187, ...d3.range(189, 234), 238] : [])
-        }}>
         <p>
-          First, we'll
+          But what is a <b>d3 selection object</b>? Whenever we use <pre>d3.select()</pre>, we create a new <b>d3 selection object</b>. These objects are created by using a CSS-selector-like string. Any matching DOM elements are stored in a list (represented under <pre>_groups</pre>). There will be other keys in this object, like the selection's parents (in <pre>_parents</pre>).
         </p>
+
+        <img alt="d3 selection object" src={d3SelectionImage} />
+
+        <Aside>
+          Read more about the <b>d3-select</b> module and selection objects in the <Link href="https://github.com/d3/d3-selection#d3-selection">d3 docs</Link>, or get a much more thorough explanation in <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>.
+        </Aside>
+
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([5, 7])
+          setHighlightedLines(d3.range(112, 127))
+          setRemovedLines(d3.range(182, 239))
+        }}>
+          Next, we then create a <pre>{"<rect>"}</pre> element for each group and set its position and size, calculated with our already created <pre>xScale</ pre> and <pre>yScale</pre>.
         </ScrollEvent>
 
+        <p>
+          Great! Now that we have an idea of how we're drawing each of our bars, we can start adding our tooltip.
+        </p>
 
         <ScrollEvent isInViewChange={d => {
-          if (d < 0) return
-
+          if (d !== 0) return
           setCode(exampleBars)
-          setInitialExpandedSteps(
-            d == -1 ? null
-            : [7]
-          )
-          setHighlightedLines(
-            d3.range(183, 186)
-          )
+          setInitialExpandedSteps([7])
+          setHighlightedLines([181, 182])
+          setRemovedLines(d3.range(182, 239))
         }}>
-          <p style={{minHeight: "20em", marginBottom: "30em"}}>
-            Check me out!
+          <p>
+            Let's move back down to <b>Step 7</b>.
+          </p>
+        </ScrollEvent>
+
+        <p>
+          To show a tooltip when a user hovers a bar, we'll need to trigger changes under two circumstances:
+        </p>
+
+        <List items={[
+          <>the mouse <b>enters</b> a bar</>,
+          <>the mouse <b>leaves</b> a bar</>,
+        ]} hasNumbers />
+
+        <p>
+          Thankfully, <b>d3 selection objects</b> have an <Link href="https://github.com/d3/d3-selection#selection_on"><pre>.on()</pre> method</Link> that will execute a function when an event is triggered. <pre>.on()</pre> takes three parameters:
+        </p>
+
+        <List items={[
+            <><b>typename</b>: the name of a supported <Link href="https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events">DOM event type</Link></>,
+            <><b>listener</b> (optional): the function to execute when triggered</>,
+            <><b>options</b> (optional): an object containing native event options, <Link href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#Parameters">for example <pre>capture</pre></Link></>,
+          ]} hasNumbers
+        />
+
+        <p>
+          For example, to log "hi" to the console when the body of a page is clicked, we could use the following code:
+        </p>
+
+        <Code hasLineNumbers={false}>
+          {`d3.select("body").on("click", () => console.log("hi"))`}
+        </Code>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+            setCode(exampleBars)
+            setInitialExpandedSteps([7])
+            setHighlightedLines(d3.range(182, 192))
+            setRemovedLines([186, ...d3.range(188, 233), 237])
+        }}>
+          <p>
+            Let's create some interactions! Using our <pre>binGroups</pre> selection, we'll create one function to run <b>on mouse enter</b> and one function to run <b>on mouse leave</b>.
           </p>
         </ScrollEvent>
 
@@ -298,9 +334,10 @@ const Interactions = () => {
         />
 
         <ScrollEvent isInViewChange={d => {
-          setCode(d == -1 ? exampleBars : exampleBarsFull)
+          if (d !== 0) return
+          setCode(exampleBarsFull)
           setInitialExpandedSteps([7])
-          if (d >= 0) setHighlightedLines(d3.range(175, 188))
+          setHighlightedLines(d3.range(175, 188))
         }}>
           <div style={{minHeight: "100vh"}}>
             <p>
@@ -313,6 +350,17 @@ const Interactions = () => {
             />
           </div>
         </ScrollEvent>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            // js: d3.range(183, 240)
+          }}
+        />
 
       </div>
 
@@ -384,14 +432,15 @@ const Wave = () => {
     .x((d, i) => i - 1)
     .y0(d => d)
     .y1(0)
-    .curve(d3.curveBasis)
-    (_.times(points + 2, i => Math.random()))
+    .curve(d3.curveBasis)(
+    _.times(points + 2, i => Math.random())
+  )
   return (
     <svg preserveAspectRatio="none" className="Wave" viewBox={`0 0 ${points} 1`} iteration={iteration} onMouseEnter={() => setIteration(Math.random())}>
       <defs>
         <linearGradient id="gradient" y1="1" x1="0" x2="1">
-          <stop stop-color="#12CBC4" />
-          <stop stop-color="#9980FA" offset="100%" />
+          <stop stopColor="#12CBC4" />
+          <stop stopColor="#9980FA" offset="100%" />
         </linearGradient>
       </defs>
       <path fill="url(#gradient)" className="Wave__path" d={d} />

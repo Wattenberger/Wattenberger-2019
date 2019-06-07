@@ -6,6 +6,9 @@ import "./ScrollEvent.scss"
 import Icon from "../Icon/Icon";
 import Tooltip from "../Tooltip/Tooltip";
 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+require('intersection-observer');
+
 class ScrollEvent extends Component {
   state = {
     viewStatus: false,
@@ -21,7 +24,7 @@ class ScrollEvent extends Component {
   }
 
   static defaultProps = {
-    thresholdPercent: 0.2,
+    thresholdPercent: 0.4,
     isInViewChange: () => {},
   }
 
@@ -52,12 +55,10 @@ class ScrollEvent extends Component {
 
   onVisibilityChange = e => {
     if (!this._isMounted) return
-    const { thresholdPercent } = this.props
-
     const bounds = e[0].boundingClientRect
     const isInView = e[0].isIntersecting
 
-    if (isInView != this.isInView) {
+    if (isInView !== this.isInView) {
       this.isInView = isInView
       if (isInView) {
         this.onScrollDebounced = window.addEventListener("scroll", this.onScrollDebounced, {
@@ -84,7 +85,7 @@ class ScrollEvent extends Component {
       bounds.bottom < thresholdPercent * window.innerHeight ? 1 :
       0
 
-    if (status == viewStatus) return
+    if (status === viewStatus) return
 
     this.props.isInViewChange(status)
     this.setState({ viewStatus: status })
@@ -103,7 +104,7 @@ class ScrollEvent extends Component {
 
     return (
       <div className="ScrollEvent">
-        <Tooltip contents={viewStatus != 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus == 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
+        <Tooltip contents={viewStatus !== 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus === 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
           <Icon name="code" size="l" />
         </Tooltip>
         <div className="ScrollEvent__listener" ref={this.elem} />

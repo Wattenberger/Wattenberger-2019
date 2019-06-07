@@ -9,7 +9,7 @@ const InteractionEvents = () => {
 
     const addEvent = (event, index) => {
         const lastEvent = events[events.length - 1] || {}
-        const isRepeatEvent = lastEvent.event == event
+        const isRepeatEvent = lastEvent.event === event
 
         if (isRepeatEvent) {
             setEvents(events => [
@@ -39,6 +39,7 @@ const InteractionEvents = () => {
         <div className="InteractionEvents">
             {[1,2].map(i => (
                 <div
+                    key={i}
                     className={`InteractionEvents__circle InteractionEvents__circle--index-${i}`}
                     onMouseEnter={onEventLocal("mouseenter", i)}
                     onClick={onEventLocal("click", i)}
