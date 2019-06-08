@@ -21,12 +21,12 @@ body {
     margin-bottom: 1em;
 }
 
-.bin rect {
+.bin {
     fill: #686de0;
     transition: all 0.2s ease-out;
 }
 
-.bin rect:hover {
+.bin:hover {
     fill: #22a6b3;
 }
 
@@ -144,7 +144,7 @@ body {
     background: #eaeaea;
 }
 
-.tooltip-bar-item {
+.tooltip-bar-fill {
     background: #30336b;
     height: 100%;
 }

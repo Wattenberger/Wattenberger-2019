@@ -12,6 +12,7 @@ import Aside from '../_ui/Aside/Aside';
 
 import bookImage from './../images/book.png';
 import d3SelectionImage from './../images/d3-selection.png';
+import binsImage from './../images/bins.png';
 import LocalExample from '../_ui/LocalExample/LocalExample';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -30,6 +31,10 @@ const exampleBarsHtml = require('!!raw-loader!./../examples/interactions/bars/in
 const exampleBarsCss = require('!!raw-loader!./../examples/interactions/bars/styles.css').default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const exampleBarsFull = require('!!raw-loader!./../examples/interactions/bars-full/chart.js').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsFullHtml = require('!!raw-loader!./../examples/interactions/bars-full/index.html').default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const exampleBarsFullCss = require('!!raw-loader!./../examples/interactions/bars-full/styles.css').default
 
 
 const Interactions = () => {
@@ -37,6 +42,7 @@ const Interactions = () => {
   const [initialExpandedSteps, setInitialExpandedSteps] = useState()
   const [code, setCode] = useState(null)
   const [removedLines, setRemovedLines] = useState([])
+  const [insertedLines, setInsertedLines] = useState([])
   // const [removedLinesCss, setRemovedLinesCss] = useState([])
 
   // const onHighlightLinesLocal = lines => () => setHighlightedLines(lines)
@@ -49,7 +55,7 @@ const Interactions = () => {
         {!!code ? (
           <Code
             className="Interactions__code"
-            {...{highlightedLines, removedLines, initialExpandedSteps}}>
+            {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
             { code }
           </Code>
         ) : (
@@ -255,7 +261,6 @@ const Interactions = () => {
           Read more about the <b>d3-select</b> module and selection objects in the <Link href="https://github.com/d3/d3-selection#d3-selection">d3 docs</Link>, or get a much more thorough explanation in <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>.
         </Aside>
 
-
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
           setCode(exampleBars)
@@ -310,12 +315,16 @@ const Interactions = () => {
           {`d3.select("body").on("click", () => console.log("hi"))`}
         </Code>
 
+        <Aside>
+          Feel free to test this right here in this page's Dev tools Javascript console -- d3.js is already loaded globally on the page.
+        </Aside>
+
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
-            setCode(exampleBars)
-            setInitialExpandedSteps([7])
-            setHighlightedLines(d3.range(182, 192))
-            setRemovedLines([186, ...d3.range(188, 233), 237])
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(182, 192))
+          setRemovedLines([186, ...d3.range(188, 234), 237])
         }}>
           <p>
             Let's create some interactions! Using our <pre>binGroups</pre> selection, we'll create one function to run <b>on mouse enter</b> and one function to run <b>on mouse leave</b>.
@@ -333,22 +342,315 @@ const Interactions = () => {
           }}
         />
 
+        <p>
+          If we look at our <pre>index.html</pre> file, we'll see that we've created a <pre>{`<div>`}</pre> with an id of "tooltip".
+        </p>
+
+        <Code
+          language="html"
+          size="s"
+          removedLines={[
+            ...d3.range(0, 12),
+            ...d3.range(30, 39),
+          ]}
+          hasLineNumbers={false}>
+            { exampleBarsHtml }
+          </Code>
+
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
-          setCode(exampleBarsFull)
+          setCode(exampleBars)
           setInitialExpandedSteps([7])
-          setHighlightedLines(d3.range(175, 188))
+          setHighlightedLines(d3.range(182, 192))
+          setRemovedLines([...d3.range(188, 234), 237])
         }}>
-          <div style={{minHeight: "100vh"}}>
-            <p>
-              What if we made new bars for our hover events?
-            </p>
-            <iframe
-              className="Interactions__iframe"
-              title="example"
-              src={"./../examples/interactions/bars-full/index.html"}
-            />
-          </div>
+          <p>
+            Let's create a <b>d3 selection object</b> that contains our tooltip element.
+          </p>
+        </ScrollEvent>
+        <p>
+          We'll create this element outside of our <pre>onMouseEnter</pre> and <pre>onMouseLeave</pre> functions, so we don't have to find it every time we move our mouse.
+        </p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([189])
+          setRemovedLines([...d3.range(191, 234), 237])
+        }}>
+          <p>
+            Next, let's flesh out our <pre>onMouseEnter</pre> function. First, we'll want to make our tooltip visible.
+          </p>
+        </ScrollEvent>
+
+        <p>
+          Notice how our tooltip shows up when we hover a bar. It'll stay in its default position (top, left) since we're not yet setting its position.
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: d3.range(29, 32),
+            js: [...d3.range(191, 234), 237]
+          }}
+        />
+
+        <p>
+          Now we can start populating the different parts of our tooltip, starting with the title on top.
+        </p>
+
+        <p>
+          In <pre>index.html</pre>, we can see that the title has an <pre>id</pre> of <pre>"range"</pre>.
+        </p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([191])
+          setRemovedLines([191, ...d3.range(193, 234), 237])
+        }}>
+          <p>
+            We can target this <pre>{`<div>`}</pre> by creating a <b>d3 selection object</b> using the string <pre>"#range"</pre> (<pre>#</pre> specifies that we're looking for elements with a specific <pre>id</pre>).
+          </p>
+        </ScrollEvent>
+
+        <p>
+          When we hover over a bar, we want the title of our tooltip to tell us the range of hours that are included. For example: <b>Over-estimated by 5 to 10 hours</b>.
+        </p>
+
+        <p>
+          Let's also change the language to show whether the time estimate was <b>under-</b> or <b>over-estimated</b>.
+        </p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(191, 202))
+          setRemovedLines([...d3.range(203, 234), 237])
+        }}>
+          <p>
+            The first parameter of our <pre>onMouseEnter()</pre> function is the specific data <i>bound to</i> the hovered element. This corresponds to the item in the <pre>bins</pre> array that we used to create our bars.
+          </p>
+        </ScrollEvent>
+
+        <Aside>
+          If you're unfamiliar with d3 data binding, <Link href="https://bost.ocks.org/mike/join/">read more here</Link>.
+        </Aside>
+
+        <p>
+          Each item in our <pre>bins</pre> array contains:
+        </p>
+
+        <List items={[
+          <>the list of tasks that fit inside of the bucket</>,
+          <><b>x0</b>: the <i>smallest</i> number of hours included in the bucket</>,
+          <><b>x1</b>: the <i>largest</i> number of hours included in the bucket (exclusive)</>,
+        ]} />
+
+        <img alt="bins" src={binsImage} />
+
+        <p>
+          Knowing this, we can find the range of hours for our hovered bar at <pre>datum.x0</pre> and <pre>datum.x1</pre>.
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: d3.range(29, 32),
+            js: [...d3.range(203, 234), 237]
+          }}
+        />
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(203, 224))
+          setRemovedLines([...d3.range(224, 234), 237])
+        }}>
+          <p>
+            Let's populate the rest of the tooltip.
+          </p>
+          <p>
+              This example is a little more complicated, so feel free to breeze through these added lines. If you're curious, feel free to implement them one-by-one to see how they populate the tooltip.
+          </p>
+        </ScrollEvent>
+
+        <Aside>
+          Notice how we're using <pre>.html()</pre> to populate the <pre>{`"#examples"`}</pre> div's contents. This is because we want each example to be separated by a new line using the <pre>{`<br>`}</pre> element. Since <pre>{`<br>`}</pre> is an HTML element, we want this string to be parsed as such, instead of just displaying the raw text.
+        </Aside>
+
+        <p>
+          Great! Now we can see our tooltip updating as we hover over different bars:
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: d3.range(29, 32),
+            js: [...d3.range(224, 234), 237]
+          }}
+        />
+
+        <p>
+          Let's update the position of our tooltip to sit on top of the bar that we're hovering over. This helps to reinforce the relationship between the bar and the extra information, as well as bringing the information closer to make moving your eyes back and forth easier.
+        </p>
+
+        <p>
+            We can use our <pre>xScale</pre> to convert the <b>lower</b> and <b>upper</b> bounds of our hovered bin into x-positions.
+        </p>
+
+        <p>For example, <pre>xScale(datum.x0)</pre> will give us the x-position of the left side of our bin.</p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(224, 227))
+          setRemovedLines([...d3.range(227, 234), 237])
+          setInsertedLines([])
+        }}>
+          <p>
+            To find the <i>middle</i> of our bar, we'll want to add three numbers together:
+          </p>
+        </ScrollEvent>
+        <List items={[
+          <>the x-position of the <i>left</i> side of our bar</>,
+          <>half the width of our bar (the x-position of the <i>right</i>of our bar, minus the x-position of the <i>left</i> side of our bar)</>,
+          <>the size of our <i>left margin</i></>,
+        ]} hasNumbers />
+
+        <p>We also need to find the y-position of our tooltip.</p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(227, 229))
+          setRemovedLines([...d3.range(229, 234), 237])
+          setInsertedLines([])
+        }}>
+          <p>
+            To find the <i>top</i> of our bar, we'll want to add two numbers together:
+          </p>
+        </ScrollEvent>
+
+        <List items={[
+          <>the y-position of the <i>top</i> of our bar</>,
+          <>the size of our <i>top margin</i></>,
+        ]} hasNumbers />
+
+        <p>Great! Now we just need to use our <pre>x</pre> and <pre>y</pre> to position our tooltip.</p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([230])
+          setRemovedLines([...d3.range(230, 234), 237])
+          setInsertedLines([{
+            start: 229,
+            code: "    tooltip.style(\"transform\", `translate(${x}px,${y}px)`)",
+          }])
+        }}>
+          <p>
+            We can move our tooltip element by setting its CSS <pre>transform</pre> property.
+          </p>
+        </ScrollEvent>
+
+        <p>
+          Something is wrong here -- our tooltip is moving to the top of our hovered bar, but we're aligning the <b>top, left</b> corner.
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: d3.range(29, 32),
+            js: [...d3.range(230, 234), 237],
+          }}
+          insertedLines={{
+            js: [{
+              start: 229,
+              code: "tooltip.style(`transform`, `translate(${x}px,${y}px)`)",
+            }]
+          }}
+        />
+
+        <p>Instead, we want to align the <b>bottom, middle</b> edge to the top of our hovered bar.</p>
+
+        <p>
+          We want our tooltip to shift <b>left by 50% of its own width</b> and <b>up by 100% of its own height</b>. There are several ways to use CSS to position an element using percent, and each way uses the percent of a different value:
+        </p>
+
+        <List items={[
+          <>
+            <b><pre>top</pre> and <pre>bottom</pre></b>
+            <div className="Interactions__step__description">
+              percentage of the parent element's width
+            </div>
+          </>,
+          <>
+            <b><pre>left</pre> and <pre>right</pre></b>
+            <div className="Interactions__step__description">
+              percentage of the parent element's height
+            </div>
+          </>,
+          <>
+            <b><pre>margin</pre></b>
+            <div className="Interactions__step__description">
+              percentage of the parent element's width (even the <pre>top</pre> and <pre>bottom</pre> margins)
+            </div>
+          </>,
+          <>
+            <b><pre>transform: translate()</pre></b>
+            <div className="Interactions__step__description">
+              percentage of the specified element's height and width
+            </div>
+          </>,
+        ]} />
+
+        <p>
+          Since we want to shift our tooltip by <i>its own height and width</i>, we'll need to use the <pre>transform: translate()</pre> CSS property. But we're already using it to set the overall position.
+        </p>
+
+        <p>
+          Thankfully, we can use the CSS <pre>calc()</pre> function! CSS <pre>calc()</pre> lets you specify a value using multiple units. For example, an element with the rule <pre>{`width: calc(100% + 20px)`}</pre> will be 20 pixels wider than its context.
+        </p>
+
+        <Aside>
+          Read more about CSS <pre>calc()</pre> in the <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/calc">MDN docs</Link>.
+        </Aside>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(230, 235))
+          setRemovedLines([237])
+          setInsertedLines([])
+        }}>
+          <p>
+            Let's use <pre>calc()</pre> to also shift our tooltip <b>left by -50% of its width</b> and <b>up by 100% of its height</b>.
+          </p>
         </ScrollEvent>
 
         <LocalExample
@@ -358,9 +660,236 @@ const Interactions = () => {
           js={exampleBars}
           data={dataCsv}
           removedLines={{
-            // js: d3.range(183, 240)
+            css: d3.range(29, 32),
+            js: [237],
           }}
         />
+
+        <p>Perfect! Now our tooltip is correctly positioned above any bar that we hover.</p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBars)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([237])
+          setRemovedLines([])
+          setInsertedLines([])
+        }}>
+          <p>
+            Our tooltip is sticking around, obscuring part of the chart. When our mouse leaves a bar, let's remove the tooltip to clear the view.
+          </p>
+        </ScrollEvent>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: d3.range(29, 32),
+          }}
+        />
+
+        <p>Lastly, let's highlight the bar that we're hovering over, making it easier to focus on it.</p>
+        <p>We <i>could</i> update its fill in our <pre>onMouseEnter</pre> and <pre>onMouseLeave</pre> functions, but there's a simpler way.</p>
+
+        <p>We can insert a CSS selector in our <pre>styles.css</pre> file, targeting any <pre>.bin</pre> that is being <pre>:hover</pre>ed.</p>
+
+        <Code language="css" hasLineNumbers={false}>
+{`.bin:hover {
+  fill: #22a6b3;
+}`}
+        </Code>
+
+        <p>There we go!</p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+          }}
+        />
+
+        <p>
+          It's always good to be aware of multiple ways of doing things, and the benefits of each. My general rule of thumb is to use a CSS style when possible, especially when the change is more of a <i>decorative style</i> or uses SASS/LESS variables.
+        </p>
+
+        <Aside>
+          It might be a good idea to read up on the possible CSS pseudo-classes - <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">here is a complete list in the MDN docs</Link>.
+        </Aside>
+
+
+        <h2>
+          Make the interaction as easy as possible
+        </h2>
+
+        <p>
+          While the tooltip we just created is wonderful and helpful, it could be easier to trigger. The easier a chart is to interact with, the more likely a user is to interact with it.
+        </p>
+
+        <p>
+          Until now, we've been using existing elements to trigger mouse events. What if we created <i>new</i> elements to trigger those events? This opens up tons of new possibilities.
+        </p>
+
+        <p>
+          What would the ideal hover event be? <b>Let's make it so that hovering anywhere on our chart will trigger a tooltip</b>.
+        </p>
+
+        <p>
+          We'll want to create new bars on top of our existing bins, but these will cover the full height of our <b>bounds</b>.
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsFullHtml}
+          css={exampleBarsFullCss}
+          js={exampleBarsFull}
+          data={dataCsv}
+          removedLines={{
+            js: [...d3.range(182, 237), 229, 230, 235],
+          }}
+          insertedLines={{
+            css: [{
+              start: 164,
+              code: "fill: #FFC312; stroke: blue;"
+            }]
+          }}
+        />
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBarsFull)
+          setInitialExpandedSteps([7])
+          setHighlightedLines(d3.range(170, 183))
+          setRemovedLines([108, 229, 230, 235])
+          setInsertedLines([])
+        }}>
+          <p>
+            At the top of our <b>Set up interactions</b> step, we'll create these new bars and attach our listener events to them.
+          </p>
+        </ScrollEvent>
+
+        <p>
+          We're also ignoring the padding between our bars, making them flush against each other. This will prevent our tooltip from flickering when our mouse is in-between two bars.
+        </p>
+
+
+        <p>Since our new bars will have a default <pre>fill</pre> of black, let's update that in our <pre>styles.css</pre> file so that they're not obstructing our existing chart.</p>
+
+        <Code language="css">
+{`.listeners {
+  fill: transparent;
+}`}
+        </Code>
+
+        <p>Note that we want to keep the bars there to capture the pointer events, we just want them to have a transparent fill.</p>
+
+        <p>Notice how much easier it is to interact with our chart now?</p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsFullHtml}
+          css={exampleBarsFullCss}
+          js={exampleBarsFull}
+          data={dataCsv}
+          removedLines={{
+            js: [108, 229, 230],
+          }}
+        />
+
+        We've lost our CSS <pre>:hover</pre> styles, though, since our new bars are capturing the hover events.
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBarsFull)
+          setInitialExpandedSteps([5, 7])
+          setHighlightedLines([108])
+          setRemovedLines([229, 230, 235])
+          setInsertedLines([])
+        }}>
+          <p>
+            When we draw our <pre>.bins</pre> in our <b>Draw data</b> step, let's give them a <pre>key</pre> attribute that we can target.
+          </p>
+        </ScrollEvent>
+
+        <p>We'll use the <b>index of the bin</b> as an identifier, since it will be consistent between both sets of bars.</p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBarsFull)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([186])
+          setRemovedLines([229, 230, 235])
+          setInsertedLines([])
+        }}>
+          <p>
+            The second parameter <pre>.on()</pre> sends to its callback is the <b>index of the d3 selection object</b>.
+          </p>
+        </ScrollEvent>
+
+        <p>
+          Let's assign this index to the variable <pre>index</pre>.
+        </p>
+
+        <ScrollEvent isInViewChange={d => {
+          if (d !== 0) return
+          setCode(exampleBarsFull)
+          setInitialExpandedSteps([7])
+          setHighlightedLines([229, 230, 235])
+          setRemovedLines([])
+          setInsertedLines([])
+        }}>
+          <p>
+            At the bottom of our <pre>onMouseEnter()</pre> function, we can find the corresponding <pre>.bin</pre> and add a class to it: <pre>hovered</pre>.
+          </p>
+        </ScrollEvent>
+
+        <Aside>We're using the <pre>.classed()</pre> method of our d3 selection object -- read more about this method <Link href="https://github.com/d3/d3-selection#selection_classed">in the d3-selection docs.</Link>.</Aside>
+
+        <p>
+          Lastly, we'll need to add one more rule to our <pre>styles.css</pre> file.
+        </p>
+
+        <p>Let's want to add a <pre>fill</pre> to elements with a class of <pre>hovered</pre>, since we can no longer use the <pre>:hover</pre> pseudo-class.</p>
+
+        <Code language="css">
+{`.hovered {
+  fill: #22a6b3;
+}`}
+        </Code>
+
+        <p>
+          And voila! An easier-to-interact-with chart.
+        </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsFullHtml}
+          css={exampleBarsFullCss}
+          js={exampleBarsFull}
+          data={dataCsv}
+          removedLines={{
+          }}
+        />
+
+
+
+
+{/*
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            // js: d3.range(183, 240)
+          }}
+        /> */}
 
       </div>
 
@@ -447,3 +976,22 @@ const Wave = () => {
     </svg>
   )
 }
+
+
+{/* <p>
+  It's always good to be aware of multiple ways of doing things, and the benefits of each. There are several CSS properties that are <i>also</i> possible to set in HTML (called <b>presentation attributes</b>).
+</p>
+
+<Aside>
+  See a list of <b>SVG presentation attributes</b> in <Link href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/Presentation">the MDN docs</Link>.
+</Aside>
+
+<p>
+  A few of the benefits of using a <b>presentation attribute</b> are:
+</p>
+
+<List items={[
+  <>they are <i>less specific</i> than linked CSS properties, making them more easily overrideable in a CSS file</>,
+  <>they prevent "flash of unstyled SVG", which might happen before the CSS styles are loaded</>,
+  <></>,
+]} /> */}

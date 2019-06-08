@@ -186,6 +186,8 @@ async function drawBars() {
   const tooltip = d3.select("#tooltip")
   function onMouseEnter(datum) {
 
+    tooltip.style("opacity", 1)
+
     const formatBinBoundary = d => d3.format(",.0f")(Math.abs(d))
     tooltip.select("#range")
         .text([
@@ -216,7 +218,7 @@ async function drawBars() {
     const formatHours = d => d3.format(",.2f")(Math.abs(d))
     tooltip.select("#tooltip-bar-value")
       .text(formatHours(percentDeveloperHours))
-    tooltip.select("#tooltip-bar-item-1")
+    tooltip.select("#tooltip-bar-fill")
       .style("width", `${percentDeveloperHours * 100}%`)
 
     const x = xScale(datum.x0)
@@ -229,8 +231,6 @@ async function drawBars() {
       + `calc( -50% + ${x}px),`
       + `calc(-100% + ${y}px)`
       + `)`)
-
-    tooltip.style("opacity", 1)
   }
 
   function onMouseLeave() {

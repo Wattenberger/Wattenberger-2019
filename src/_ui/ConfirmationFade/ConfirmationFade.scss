@@ -1,0 +1,44 @@
+@import "src/styles/lib";
+
+@keyframes confirmationFade {
+    0% { opacity: 1; transform: translate3d(0.6em, 0, 0); }
+  100% { opacity: 0; transform: translate3d(0.6em, -300%, 0); }
+}
+.ConfirmationFade {
+    padding: 0.5em 1em;
+    text-align: center;
+    font-size: 0.9em;
+    line-height: 1.3em;
+    color: $a1;
+    background: rgba(lighten($a1, 23%), 0.96);
+    border-radius: 0.2em;
+    font-weight: 600;
+    transform: translate3d(0.6em, 0, 0);
+    animation: confirmationFade 1s ease-out;
+    animation-delay: 0.6s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+    white-space: nowrap;
+
+    &__container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__wrapper {
+        position: fixed;
+        top: -0.2em;
+        margin-top: -0.3em;
+        margin-right: -0.5em;
+        z-index: 1000;
+
+        &--placement {
+            &-nw {
+                transform: translate(-100%, -100%);
+            }
+        }
+    }
+}

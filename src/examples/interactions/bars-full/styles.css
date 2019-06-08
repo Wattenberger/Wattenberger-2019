@@ -21,12 +21,12 @@ body {
     position: relative;
 }
 
-.bin rect {
+.bin {
     fill: #686de0;
     transition: all 0.2s ease-out;
 }
 
-.bin .hovered {
+.hovered {
     fill: #22a6b3;
 }
 

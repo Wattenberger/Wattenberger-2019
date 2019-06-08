@@ -8,9 +8,20 @@ import * as d3 from "d3"
 import { scrollTo } from "./../../utils.js"
 
 import './Code.scss';
+import ClipboardTrigger from '../ClipboardTrigger/ClipboardTrigger';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
-const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, removedLines=[], doScrollToTop=false, hasLineNumbers=true, className, children, ...props }) => {
+const Code = ({
+    highlightedLines=[],
+    language="js",
+    initialExpandedSteps,
+    removedLines=[],
+    insertedLines=[],
+    size="m",
+    doScrollToTop=false,
+    hasLineNumbers=true,
+    className, children, ...props
+}) => {
     const wrapper = useRef()
     const [expandedSteps, setExpandedSteps] = useState([])
     const needsToScroll = useRef()
@@ -18,12 +29,24 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, remove
     currentHighlightedLines.current = highlightedLines
     const debouncedOnChange = useRef()
     const removedLinesString = removedLines.join(" ")
+    const insertedLinesString = insertedLines.map(d => d.code).join(" ")
 
     const parsedCode = useMemo(() => {
-        return children.split("\n")
-            .filter((d, i) => !removedLines.includes(i + 1))
-            .join("\n")
-    }, [removedLinesString, children])
+        let codeArray = children.split("\n")
+        codeArray = codeArray.filter((d, i) => !removedLines.includes(i + 1))
+
+        if (insertedLines.length) {
+            insertedLines.forEach(line => {
+                codeArray = [
+                    ...codeArray.slice(0, line.start),
+                    line.code,
+                    ...codeArray.slice(line.start),
+                ]
+            })
+        }
+
+        return codeArray.join("\n")
+    }, [removedLinesString, insertedLinesString, children])
 
     // highlight code
     useEffect(() => {
@@ -133,6 +156,7 @@ const Code = ({ highlightedLines=[], language="js", initialExpandedSteps, remove
     return (
         <div className={[
             "Code",
+            `Code--size-${size}`,
             getLanguageString(language),
             className,
         ].join(" ")} ref={wrapper}>
@@ -209,20 +233,33 @@ const CodeLines = ({ code, startLineIndex, ...props }) => !code ? null : (
     ))
 )
 
-const CodeLine = ({ code, index, highlightedLines, hasLineNumbers }) => (
-    <div className={[
-        "CodeLine",
-        `CodeLine--is-${highlightedLines.includes(index + 1) ? "highlighted" : "normal"}`,
-    ].join(" ")}
-    id={`CodeLine-${index + 1}`}>
-        {hasLineNumbers && (
-            <div className="CodeLine__number">
-                { index + 1 }.
-            </div>
-        )}
+const CodeLine = ({ code, index, highlightedLines, hasLineNumbers }) => {
+    const [isHovering, setIsHovering] = useState(false)
 
-        <code>
-            { code }
-        </code>
-    </div>
-)
+    return (
+        <div className={[
+            "CodeLine",
+            `CodeLine--is-${highlightedLines.includes(index + 1) ? "highlighted" : "normal"}`,
+        ].join(" ")}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => setIsHovering(false)}
+        id={`CodeLine-${index + 1}`}>
+            {hasLineNumbers && (
+                <div className="CodeLine__number">
+                    { index + 1 }.
+                </div>
+            )}
+
+            <code>
+                { code }
+            </code>
+
+            {isHovering && (
+                <ClipboardTrigger
+                    className="CodeLine__copy"
+                    text={code}
+                />
+            )}
+        </div>
+    )
+}

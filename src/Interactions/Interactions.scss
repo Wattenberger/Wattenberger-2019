@@ -126,6 +126,7 @@
         // overflow: auto;
         padding-bottom: 3em;
         z-index: 100;
+        pointer-events: none;
 
         @media (max-width: 1300px) {
             width: 33rem;
@@ -139,6 +140,7 @@
             min-height: 100%;
             padding-bottom: 2em;
             margin-bottom: 0;
+            pointer-events: all;
         }
     }
 

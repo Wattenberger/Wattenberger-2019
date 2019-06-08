@@ -8,14 +8,27 @@
   overflow: auto;
   font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
 
+  &--size {
+    &-s {
+      font-size: 0.7em;
+      line-height: 1.2em;
+    }
+  }
+
   &Line {
+    position: relative;
     padding: 0 2em;
     display: flex;
     align-items: baseline;
+    cursor: text;
     // transition: all 0.03s ease-out;
 
     &:hover {
       background: #1e272e;
+
+      .CodeLine__copy.ClipboardTrigger {
+        opacity: 1;
+      }
     }
 
     &--is-highlighted {
@@ -23,7 +36,7 @@
     }
 
     &__number {
-      padding: 0.55em 0;
+      padding: 0.23em 0;
       color: #fff;
       opacity: 0.5;
       // font-feature-settings: 'tnum' 1;
@@ -32,8 +45,17 @@
       user-select: none;
     }
 
+    &__copy.ClipboardTrigger {
+      position: absolute;
+      top: 50%;
+      right: 1em;
+      color: white;
+      opacity: 0;
+      transform: translateY(-50%);
+    }
+
     code[class*="language-"] {
-      padding: 0;
+      padding: 0.2em 0;
     }
   }
 
@@ -52,7 +74,7 @@
         max-height: 3.5em;
         margin-top: -1em;
         line-height: 0.6em;
-        opacity: 0.6;
+        opacity: 0.3;
 
         .CodeLine {
           pointer-events: none;
