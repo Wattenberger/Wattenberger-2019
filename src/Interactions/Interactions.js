@@ -46,32 +46,34 @@ const Interactions = () => {
     <div className={`Interactions Interactions--${!!code ? "code" : "start"}`}>
       <WaveContainer />
 
-      <div className="Interactions__fixed-code">
-        {!!code ? (
-          <Code
-            className="Interactions__code"
-            {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
-            { code }
-          </Code>
-        ) : (
-          <div className="Interactions__author">
-            <div className="Interactions__author__text">
-              <p>
-                by <Link href="https://wattenberger.com">Amelia Wattenberger</Link>
-                <br />
-                on June 4<sup>th</sup>, 2019
-              </p>
-              <p>
-                <b>
-                  Learn how to visualize data with <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>
-                </b>
-              </p>
+      <div className="Interactions__fixed-code__wrapper">
+        <div className="Interactions__fixed-code">
+          {!!code ? (
+            <Code
+              className="Interactions__code"
+              {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
+              { code }
+            </Code>
+          ) : (
+            <div className="Interactions__author">
+              <div className="Interactions__author__text">
+                <p>
+                  by <Link href="https://wattenberger.com">Amelia Wattenberger</Link>
+                  <br />
+                  on June 4<sup>th</sup>, 2019
+                </p>
+                <p>
+                  <b>
+                    Learn how to visualize data with <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>
+                  </b>
+                </p>
+              </div>
+              <Link href="https://fullstack.io/fullstack-d3">
+                <img className="Interactions__author__book" alt="book" src={bookImage} />
+              </Link>
             </div>
-            <Link href="https://fullstack.io/fullstack-d3">
-              <img className="Interactions__author__book" alt="book" src={bookImage} />
-            </Link>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <div className="Interactions__content">
@@ -79,9 +81,17 @@ const Interactions = () => {
         <h1>
           Interactive Charts with D3.js
         </h1>
-        <p>
-          You did it! You grabbed a data set and visualized it, right here in the browser. Congratulations, that is no easy feat!
-        </p>
+
+        <ScrollEvent isInViewChange={d => {
+          setCode(null)
+          setInitialExpandedSteps(null)
+          setHighlightedLines([0])
+          setRemovedLines([])
+        }} hasIndicator={false}>
+          <p>
+            You did it! You grabbed a data set and visualized it, right here in the browser. Congratulations, that is no easy feat!
+          </p>
+        </ScrollEvent>
 
         <p>
           We can do better, though. <b>This is 2019</b> and the web browser opens up a whole new realm of possibilities when visualizing data.

@@ -64,17 +64,20 @@
     &__content {
         position: relative;
         padding: 0 3rem 10em;
-        padding-right: 43rem + 3rem;
+        // padding-right: 43rem + 3rem;
+        width: calc(100% - 43rem - 3rem);
         font-size: 1.3em;
         line-height: 1.5em;
         transition: all 0.5s ease-out;
 
         @media (max-width: 1300px) {
-            padding-right: 33rem + 3rem;
+            width: calc(100% - 33rem - 3rem);
+        // padding-right: 33rem + 3rem;
         }
 
         @media (max-width: 1100px) {
-            padding-right: 3rem;
+            width: 100%;
+        // padding-right: 3rem;
         }
 
         @media (max-width: 800px) {
@@ -99,7 +102,6 @@
     &--start {
         .Interactions {
             &__content {
-
                 @media (min-width: 1300px) {
                     transform: translateX(10em);
                 }

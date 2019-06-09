@@ -25,6 +25,7 @@ class ScrollEvent extends Component {
 
   static defaultProps = {
     thresholdPercent: 0.4,
+    hasIndicator: true,
     isInViewChange: () => {},
   }
 
@@ -99,14 +100,16 @@ class ScrollEvent extends Component {
   }
 
   render() {
-    const { children } = this.props
+    const { hasIndicator, children } = this.props
     const { viewStatus } = this.state
 
     return (
       <div className="ScrollEvent">
-        <Tooltip contents={viewStatus !== 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus === 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
-          <Icon name="code" size="l" />
-        </Tooltip>
+        {hasIndicator && (
+          <Tooltip contents={viewStatus !== 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus === 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
+            <Icon name="code" size="l" />
+          </Tooltip>
+        )}
         <div className="ScrollEvent__listener" ref={this.elem} />
         { children }
       </div>
