@@ -202,7 +202,7 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
             <div className="CodeStep__close" onClick={onToggle} />
         )}
 
-        <div className="CodeStep__top" id={`CodeLine-${startLineIndex}`}>
+        <div className="CodeStep__top" id={`CodeLine-${startLineIndex}`} onClick={onToggle}>
             {hasLineNumbers && (
                 <div className="CodeLine__number">
                     { startLineIndex }.

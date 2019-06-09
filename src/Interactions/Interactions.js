@@ -395,7 +395,7 @@ const Interactions = () => {
             removedLines={[186, ...d3.range(188, 234), 237]}
           >{exampleBars}</Code>
         </div>
-
+{/*
         <LocalExample
           className="Interactions__iframe"
           html={exampleBarsHtml}
@@ -405,7 +405,7 @@ const Interactions = () => {
           removedLines={{
             // js: d3.range(186, 240)
           }}
-        />
+        /> */}
 
         <p>
           If we look at our <P>index.html</P> file, we'll see that we've created a <P>{`<div>`}</P> with an id of "tooltip".
@@ -478,7 +478,7 @@ const Interactions = () => {
           js={exampleBars}
           data={dataCsv}
           removedLines={{
-            css: d3.range(29, 32),
+            css: [...d3.range(12, 15), ...d3.range(29, 32)],
             js: [...d3.range(191, 234), 237]
           }}
         />
@@ -566,7 +566,7 @@ const Interactions = () => {
           js={exampleBars}
           data={dataCsv}
           removedLines={{
-            css: d3.range(29, 32),
+            css: [...d3.range(12, 15), ...d3.range(29, 32)],
             js: [...d3.range(203, 234), 237]
           }}
         />
@@ -609,7 +609,7 @@ const Interactions = () => {
           js={exampleBars}
           data={dataCsv}
           removedLines={{
-            css: d3.range(29, 32),
+            css: [...d3.range(12, 15), ...d3.range(29, 32)],
             js: [...d3.range(224, 234), 237]
           }}
         />
@@ -710,8 +710,60 @@ const Interactions = () => {
         </div>
 
         <p>
-          Something is wrong here -- our tooltip is moving to the top of our hovered bar, but we're aligning the <b>top, left</b> corner.
+          But our tooltip isn't aligning with the correct bars!
         </p>
+
+        <LocalExample
+          className="Interactions__iframe"
+          html={exampleBarsHtml}
+          css={exampleBarsCss}
+          js={exampleBars}
+          data={dataCsv}
+          removedLines={{
+            css: [...d3.range(12, 15), ...d3.range(29, 32)],
+            js: [...d3.range(230, 234), 237],
+          }}
+          insertedLines={{
+            js: [{
+              start: 229,
+              code: "tooltip.style(`transform`, `translate(${x}px,${y}px)`)",
+            }]
+          }}
+        />
+
+        <p>
+          There are actually two things wrong here, let's focus on the first:
+        </p>
+
+        <p>
+          If we look at the CSS, our tooltip is <i>absolutely positioned</i>:
+        </p>
+
+        <Code language="css" highlightedLines={[77, 78]} doOnlyShowHighlightedLines>
+          {exampleBarsCss}
+        </Code>
+
+        <p>Absolutely positioned elements are positioned <i>relative to their containing block</i>. How are <i>containing blocks</i> created for an absolutely positioned element?</p>
+
+        <p>Our tooltip will be positioned based on <i>the edge of the padding box of the nearest ancestor element</i> that has:</p>
+
+        <List items={[
+          <>a position value other than <P>static</P> (<P>fixed</P>, <P>absolute</P>, <P>relative</P>, or <P>sticky</P>).</>,
+          <>a <P>transform</P> or <P>perspective</P> value other than none</>,
+          <>a <P>will-change</P> value of <P>transform</P> or <P>perspective</P></>,
+          <>A <P>filter</P> value other than none or a <P>will-change</P> value of <P>filter</P> (only on Firefox).</>,
+          <>A <P>contain</P> value of <P>paint</P></>,
+        ]} />
+
+        <Aside>Read more about <i>containing blocks</i> <Link href="https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block">in the MDN docs</Link>.</Aside>
+
+        <p>Because none of these apply to any of our chart's ancestor elements, our tooltip will be positioned relative to the <i>initial containing block</i> (basically what the <P>{`<html>`}</P> element covers).</p>
+
+        <p>Instead, we want to position our tooltip based on the top, left corner of our chart's <P>wrapper</P> element. Let's give this element one of the properties in the list above: the easiest is to set the <P>position</P> to <P>relative</P>. This won't have an effect on the element, since <P>relative</P> acts very similar to the default <P>static</P>.</p>
+
+        <Code language="css" highlightedLines={[12, 13, 14]} doOnlyShowHighlightedLines>
+          {exampleBarsCss}
+        </Code>
 
         <LocalExample
           className="Interactions__iframe"
@@ -730,6 +782,10 @@ const Interactions = () => {
             }]
           }}
         />
+
+        <p>
+          Something is else wrong here -- our tooltip is moving to the top of our hovered bar, but we're aligning the <b>top, left</b> corner.
+        </p>
 
         <p>Instead, we want to align the <b>bottom, middle</b> edge to the top of our hovered bar.</p>
 

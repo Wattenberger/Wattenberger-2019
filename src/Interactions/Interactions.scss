@@ -65,13 +65,13 @@
         position: relative;
         padding: 0 3rem 10em;
         // padding-right: 43rem + 3rem;
-        width: calc(100% - 43rem - 3rem);
+        width: calc(100% - 43rem - 6rem);
         font-size: 1.3em;
         line-height: 1.5em;
         transition: all 0.5s ease-out;
 
         @media (max-width: 1300px) {
-            width: calc(100% - 33rem - 3rem);
+            width: calc(100% - 33rem - 6rem);
         // padding-right: 33rem + 3rem;
         }
 
