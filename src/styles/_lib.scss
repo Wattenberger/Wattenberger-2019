@@ -45,3 +45,15 @@ h6 {
     font-size: 0.6em;
     margin: 0.5em 0;
 }
+
+.desktop {
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
+
+.mobile {
+    @media (min-width: 1200px) {
+        display: none;
+    }
+}

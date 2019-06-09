@@ -2,11 +2,19 @@
 
 .Code {
   background: #485460;
+  color: white;
   margin-bottom: 1em;
   padding: 1em 0;
   max-height: 100%;
   overflow: auto;
   font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
+
+  &--wrap-none {
+    code[class*="language-"], pre[class*="language-"] {
+      white-space: pre;
+      padding-right: 2em;
+    }
+  }
 
   &--size {
     &-s {

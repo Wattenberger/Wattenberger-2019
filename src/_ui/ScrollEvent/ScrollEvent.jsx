@@ -36,7 +36,7 @@ class ScrollEvent extends Component {
   componentWillUnmount = () => {
     this._isMounted = false
     if (this.observer) this.observer.disconnect()
-    if (this.scrollListener) window.removeEventListener("scroll", this.onScrollDebounced)
+    if (this.scrollListener) window.removeEventListener("scroll", this.onScrollThrottled)
   }
 
   createIntersectionObserver = () => {
@@ -48,7 +48,7 @@ class ScrollEvent extends Component {
       thresholds: [0, thresholdPercent, 1],
     }
 
-    this.observer = new IntersectionObserver(this.debouncedOnVisibilityChange, options)
+    this.observer = new IntersectionObserver(this.throttledOnVisibilityChange, options)
     this.observer.observe(this.elem.current)
     this.observer.USE_MUTATION_OBSERVER = false
   }
@@ -61,11 +61,11 @@ class ScrollEvent extends Component {
     if (isInView !== this.isInView) {
       this.isInView = isInView
       if (isInView) {
-        this.onScrollDebounced = window.addEventListener("scroll", this.onScrollDebounced, {
+        this.onScrollThrottled = window.addEventListener("scroll", this.onScrollThrottled, {
           passive: true
         })
       } else {
-        if (this.onScrollDebounced) window.removeEventListener("scroll", this.onScrollDebounced)
+        if (this.onScrollThrottled) window.removeEventListener("scroll", this.onScrollThrottled)
 
         const status = bounds.bottom < 0 ? 1 : -1
         this.props.isInViewChange(status)
@@ -73,7 +73,7 @@ class ScrollEvent extends Component {
       }
     }
   }
-  debouncedOnVisibilityChange = _.debounce(this.onVisibilityChange, 60)
+  throttledOnVisibilityChange = _.throttle(this.onVisibilityChange, 50)
 
   onScroll = e => {
     if (!this.isInView) return
@@ -91,7 +91,7 @@ class ScrollEvent extends Component {
     this.setState({ viewStatus: status })
 
   }
-  onScrollDebounced = _.throttle(this.onScroll, 60)
+  onScrollThrottled = _.throttle(this.onScroll, 60)
 
   setStatusLocal = status => () => {
     this.props.isInViewChange(status)

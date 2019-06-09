@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react'
-import Prism from "prismjs"
 import "./prism.css"
 
 import _ from "lodash"
@@ -20,6 +19,8 @@ const Code = ({
     size="m",
     doScrollToTop=false,
     hasLineNumbers=true,
+    doOnlyShowHighlightedLines=false,
+    doWrap=true,
     className, children, ...props
 }) => {
     const wrapper = useRef()
@@ -50,10 +51,12 @@ const Code = ({
 
     // highlight code
     useEffect(() => {
-        Prism.highlightAll()
+        if (window.Prism) window.Prism.highlightAll()
     }, [parsedCode])
 
     const scrollToHighlightedCode = () => {
+        if (doOnlyShowHighlightedLines) return
+
         const lines = currentHighlightedLines.current
         if (!lines.length) return
 
@@ -122,6 +125,7 @@ const Code = ({
             }
             const number = +d.match(/(\d)/)[0]
             parsedSteps.push({
+                type: doOnlyShowHighlightedLines ? "string" : "step",
                 number,
                 name: steps[i + 1],
                 code: steps[i + 2],
@@ -157,6 +161,7 @@ const Code = ({
         <div className={[
             "Code",
             `Code--size-${size}`,
+            `Code--wrap-${doWrap ? "all" : "none"}`,
             getLanguageString(language),
             className,
         ].join(" ")} ref={wrapper}>
@@ -164,7 +169,7 @@ const Code = ({
                 step.type === "string" ? (
                     <CodeLines
                         key={i}
-                        {...{...step, highlightedLines, hasLineNumbers}}
+                        {...{...step, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines}}
                     />
                 ) : (
                     <CodeStep
@@ -187,7 +192,7 @@ const languages = {
 
 const getLanguageString = lang => `language-${languages[lang] || lang}`
 
-const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, hasLineNumbers, onToggle }) => (
+const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
     <div className={`CodeStep CodeStep--number-${number} CodeStep--is-${isExpanded ? "expanded" : "collapsed"}`} onClick={isExpanded ? () => {} : onToggle}>
         <div className="CodeStep__copyable-text">
             {`  // ${number}. ${name}`}
@@ -215,31 +220,41 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
 
         <div className="CodeStep__lines">
             <CodeLines
-                {...{ code, startLineIndex, highlightedLines, hasLineNumbers }}
+                {...{ code, startLineIndex, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines }}
             />
         </div>
 
     </div>
 )
 
-const CodeLines = ({ code, startLineIndex, ...props }) => !code ? null : (
-    code.split("\n").slice(0, -1).map((line, index) => (
-        <CodeLine
-            key={index}
-            index={startLineIndex + index}
-            code={line}
-            {...props}
-        />
-    ))
-)
+const CodeLines = ({ code, startLineIndex, highlightedLines, doOnlyShowHighlightedLines, ...props }) => {
+    if (!code) return null
 
-const CodeLine = ({ code, index, highlightedLines, hasLineNumbers }) => {
+    return (
+        code.split("\n").slice(0, -1).map((line, index) => {
+            const isHighlighted = highlightedLines.includes(startLineIndex + index + 1)
+            if (doOnlyShowHighlightedLines && !isHighlighted) return null
+
+            return (
+                <CodeLine
+                    key={index}
+                    index={startLineIndex + index}
+                    code={line}
+                    isHighlighted={!doOnlyShowHighlightedLines && isHighlighted}
+                    {...props}
+                />
+            )
+        })
+    )
+}
+
+const CodeLine = ({ code, index, isHighlighted, hasLineNumbers }) => {
     const [isHovering, setIsHovering] = useState(false)
 
     return (
         <div className={[
             "CodeLine",
-            `CodeLine--is-${highlightedLines.includes(index + 1) ? "highlighted" : "normal"}`,
+            `CodeLine--is-${isHighlighted ? "highlighted" : "normal"}`,
         ].join(" ")}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
