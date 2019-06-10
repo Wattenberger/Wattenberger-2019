@@ -51,6 +51,7 @@ const Interactions = () => {
           {!!code ? (
             <Code
               className="Interactions__code"
+              fileName="interactions/-bars-start/chart.js"
               {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
               { code }
             </Code>

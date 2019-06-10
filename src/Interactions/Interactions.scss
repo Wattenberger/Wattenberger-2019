@@ -187,8 +187,7 @@
         right: 0;
         bottom: 0;
         width: 43rem;
-        // overflow: auto;
-        padding-bottom: 3em;
+        // padding-bottom: 3em;
         z-index: 100;
         pointer-events: none;
 
@@ -200,11 +199,20 @@
             width: 0;
         }
 
-        .Code {
+        .Code__wrapper {
             min-height: 100%;
-            padding-bottom: 2em;
             margin-bottom: 0;
             pointer-events: all;
+            overflow: auto;
+        }
+
+        .Code {
+            padding-bottom: 2em;
+
+            &__file {
+                font-size: 0.8em;
+                padding: 0.6em 2.38em;
+            }
         }
     }
 
