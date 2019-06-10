@@ -149,21 +149,21 @@ const Interactions = () => {
           Let's start out with a simple bar chart.
         </p>
 
+        <p>
+          This histogram shows the difference between hours estimated and actual hours for specific tasks. Hovering over a bar triggers a tooltip that explains what the bar is, a few example tasks, and how many tasks fit into the bin.
+        </p>
+
+        <p>
+          The tooltip even has a bar that shows what percent of the work was done by developers. Showing a chart <i>within</i> a tooltip can help users dive even further into a dataset, letting them explore additional metrics.
+        </p>
+
         <LocalExample
           className="Interactions__iframe"
           html={exampleBarsHtml}
           css={exampleBarsCss}
           js={exampleBars}
-          removedLines={{
-            css: d3.range(29, 32),
-            js: d3.range(182, 239)
-          }}
           data={dataCsv}
         />
-
-        <p>
-          This histogram shows the difference between hours estimated and actual hours for specific tasks.
-        </p>
 
         <Aside>
           Our dataset is pulled from a <Link href="https://github.com/Derek-Jones/SiP_dataset">great repository from Derek M. Jones and Stephen Cullum</Link>, showing commercial development over ten years. The company used an Agile method, and the dataset covers 10,100 unique task estimates made by 22 developers.
@@ -201,11 +201,11 @@ const Interactions = () => {
         <List items={[
           <>
             in your Terminal, install <Link href="https://github.com/tapio/live-server#readme">live-server</Link>
-            <Code fileName="in your terminal" language="bash" hasLineNumbers={false}>npm install -g live-server</Code>
+            <Code fileName="In your terminal" language="bash" hasLineNumbers={false}>npm install -g live-server</Code>
           </>,
           <>
             in your Terminal, start a server in the <P>examples/</P> folder
-            <Code fileName="in your terminal" language="bash" hasLineNumbers={false}>live-server --open</Code>
+            <Code fileName="In your terminal" language="bash" hasLineNumbers={false}>live-server --open</Code>
           </>,
           <>your browser should open the example automatically, but if it doesn't, navigate to <Link href="http://localhost:8080">localhost:8080</Link></>,
           <>this page should show a directory of folders. Click until you reach <P>/interactions/-bars-start</P>, or navigate to the url <Link href="http://localhost:8080/interactions/-bars-start/">localhost:8080/interactions/-bars-start/</Link></>,
@@ -240,7 +240,7 @@ const Interactions = () => {
         </ol>
 
         <p>
-          We won't go into each step in-depth -- <Link href="https://fullstack.io/fullstack-d3">download the first chapter of the book</Link> for free to learn more.
+          The steps are grouped and collapsable in the code -- if you want to learn about these in detail, <Link href="https://fullstack.io/fullstack-d3">download the first chapter of the book</Link> for free.
         </p>
 
         <h3>
@@ -251,17 +251,13 @@ const Interactions = () => {
           if (d !== 0) return
           setCode(exampleBars)
           setInitialExpandedSteps([7])
-          setHighlightedLines([181, 182])
+          setHighlightedLines([])
           setRemovedLines(d3.range(182, 239))
         }}>
           <p>
-            To start, we'll be fleshing out the last step: <b>Set up interactions</b>.
+            To start, we'll be fleshing out the last step: <b>Set up interactions</b>. Our code draws the complete chart, but doesn't yet trigger any tooltips.
           </p>
         </ScrollEvent>
-
-        <p>
-          Our goal is to add tooltips to each of our bars, giving more information on hover.
-        </p>
 
         <LocalExample
           className="Interactions__iframe"

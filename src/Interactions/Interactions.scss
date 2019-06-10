@@ -43,6 +43,19 @@
         margin-left: -2em;
         transform: translateY(-50%);
         z-index: 50;
+
+        &:before {
+            content: "Code change zone";
+            position: absolute;
+            top: -0.3em;
+            left: 50%;
+            font-size: 0.6em;
+            text-align: center;
+            color: darken($a3, 13%);
+            font-weight: 500;
+            line-height: 1.15em;
+            transform: translate(-50%, -100%);
+        }
     }
 
     &__trigger-example {
