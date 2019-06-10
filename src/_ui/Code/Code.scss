@@ -3,11 +3,29 @@
 .Code {
   background: #485460;
   color: white;
-  margin-bottom: 1em;
   padding: 1em 0;
   max-height: 100%;
   overflow: auto;
   font-feature-settings: "zero", "ss02", "frac", "case", "ss01", "tnum" 1;
+
+  &__wrapper {
+    max-height: 100%;
+    margin-bottom: 1em;
+  }
+
+  &__file {
+    font-size: 0.7em;
+    display: flex;
+    align-items: center;
+    background: $grey1;
+    color: $grey4;
+    padding: 0.3em 1em;
+
+    &__name {
+      margin-left: 0.5em;
+      font-weight: 500;
+    }
+  }
 
   &--wrap-none {
     code[class*="language-"], pre[class*="language-"] {

@@ -200,11 +200,11 @@ const Interactions = () => {
         <List items={[
           <>
             in your Terminal, install <Link href="https://github.com/tapio/live-server#readme">live-server</Link>
-            <Code language="bash" hasLineNumbers={false}>npm install -g live-server</Code>
+            <Code fileName="in your terminal" language="bash" hasLineNumbers={false}>npm install -g live-server</Code>
           </>,
           <>
             in your Terminal, start a server in the <P>examples/</P> folder
-            <Code language="bash" hasLineNumbers={false}>live-server --open</Code>
+            <Code fileName="in your terminal" language="bash" hasLineNumbers={false}>live-server --open</Code>
           </>,
           <>your browser should open the example automatically, but if it doesn't, navigate to <Link href="http://localhost:8080">localhost:8080</Link></>,
           <>this page should show a directory of folders. Click until you reach <P>/interactions/-bars-start</P>, or navigate to the url <Link href="http://localhost:8080/interactions/-bars-start/">localhost:8080/interactions/-bars-start/</Link></>,
@@ -293,6 +293,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[5]}
             highlightedLines={d3.range(102, 111)}
             removedLines={d3.range(182, 239)}
@@ -322,6 +323,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[5]}
             highlightedLines={d3.range(112, 127)}
             removedLines={d3.range(182, 239)}
@@ -390,6 +392,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(182, 192)}
             removedLines={[186, ...d3.range(188, 234), 237]}
@@ -408,20 +411,22 @@ const Interactions = () => {
         /> */}
 
         <p>
-          If we look at our <P>index.html</P> file, we'll see that we've created a <P>{`<div>`}</P> with an id of "tooltip".
+          If we look at our <P>index.html</P> file, we'll see that we've created a <P>{`<div>`}</P> with an id of <P>"tooltip"</P>.
         </p>
 
         <Code
           language="html"
+          fileName="interactions/-bars-start/index.html"
           size="s"
-          removedLines={[
-            ...d3.range(0, 12),
-            ...d3.range(30, 39),
-          ]}
-          hasLineNumbers={false}
+          highlightedLines={d3.range(12, 30)}
+          doOnlyShowHighlightedLines
           doWrap={false}>
             { exampleBarsHtml }
           </Code>
+
+          <Aside>
+            A good general rule of thumb is to target <P>class</P>es with CSS selectors and <P>id</P>s with javascript.
+          </Aside>
 
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
@@ -441,6 +446,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(182, 192)}
             removedLines={[...d3.range(188, 234), 237]}
@@ -461,6 +467,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[189]}
             removedLines={[...d3.range(191, 234), 237]}
@@ -505,6 +512,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[191]}
             removedLines={[191, ...d3.range(193, 234), 237]}
@@ -537,6 +545,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(191, 202)}
             removedLines={[...d3.range(203, 234), 237]}
@@ -588,6 +597,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(203, 224)}
             removedLines={[...d3.range(224, 234), 237]}
@@ -645,6 +655,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(224, 227)}
             removedLines={[...d3.range(203227, 234), 237]}
@@ -673,6 +684,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(227, 229)}
             removedLines={[...d3.range(229, 234), 237]}
@@ -699,6 +711,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[230]}
             removedLines={[...d3.range(230, 234), 237]}
@@ -739,7 +752,7 @@ const Interactions = () => {
           If we look at the CSS, our tooltip is <i>absolutely positioned</i>:
         </p>
 
-        <Code language="css" highlightedLines={[77, 78]} doOnlyShowHighlightedLines>
+        <Code fileName="interactions/-bars-start/styles.css" language="css" highlightedLines={[77, 78]} doOnlyShowHighlightedLines>
           {exampleBarsCss}
         </Code>
 
@@ -761,7 +774,7 @@ const Interactions = () => {
 
         <p>Instead, we want to position our tooltip based on the top, left corner of our chart's <P>wrapper</P> element. Let's give this element one of the properties in the list above: the easiest is to set the <P>position</P> to <P>relative</P>. This won't have an effect on the element, since <P>relative</P> acts very similar to the default <P>static</P>.</p>
 
-        <Code language="css" highlightedLines={[12, 13, 14]} doOnlyShowHighlightedLines>
+        <Code fileName="interactions/-bars-start/styles.css" language="css" highlightedLines={[12, 13, 14]} doOnlyShowHighlightedLines>
           {exampleBarsCss}
         </Code>
 
@@ -847,6 +860,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(230, 235)}
             removedLines={[237]}
@@ -882,6 +896,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[237]}
           >{exampleBars}</Code>
@@ -903,10 +918,8 @@ const Interactions = () => {
 
         <p>We can insert a CSS selector in our <P>styles.css</P> file, targeting any <P>.bin</P> that is being <P>:hover</P>ed.</p>
 
-        <Code language="css" hasLineNumbers={false}>
-{`.bin:hover {
-  fill: #22a6b3;
-}`}
+        <Code fileName="interactions/-bars-start/styles.css" language="css" highlightedLines={d3.range(29, 32)} doOnlyShowHighlightedLines>
+          { exampleBarsCss }
         </Code>
 
         <p>There we go!</p>
@@ -982,6 +995,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={d3.range(170, 183)}
             removedLines={[108, 229, 230, 235]}
@@ -995,10 +1009,8 @@ const Interactions = () => {
 
         <p>Since our new bars will have a default <P>fill</P> of black, let's update that in our <P>styles.css</P> file so that they're not obstructing our existing chart.</p>
 
-        <Code language="css">
-{`.listeners {
-  fill: transparent;
-}`}
+        <Code fileName="interactions/-bars-start/styles.css" language="css" highlightedLines={[163, 164, 165]} doOnlyShowHighlightedLines>
+          { exampleBarsFullCss }
         </Code>
 
         <p>Note that we want to keep the bars there to capture the pointer events, we just want them to have a transparent fill.</p>
@@ -1035,6 +1047,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[5, 7]}
             highlightedLines={[108]}
             removedLines={[229, 230, 235]}
@@ -1056,6 +1069,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[186]}
             removedLines={[229, 230, 235]}
@@ -1081,6 +1095,7 @@ const Interactions = () => {
 
         <div className="mobile Interactions__mobile-code">
           <Code size="s" doOnlyShowHighlightedLines
+            fileName="interactions/-bars-start/chart.js"
             initialExpandedSteps={[7]}
             highlightedLines={[229, 230, 235]}
           >{exampleBarsFull}</Code>
@@ -1094,10 +1109,8 @@ const Interactions = () => {
 
         <p>Let's want to add a <P>fill</P> to elements with a class of <P>hovered</P>, since we can no longer use the <P>:hover</P> pseudo-class.</p>
 
-        <Code language="css" hasLineNumbers={false}>
-{`.hovered {
-  fill: #22a6b3;
-}`}
+        <Code fileName="interactions/-bars-start/styles.css" language="css" highlightedLines={[29, 30, 31]} doOnlyShowHighlightedLines>
+          { exampleBarsFullCss }
         </Code>
 
         <p>

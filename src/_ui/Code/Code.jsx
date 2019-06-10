@@ -8,6 +8,7 @@ import { scrollTo } from "./../../utils.js"
 
 import './Code.scss';
 import ClipboardTrigger from '../ClipboardTrigger/ClipboardTrigger';
+import Icon from '../Icon/Icon';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
 const Code = ({
@@ -17,6 +18,7 @@ const Code = ({
     removedLines=[],
     insertedLines=[],
     size="m",
+    fileName=null,
     doScrollToTop=false,
     hasLineNumbers=true,
     doOnlyShowHighlightedLines=false,
@@ -158,28 +160,38 @@ const Code = ({
     }
 
     return (
-        <div className={[
-            "Code",
-            `Code--size-${size}`,
-            `Code--wrap-${doWrap ? "all" : "none"}`,
-            getLanguageString(language),
-            className,
-        ].join(" ")} ref={wrapper}>
-            {steps.map((step, i) => (
-                step.type === "string" ? (
-                    <CodeLines
-                        key={i}
-                        {...{...step, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines}}
-                    />
-                ) : (
-                    <CodeStep
-                        key={step.name}
-                        {...{...step, highlightedLines, hasLineNumbers}}
-                        isExpanded={expandedSteps.includes(step.number)}
-                        onToggle={onToggleStepLocal(step.number)}
-                    />
-                )
-            ))}
+        <div className="Code__wrapper">
+            {!!fileName && (
+                <div className="Code__file">
+                    <Icon name="file" size="s" />
+                    <div className="Code__file__name">
+                        { fileName }
+                    </div>
+                </div>
+            )}
+            <div className={[
+                "Code",
+                `Code--size-${size}`,
+                `Code--wrap-${doWrap ? "all" : "none"}`,
+                getLanguageString(language),
+                className,
+            ].join(" ")} ref={wrapper}>
+                {steps.map((step, i) => (
+                    step.type === "string" ? (
+                        <CodeLines
+                            key={i}
+                            {...{...step, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines}}
+                        />
+                    ) : (
+                        <CodeStep
+                            key={step.name}
+                            {...{...step, highlightedLines, hasLineNumbers}}
+                            isExpanded={expandedSteps.includes(step.number)}
+                            onToggle={onToggleStepLocal(step.number)}
+                        />
+                    )
+                ))}
+            </div>
         </div>
     )
 }
