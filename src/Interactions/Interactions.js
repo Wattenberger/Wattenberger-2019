@@ -5,6 +5,7 @@ import Code from './../_ui/Code/Code'
 
 import './Interactions.scss'
 import ScrollEvent from '../_ui/ScrollEvent/ScrollEvent';
+import LocalExample from '../_ui/LocalExample/LocalExampleLazy';
 import List from '../_ui/List/List';
 import InteractionEvents from './InteractionEvents';
 import Link from '../_ui/Link/Link';
@@ -13,7 +14,6 @@ import Aside from '../_ui/Aside/Aside';
 import bookImage from './../images/book.png';
 import d3SelectionImage from './../images/d3-selection.png';
 import binsImage from './../images/bins.png';
-import LocalExample from '../_ui/LocalExample/LocalExample';
 import Icon from '../_ui/Icon/Icon';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax

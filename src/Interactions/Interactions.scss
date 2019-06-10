@@ -42,6 +42,7 @@
         background: rgba($a3, 0.3);
         margin-left: -2em;
         transform: translateY(-50%);
+        z-index: 50;
     }
 
     &__trigger-example {
@@ -169,9 +170,6 @@
     }
 
     &__iframe {
-        width: 100%;
-        outline: none;
-        border: none;
         height: 510px;
         margin: 0 -3rem;
         width: calc(100% + 6rem);

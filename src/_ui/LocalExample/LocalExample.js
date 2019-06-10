@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import * as d3 from "d3"
 
+import "./LocalExample.scss"
+
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const d3js = require('!!raw-loader!./../../examples/d3.v5.js').default
 
@@ -134,7 +136,7 @@ const LocalExample = ({ html, css, js, data, removedLines={}, insertedLines={}, 
     }, [html, css, js, data, removedLinesString, insertedLinesString])
 
     return (
-        <iframe title="inline example" ref={iframe} {...props} />
+        <iframe className="LocalExample" title="inline example" ref={iframe} {...props} />
     )
 }
 
