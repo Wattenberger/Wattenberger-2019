@@ -39,9 +39,10 @@
     &__log {
         position: relative;
         display: flex;
+        flex: 1;
+        min-width: 9em;
         flex-direction: column;
         justify-content: flex-end;
-        width: 15em;
         margin: 1em 0;
         margin-left: 2em;
         padding: 0 1em 0.7em;

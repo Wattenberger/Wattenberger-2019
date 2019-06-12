@@ -184,14 +184,14 @@ async function drawBars() {
 
   const tooltip = d3.select("#tooltip")
   function onMouseEnter(datum, index) {
-    const formatBinBoundary = d => d3.format(",.0f")(Math.abs(d))
     tooltip.select("#range")
         .text([
             datum.x0 < 0 ? `Under-estimated by` : `Over-estimated by`,
-          `${formatBinBoundary(datum.x0)} to ${formatBinBoundary(datum.x1)}`,
+          Math.abs(datum.x0),
+          "to",
+          Math.abs(datum.x1),
           "hours",
         ].join(" "))
-
     tooltip.select("#examples")
         .html(
           datum

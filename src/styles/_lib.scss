@@ -25,17 +25,9 @@ h1 {
 }
 
 h2 {
-    margin-top: 3em;
+    margin: 3em 0 0.7em;
+    font-size: 1.7em;
     font-weight: 900;
-}
-
-
-li {
-    padding: 0.4em 0.6em;
-}
-
-:focus {
-    outline: #9980FA auto 5px;
 }
 
 h6 {
@@ -44,6 +36,23 @@ h6 {
     font-weight: 400;
     font-size: 0.6em;
     margin: 0.5em 0;
+}
+
+li {
+    padding: 0.4em 0.6em;
+}
+
+
+p {
+    margin: 1.2em 0;
+}
+
+b {
+    font-weight: 800;
+}
+
+:focus {
+    outline: #9980FA auto 5px;
 }
 
 .desktop {

@@ -20,6 +20,7 @@ const Code = ({
     size="m",
     fileName=null,
     doScrollToTop=false,
+    doKeepInitialLineNumbers=false,
     hasLineNumbers=true,
     doOnlyShowHighlightedLines=false,
     doWrap=true,
@@ -113,9 +114,23 @@ const Code = ({
         let parsedSteps = []
         let endOfStep = -1
         let runningStartLine = 0
+        let runningRemovedLines = removedLines
         steps.forEach((d, i) => {
             if (i <= endOfStep) return
             if (!d.replace(/ /g, "").length) return
+            if (doKeepInitialLineNumbers) {
+                const doesOverlapRemovedLine = removedLines.includes(runningStartLine)
+                if (doesOverlapRemovedLine) {
+                    let lastNumber = runningRemovedLines[0]
+                    let linesRun = runningRemovedLines.filter(d => {
+                        if (d - lastNumber > 1) return false
+                        lastNumber = d
+                        return true
+                    })
+                    runningStartLine += linesRun.length - 1
+                    runningRemovedLines = runningRemovedLines.filter(d => d > runningStartLine)
+                }
+            }
             if (!d.startsWith("//")) {
                 parsedSteps.push({
                     type: "string",
