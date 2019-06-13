@@ -211,7 +211,7 @@ const Interactions = () => {
         <Heading id="getting-set-up">Getting set up</Heading>
 
         <p>
-          If you’d like to follow along, download the code <Link href="https://github.com/Wattenberger/blog/tree/master/src/examples/interactions">on Github</Link>.
+          If you’d like to follow along, download the code <Link href="https://github.com/Wattenberger/d3-walkthroughs">on Github</Link>.
         </p>
 
         <p>
