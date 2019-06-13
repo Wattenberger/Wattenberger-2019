@@ -74,7 +74,7 @@ class ScrollEvent extends Component {
       }
     }
   }
-  throttledOnVisibilityChange = _.throttle(this.onVisibilityChange, 50)
+  throttledOnVisibilityChange = _.throttle(this.onVisibilityChange, 60)
 
   onScroll = e => {
     if (!this.isInView) return

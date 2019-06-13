@@ -56,6 +56,7 @@
             line-height: 1.15em;
             transform: translate(-50%, -100%);
             opacity: 0;
+            pointer-events: none;
             transition: all 0.3s ease-out;
         }
 
@@ -282,6 +283,23 @@
         &__path {
             // fill: $grey1;
             transition: all 0.3s ease-out;
+        }
+    }
+}
+
+.Heading {
+    position: relative;
+
+    &__hash {
+        position: absolute;
+        left: -0.9em;
+        color: $grey3;
+        font-weight: 300;
+        cursor: pointer;
+        transition: color 0.2s ease-out;
+
+        &:hover {
+            color: $a1;
         }
     }
 }

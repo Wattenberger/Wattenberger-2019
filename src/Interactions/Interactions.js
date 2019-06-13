@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { Helmet } from "react-helmet"
 import * as d3 from "d3"
 import _ from "lodash"
 import Code from "./../_ui/Code/Code"
@@ -15,6 +16,7 @@ import bookImage from "./../images/book.png";
 import d3SelectionImage from "./../images/d3-selection.png";
 import binsImage from "./../images/bins.png";
 import Icon from "../_ui/Icon/Icon";
+import { scrollTo } from "../utils";
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const dataCsv = require("!!raw-loader!./../examples/interactions/data.csv").default
@@ -44,15 +46,26 @@ const Interactions = () => {
 
   const onScrollToSectionLocal = section => e => {
     e.preventDefault()
+    window.history.pushState({}, '', `#${section}`);
 
-    document.querySelector(`#${section}`).scrollIntoView({
-      behavior: 'smooth',
-      block: "center"
-    });
+    const y = document.querySelector(`#${section}`).getBoundingClientRect().top
+      + document.documentElement.scrollTop
+      - 150
+
+    scrollTo(y, 100)
   }
 
   return (
     <div className={`Interactions Interactions⁠—${!!code ? "code" : "start"}`}>
+
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Interactive Charts with D3.js</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+          <meta property="og:type" content="article" />
+          <meta name="description" content="Learn how to make charts interactive using d3.js" />
+      </Helmet>
+
       <WaveContainer />
 
       <div className="Interactions__fixed-code__wrapper">
@@ -134,9 +147,9 @@ const Interactions = () => {
           <a href="#taking-it-further" onClick={onScrollToSectionLocal("taking-it-further")}>Taking it further</a>,
         ]} />
 
-        <h2 id="native-trigger-events">
+        <Heading id="native-trigger-events">
           Native trigger events
-        </h2>
+        </Heading>
         <p>
           We can interact with the content of a web page in a variety of ways: we can hover elements, click on buttons, and select text, to start.
         </p>
@@ -167,9 +180,9 @@ const Interactions = () => {
           The interaction when a data visualization is updated as a reader reads through an article is commonly called <b>scrollytelling</b>. If you wanted to explore this further, Jim Vallandingham has compiled a great <Link href="https://vallandingham.me/scroll_talk/examples/">list of examples</Link>.
         </Aside>
 
-        <h2 id="adding-tooltips-to-a-histogram">
+        <Heading id="adding-tooltips-to-a-histogram">
           Our chart
-        </h2>
+        </Heading>
 
         <p>
           Let’s start out with a simple bar chart.
@@ -195,7 +208,7 @@ const Interactions = () => {
           Our dataset is pulled from a <Link href="https://github.com/Derek-Jones/SiP_dataset">great repository from Derek M. Jones and Stephen Cullum</Link>, showing commercial development over ten years. The company used an Agile method, and the dataset covers 10,100 unique task estimates made by 22 developers.
         </Aside>
 
-        <h2 id="getting-set-up">Getting set up</h2>
+        <Heading id="getting-set-up">Getting set up</Heading>
 
         <p>
           If you’d like to follow along, download the code <Link href="https://github.com/Wattenberger/blog/tree/master/src/examples/interactions">on Github</Link>.
@@ -291,7 +304,7 @@ const Interactions = () => {
           }}
         />
 
-        <h2 id="how-are-we-drawing-this-chart">How are we drawing this chart?</h2>
+        <Heading id="how-are-we-drawing-this-chart">How are we drawing this chart?</Heading>
 
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
@@ -352,7 +365,7 @@ const Interactions = () => {
           >{exampleBars}</Code>
         </div>
 
-        <h2 id="listening-to-mouse-events">Listening to mouse events</h2>
+        <Heading id="listening-to-mouse-events">Listening to mouse events</Heading>
 
         <p>
           Now that we have an idea of how we’re drawing each of our bars, we can start adding our tooltip.
@@ -434,7 +447,7 @@ const Interactions = () => {
           }}
         /> */}
 
-        <h2 id="populating-our-tooltip">Populating our tooltip</h2>
+        <Heading id="populating-our-tooltip">Populating our tooltip</Heading>
 
         <p>
           If we look at our <P>index.html</P> file, we’ll see that we’ve created a <P>{`<div>`}</P> with an id of <P>"tooltip"</P>.
@@ -744,7 +757,7 @@ const Interactions = () => {
         />
 
 
-        <h2 id="positioning-our-tooltip">Positioning our tooltip</h2>
+        <Heading id="positioning-our-tooltip">Positioning our tooltip</Heading>
 
         <p>
           Let’s update the position of our tooltip to sit on top of the bar that we’re hovering over. This will help to reinforce the relationship between the bar and the extra information, as well as decreasing the amount that users have to move their eyes back and forth.
@@ -1020,7 +1033,7 @@ const Interactions = () => {
 
         <p>Perfect! Now our tooltip is correctly positioned above any bar that we hover.</p>
 
-        <h2 id="finishing-tweaks">Finishing tweaks</h2>
+        <Heading id="finishing-tweaks">Finishing tweaks</Heading>
 
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
@@ -1084,9 +1097,9 @@ const Interactions = () => {
         </Aside>
 
 
-        <h2 id="make-the-interaction-as-easy-as-possible">
+        <Heading id="make-the-interaction-as-easy-as-possible">
           Make the interaction as easy as possible
-        </h2>
+        </Heading>
 
         <p>
           While the tooltip we just created is wonderful and helpful, it could be easier to trigger. The easier a chart is to interact with, the more likely a user is to interact with it.
@@ -1283,7 +1296,7 @@ const Interactions = () => {
         />
 
 
-        <h2 id="taking-it-further">Taking it further</h2>
+        <Heading id="taking-it-further">Taking it further</Heading>
 
         <ScrollEvent isInViewChange={d => {
           if (d !== 0) return
@@ -1436,3 +1449,17 @@ const Wave = () => {
 const P = ({ children })=> (
   <code className="P">{ children }</code>
 )
+
+const Heading = ({ id, children }) => {
+  const onClickHash = () => {
+    window.location.hash = `#${id}`
+
+  }
+
+  return (
+    <h2 className="Heading" id={id}>
+      <div className="Heading__hash" onClick={onClickHash}>#</div>
+      { children }
+    </h2>
+  )
+}
