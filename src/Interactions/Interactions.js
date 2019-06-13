@@ -224,7 +224,7 @@ const Interactions = () => {
             <Code fileName="In your terminal" language="bash" hasLineNumbers={false}>npm install -g live-server</Code>
           </>,
           <>
-            in your Terminal, start a server in the <P>examples/</P> folder
+            in your Terminal, start a server in the base folder of the repository (<b>just outside of</b> <P>/interactions</P>)
             <Code fileName="In your terminal" language="bash" hasLineNumbers={false}>live-server ⁠—open</Code>
           </>,
           <>your browser should open the example automatically, but if it doesn’t, navigate to <Link href="http://localhost:8080">localhost:8080</Link></>,
