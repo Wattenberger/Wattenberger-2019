@@ -61,7 +61,7 @@ const Interactions = () => {
       <Helmet>
           <meta charSet="utf-8" />
           <title>Interactive Charts with D3.js</title>
-          <link rel="canonical" href="http://mysite.com/example" />
+          <link rel="canonical" href="https://wattenberger.netlify.com" />
           <meta property="og:type" content="article" />
           <meta name="description" content="Learn how to make charts interactive using d3.js" />
       </Helmet>

@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import Link from "../_ui/Link/Link";
 import meImg from "./../me.png"
-import { Twemoji } from 'react-emoji-render';
 
 import "./Footer.scss"
 
@@ -15,15 +14,15 @@ const Footer = () => {
                 </div>
                 <div className="Footer__links">
                     <Link className="Footer__link" href="https://wattenberger.com">
-                        <Twemoji className="Footer__link__emoji" svg text=":wave:" />
+                        <img src="https://twemoji.maxcdn.com/2/svg/1f44b.svg" className="Footer__link__emoji" alt="wave" />
                         More about me on my site
                     </Link>
                     <Link className="Footer__link" href="http://twitter.com/wattenberger">
-                        <Twemoji className="Footer__link__emoji" svg text=":bird:" />
+                        <img src="https://twemoji.maxcdn.com/2/svg/1f426.svg" className="Footer__link__emoji" alt="bird" />
                         Ask me anything on Twitter
                     </Link>
                     <Link className="Footer__link" href="http://fullstack.io/fullstack-d3">
-                        <Twemoji className="Footer__link__emoji" svg text=":book:" />
+                        <img src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" className="Footer__link__emoji" alt="book" />
                         Learn more with the book
                     </Link>
                 </div>
