@@ -70,31 +70,13 @@ const Interactions = () => {
 
       <div className="Interactions__fixed-code__wrapper">
         <div className="Interactions__fixed-code">
-          {!!code ? (
+          {!!code && (
             <Code
               className="Interactions__code"
               fileName="interactions/-bars-start/chart.js"
               {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
               { code }
             </Code>
-          ) : (
-            <div className="Interactions__author">
-              <div className="Interactions__author__text">
-                <p>
-                  by <Link href="https://wattenberger.com">Amelia Wattenberger</Link>
-                  <br />
-                  on June 4<sup>th</sup>, 2019
-                </p>
-                <p>
-                  <b>
-                    Learn how to visualize data with <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>
-                  </b>
-                </p>
-              </div>
-              <Link href="https://fullstack.io/fullstack-d3">
-                <img className="Interactions__author__book" alt="book" src={bookImage} />
-              </Link>
-            </div>
           )}
         </div>
       </div>
@@ -104,6 +86,24 @@ const Interactions = () => {
         <h1>
           Interactive Charts with D3.js
         </h1>
+
+        <div className="Interactions__author">
+          <div className="Interactions__author__text">
+            <p>
+              by <Link href="https://wattenberger.com">Amelia Wattenberger</Link>
+              <br />
+              on June 4<sup>th</sup>, 2019
+            </p>
+            <p>
+              <b>
+                Learn how to visualize data with <Link href="https://fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link>
+              </b>
+            </p>
+          </div>
+          <Link href="https://fullstack.io/fullstack-d3">
+            <img className="Interactions__author__book" alt="book" src={bookImage} />
+          </Link>
+        </div>
 
         <ScrollEvent isInViewChange={d => {
           setCode(null)
@@ -1318,11 +1318,19 @@ const Interactions = () => {
         ]} />
 
         <p>
+          Stay tuned!
+        </p>
+
+        <p>
           In the next post, we’ll explore how to add tooltips to a scatter plot. To do this well, we’ll create extra elements similar to our last series of bars, but this is tricker to do with irregularly-spaced elements.
         </p>
 
         <p>
           After that, we’ll explore how to add a tooltip to a line chart. We’ll learn how to find the exact mouse position and search for the closest data point.
+        </p>
+
+        <p>
+          I'll be posting updates on <Link href="http://twitter.com/wattenberger">Twitter</Link>, feel free to follow me if you want to be notified of updates. Or share any thoughts about this article. Thanks for reading!
         </p>
 
 

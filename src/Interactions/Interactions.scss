@@ -84,7 +84,7 @@
 
     &__content {
         position: relative;
-        padding: 0 3rem 10em;
+        padding: 0 3rem 6em;
         // padding-right: 43rem + 3rem;
         width: calc(100% - 43rem - 6rem);
         font-size: 1.3em;
@@ -145,6 +145,7 @@
         top: 10em;
         right: 3rem;
         opacity: 0;
+        font-size: 0.8em;
         animation: slideLeft 0.5s ease-out;
         animation-delay: 0.5s;
         animation-fill-mode: forwards;
@@ -157,18 +158,26 @@
             #a0d8f8
         );
         background: $grey1;
+        background: rgba($a1, 0.1);
         // color: white;
         color: $grey4;
         font-weight: 500;
+        pointer-events: all;
+        // box-shadow: 0 2px 26px rgba($grey4, 0.16), 0 1px 2px rgba($grey4, 0.5);
 
         @media (max-width: 1100px) {
             position: relative;
+            top: auto;
+            right: auto;
+            width: auto;
         }
 
-        &__book {
+        .Interactions__author__book {
             width: 11em;
+            flex: 0 0;
             margin-left: -1em;
             margin-right: -4.5em;
+            max-width: none;
         }
 
         .Link {
@@ -279,6 +288,7 @@
         // margin-bottom: 2em;
         height: 15em;
         margin-bottom: -6em;
+        pointer-events: none;
 
         &__path {
             // fill: $grey1;

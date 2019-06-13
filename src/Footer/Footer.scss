@@ -1,0 +1,59 @@
+@import "src/styles/lib";
+
+.Footer {
+    display: flex;
+    position: relative;
+    align-items: flex-end;
+    // width: 100%;
+    margin: 0 2rem 3em 2rem;
+    // font-size: 0.9em;
+    background: rgba($a1, 0.1);
+
+    @media (max-width: 600px) {
+        flex-direction: column;
+        padding-bottom: 2em;
+
+        .Footer__image {
+            position: absolute;
+            bottom: 0;
+            right: -2em;
+        }
+    }
+    @media (max-width: 400px) {
+        padding-bottom: 7em;
+    }
+
+    &__links {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0.3em -0.5em 0;
+    }
+
+    &__link {
+        margin: 0.5em;
+        white-space: nowrap;
+
+        &__emoji {
+            margin-right: 0.3em;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2em 1rem 1.6em 1rem;
+    }
+
+    &__image {
+        flex: none;
+        height: 10em;
+        margin-top: -6em;
+        // margin-bottom: -3em;
+        // margin-left: -1em;
+        // position: absolute;
+        // right: 0;
+        // bottom: 0;
+        // width: 10em;
+    }
+}
