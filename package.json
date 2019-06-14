@@ -91,7 +91,8 @@
     "zdog": "^1.1.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "serve -s build",
+    "dev": "node scripts/start.js",
     "build": "node scripts/build.js && react-snapshot",
     "test": "node scripts/test.js"
   },
