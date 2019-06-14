@@ -453,7 +453,7 @@ module.exports = function(webpackEnv) {
               ),
             },
             {
-              test: /.*\.(gif|png|jpe?g|pdf|svg|csv)$/i,
+              test: /\.(gif|png|jpe?g|csv)$/,
               sideEffects: true,
               use: [
                   'file-loader',
@@ -495,6 +495,7 @@ module.exports = function(webpackEnv) {
           {
             inject: true,
             template: paths.appHtml,
+            filename: "index.html",
           },
           isEnvProduction
             ? {

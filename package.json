@@ -93,7 +93,7 @@
   "scripts": {
     "start": "serve -s build",
     "dev": "node scripts/start.js",
-    "build": "node scripts/build.js && react-snapshot",
+    "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
