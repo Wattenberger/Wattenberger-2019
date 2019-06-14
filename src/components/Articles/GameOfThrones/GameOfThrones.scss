@@ -1,0 +1,57 @@
+
+@import "src/styles/lib";
+
+.GameOfThrones {
+    padding: 0;
+    font-size: 21px;
+
+    &__contents {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        background: #2c3e50;
+    }
+
+    &__controls {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 0.3em 1em;
+        font-size: 0.7em;
+    }
+
+    &__years {
+        width: 100%;
+        display: flex;
+        background: white;
+
+        &__item {
+            flex: 1;
+            padding: 1em 0.3em;
+            border-right: 1px solid;
+            cursor: pointer;
+
+            &--is-focused {
+                background: #dadadd;
+            }
+        }
+    }
+
+    &__focused-character {
+        top: 0;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+
+        img {
+            max-width: 150px;
+        }
+    }
+
+    & + .Footer {
+        display: none;
+    }
+}
+

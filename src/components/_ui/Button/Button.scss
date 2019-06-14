@@ -1,0 +1,29 @@
+@import "src/styles/lib";
+
+.Button {
+  display: inline-block;
+  padding: 0.4em 0.6em;
+  border: 1px solid $accent-4;
+  background: none;
+  color: $accent-4;
+  font-size: 0.9em;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1em;
+  outline: none;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background $transition-fast;
+  &:hover {
+    background: $accent-2;
+    color: $bgc;
+  }
+  & + .Button {
+    margin-left: 0.3em;
+  }
+
+  &--selected {
+    background: $accent-4;
+    color: $bgc;
+  }
+}

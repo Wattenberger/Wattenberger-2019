@@ -1,0 +1,32 @@
+@import "src/styles/lib";
+
+
+.Day26 {
+  &__background {
+    // fill: $bgc;
+    opacity: 0.2;
+    transition: all 0.3s ease-out;
+  }
+
+  ellipse,
+  circle,
+  path,
+  g,
+  .fish__eye {
+    transition: all 0.3s ease-out;
+  }
+
+  .fish__bubble {
+    fill: rgba(255, 255, 255, 0.2);
+    animation: bubble 2s ease-out;
+  }
+
+  @keyframes bubble {
+    0%   { opacity: 0; transform: translate3d(0, 0, 0); }
+    3%   { opacity: 1; transform: translate3d(0, 0, 0); }
+    30% { opacity: 1; transform: scale(0.8) translate3d(-5vw, -6vw, 0); }
+    50% { opacity: 1; transform: scale(0.5) translate3d(2vw, -14vw, 0); }
+    80% { opacity: 0.7; transform: scale(0.2) translate3d(-3, -24vw, 0); }
+    100% { opacity: 0; transform: scale(0.1) translate3d(0, -40vw, 0); }
+  }
+}

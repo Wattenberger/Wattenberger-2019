@@ -1,0 +1,281 @@
+@import "src/styles/lib";
+
+.DogNames {
+    padding: 3em;
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $accent-4;
+        white-space: nowrap;
+        font-size: 3em;
+        padding: 0.3em 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        &-addition {
+            color: $accent-2;
+            padding-left: 0.2em;
+            border-bottom: 1px solid rgba($accent-2, 0.5);
+        }
+
+        &-container {
+            display: flex;
+            align-items: center;
+            // justify-content: center;
+        }
+    }
+
+    &__clear {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 1.6em;
+        width: 1.6em;
+        margin-top: -1.2em;
+        font-family: $font-family-sans-serif;
+        font-size: 1.2em;
+        line-height: 1em;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+            background: $gray;
+        }
+    }
+
+    &__contents {
+        display: flex;
+    }
+
+    &__map {
+        flex: 0 0 500px;
+        min-width: 500px;
+        margin-right: 1.6em;
+
+        @media (max-width: 1500px) {
+            flex: 0 0 460px;
+            min-width: 460px;
+            transform: scale(0.9);
+            transform-origin: left top;
+        }
+    }
+
+    &__item {
+        margin: 2em;
+        font-size: 0.8em;
+        line-height: 1.3em;
+
+        &__name {
+            // font-size: 1.2em;
+            font-weight: 900;
+        }
+    }
+
+    &SelectableList {
+        position: relative;
+        flex: 1;
+        font-size: 0.9em;
+
+        @media (max-width: 1500px) {
+            font-size: 0.8em;
+        }
+
+        &__input {
+            width: 100%;
+            padding: 0.3em 0.4em;
+            display: flex;
+            align-items: stretch;
+            margin-bottom: 0.2em;
+            border-radius: 2px;
+            font-size: 1.1em;
+            appearance: none;
+            outline: none;
+            box-shadow: none;
+            border: 1px solid $gray;
+
+            &::placeholder {
+                font-size: 0.9em;
+                opacity: 0.5;
+                font-style: italic;
+            }
+        }
+
+        &__toggle {
+            position: absolute;
+            top: -2.7em;
+            right: 0;
+            padding: 0.5em 0.8em;
+            font-size: 0.7em;
+            line-height: 1em;
+            border-radius: 2px;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+            opacity: 0.4;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+
+            &:hover {
+                background: $gray;
+            }
+
+            &--is-selected {
+                background: $accent-4;
+                color: $bgc;
+                opacity: 1;
+
+                &:hover {
+                    background: lighten($accent-4, 6%);
+                }
+            }
+        }
+
+        &__column-headers {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            // background: $bgc;
+            right: 0;
+            top: 0.2em;
+        }
+
+        &__column-header {
+            width: 5.9em;
+            font-size: 0.7em;
+        }
+
+        &__items {
+            max-height: calc(500px - 2em);
+            overflow: auto;
+        }
+
+        &__item {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            padding: 0.3em 0.6em;
+            transition: all 0.3s ease-out;
+            font-size: 0.8em;
+            border: 1px solid transparent;
+            max-width: 100%;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover {
+                background: $gray;
+            }
+
+            &--is {
+                &-selected {
+                    // background: $gray;
+                    border-color: $accent-4;
+                    font-weight: 900;
+                }
+
+                &-next-to-selected {
+                    opacity: 0.4;
+                }
+            }
+
+            &__bar {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: -0.2em;
+                background: $accent-2;
+                opacity: 0.3;
+                z-index: 0;
+                transition: all 0.3s ease-out;
+            }
+
+            &__index {
+                flex: 0 0 2em;
+                opacity: 0.3;
+            }
+
+            &__label {
+                flex: 1;
+                height: 1.3em;
+                line-height: 1.3em;
+                z-index: 2;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            &__value {
+                flex: 0 0 4em;
+                margin-left: auto;
+                text-align: right;
+            }
+
+            &__annotation {
+                flex: 0 0 4rem;
+                margin-left: auto;
+                text-align: right;
+                font-size: 0.9em;
+                letter-spacing: -0.2em;
+            }
+        }
+
+        &__note {
+            font-size: 0.7em;
+            background: $gray;
+            padding: 0.8em 0.8em;
+            font-style: italic;
+            color: darken($gray, 30%);
+            line-height: 1em;
+        }
+    }
+
+    &__footer {
+        padding-top: 6em;
+        font-size: 0.7em;
+        opacity: 0.5;
+    }
+
+    @media (max-width: 950px) {
+        .DogNames {
+            &__title {
+                white-space: normal;
+            }
+
+            &__map {
+                height: 390px;
+                flex: none;
+                margin-right: -50px;
+            }
+
+            &__contents {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            &SelectableList {
+                flex: none;
+                width: 100%;
+                margin-top: 1em;
+
+                &__items {
+                    max-height: 20em;
+                }
+            }
+        }
+    }
+    @media (max-width: 950px) {
+        padding: 2em;
+
+        .DogNames {
+            &__map {
+                height: 360px;
+                margin-right: -190px;
+                transform: scale(0.7);
+            }
+        }
+    }
+    @media (max-width: 360px) {
+        padding: 1em;
+    }
+}

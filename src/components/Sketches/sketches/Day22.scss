@@ -1,0 +1,65 @@
+@import "src/styles/lib";
+
+
+.Day22 {
+
+  &__background {
+    fill: $bgc;
+  }
+
+  @keyframes offsetCreep {
+    0%   { stroke-dashoffset: 0% }
+    100% { stroke-dashoffset: 100% }
+  }
+
+  &__line {
+    fill: none;
+    stroke: #ddd;
+    stroke: url(#gradient);
+    stroke-width: 4px;
+    stroke-dasharray: 10, 2;
+    stroke-linecap: round;
+    animation: offsetCreep 30s linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    transform-origin: center center;
+    transition: stroke-width 0.3s ease-out;
+
+    &:hover {
+      stroke-width: 9px;
+    }
+  }
+
+  &__line--background {
+    stroke: average(#45aeb1, #c6d7c7);
+    opacity: 0.6;
+    animation: none;
+    stroke-dasharray: none;
+  }
+
+  &__whale {
+    stroke: #666;
+    stroke-width: 2px;
+    fill: none;
+    transform: translate3d(0, -110%, 0);
+    transform-origin: center center;
+    transition: transform 0.3s ease-out;
+
+    .spout {
+      opacity: 0.6;
+      transform-origin: center bottom;
+      transition: transform 0.3s ease-out;
+    }
+
+    &:hover {
+      transform: translate3d(0, -110%, 0) scale3d(1.2, 1.2, 1) rotate(10deg);
+
+      .spout {
+        stroke-dasharray: 10, 2;
+        animation: offsetCreep 1s linear;
+        opacity: 1;
+        transform: scale3d(1.6, 1.6, 1) rotate(10deg);
+      }
+    }
+  }
+}

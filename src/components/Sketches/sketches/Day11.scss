@@ -1,0 +1,17 @@
+@import "src/styles/lib";
+
+
+.Day11 {
+  max-width: 100vw;
+  height: auto;
+  margin: 0 -20px;
+  text-align: center;
+  background: rgb(0, 0, 0);
+  overflow: hidden;
+
+  canvas {
+  	margin: auto;
+    // height: 400px;
+    // width: 100%;
+  }
+}

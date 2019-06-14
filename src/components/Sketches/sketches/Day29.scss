@@ -1,0 +1,27 @@
+@import "src/styles/lib";
+
+
+.Day29 {
+  &__turtle {
+    transition: all 0.3s ease-out;
+
+    path,
+    ellipse,
+    g {
+      transition: all 0.3s ease-out;
+    }
+  }
+
+  .TurtleLeg {
+    stroke-width: 10px;
+    stroke-linejoin: round;
+  }
+
+  .TurtleHead {
+    transform-origin: center left;
+  }
+
+  .TurtleTail {
+    transform-origin: center right;
+  }
+}

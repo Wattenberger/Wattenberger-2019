@@ -1,0 +1,207 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.Fishing {
+    padding: 3em;
+    font-size: 21px;
+
+    @media (max-width: 700px) {
+        padding: 2em 1em;
+    }
+
+    @media (min-width: 1300px) {
+        font-size: 25px;
+    }
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        font-size: 3em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+        padding: 0.2em 0;
+
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+
+        &__button {
+            display: block;
+            font-size: 0.5em;
+        }
+    }
+
+    &__contents {
+        // display: flex;
+        // margin: 0 -1em;
+    }
+
+    &Circle {
+        overflow: hidden;
+
+        &__wrapper {
+            position: relative;
+            width: 400px;
+        }
+
+        path {
+            // fill: cornflowerblue;
+            // fill-opacity: 0.4;
+            // stroke: cornflowerblue;
+            // stroke-width: 2px;
+        }
+
+        &__taken {
+            fill: rgb(217, 217, 224);
+        }
+
+        @keyframes scaleIn {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        &__reset {
+            fill: $bgc;
+            transform-origin: top left;
+            animation: scaleIn 1s ease-out;
+            animation-delay: 2s;
+            transform: scale(0);
+            animation-fill-mode: forwards;
+        }
+
+        &__country {
+            fill-opacity: 0.5;
+            mix-blend-mode: multiply;
+            transition: all 0.5s ease-out;
+
+            &:hover {
+                fill-opacity: 0.9;
+            }
+
+        }
+
+        &__tick-rect {
+            fill: $bgc;
+        }
+
+        &__tick-text {
+            font-size: 0.6em;
+            text-anchor: middle;
+            fill: #99989c;
+            // stroke: white;
+            // stroke-width: 10px;
+        }
+
+        &__tick {
+            fill: none;
+            stroke: #dddbe2;
+            stroke-width: 1px;
+        }
+
+        &__month {
+            font-size: 0.6em;
+            opacity: 0.36;
+        }
+
+        &__annotation {
+            position: absolute;
+            bottom: 45px;
+            right: -73px;
+            font-size: 0.55em;
+            opacity: 0.4;
+            width: 10em;
+            line-height: 1.2em;
+
+            &-line {
+                stroke: rgb(217, 217, 224);
+                stroke-width: 1px;
+            }
+        }
+
+        &__legend {
+            position: absolute;
+            top: 1.4em;
+            right: -6em;
+            font-size: 0.55em;
+            line-height: 1.2em;
+
+            &__item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0.3em 0;
+                width: 11em;
+
+                &__dot {
+                    height: 0.6em;
+                    width: 0.6em;
+                    margin-right: 0.4em;
+                    border-radius: 50%;
+                }
+
+                &__label {
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex: 1;
+                    overflow: hidden;
+
+                    b {
+                        flex: 1;
+                        text-align: left;
+                        font-weight: 500;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                    }
+                }
+
+                &__value {
+                    opacity: 0.4;
+                }
+            }
+        }
+    }
+
+    &__circles {
+        display: flex;
+        flex-wrap: wrap;
+
+        &__item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1.2em;
+            flex: 1 1 400px;
+            margin-top: 1em;
+            text-align: center;
+
+            h6 {
+                line-height: 1.1em;
+            }
+
+            &__description {
+                font-size: 0.67em;
+                font-style: italic;
+                line-height: 1.1em;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &__note {
+        opacity: 0.5;
+        font-size: 14px;
+        margin-top: 3em;
+        line-height: 1.3em;
+    }
+}

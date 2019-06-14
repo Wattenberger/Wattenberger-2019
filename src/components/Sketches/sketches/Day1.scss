@@ -1,0 +1,39 @@
+@import "src/styles/lib";
+
+
+.Day1 {
+  .Chart__wrapper {
+    filter: url('#goo');
+  }
+
+  .dot {
+    // mix-blend-mode: multiply;
+    // opacity: 0.9;
+
+    $startColor: #ABCEE2;
+    $endColor: #EAEAEA;
+    $divider: 255;
+    $steps: 10;
+    $scaler: $divider / $steps;
+    @for $i from 1 through $steps {
+        $scaledStep: $i * $scaler;
+        $redStart: red($startColor);
+        $greenStart: green($startColor);
+        $blueStart: blue($startColor);
+        $redEnd: red($endColor);
+        $greenEnd: green($endColor);
+        $blueEnd: blue($endColor);
+        $R: ($redStart * (($divider - $scaledStep) / $divider)) + ($redEnd * ($scaledStep / $divider));
+        $G: ($greenStart * (($divider - $scaledStep) / $divider)) + ($greenEnd * ($scaledStep / $divider));
+        $B: ($blueStart * (($divider - $scaledStep) / $divider)) + ($blueEnd * ($scaledStep / $divider));
+
+        &:nth-child(#{$steps}n+#{$i}) {
+            fill: rgb($R, $G, $B);
+        }
+    }
+
+    &:hover {
+      fill: #fff;
+    }
+  }
+}

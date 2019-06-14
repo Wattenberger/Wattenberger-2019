@@ -1,0 +1,67 @@
+@import "src/styles/lib";
+
+
+.Day24 {
+
+  &__background {
+    fill: $bgc;
+  }
+
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale3d(0,   0,   1); }
+    80%  { opacity: 1; transform: scale3d(1.02, 1.02, 1); }
+    100% { opacity: 1; transform: scale3d(1,   1,   1); }
+  }
+
+  @keyframes fadeOut {
+    0%   { opacity: 1; transform: scale3d(1,   1,   1); }
+    100% { opacity: 0; transform: scale3d(0.2, 0.2, 1); }
+  }
+
+  @keyframes rotate {
+    0%   { transform: rotate(  0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+    svg > g {
+      transform: translate3d(0px, -40px, 0px) scale(0.08);
+      transform-origin: 490px 30px;
+    }
+
+  .rotater {
+    animation: rotate 50s linear;
+    animation-iteration-count: infinite;
+  }
+
+  .houses {
+    transition: transform 2s linear;
+  }
+
+  .house {
+    & > g > g {
+      animation: popIn 0.4s ease-out;
+      transition: transform 0.3s ease-out;
+      transform-origin: center bottom;
+    }
+
+    &:hover {
+      & > g > g {
+        transform: scale3d(1.4, 1.4, 1);
+      }
+    }
+
+    &__roof {
+      stroke-width: 6px;
+    }
+
+    &__orifice--attic {
+      transform: scale(0.7);
+    }
+  }
+
+  .world {
+    fill: #e4e3eb;
+    stroke: #e4e3eb;
+    stroke-width: 9vw;
+  }
+}

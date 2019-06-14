@@ -1,0 +1,211 @@
+@import "src/styles/lib";
+
+
+.Day25 {
+  &__background {
+    fill: $bgc;
+  }
+
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale3d(0,   0,   1); }
+    80%  { opacity: 1; transform: scale3d(1.02, 1.02, 1); }
+    100% { opacity: 1; transform: scale3d(1,   1,   1); }
+  }
+
+  @keyframes popInRetainWidth {
+    0%   { opacity: 0; transform: scale3d(1,    0,   1); }
+    80%  { opacity: 1; transform: scale3d(1, 1.05,   1); }
+    100% { opacity: 1; transform: scale3d(1,    1,   1); }
+  }
+
+  @keyframes open {
+    0%   { opacity: 1; transform: scale3d(-3,  1,   1); }
+    // 20%  { opacity: 1; transform: scale3d(-3,  1,   1); }
+    100% { opacity: 1; transform: scale3d( 1,  1,   1); }
+  }
+
+  @keyframes popInRetainHeight {
+    0%   { opacity: 0; transform: scale3d(0,    1,   1); }
+    80%  { opacity: 1; transform: scale3d(1.02, 1,   1); }
+    100% { opacity: 1; transform: scale3d(1,    1,   1); }
+  }
+
+  @keyframes popInFromLeft {
+    0%   { opacity: 0; transform: translate3d(-20px, 0, 0); }
+    100% { opacity: 1; transform: translate3d(0px, 0, 0); }
+  }
+
+  @keyframes fadeOut {
+    0%   { opacity: 1; transform: scale3d(1,   1,   1); }
+    100% { opacity: 0; transform: scale3d(0.2, 0.2, 1); }
+  }
+
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes smoke {
+    0%   { opacity: 0;   transform: translate3d(  0vw,  0,   0); }
+    2%   { opacity: 0.2;   transform: translate3d(0vw,  -1vw,   0); }
+    12%  { opacity: 0.3;   transform: translate3d(-3vw,  -3vw,   0); }
+    30%  { opacity: 0.4; transform: translate3d(-15vw, -7vw, 0); }
+    60%  { opacity: 0.4; transform: translate3d(-35vw, -6vw, 0); }
+    82%  { opacity: 0.4; transform: translate3d(-55vw, -12vw, 0); }
+    100% { opacity: 0.4; transform: translate3d(-60vw, -9vw, 0); }
+  }
+
+  @keyframes slideIn {
+    0%   { stroke-dashoffset: 100%; }
+    100% { stroke-dashoffset:   0%; }
+  }
+
+  .houses {
+    transition: transform 2s linear;
+  }
+
+  &__earth {
+    fill: #e1e2e9;
+  }
+
+  .house {
+    &__chimney,
+    &__chimney__top,
+    &__chimney__smoke,
+    &__structure,
+    &__orifice--door,
+    &__shrub,
+    &__shrub__bubble,
+    &__tree {
+      animation: popIn 0.4s ease-out;
+      transition: transform 0.3s ease-out;
+      transform-origin: center bottom;
+      opacity: 0;
+      transform: scale3d(0, 0, 1);
+      animation-fill-mode: forwards;
+    }
+
+    &__orifice {
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+
+      &--0 { animation-delay: 0.3s + 0.0s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.0s; }}
+      &--1 { animation-delay: 0.3s + 0.1s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.1s; }}
+      &--2 { animation-delay: 0.3s + 0.2s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.2s; }}
+      &--3 { animation-delay: 0.3s + 0.3s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.3s; }}
+      &--4 { animation-delay: 0.3s + 0.4s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.4s; }}
+      &--5 { animation-delay: 0.3s + 0.5s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.5s; }}
+      &--6 { animation-delay: 0.3s + 0.6s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.6s; }}
+      &--7 { animation-delay: 0.3s + 0.7s; .house__orifice--window__shutter { animation-delay: 0.5s + 0.7s; }}
+
+      &--door {
+        animation-name: popInRetainHeight;
+        transform: scale3d(0, 1, 1);
+        transform-origin: left center;
+      }
+
+      &--window {
+        // transform: scale3d(1, 1, 1);
+        // opacity: 1;
+        // animation-name: none;
+        // animation-duration: 0s;
+
+        &__shutter {
+          animation: open 1s ease-out;
+          animation-fill-mode: forwards;
+          animation-delay: 0.5s;
+          // opacity: 0;
+          transform: scale3d(-3,  1,   1);
+
+          &--left  { transform-origin: left center; }
+          &--right { transform-origin: right center; }
+        }
+      }
+    }
+
+    &__chimney,
+    &__structure {
+      animation-name: popInRetainWidth;
+    }
+
+    &__tree {
+      opacity: 0.9;
+
+        @for $i from 0 through 26 {
+            &--#{$i} {
+                animation-delay: 0.1s + $i * 0.15s;
+            }
+        }
+    }
+
+    &__chimney {
+      animation-delay: 0.4s;
+
+      &__top {
+        opacity: 0;
+        animation-delay: 0.7s;
+        // animation-name: fadeIn;
+        // transform: scale3d(0, 1, 1);
+      }
+
+      &__smoke {
+        animation-name: smoke;
+        animation-timing-function: linear;
+        animation-delay: 0.4s;
+        animation-duration: 3.4s;
+        opacity: 0;
+        transform: none;
+        fill: rgb(209, 208, 221);
+
+        @for $i from 0 through 40 {
+          &--#{$i} {
+            animation-delay: 0.9s + $i * 0.2s;
+          }
+        }
+      }
+    }
+
+    &__shrub {
+      animation-name: popInFromLeft;
+      animation-delay: 0.3s;
+
+      &__bubble {
+        animation-duration: 1s;
+
+        @for $i from 0 through 12 {
+            &--#{$i} {
+                animation-delay: 0.1s + $i * 0.25s;
+            }
+        }
+      }
+    }
+
+    &__roof {
+      animation: slideIn 1s ease-out;
+      animation-delay: 0.3s;
+      animation-fill-mode: forwards;
+      stroke-dasharray: 100% 100%;
+      stroke-dashoffset: 100%;
+    }
+
+    &:hover {
+      & > g > g {
+        // transform: scale3d(1.4, 1.4, 1);
+      }
+    }
+
+    &__roof {
+      stroke-width: 6px;
+    }
+
+    &__orifice--attic {
+      transform: scale(0.7);
+    }
+  }
+
+  .world {
+    fill: #e4e3eb;
+    stroke: #e4e3eb;
+    stroke-width: 9vw;
+  }
+}

@@ -1,0 +1,230 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+
+  .TrafficSources {
+    padding: 3em 1em;
+    font-size: 21px;
+    // background: #e8e8ee;
+
+    @media (max-width: 700px) {
+        padding: 2em 1em;
+    }
+
+    @media (min-width: 1300px) {
+        font-size: 25px;
+    }
+
+    svg {
+        overflow: visible;
+    }
+
+    &__title {
+        display: none;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        font-size: 3em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+        padding: 0.2em 0;
+    }
+
+    &__description {
+        margin-top: 1em;
+        padding-right: 40px;
+        line-height: 1.3em;
+    }
+
+    &__contents {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 2em;
+        // margin: 0 -1em;
+    }
+
+    &__time {
+        max-width: 800px;
+        margin: 2em auto -0.7em;
+        text-align: center;
+        font-size: 1.5em;
+        font-weight: 800;
+        font-feature-settings: 'tnum' 1
+    }
+
+    &Dates {
+        position: relative;
+        height: 1em;
+        background: white;
+        width: 100%;
+
+        &__tick {
+            display: flex;
+            width: 0;
+            // align-items: center;
+            align-items: flex-end;
+            // justify-content: center;
+            height: 1.5em;
+            position: absolute;
+            top: -2em;
+            bottom: 0;
+            font-size: 0.7em;
+            line-height: 1.3em;
+            // text-align: center;
+            // font-weight: 600;
+        }
+
+        &__days {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(to right,
+                #574b90 0%,
+                #574b90 15%,
+                #b9e4eb 30%,
+                #b9e4eb 80%,
+                #574b90 95%,
+            );
+            background-size: 12.5% 100%;
+            border: 3px solid white;
+            border-radius: 0.5em;
+            z-index: 5;
+        }
+
+
+        &__indicator {
+            position: absolute;
+            top: -6px;
+            bottom: -6px;
+            width: 9px;
+            margin-left: -4.5px;
+            background: #FF7DA0;
+            border: 2px solid white;
+            border-radius: 0.2em;
+            transition: all 0.6s linear;
+            z-index: 20;
+        }
+    }
+
+    &Window {
+        position: relative;
+
+        &__window {
+            fill: none;
+            // stroke: #dadadd;
+        }
+
+        &__polygons {
+            // mix-blend-mode: hard-light;
+            // fill-opacity: 0.6;
+        }
+
+        &__polygon {
+            // fill: none;
+            transition: all 0.5s linear;
+
+            &--blank {
+                fill: none;
+                stroke: #fff;
+                stroke-width: 6;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+        }
+
+        &Story {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -1.5em;
+            margin-left: -5em;
+            height: 3em;
+            width: 10em;
+            font-size: 0.6em;
+            line-height: 1.1em;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.6s ease-out;
+            background-blend-mode: multiply;
+        }
+    }
+
+    &Bubbles {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+
+        &__center {
+            fill: white;
+        }
+
+        &__story-label {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 380px;
+            left: 380px;
+            width: 10em;
+            height: 3em;
+            text-align: center;
+            font-size: 0.5em;
+            font-weight: 600;
+            line-height: 1.2em;
+        }
+    }
+
+    &Story {
+        &__circle {
+            opacity: 0.6;
+            transition: all 0.2s ease-out;
+        }
+    }
+
+    .Person {
+        transition: all 0.2s linear;
+    }
+
+    &Bubble {
+        position: relative;
+
+        &__label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.7em;
+            line-height: 1.3em;
+            text-align: center;
+        }
+    }
+
+    &Diagram {
+        width: 100%;
+
+        .SitePath {
+            fill: none;
+            stroke: white;
+            stroke-width: 70px;
+        }
+        &__circle {
+            opacity: 0.3;
+            transition: all 0.3s ease-out;
+        }
+
+        .Person {
+            transition: all 1.1s linear;
+            mix-blend-mode: multiply;
+        }
+    }
+}

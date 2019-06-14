@@ -1,0 +1,336 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.StephenKing {
+    padding: 3em;
+    font-size: 21px;
+
+    @media (max-width: 700px) {
+        padding: 2em 1em;
+    }
+
+    @media (min-width: 1300px) {
+        font-size: 25px;
+    }
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        font-size: 3em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+        padding: 0.2em 0;
+
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+
+        &__button {
+            display: block;
+            font-size: 0.5em;
+        }
+    }
+
+    &__contents {
+        // display: flex;
+        // margin: 0 -1em;
+    }
+
+    &BooksList {
+        &__list {
+            display: flex;
+            margin-top: 1em;
+            // flex-wrap: wrap;
+            &__item {
+                flex: 0 0 6em;
+                font-size: 0.6em;
+
+                &__image {
+                    height: 10em;
+                    width: 100%;
+                    background-size: auto 100%;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+
+                h5 {
+                    // font-size: 0.6em;
+                    line-height: 1.2em;
+                    height: 6em;
+                    overflow: hidden;
+                    margin-top: 0.6em;
+                }
+            }
+        }
+
+        &__count {
+            display: inline-block;
+            margin-left: 0.3em;
+            opacity: 0.5;
+            font-weight: 500;
+        }
+    }
+
+    &__scatters {
+        display: flex;
+        margin-bottom: 5em;
+    }
+
+    &Scatter {
+        position: relative;
+        width: 100%;
+
+        svg {
+            overflow: visible;
+        }
+
+        text.Axis__label {
+            font-size: 1.6em;
+        }
+
+        .Axis .tick text {
+            font-size: 1.6em;
+        }
+
+        &Tooltip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.8em 1em;
+            background: white;
+            width: 12em;
+            margin-top: -1em;
+            font-size: 0.8em;
+            text-align: center;
+            box-shadow: 0 0 0 4px rgba(black, 0.1);
+            pointer-events: none;
+
+            &__title {
+                font-size: 0.9em;
+                font-weight: 700;
+                line-height: 1.3em;
+                margin-bottom: 1em;
+            }
+
+            &__metric {
+                font-size: 0.7em;
+                line-height: 1.2em;
+                margin-top: 0.6em;
+                opacity: 0.6;
+                font-style: italic;
+            }
+
+            &__swears {
+                font-size: 0.8em;
+                line-height: 1.4em;
+            }
+
+            &__swear {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                font-weight: 600;
+            }
+        }
+    }
+
+    &Dots {
+        position: relative;
+        width: 1300px;
+        height: 600px;
+        margin-top: 6em;
+        margin-bottom: 2em;
+        margin-left: 2em;
+
+        &__name {
+            position: absolute;
+            margin-top: -0.7em;
+        }
+
+        &__item {
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 100%;
+            z-index: 2;
+
+            &:hover {
+                z-index: 10;
+                border: 1px solid $main-color;
+            }
+
+            .Tooltip__contents {
+                white-space: nowrap;
+                text-align: center;
+                z-index: 10;
+            }
+
+            &-text {
+                position: absolute;
+                top: -0.8em;
+                // left: -0.5em;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                // justify-content: center;
+                width: 1px;
+                white-space: nowrap;
+                z-index: 10;
+                font-size: 0.6em;
+            }
+        }
+
+        &__annotation {
+            position: absolute;
+            top: 4em;
+            bottom: 4em;
+            left: 0;
+            border-left: 1px solid lightgrey;
+            display: flex;
+            pointer-events: none;
+
+            &__label {
+                padding-top: 0.3em;
+                padding-left: 0.6em;
+                font-size: 0.8em;
+                opacity: 0.5;
+            }
+        }
+
+        h6 {
+            font-size: 0.7em;
+            width: 100%;
+            text-align: center;
+        }
+
+        &__legend {
+            display: flex;
+            // flex-direction: column;
+            width: 100%;
+            justify-content: flex-end;
+            // align-items: flex-end;
+
+            &__item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: -2em;
+
+                & + & {
+                    padding-left: 1em;
+                }
+            }
+        }
+
+        &__scale {
+            display: flex;
+            align-items: center;
+            width: 20em;
+            font-size: 0.6em;
+            color: rgba($tc, 0.4);
+            margin-top: 0.4em;
+
+            &__color {
+                flex: 1;
+                height: 1.3em;
+                margin: 0 0.6em;
+            }
+        }
+
+        &__circle-scale {
+            position: relative;
+            height: 160px;
+            width: 160px;
+            // margin-left  : 2em;
+            color: rgba($tc, 0.4);
+
+            &__item {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                font-size: 0.5em;
+                border: 1px solid rgba($tc, 0.16);
+                border-radius: 100%;
+                transform: translate(-50%, -50%);
+
+                &__text {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    padding: 0 0.2em;
+
+                    transform: translate(5px, 5px);
+                    background: $bgc;
+                    display: none;
+                }
+
+                &:first-of-type,
+                &:last-of-type {
+                    border: 1px solid rgba($tc, 0.6);
+
+                    .StephenKingDots__circle-scale__item__text {
+                        display: block;
+                    }
+                }
+                // &:first-of-type .StephenKingDots__circle-scale__item__text {
+                //     transform: translate(-8px, 12px);
+                // }
+                // &:nth-of-type(2) .StephenKingDots__circle-scale__item__text {
+                //     transform: translate(4px, 2px);
+                // }
+            }
+        }
+
+        &__x-axis {
+            font-size: 0.6em;
+            position: absolute;
+            bottom: 8em;
+
+            &__tick {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+}
+
+
+.Asterisk {
+    @keyframes asteriskSlideUp {
+        0% { opacity: 0; transform: translateY(4em); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    stroke: #5758BB;
+    stroke-width: 4px;
+    stroke-linecap: round;
+
+    &--is-hovered {
+        stroke: #6F1E51;
+    }
+
+    &-wrapper {
+        opacity: 0;
+        animation: asteriskSlideUp 0.5s ease-out;
+        animation-fill-mode: forwards;
+
+        @for $i from 0 through 100 {
+            &:nth-child(#{$i}) {
+                animation-delay: 0.2s + $i * 0.02s;
+            }
+        }
+    }
+}
+

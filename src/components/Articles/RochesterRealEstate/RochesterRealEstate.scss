@@ -1,0 +1,18 @@
+@import "src/styles/lib";
+
+.RochesterRealEstate {
+	padding: 30px;
+
+	&__field-options {
+		flex: 1;
+		margin-top: 10px;
+	}
+
+	.RochesterRealEstate__field-options ~ .RochesterRealEstate__field-options {
+		margin-left: 10px;
+	}
+
+	.Select-value {
+		cursor: pointer;
+	}
+}

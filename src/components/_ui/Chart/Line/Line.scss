@@ -1,0 +1,8 @@
+@import "src/styles/lib";
+
+.Line {
+  stroke: $accent-2;
+  stroke-width: 2;
+  fill: none;
+  transition: d 0.3s ease-out, stroke-width 0s;
+}

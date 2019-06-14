@@ -1,0 +1,51 @@
+@import "src/styles/lib";
+
+
+.HomeHeader {
+  position: relative;
+  height: 110vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.HomeHeader__content {
+  @include abs(0, 0, 0, 0);
+  margin: 40vh $horizontal-padding;
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.HomeHeader__content__text__top {
+    padding-left: 1.3em;
+}
+
+.HomeHeader__content__text {
+  @include abs(auto, auto, auto, 0);
+  max-width: 800px;
+}
+
+.HomeHeader__content__text__description {
+  margin-top: 30px;
+  opacity: 0.6;
+}
+
+.HomeHeader__watercolor-canvas {
+  height: 100vh;
+  width: 110vw;
+  margin: -5vh -5vw;
+}
+
+@media (max-width: 900px) {
+  .HomeHeader {
+    max-height: 30em;
+  }
+  .HomeHeader__content {
+    margin: 6em $horizontal-padding-skinny;
+  }
+  .HomeHeader__content__text {
+    max-width: 100vw;
+  }
+  .HomeHeader__content__text__title {
+    font-size: $font-size-large;
+  }
+}

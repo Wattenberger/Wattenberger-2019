@@ -1,0 +1,42 @@
+@import "src/styles/lib";
+
+.Axis {
+  text {
+    fill: $accent-3;
+    font-size: $font-size-small;
+  }
+
+  .domain {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+
+  }
+
+  .tick {
+    text {
+      font-size: 0.9em;
+    }
+
+    line {
+      stroke-width: 0;
+    }
+  }
+
+  &--x {
+    text {
+      // transform: translate3d(0, 10px, 0);
+    }
+  }
+
+  text.Axis__label {
+    text-anchor: end;
+    font-size: $font-size-xsmall;
+  }
+
+  &--has-inline-label {
+   text.Axis__label {
+     text-anchor: start;
+   }
+  }
+}

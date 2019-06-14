@@ -1,0 +1,50 @@
+@import "src/styles/lib";
+
+
+.Sketches {
+  padding: 5em 20px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 2em;
+    }
+
+    &__buttons {
+      display: flex;
+      align-items: center;
+      margin-left: 27px;
+
+      h6 {
+        margin: 3px 13px 0;
+      }
+
+      .Button {
+        line-height: 0.3em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+      }
+    }
+  }
+
+  &__sketch {
+    margin: 9px 0 30px 0;
+    width: 100%;
+
+    .Chart {
+      margin: 0 -20px;
+      // background: #fff;
+    }
+  }
+}
+
+//
+// @media (max-width: 900px) {
+//   .Sketches {
+//     padding: $horizontal-padding-skinny;
+//   }
+// }

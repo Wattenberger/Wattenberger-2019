@@ -1,0 +1,86 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.DoctorateStats {
+    padding: 3em;
+    font-size: 21px;
+    background: $bgc;
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+
+        &__button {
+            display: block;
+            font-size: 0.5em;
+        }
+    }
+
+    &__contents {
+        // display: flex;
+        margin: 0 -1em;
+        background: $bgc;
+    }
+
+    &__bars {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__bar-group {
+        display: flex;
+        flex-direction: column;
+
+        & + & {
+            margin-top: 0.6em;
+        }
+    }
+
+    &__bar {
+        position: relative;
+        height: 0.7em;
+
+        & + & {
+            margin-top: 1px;
+        }
+
+        &__label {
+            position: absolute;
+            font-size: 0.5em;
+            color: white;
+            margin-left: 1em;
+        }
+
+        &__fill {
+            background: #45aeb1;
+            height: 100%;
+        }
+
+        &:nth-of-type(2),
+        &:nth-of-type(3) {
+            .DoctorateStats__bar__fill {
+                background: #666;
+            }
+        }
+    }
+
+    &__footer {
+        padding: 6em 1.9em 0;
+        font-size: 0.6em;
+        opacity: 0.5;
+    }
+}

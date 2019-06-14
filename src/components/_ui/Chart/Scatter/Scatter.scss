@@ -1,0 +1,14 @@
+@import "src/styles/lib";
+
+.Scatter {
+  fill: $accent-2;
+
+  .dot {
+    opacity: 0.6;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

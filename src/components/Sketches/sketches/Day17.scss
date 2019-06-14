@@ -1,0 +1,15 @@
+@import "src/styles/lib";
+
+
+.Day17 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  margin: 0 -20px;
+
+  canvas {
+  	margin: auto;
+    // width: 100%;
+  }
+}

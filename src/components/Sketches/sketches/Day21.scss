@@ -1,0 +1,49 @@
+@import "src/styles/lib";
+
+
+.Day21 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  margin: 0 -20px;
+
+  svg {
+    margin: auto;
+    // transform: rotate(90deg);
+    // transform-origin: 77% 37%;
+    // width: 100%;
+  }
+
+  &__background {
+    fill: #fff;
+  }
+
+  &__neuron {
+    path {
+
+    }
+  }
+
+  &--team {
+    &-a {
+      fill: #A4BAC1;
+
+      path {
+        fill: none;
+        stroke: #A4BAC1;
+        stroke-width: 2;
+      }
+    }
+    &-b {
+      fill: #C9859F;
+
+      path {
+        fill: none;
+        stroke: #C9859F;
+        stroke-width: 2;
+      }
+    }
+  }
+}

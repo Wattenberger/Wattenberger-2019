@@ -1,0 +1,41 @@
+@import "src/styles/lib";
+@import '~styles/mixins';
+
+.Tooltip {
+  position: absolute;
+  width: 280px;
+  text-align: center;
+  padding: 16px;
+  background: #fff;
+  font-size: $font-size-xsmall;
+  line-height: 1.6em;
+  margin-top: -4px;
+  margin-left: 32px;
+  transform: translate3d(-50%, -100%, 0);
+  // transition: all $transition-fast;
+  pointer-events: none;
+  z-index: $z-index-tooltip;
+  border: 1px solid #eaeaea;
+
+  &:after {
+    content: "";
+    @include abs(auto, auto, -4.5px, 50%);
+    height: 9px;
+    width: 9px;
+    background: #fff;
+    border: 1px solid;
+    border-color: transparent #eaeaea #eaeaea transparent;
+    transform: rotate(45deg) translate3d(-50%, 50%, 0);
+    z-index: 2;
+  }
+
+  &.Tooltip--flipY {
+    margin-top: 0;
+    transform: translate3d(-50%, 40%, 0);
+
+    &:after {
+      @include abs(-4.5px, auto, auto, 50%);
+      border-color: #eaeaea transparent transparent #eaeaea;
+    }
+  }
+}

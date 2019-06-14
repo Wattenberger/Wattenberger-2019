@@ -1,0 +1,190 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.DVSChannels {
+    padding: 3em;
+    font-size: 21px;
+
+    @media (max-width: 700px) {
+        padding: 2em 1em;
+    }
+
+    @media (min-width: 1300px) {
+        font-size: 25px;
+    }
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        font-size: 3em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+        padding: 0.2em 0;
+    }
+
+    &__description {
+        margin-top: 1em;
+        padding-right: 40px;
+        line-height: 1.3em;
+    }
+
+    &__contents {
+        display: flex;
+        flex-direction: column;
+        // margin: 0 -1em;
+    }
+
+    &__dates {
+        position: relative;
+        display: flex;
+        margin-bottom: 3em;
+
+        &__indicator {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transition: all 0.3s ease-out;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 0.4em;
+                left: 0;
+                height: 2em;
+                width: 2em;
+                background: #FFC312;
+                border-radius: 100%;
+                z-index: 1;
+            }
+        }
+
+        &__item {
+            position: relative;
+            flex: 1 1 1.6em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 5em;
+            font-size: 0.8em;
+            z-index: 10;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+
+            &__month {
+                font-size: 0.6em;
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                height: 2em;
+                width: 2em;
+                background: #7bed9f;
+                border-radius: 100%;
+                z-index: -1;
+                margin-top: 1.8em;
+                transform: translate(-50%, -50%) scale(0);
+                transition: all 0.3s ease-out;
+            }
+
+            &:hover:before {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+    }
+
+    &EmojiTimeline {
+        width: 100%;
+
+        &__chart {
+            position: relative;
+            height: 350px;
+        }
+
+        &__emoji {
+            position: absolute;
+        }
+    }
+
+    &__hubs {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    &Hub {
+        position: relative;
+        width: 420px;
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+
+            height: 11em;
+            width: 11em;
+            font-weight: 700;
+            font-size: 0.6em;
+            background: #5758BB;
+            color: white;
+            white-space: nowrap;
+            border-radius: 100%;
+        }
+
+        &__volume-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            height: 11em;
+            width: 11em;
+            font-size: 0.6em;
+            background: #dfe4ea;
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease-out;
+            z-index: 2;
+        }
+
+        &__annotation {
+            position: absolute;
+            top: -1em;
+            right: -1em;
+            color: #747d8c;
+            font-size: 0.6em;
+            z-index: 2;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: 1.6em;
+                left: -0.5em;
+                width: 300px;
+                height: 1px;
+                background: linear-gradient(to left, #dfe4ea, #747d8c);
+                transform: rotate(125deg);
+                transform-origin: top left;
+            }
+        }
+    }
+}
+
+.AnimatedEmoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+}

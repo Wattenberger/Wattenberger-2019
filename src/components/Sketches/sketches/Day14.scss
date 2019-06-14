@@ -1,0 +1,28 @@
+@import "src/styles/lib";
+
+
+.Day14 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  height: auto;
+  margin: 0 -20px;
+  text-align: center;
+  overflow: hidden;
+
+  &__overlay {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(240, 240, 244, 0.6);
+  }
+
+  canvas {
+  	margin: auto;
+    // height: 400px;
+    // width: 100%;
+  }
+}

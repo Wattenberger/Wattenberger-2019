@@ -1,0 +1,33 @@
+@import "src/styles/lib";
+
+
+@keyframes dash {
+ 0% {
+   stroke-dashoffset: 0%;
+ }
+ 100% {
+   stroke-dashoffset: 100%;
+ }
+}
+.Day28 {
+  circle {
+    fill: #C5E0DC;
+    fill: transparent;
+    // opacity: 0.5;
+    transition: all 0.2s ease-out;
+    stroke: darken(#C5E0DC, 10%);
+    stroke-width: 2;
+    stroke-dasharray: 10% 10%;
+    animation: dash 2s linear;
+    // animation-direction: alternate;
+    animation-iteration-count: infinite;
+
+    &.circle--1 {
+      animation-direction: reverse;
+    }
+
+    &:nth-of-type(2n + 1) {
+      // fill: white;
+    }
+  }
+}

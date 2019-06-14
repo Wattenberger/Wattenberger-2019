@@ -1,0 +1,69 @@
+@import "src/styles/lib";
+
+.Headlines {
+  &__calendar {
+    width: 40vw;
+
+    &__year {
+      display: grid;
+      grid-template-columns: repeat(13, 13fr);
+      grid-auto-rows: 1.8vw;
+      // grid-gap: 0.1em;
+      justify-items: center;
+      align-items: center;
+
+      &__label {
+        // position: absolute;
+        // opacity: 0;
+        font-size: 0.4em;
+        font-weight: 600;
+      }
+    }
+
+    &__month {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      // border: 1px solid #eaeaea;
+    }
+  }
+
+  &__dot {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    height: 100%;
+    width: 100%;
+    // border-radius: 100%;
+    // transform: translate3d(-50%, -50%, 0);
+  }
+
+  &__year {
+    align-items: center;
+    display: flex;
+    font-size: 0.6em;
+    margin: 0.3em 0.6em;
+    line-height: 1em;
+
+    &__year {
+      font-weight: 600;
+    }
+
+    &__count {
+      width: 5em;
+      text-align: right;
+    }
+
+    &__bar {
+      height: 0.6em;
+      width: 400px;
+      background: #f4f4f4;
+      margin-left: 1em;
+
+      &__selected {
+        height: 100%;
+        background: #45aeb1;
+      }
+    }
+  }
+}

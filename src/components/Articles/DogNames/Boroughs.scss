@@ -1,0 +1,97 @@
+@import "src/styles/lib";
+
+.Borough {
+    position: relative;
+
+    &__title {
+        font-family: $font-family-serif;
+        position: absolute;
+        font-size: 2.2em;
+        font-weight: 900;
+        line-height: 1.3em;
+        top: 10px;
+        left: 0;
+        max-width: 220px;
+    }
+
+    &__text-labels {
+        position: absolute;
+        pointer-events: none;
+    }
+
+    &__text-label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 4em;
+        position: absolute;
+        text-align: center;
+        white-space: nowrap;
+
+        &--borough {
+            &-Manhattan {
+                top: 130px;
+                left: 170px;
+            }
+            &-Bronx {
+                top: 61px;
+                left: 319px;
+            }
+            &-Queens {
+                top: 228px;
+                left: 358px;
+            }
+            &-Brooklyn {
+                top: 320px;
+                left: 249px;
+            }
+            &-Staten {
+                top: 400px;
+                left: 66px;
+            }
+        }
+
+        &__title {
+            font-size: 0.6em;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            line-height: 1.2em;
+        }
+
+        &__value {
+            position: relative;
+            font-size: 1.5em;
+            line-height: 1.3em;
+            font-weight: 300;
+
+            &__sign {
+                position: absolute;
+                top: -0.2em;
+                right: -1em;
+                font-size: 0.5em;
+                opacity: 0.5;
+            }
+        }
+
+        &__total {
+            font-size: 0.5em;
+            line-height: 1em;
+            opacity: 0.6;
+            margin-bottom: 0.3em;
+        }
+    }
+
+    &__svg {
+        overflow: visible;
+    }
+
+    &__item {
+        transition: fill 0.3s ease-out;
+        stroke: #fff;
+        stroke-width: 1px;
+        stroke-linejoin: round;
+        cursor: pointer;
+    }
+}

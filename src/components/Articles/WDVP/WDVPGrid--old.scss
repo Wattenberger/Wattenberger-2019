@@ -1,0 +1,156 @@
+
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.WDVPGrid {
+
+    padding: 3em 2em;
+    font-size: 21px;
+    // background: #f2f4f7;
+
+    &__title {
+    }
+
+    &__contents {
+    }
+
+    &__metrics {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        height: 10em;
+        margin-top: 6em;
+        padding-bottom: 1.3em;
+        padding-left: 12rem;
+        background: rgba($bgc, 0.9);
+        font-size: 0.56em;
+        z-index: 20;
+
+        &__item {
+            width: 2rem;
+            padding-left: 0.5em;
+            text-align: left;
+            white-space: nowrap;
+            transform: rotate(-45deg);
+            transform-origin: right;
+            cursor: pointer;
+
+            &:hover {
+                color: #45aeb1;
+            }
+
+            &--is-selected {
+                color: #45aeb1;
+            }
+        }
+    }
+
+    &__countries {
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+    }
+
+    &Country {
+        display: flex;
+        flex-direction: row;
+        transition: all 0.3s ease-out;
+
+        &__label {
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            justify-content: flex-end;
+            flex: 0 0 12rem;
+            padding-right: 1em;
+            font-size: 0.73em;
+            text-align: right;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            &__index {
+                margin-right: 0.5em;
+                font-size: 0.7em;
+                opacity: 0.4;
+            }
+        }
+
+        &__metrics {
+            display: flex;
+            flex-direction: row;
+        }
+
+        &:first-of-type {
+            border-top-width: 2px;
+
+            .WDVPGridCountryMetric--is-sort {
+                // border-top-color: $main-color;
+            }
+        }
+
+        &:last-of-type {
+            border-bottom-width: 2px;
+
+            .WDVPGridCountryMetric--is-sort {
+                // border-bottom-color: $main-color;
+            }
+        }
+
+        &Metric {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2rem;
+            width: 2rem;
+            border: 2px solid transparent;
+            border-bottom-width: 0;
+            border-top-width: 0;
+            // padding: 0.1rem;
+
+            &:hover {
+                border: 2px solid $main-color;
+            }
+
+            &--is-sort {
+                // border-left-color: $main-color;
+                // border-right-color: $main-color;
+                z-index: 10;
+
+                .Tooltip__contents {
+                    z-index: 100;
+                }
+            }
+
+            &__tooltip {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                .Tooltip__contents {
+                    text-align: center;
+                    width: 13em;
+                    // white-space: nowrap;
+                    // text-overflow: ellipsis;
+                    // overflow: hidden;
+                }
+            }
+
+            &__circle {
+                width: 2rem;
+                height: 2rem;
+                background: $main-color;
+                // opacity: 0.7;
+                transform-origin: center;
+                // border-radius: 100%;
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.StephenKing3d {
+    padding: 0;
+    font-size: 21px;
+
+    &__contents {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 100px);
+    }
+
+    &--is-not-showing-axes {
+        .StephenKing3d__axis {
+            opacity: 0;
+        }
+    }
+
+    &__axis {
+        position: absolute;
+        top: 0;
+        font-size: 0.7em;
+        opacity: 0.5;
+        transition: all 0.3s ease-out;
+
+        &--x {
+            margin-top: -17.7vh;
+            margin-left: -9.9vw;
+            top: 50%;
+            left: 50%;
+        }
+        &--y {
+            margin-top: -17.2vh;
+            top: 50%;
+            left: 50%;
+            transform: rotate(90deg) translate(12.7vw, -11.2vw);
+            transform-origin: top center;
+        }
+        &--z {
+            margin-top: -9.3vh;
+            top: 50%;
+            left: 50%;
+            transform-origin: top center;
+            // transform: rotate(-57deg) perspective(9vw) rotateY(-55deg);
+            transform: rotate(-57deg) translate(-25px, -16px) scale(1) perspective(17vw) rotateY(-54deg);
+            margin-left: -1.4vw;
+        }
+    }
+
+    &__tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: white;
+        font-size: 0.7em;
+        padding: 0.9em 1.3em;
+        z-index: 100;
+        pointer-events: none;
+        margin-top: -1em;
+
+        &__title {
+            font-weight: 800;
+            margin-bottom: 0.2em;
+        }
+
+        &__metric {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            line-height: 1.3em;
+
+            div:first-child {
+                padding-right: 1em;
+            }
+        }
+    }
+}
+

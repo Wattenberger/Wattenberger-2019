@@ -1,0 +1,86 @@
+@import "src/styles/lib";
+
+
+.Day30 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    padding: 5em 2em;
+
+    &Chip {
+        height: 70vh;
+        overflow: visible;
+
+        .st0{
+            fill: #181a1f;
+        }
+
+        .st1{
+            fill: #000;
+        }
+
+        @keyframes pulseLine {
+              0% { stroke-dashoffset:   0%; }
+            100% { stroke-dashoffset: -290%; }
+        }
+
+        @keyframes pulseCircles {
+              0% { stroke-opacity: 0.2; }
+             30% { stroke-opacity: 0.2; }
+             40% { stroke-opacity: 1; }
+             60% { stroke-opacity: 1; }
+             70% { stroke-opacity: 0.2; }
+            100% { stroke-opacity: 0.2; }
+        }
+
+        .st2{
+            fill: none;
+            stroke: #D9F5FF;
+            stroke-width: 2.448;
+            stroke-miterlimit: 10;
+        }
+
+        #Layer_3 .st2 {
+            animation: pulseLine 7s infinite;
+            stroke-dasharray: 0 160% 35%;
+
+            @for $i from 0 through 100 {
+              &:nth-child(#{$i}) {
+                animation-delay: 0.2s + $i * 0.2s;
+              }
+            }
+        }
+
+        #Layer_5 .st2 {
+            fill: #181a1f;
+            animation: pulseCircles 60s infinite;
+
+            @for $i from 0 through 100 {
+              &:nth-child(#{$i}) {
+                animation-delay: 0.9s + $i * 0.2s;
+              }
+            }
+        }
+
+        #Layer_3 .backup .st2 {
+            animation: none;
+            opacity: 0.2;
+            stroke-dasharray: none;
+        }
+
+        .st3{
+            fill: none;
+            stroke: #a5bac18a;
+            stroke-width: 1px;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-miterlimit: 10;
+        }
+
+        #Layer_6 .st3 {
+            stroke: none;
+            fill: #000;
+        }
+    }
+}

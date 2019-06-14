@@ -1,0 +1,29 @@
+@import "src/styles/lib";
+
+
+.Day23 {
+
+  &__background {
+    fill: $bgc;
+  }
+
+  .puppies {
+    transition: transform 0.3s ease-out;
+  }
+
+  @keyframes popIn {
+    0%   { opacity: 0; transform: scale3d(0,   0,   1); }
+    80%  { opacity: 1; transform: scale3d(1.3, 1.3, 1); }
+    100% { opacity: 1; transform: scale3d(1,   1,   1); }
+  }
+
+  .puppy {
+    animation: popIn 0.3s ease-out;
+    transform-origin: center center;
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: scale3d(1.4, 1.4, 1) rotate(25deg);
+    }
+  }
+}

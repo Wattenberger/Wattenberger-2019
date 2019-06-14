@@ -1,0 +1,228 @@
+@import "src/styles/lib";
+@import './WDVP.scss';
+
+$main-color: #30336b;
+
+.WDVPBars {
+    position: relative;
+    font-size: 21px;
+    display: flex;
+    align-items: center;
+    background: #282a38;
+    // padding: 3em 0;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+
+        .WDVPBars {
+            &__controls {
+                height: auto;
+                width: 100%;
+                flex: none;
+            }
+
+            &__chart {
+                width: 100%;
+                min-height: 50vw;
+            }
+        }
+    }
+
+    &.WDVP__full-width {
+        margin-top: 3em;
+        margin-bottom: 3em;
+    }
+
+    &__title {
+    }
+
+    &__contents {
+    }
+
+    &__controls {
+        flex: none;
+        width: 15em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 60vw;
+        // background: rgb(243, 241, 241);
+        // border-top: 3em solid $c-dark;
+        // border-bottom: 3em solid $c-dark;
+        background: $c-dark;
+        color: $c-light;
+        // padding: 3em 0;
+        white-space: nowrap;
+    }
+
+    &__toggles {
+        flex: none;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0.5em 0.7rem;
+    }
+    &__toggle {
+        padding: 0.3rem;
+    }
+
+    &__metrics {
+        position: relative;
+        // position: absolute;
+        // left: 0;
+        // top: 50%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        font-size: 0.6em;
+        padding-top: 1em;
+        line-height: 1em;
+        text-align: left;
+        width: 100%;
+        padding-bottom: 1em;
+        overflow: auto;
+        // overflow: hidden;
+        z-index: 10;
+        cursor: default;
+
+        &__item {
+            flex: none;
+            position: relative;
+            padding: 0.5em 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+
+            &:hover {
+                background: #000;
+            }
+
+            &--is-selected {
+                // color: $c-accent-1;
+                background: #000;
+                // color: $c-dark;
+                font-weight: 900;
+
+                &:hover {
+                    background: #000;
+                }
+
+            }
+
+            &__index {
+                display: inline-block;
+                width: 2em;
+                opacity: 0.5;
+            }
+
+            &__details {
+                // color: $tc;
+                padding-left: 2.3em;
+                padding-top: 0.2em;
+                padding-bottom: 0.2em;
+                font-size: 0.9em;
+                line-height: 1.3em;
+                // height: 3.8em;
+                white-space: normal;
+                opacity: 0.7;
+                font-weight: 300;
+                font-style: italic;
+            }
+        }
+
+        &__tooltip {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            white-space: nowrap;
+            z-index: 10;
+
+            .Tooltip__contents {
+                transform: translate(-100%, -50%);
+                width: 15em;
+                white-space: normal;
+                top: 50%;
+                // left: auto;
+                left: 0;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    &__tooltip {
+        position: absolute;
+        left: 3em;
+        width: 15em;
+        min-height: 6em;
+        top: 2em;
+        padding: 1em 2em;
+        background: white;
+        font-size: 1em;
+        line-height: 1.2em;
+    }
+
+    &__chart {
+        position: relative;
+        flex: 1;
+        overflow: hidden;
+    }
+
+    .RadioGroup {
+        .RadioGroup__option {
+            border-color: #000;
+            color: white;
+            &:hover:not(.RadioGroup__option--selected) {
+              background: rgba(#000, 0.3);
+            }
+        }
+
+        .RadioGroup__option--selected {
+            background: #000;
+        }
+    }
+
+    &Chart {
+        width: 100%;
+
+        &__label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            text-align: center;
+            color: #666;
+        }
+
+        &__zoom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 1.3em;
+            width: 1.3em;
+            font-size: 1.4em;
+            font-weight: 900;
+            background: white;
+            border-radius: 100%;
+            cursor: pointer;
+
+            &:hover {
+                background: #eaeaea;
+            }
+
+            &--down {
+                margin-top: 0.2em;
+            }
+
+            &s {
+                position: absolute;
+                top: 2em;
+                left: 0.6em;
+            }
+        }
+    }
+}

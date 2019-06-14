@@ -1,0 +1,20 @@
+@import "src/styles/lib";
+
+
+.Day12 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  height: auto;
+  margin: 0 -20px;
+  text-align: center;
+  background: #fff;
+  overflow: hidden;
+
+  canvas {
+  	margin: auto;
+    // height: 400px;
+    // width: 100%;
+  }
+}

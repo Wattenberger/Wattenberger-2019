@@ -1,0 +1,17 @@
+
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.Playground {
+    padding: 0;
+    font-size: 21px;
+
+    &__contents {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 100px);
+        background: #e1eeed;
+    }
+}
+

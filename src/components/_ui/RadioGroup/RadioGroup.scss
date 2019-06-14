@@ -1,0 +1,36 @@
+@import "src/styles/lib";
+
+.RadioGroup {
+  font-size: $font-size-xsmall;
+}
+
+.RadioGroup__option {
+  display: inline-block;
+  padding: 0.3em 1em;
+  border: 1px solid $accent-3;
+  // border-right-width: 0;
+  margin-right: -1px;
+  margin-top: -1px;
+  cursor: pointer;
+  &:first-child {
+    border-radius: 2px 0 0 2px;
+  }
+  &:last-child {
+    margin-right: 0;
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
+  }
+  &:hover:not(.RadioGroup__option--selected) {
+    background: #fff;
+  }
+}
+
+.RadioGroup__option--selected {
+  background: $accent-3;
+  color: #fff;
+  // cursor: default;
+}
+
+.RadioGroup__clear {
+  display: inline-block;
+}

@@ -1,0 +1,49 @@
+@import "src/styles/lib";
+
+.WatercolorCanvas {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &__canvas {
+      height: 100%;
+      width: 100%;
+      filter: blur(20px) contrast(2);
+      -webkit-filter: blur(20px) contrast(2);
+  }
+
+  &__colors {
+      position: absolute;
+      top: 7vh;
+      right: 7vw;
+      width: 5em;
+      max-width: 30vw;
+
+      &__block {
+          display: flex;
+          height: 1.6em;
+          width: 100%;
+          margin-top: 0.1em;
+          border: 1px solid transparent;
+          cursor: pointer;
+          transition: transform 0.1s ease-out;
+          pointer-events: all;
+
+          &--selected {
+              border-color: $accent-1;
+              border-color: $accent-3;
+              transform: scaleX(1.1);
+          }
+
+          &:hover {
+              transform: scaleX(1.1);
+          }
+
+          &__color {
+              flex: 1;
+          }
+      }
+  }
+}

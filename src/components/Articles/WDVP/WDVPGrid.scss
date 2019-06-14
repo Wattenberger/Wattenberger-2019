@@ -1,0 +1,290 @@
+
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.WDVPGrid {
+    padding: 3em 2em;
+    font-size: 21px;
+    // background: #f2f4f7;
+
+    &__title {
+    }
+
+    &__contents {
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: row;
+        padding-left: 160px;
+
+        &:not(:hover) {
+            .WDVPGrid__header__item:nth-child(4n) {
+                opacity: 1;
+            }
+        }
+
+        &__item {
+            position: relative;
+            flex: 1;
+            font-size: 0.6em;
+            opacity: 0;
+
+            &--is-hovered {
+                opacity: 1;
+            }
+
+            &__text {
+                position: absolute;
+                top: -2em;
+                transform: rotate(-45deg);
+                transform-origin: left;
+                text-align: left;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &__rows {
+    }
+
+    &Chart {
+
+        &__metric {
+            font-size: 0.6em;
+            cursor: pointer;
+
+            &:hover {
+                fill: #45aeb1 !important;
+            }
+        }
+
+        &__country {
+            &__text {
+                transform: rotate(-45deg);
+                text-align: left;
+                font-size: 0.5em;
+                opacity: 0.04;
+            }
+
+            &:hover {
+                .WDVPGridChart__country__text {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+
+    &Metric {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+
+        // &:hover {
+        //     .WDVPGridMetric__label {
+        //         opacity: 1;
+        //     }
+        // }
+
+        &--is-sort {
+            .WDVPGridMetric__label {
+                color: #45aeb1;
+            }
+        }
+
+        &__label {
+            position: absolute;
+            width: 11rem;
+            flex: 0 0 11rem;
+            margin-right: 1em;
+            text-align: right;
+            font-size: 0.6em;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+
+            &:hover {
+                color: #45aeb1;
+            }
+            // opacity: 0;
+        }
+
+        &__countries {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            padding-left: 12rem;
+        }
+
+        &Country {
+            position: relative;
+            flex: 1;
+            height: 1em;
+
+            &:hover {
+                outline: 2px solid $main-color;
+                z-index: 10;
+            }
+        }
+    }
+
+
+
+
+
+    &__chart {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        margin-top: 5em;
+
+        svg {
+            overflow: visible;
+            shape-rendering: crispedges;
+        }
+    }
+
+    &__metrics {
+        flex: 0 0 10rem;
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        &__item {
+            flex: 1;
+            max-height: 1.5rem;
+            font-size: 0.6em;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-right: 1em;
+            overflow: hidden;
+            cursor: pointer;
+
+            &:hover {
+                color: #45aeb1;
+            }
+
+            &--is-selected {
+                color: #45aeb1;
+            }
+        }
+    }
+
+    &__countries {
+        height: 100%;
+        flex: 1;
+        // display: flex;
+        // flex-direction: row;
+        // z-index: 2;
+    }
+
+    &Country {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        transition: all 0.3s ease-out;
+
+        &:hover {
+            .WDVPGridCountry__label {
+                opacity: 1;
+            }
+        }
+
+        &__label {
+            position: absolute;
+            font-size: 0.6em;
+            opacity: 0;
+
+            &__text {
+                position: absolute;
+                display: flex;
+                bottom: 0;
+                transform: rotate(-45deg);
+                transform-origin: left;
+                text-align: left;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            &__index {
+                margin-right: 0.5em;
+                font-size: 0.7em;
+                opacity: 0.4;
+            }
+        }
+
+        &__metrics {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        &:first-of-type {
+            border-top-width: 2px;
+
+            .WDVPGridCountryMetric--is-sort {
+                // border-top-color: $main-color;
+            }
+        }
+
+        &:last-of-type {
+            border-bottom-width: 2px;
+
+            .WDVPGridCountryMetric--is-sort {
+                // border-bottom-color: $main-color;
+            }
+        }
+
+        &Metric {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease-out;
+            // min-width: 0.3em;
+
+            &:hover {
+                outline: 2px solid $main-color;
+                z-index: 10;
+            }
+
+            // &--is-sort {
+                // border-left-color: $main-color;
+                // border-right-color: $main-color;
+                // z-index: 10;
+
+            //     .Tooltip__contents {
+            //         z-index: 100;
+            //     }
+            // }
+
+            &__tooltip {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+
+                .Tooltip__contents {
+                    text-align: center;
+                    width: 13em;
+                    // white-space: nowrap;
+                    // text-overflow: ellipsis;
+                    // overflow: hidden;
+                }
+            }
+        }
+    }
+}

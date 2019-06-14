@@ -1,0 +1,21 @@
+@import "src/styles/lib";
+
+
+.Chart {
+  display: inline-block;
+  position: relative;
+  min-height: 270px;
+
+  &__clip-path {
+    pointer-events: none;
+    transition: width $transition-fast;
+  }
+
+  &__tooltip-container {
+    @include abs(0,0,0,0);
+  }
+
+  &__listener {
+    fill: transparent;
+  }
+}

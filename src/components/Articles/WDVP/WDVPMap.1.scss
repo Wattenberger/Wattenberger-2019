@@ -1,0 +1,159 @@
+@import "src/styles/lib";
+@import './WDVP.scss';
+
+.WDVPMap {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &__controls {
+        flex: 0 0 19em;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: -3em;
+        background: white;
+        white-space: nowrap;
+    }
+
+    &__toggle {
+        padding: 0.8em 1rem;
+    }
+
+    &__metrics {
+        position: relative;
+        // position: absolute;
+        // left: 0;
+        // top: 50%;
+        font-size: 0.6em;
+        padding-top: 1em;
+        line-height: 1em;
+        text-align: left;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10;
+        cursor: default;
+
+        &__item {
+            position: relative;
+            padding: 0.5em 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            &--is-selected {
+                // color: $c-accent-1;
+                background: $c-dark;
+                color: white;
+                font-weight: 900;
+            }
+
+            &__details {
+                // color: $tc;
+                white-space: normal;
+                font-size: 0.9em;
+                line-height: 1.3em;
+                height: 3.8em;
+                opacity: 0.5;
+                font-weight: 100;
+                font-style: italic;
+            }
+        }
+
+        &__tooltip {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            white-space: nowrap;
+            z-index: 10;
+
+            .Tooltip__contents {
+                transform: translate(-100%, -50%);
+                width: 15em;
+                white-space: normal;
+                top: 50%;
+                // left: auto;
+                left: 0;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    &__chart {
+        flex: 1;
+        display: flex;
+        // padding-left: 16em;
+    }
+
+    &__svg {
+        position: relative;
+        width: 100%;
+        // margin-left: -3em;
+        // width: calc(100% - 16em);
+        max-width: 90em;
+        padding-left: 2em;
+        padding-right: 0.5em;
+        // padding-bottom: 52.5%;
+        height: 52.5%;
+        overflow: visible;
+        z-index: 0;
+    }
+
+    &Country {
+        stroke: white;
+        stroke-width: 0.4;
+        transition: fill 0.3s ease-out;
+
+        &--is-hovered {
+            stroke: $c-dark;
+            stroke-width: 2;
+            pointer-events: none;
+            transition: none;
+        }
+    }
+
+    &Tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center;
+        z-index: 20;
+        width: 15em;
+
+        display: flex;
+        flex-direction: column;
+        line-height: 1.4em;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8em;
+        background: white;
+        box-shadow: 0 0.2em 0.6em 0.2em rgba($c-dark, 0.03);
+        padding: 0.3em 0.6em;
+        pointer-events: none;
+
+        h6 {
+            margin: 0;
+        }
+
+        &__metric {
+            display: flex;
+            justify-content: space-between;
+            white-space: nowrap;
+            width: 100%;
+
+            &__label {
+                overflow: hidden;
+                padding-right: 0.6em;
+                font-size: 0.8em;
+                text-overflow: ellipsis;
+            }
+
+            &__number {
+                text-align: right;
+                font-weight: 800;
+            }
+        }
+    }
+}

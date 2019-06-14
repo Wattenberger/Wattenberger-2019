@@ -1,0 +1,200 @@
+{
+    "ISO Country code": {
+      "source": "FAO",
+      "URL": "http://www.fao.org/countryprofiles/iso3list/en/",
+      "notes": "",
+      "year": 2018
+    },
+    "population": {
+      "source": "World Bank Data",
+      "URL": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "notes": "",
+      "year": 2018
+    },
+    "surface area (Km2)": {
+      "source": "CIA World Factbook",
+      "URL": "https://www.cia.gov/library/publications/the-world-factbook/fields/2147.html#al",
+      "notes": "",
+      "year": 2018
+    },
+    "GINI index": {
+      "source": "CIA World Factbook",
+      "URL": "https://www.cia.gov/library/publications/the-world-factbook/rankorder/2172rank.html",
+      "notes": "inequality in the distribution of family income. Lower the better.",
+      "year": "varies by country"
+    },
+    "happy planet index": {
+      "source": "Happy Planet Index",
+      "URL": "http://happyplanetindex.org/",
+      "notes": "well being + life expectancy + inequalities + ecological footprint  \n(higher = better)",
+      "year": 2016
+    },
+    "human development index": {
+      "source": "UNDP",
+      "URL": "http://hdr.undp.org/en/data#",
+      "notes": "healthy life + knowledge + standard of living  \n(high = better)",
+      "year": 2017
+    },
+    "world happiness report score": {
+      "source": "World Happiness Report",
+      "URL": "http://worldhappiness.report/ed/2018/",
+      "notes": "polled inhabitants rate their quality of life from 1-10\n(higher = better)",
+      "year": 2017
+    },
+    "sustainable economic development assessment (SEDA)": {
+      "source": "Boston Consulting Group (BCG)",
+      "URL": "https://www.bcg.com/en-gb/publications/interactives/seda-2018-guide.aspx",
+      "notes": "an assessment based on 40 indicators in sustainability, economics, & investments\n(higher = better)",
+      "year": 2018
+    },
+    "GDP (billions PPP)": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2018
+    },
+    "GDP per capita (PPP)": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2018
+    },
+    "GDP growth (annual %)": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2018
+    },
+    "health expenditure % of GDP": {
+      "source": "World Bank",
+      "URL": "https://data.worldbank.org/indicator/SH.XPD.CHEX.GD.ZS",
+      "notes": "",
+      "year": 2015
+    },
+    "health expenditure per person": {
+      "source": "World Bank",
+      "URL": "https://data.worldbank.org/indicator/SH.XPD.CHEX.PP.CD",
+      "notes": "(current international $)",
+      "year": 2015
+    },
+    "education expenditure % of GDP": {
+      "source": "World Bank",
+      "URL": "https://data.worldbank.org/indicator/SE.XPD.TOTL.GD.ZS?view=chart",
+      "notes": "",
+      "year": 2014
+    },
+    "education expenditure per person": {
+      "source": "our calcs",
+      "URL": "",
+      "notes": "(current USD per capita)",
+      "year": "2,014"
+    },
+    "school life expectancy (years)": {
+      "source": "CIA World Factbook",
+      "URL": "https://www.cia.gov/library/publications/the-world-factbook/fields/2205.html#202",
+      "notes": "average male & female, primary to tertiary (years)",
+      "year": "latest year"
+    },
+    "unemployment (%)": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2018
+    },
+    "government spending score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "Burden of gov spending on the country (0 = best)",
+      "year": 2018
+    },
+    "government expenditure (% of GDP)": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2018
+    },
+    "political rights score": {
+      "source": "Freedom House",
+      "URL": "https://freedomhouse.org/content/freedom-world-data-and-resources",
+      "notes": "out of 7\n (lower = better)",
+      "year": 2017
+    },
+    "civil liberties score": {
+      "source": "Freedom House",
+      "URL": "https://freedomhouse.org/content/freedom-world-data-and-resources",
+      "notes": "out of 7\n (lower = better)",
+      "year": 2017
+    },
+    "political stability & absence of violence": {
+      "source": "World Bank",
+      "URL": "http://info.worldbank.org/governance/wgi/#home",
+      "notes": "Likelihood of political instability",
+      "year": 2017
+    },
+    "government effectiveness": {
+      "source": "World Bank",
+      "URL": "http://info.worldbank.org/governance/wgi/#home",
+      "notes": "Quality of public services, civil service, policy formation, government commitment (-2.5 to +2.5)",
+      "year": 2017
+    },
+    "regulatory quality": {
+      "source": "World Bank",
+      "URL": "http://info.worldbank.org/governance/wgi/#home",
+      "notes": "level of policies to support private sector",
+      "year": 2017
+    },
+    "rule of law": {
+      "source": "World Bank",
+      "URL": "http://info.worldbank.org/governance/wgi/#home",
+      "notes": "quality of rule of law + likelihood of crime / violence",
+      "year": 2017
+    },
+    "control of corruption": {
+      "source": "World Bank",
+      "URL": "http://info.worldbank.org/governance/wgi/#home",
+      "notes": "",
+      "year": 2017
+    },
+    "judicial effectiveness score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "judicial independence + quality of the judicial process,\nfairness\n(/100)",
+      "year": 2018
+    },
+    "government integrity score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "Public trust + transparency + corruption",
+      "year": 2018
+    },
+    "property rights score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "How freely can inhabitants acquire private property?",
+      "year": 2018
+    },
+    "tax burden score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "Individual tax rate + corporate tax rate + total tax as % of GDP",
+      "year": 2018
+    },
+    "overall economic freedom score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "",
+      "year": 2017
+    },
+    "financial freedom score": {
+      "source": "Heritage Foundation",
+      "URL": "https://www.heritage.org/index/explore",
+      "notes": "Level of gov regulation of financial services, foreign competition, credit & capital development",
+      "year": 2018
+    },
+    "women MPs (% of all MPs)": {
+      "source": "World Bank",
+      "URL": "https://data.worldbank.org/indicator/SG.GEN.PARL.ZS",
+      "notes": "",
+      "year": 2017
+    }
+  }

@@ -1,0 +1,252 @@
+
+@import "src/styles/lib";
+
+$main-color: #30336b;
+
+.WDVPScatter {
+    padding: 3em 2em;
+    font-size: 21px;
+    // background: #f2f4f7;
+    width: 100%;
+    flex: 1;
+    overflow: hidden;
+
+    @media (max-width: 700px) {
+        padding: 3em 0;
+
+        .WDVPScatter {
+            &__select {
+                min-width: 7em;
+            }
+        }
+    }
+
+    &__chart-wrapper {
+        width: 100%;
+        padding: 1em 0;
+        transform-origin: center center;
+        transition: all 0.3s ease-out;
+        // overflow: hidden;
+    }
+
+    .Chart__listener {
+        display: none;
+    }
+
+    &__title {
+        // display: inline-block;
+        position: relative;
+        color: $tc;
+        // color: #474787;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-bottom: 0;
+
+        &-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+
+        &__button {
+            display: block;
+            font-size: 0.5em;
+        }
+    }
+
+    &__contents {
+        position: relative;
+        // display: flex;
+        // background: #f2f4f7;
+    }
+
+    &__controls {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        // &__group {
+        //     flex: 1;
+        //     display: flex;
+        //     align-items: center;
+        //     width: 100%;
+
+        //     .WDVP__select + .WDVP__select {
+        //         margin-left: 1em;
+        //     }
+        // }
+    }
+
+    &__select {
+        flex: 1;
+        min-width: 20em;
+        max-width: 95vw;
+        margin: 0.3em 0.6em;
+        font-size: 0.7em;
+
+        &-add-on {
+            flex: none;
+            color: desaturate(darken($gray, 16%), 10%);
+            background: $gray;
+            padding: 0.42em 0.6em;
+            font-size: 0.8em;
+            font-weight: 900;
+            margin-right: -0.7em;
+            margin-left: 0.5em;
+            border-radius: 6px 0 0 6px;
+            z-index: 10;
+        }
+
+        &__group {
+            flex: 1;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        & .WDVPScatterl__select__control {
+            border-color: $gray;
+            box-shadow: none;
+
+            &--is-focused,
+            &--is-focused:hover {
+                border-color: $gray;
+                box-shadow: none;
+            }
+        }
+    }
+
+    &__toggle {
+        margin: 0 0.6em;
+        font-size: 0.7em;
+    }
+
+    .Chart__svg {
+        overflow: visible;
+    }
+
+    &__chart {
+        position: relative;
+
+        .Axis .domain {
+            stroke: desaturate(darken($gray, 16%), 10%);
+        }
+    }
+
+    &__sentence {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 0.3em;
+
+        &__group {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__aside {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // margin-bottom: 1em;
+        color: rgba($tc, 0.5);
+        font-size: 0.8em;
+        font-style: italic;
+
+        .WDVPScatter__select {
+            font-size: 1.2em;
+        }
+    }
+
+    &__line {
+        transition: all 0.3s ease-out;
+        transform-origin: center center;
+    }
+
+    &Country {
+        transition: all 0.4s ease-out,
+                    stroke 0.15s ease-out;
+
+        &Highlight {
+            &:hover {
+                .WDVPScatterCountryHighlight__outline {
+                    stroke: white !important;
+                }
+                // transform: scale(1.2);
+
+                .WDVPScatterCountryHighlight__text-wrapper {
+                    opacity: 1 !important;
+                }
+            }
+
+            &__text,
+            &__outline {
+                transition: all 0.4s ease-out,
+                            stroke 0.15s ease-out;
+            }
+
+            &__text-wrapper {
+                font-size: 0.6em;
+                text-anchor: middle;
+                // opacity: 0;
+                pointer-events: none;
+            }
+
+        }
+    }
+
+    &__crosshair {
+        fill: $accent-3;;
+    }
+
+    &__footer {
+        padding: 6em 1.9em 0;
+        font-size: 0.6em;
+        opacity: 0.5;
+    }
+
+    .Line {
+        stroke-width: 1px;
+    }
+
+    &Tooltip {
+        position: absolute;
+        top: -5em;
+        left: 0;
+        width: 22em;
+        padding: 0.6em 0.9em;
+        font-size: 0.6em;
+        line-height: 1.3em;
+        text-align: center;
+        background: $gray;
+        background: white;
+        border: 1px solid $gray;
+        // transition: all 0.1s ease-out;
+        opacity: 0.9;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: stretch;
+
+        &__header {
+            flex: 1;
+            width: calc(100% + 1.8em);
+            margin: -1.1em -1.1em 0.6em;
+            padding: 0.4em;
+            background: $accent-3;
+            color: white;
+        }
+    }
+}

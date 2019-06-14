@@ -1,0 +1,138 @@
+@import "src/styles/lib";
+
+$aspect-ratio: 58vw;
+
+.Portfolio {
+  padding: $horizontal-padding;
+}
+
+.Portfolio__category {
+  margin-top: 160px;
+}
+
+.Portfolio__category__label {
+  position: relative;
+  &:before {
+    content: "";
+    @include abs(0.5em, auto, auto, -1.6em);
+    width: $horizontal-padding;
+    border-bottom: 1px solid;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.Portfolio__item__description {
+  position: relative;
+  margin-bottom: 1.6em;
+
+  ol {
+    padding-left: 3em;
+
+    li {
+      margin-bottom: 0.6em;
+    }
+  }
+}
+
+.Portfolio__item__link {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.Portfolio__item {
+  margin: 2em 0 10em 0;
+}
+
+.Portfolio__item__images {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0 (-$horizontal-padding);
+
+  .WDVPMap__header:before {
+    background: linear-gradient(to top,
+      rgba($bgc, 0),
+      rgba($bgc, 0.8) 32%,
+      rgba($bgc, 0.94) 47%,
+      rgba($bgc, 1)    90%,
+    );
+  }
+}
+
+.Portfolio__item__image {
+  flex: 1 1 50%;
+  height: auto;
+  height: $aspect-ratio / 2;
+  width: 50%;
+  overflow: hidden;
+  img {
+    width: 100%;
+  }
+  & + .Portfolio__item__image {
+    // margin-left: 10px;
+  }
+  &:nth-child(3) {
+    width: 100%;
+    height: $aspect-ratio;
+  }
+}
+
+.Portfolio__item__image__content {
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+.Portfolio__item__tools {
+  display: flex;
+  flex-direction: column;
+  @include abs(7px, auto, auto, -18px);
+  width: 210px;
+  height: 200px;
+  text-align: right;
+  transform: translate3d(-100%, 0, 0);
+}
+
+.Portfolio__item__tool {
+}
+
+@media (max-width: 900px) {
+  .Portfolio {
+    padding: $horizontal-padding-skinny;
+  }
+
+  .Portfolio__item__tools {
+    position: relative;
+    left: 0;
+    height: auto;
+    width: 100%;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    margin-bottom: 21px;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    transform: none;
+  }
+
+  .Portfolio__item__tool {
+    margin-left: 4px;
+  }
+
+  .Portfolio__category__label {
+    &:before {
+      width: $horizontal-padding-skinny;
+    }
+  }
+
+  .Portfolio__item__image {
+    flex: 1 1 100%;
+    height: $aspect-ratio;
+  }
+
+  .Portfolio__item__images {
+    margin: 0 (-$horizontal-padding-skinny);
+  }
+}

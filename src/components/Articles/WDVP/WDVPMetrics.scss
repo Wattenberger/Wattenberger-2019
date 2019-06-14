@@ -1,0 +1,141 @@
+@import "src/styles/lib";
+@import './WDVP.scss';
+
+$main-color: #30336b;
+
+.WDVPMetrics {
+    position: relative;
+
+    &__title {
+    }
+
+    &__contents {
+    }
+
+    &__charts {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        flex: 1;
+    }
+
+    &Chart {
+        width: 100%;
+        // height: 20em;
+        padding: 0 2em;
+        margin-bottom: 2em;
+
+        &__header {
+            font-weight: 900;
+            font-size: 0.8em;
+            margin-bottom: 1.6em;
+        }
+
+        &__items {
+            display: flex;
+            width: 100%;
+            align-items: flex-end;
+
+            &:hover {
+                .WDVPMetricsChart__item--is-selected:not(:hover) {
+                    .WDVPMetricsChart__item__bar {
+                        background: white;
+                        &__fill {
+                            background: $c-accent-1 !important;
+                        }
+                    }
+
+                    .WDVPMetricsChart__item__bar__value,
+                    .WDVPMetricsChart__item__label {
+                        opacity: 0.2;
+                    }
+                }
+
+            }
+        }
+
+        &__item {
+            flex: 1;
+            @media (min-width: 700px) {
+                flex: 0 0 2px;
+            }
+            height: 5em;
+            width: 2px;
+            // padding-right: 1px;
+
+            @keyframes slideUpBar {
+                0%   { opacity: 0; transform: translateY(3em); }
+                100% { opacity: 1; transform: translateY(0); }
+            }
+
+            animation: slideUpBar 0.2s ease-out;
+            animation-fill-mode: forwards;
+            opacity: 0;
+
+            @for $i from 0 through 195 {
+              &:nth-child(#{$i}) {
+                animation-delay: 0.1s + $i * 0.01s;
+              }
+            }
+
+            &--is-selected,
+            &:hover {
+                .WDVPMetricsChart__item__bar {
+                    background: white;
+                    &__fill {
+                        background: $c-accent-1 !important;
+                    }
+                }
+
+                .WDVPMetricsChart__item__bar__value,
+                .WDVPMetricsChart__item__label {
+                    opacity: 1;
+                }
+            }
+
+            &--is-selected {
+            }
+
+            &__label {
+                position: absolute;
+                transform: rotate(45deg);
+                transform-origin: top left;
+                margin-left: 0.4em;
+                font-size: 0.5em;
+                line-height: 1.2em;
+                opacity: 0;
+                white-space: nowrap;
+            }
+
+            &__bar {
+                position: relative;
+                display: flex;
+                align-items: flex-end;
+                height: 4em;
+                width: 1px;
+                shape-rendering: crispEdges;
+                // width: 100%;
+
+                &__fill {
+                    width: 100%;
+                    background: $c-accent-2;
+                    transition: height 0.3s ease-out;
+                }
+
+                &__value {
+                    position: absolute;
+                    top: -2.6em;
+                    width: 0;
+                    overflow: visible;
+                    font-size: 0.5em;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0;
+                }
+            }
+        }
+    }
+}
+
