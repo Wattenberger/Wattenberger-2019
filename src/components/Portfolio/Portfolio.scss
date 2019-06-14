@@ -3,7 +3,8 @@
 $aspect-ratio: 58vw;
 
 .Portfolio {
-  padding: $horizontal-padding;
+  padding: 2em $horizontal-padding;
+  // max-width: 60em;
 }
 
 .Portfolio__category {
@@ -24,6 +25,7 @@ $aspect-ratio: 58vw;
 .Portfolio__item__description {
   position: relative;
   margin-bottom: 1.6em;
+  max-width: 50em;
 
   ol {
     padding-left: 3em;
@@ -88,7 +90,7 @@ $aspect-ratio: 58vw;
 .Portfolio__item__tools {
   display: flex;
   flex-direction: column;
-  @include abs(7px, auto, auto, -18px);
+  @include abs(7px, auto, auto, -1.6em);
   width: 210px;
   height: 200px;
   text-align: right;
@@ -98,7 +100,7 @@ $aspect-ratio: 58vw;
 .Portfolio__item__tool {
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .Portfolio {
     padding: $horizontal-padding-skinny;
   }

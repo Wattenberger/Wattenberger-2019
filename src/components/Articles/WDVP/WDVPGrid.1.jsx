@@ -4,7 +4,7 @@ import * as d3 from "d3"
 import numeral from "numeral"
 import classNames from "classnames"
 import _ from "lodash"
-import Tooltip from "components/_ui/Tooltip/Tooltip"
+import Tooltip from "components/_ui/Tooltip-old/Tooltip"
 import Button from "components/_ui/Button/Button"
 import Chart from 'components/_ui/Chart/Chart';
 import { createScale } from 'components/_ui/Chart/utils/scale';

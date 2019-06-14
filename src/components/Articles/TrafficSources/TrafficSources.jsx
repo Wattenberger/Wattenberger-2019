@@ -15,9 +15,9 @@ import siteIcons from "./iconPaths.json"
 import { getPointFromAngleAndDistance } from "utils/utils"
 import stories from "./stories.json"
 import { useInterval } from "utils/utils"
-console.log(stories)
-
 import './TrafficSources.scss';
+
+console.log(stories)
 
 const slicedStories = stories
 // const slicedStories = _.shuffle(stories.slice(0, 38))

@@ -62,7 +62,7 @@ class Chart extends Component {
     }
   }
 
-  setSize() {
+  setSize = () => {
     if (!this._isMounted) return
     let {height, width, margin} = this.props
     this.setState({height: getHeight(height, margin)})
@@ -75,7 +75,7 @@ class Chart extends Component {
 
   componentDidMount() {
     this._isMounted = true
-    this._setSize = ::this.setSize
+    this._setSize = this.setSize
     window.addEventListener("resize", this._setSize)
     setTimeout(() => {
       this.setState({isLoaded: true})

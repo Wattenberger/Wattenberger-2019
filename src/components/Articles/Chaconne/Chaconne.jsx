@@ -30,8 +30,9 @@ import perlman from "./perlman-small.json"
 import vengerov from "./vengerov-small.json"
 import zimmerman from "./zimmerman-small.json"
 import barData from "./barData.json"
-console.log(bell, barData)
 import './Chaconne.scss';
+
+console.log(bell, barData)
 const musicianData = {
   "bell": bell,
   "ehnes": ehnes,

@@ -1,0 +1,26 @@
+@import "src/styles/lib";
+
+.Tooltip {
+  position: relative;
+
+  &:hover {
+    .Tooltip__contents {
+      display: block;
+    }
+  }
+
+  &__contents {
+    position: absolute;
+    top: -0.2em;
+    left: 50%;
+    display: none;
+    background: #30336b;
+    color: white;
+    padding: 0.6em 0.6em;
+    transform: translate3d(-50%, -100%, 0);
+    font-size: 0.6em;
+    line-height: 1.3em;
+    pointer-events: none;
+    z-index: 100;
+  }
+}

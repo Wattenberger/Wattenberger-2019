@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import classNames from "classnames"
+import _ from "lodash"
 import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
 import Button from 'components/_ui/Button/Button'
 import {movementUtils} from "./utils/movementUtils"
@@ -173,7 +174,7 @@ class Day14 extends Component {
       })
       face[featureKey] = _.extend({}, defaultAspects, feature, args)
     })
-    
+
     return face
   }
 

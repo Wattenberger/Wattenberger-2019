@@ -7,7 +7,7 @@ import * as d3 from "d3"
 import Chart from "components/_ui/Chart/Chart"
 import Axis from "components/_ui/Chart/Axis/Axis"
 import Scatter from "components/_ui/Chart/Scatter/Scatter"
-import Tooltip from "components/_ui/Chart/Tooltip/Tooltip"
+import Tooltip from "components/_ui/Chart/Tooltip-old/Tooltip"
 const data = {}
 
 require('./Superbowl.scss')

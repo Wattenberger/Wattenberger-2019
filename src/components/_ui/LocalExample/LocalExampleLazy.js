@@ -9,7 +9,6 @@ const LocalExampleLazy = ({ className, ...props }) => {
     const debouncedIsInViewChange= useRef()
 
     const onIsInViewChange = status => {
-        console.log(status)
         if (isInView) return
         if (status != 0) return
         setIsInView(true)

@@ -78,6 +78,9 @@ class ScrollEvent extends Component {
 
   onScroll = e => {
     if (!this.isInView) return
+    if (!this._isMounted) return
+    if (!this.elem.current) return
+
     const { thresholdPercent } = this.props
     const { viewStatus } = this.state
 

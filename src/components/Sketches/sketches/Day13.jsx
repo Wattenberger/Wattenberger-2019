@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import classNames from "classnames"
+import _ from "lodash"
 import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
 import Button from 'components/_ui/Button/Button'
 import {movementUtils} from "./utils/movementUtils"
@@ -38,7 +39,7 @@ class Day13 extends Component {
   startNewGame = () => {
     let {playing} = this.state
     if (playing) return
-    
+
     this.setState({
       snake: null,
       target: null,

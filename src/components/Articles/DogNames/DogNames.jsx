@@ -12,9 +12,7 @@ import Boroughs from "./Boroughs"
 //   date: new Date(_.get(info, "Date")),
 //   job: _.get(info,"Job").split(", "),
 // }))
-// console.table(_.first(parsedData))
 // const jobs = _.sortBy(_.filter(_.toPairs(_.countBy(_.map(_.flatMap(parsedData, "job"), job => job.replace(" / ", "/")))), "0"), d => -_.get(d, 1))
-// console.log(jobs)
 // const total = parsedData.length;
 // const genders = _.sortBy(_.filter(_.toPairs(_.countBy(parsedData, "Gender")), "0"), d => -_.get(d, 1))
 
@@ -29,21 +27,18 @@ const excludedItemsByAspect = {
 }
 const filterableAspects = ["breed", "dog_name"]
 class DogNames extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      data: null,
-      breeds: [],
-      names: [],
-      selectedItem: null,
-      boroughData: null,
-      intelligence: {},
-      totals: {
-        name: {},
-        breed: {},
-      },
-      boroughTotals: null,
-    }
+  state = {
+    data: null,
+    breeds: [],
+    names: [],
+    selectedItem: null,
+    boroughData: null,
+    intelligence: {},
+    totals: {
+      name: {},
+      breed: {},
+    },
+    boroughTotals: null,
   }
 
   componentDidMount() {
@@ -69,7 +64,7 @@ class DogNames extends Component {
     const appropriateArg = _.intersection([...filterableAspects, "borough"], Object.keys(urlArgs))[0]
     const aspect = appropriateArg || null
     const item = appropriateArg ? urlArgs[appropriateArg] : null
-    this.setSelectedItem(aspect)(item)
+    this.setSelectedItem(aspect, false)(item)
   }
 
   getIntelligenceForBreed = breed => _.get(this.state.intelligence, mappedDogBreeds[breed] || breed)
@@ -93,15 +88,14 @@ class DogNames extends Component {
   }
 
   parseData = () => {
-    const parsedData = d3.csv(dataCsvFile, data => {
+    const parsedData = d3.csv(dataCsvFile).then(data => {
       const boroughTotals = _.countBy(data, "borough");
-      // console.log(data)
       this.setState({ data, boroughTotals }, this.parseUrlArgs)
     })
   }
 
   parseIntelligenceData = () => {
-    const parsedData = d3.csv(intelligenceCsvFile, data => {
+    const parsedData = d3.csv(intelligenceCsvFile).then(data => {
       const intelligence = _.fromPairs(
         _.map(data, d => [
           d.breed,
@@ -112,7 +106,7 @@ class DogNames extends Component {
     })
   }
 
-  setSelectedItem = aspect => item => {
+  setSelectedItem = (aspect, doUpdateUrl=true) => item => {
     const { data, boroughTotals, selectedItem } = this.state
     if (item == selectedItem) item = null
     const dogsOfType = item ? _.filter(data, { [aspect]: item }) : data
@@ -135,7 +129,9 @@ class DogNames extends Component {
       borough,
       (boroughData[borough] || 0) * 100 / (total || 1),
     ]))
-    window.history.replaceState( {} , '', item ? `?${aspect}=${item}` : window.location.pathname );
+    if (doUpdateUrl) {
+      window.history.replaceState( {} , '', item ? `?${aspect}=${item}` : window.location.pathname );
+    }
     this.setState({ selectedItem: item, selectedAspect: item ? aspect : null, totals, boroughData, boroughPercents })
   }
 
@@ -287,7 +283,6 @@ class DogNamesSelectableList extends Component {
 
   componentDidCatch(error, info) {
     this.setState({ error });
-    console.log(error)
   }
 
   componentDidUpdate(prevProps, prevState) {

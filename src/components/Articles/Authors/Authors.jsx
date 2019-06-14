@@ -6,7 +6,7 @@ import domToImage from "dom-to-image"
 import * as d3 from "d3"
 import classNames from "classnames"
 import _ from "lodash"
-import Tooltip from "components/_ui/Tooltip/Tooltip"
+import Tooltip from "components/_ui/Tooltip-old/Tooltip"
 import Button from "components/_ui/Button/Button"
 import Chart from "components/_ui/Chart/Chart"
 import Scatter from "components/_ui/Chart/Scatter/Scatter"
@@ -14,6 +14,8 @@ import Axis from "components/_ui/Chart/Axis/Axis"
 import { useChartDimensions } from "components/_ui/Chart/utils/utils"
 import sortedAuthors from "./sortedAuthors"
 import booksFile from "./books.csv"
+import './Authors.scss';
+
 const flagsToExclude = [
   "Boxset",
   "Box Set",
@@ -26,7 +28,6 @@ const flagsToExclude = [
   "Complete Collection",
 ]
 
-import './Authors.scss';
 
 const formatSalary = d => numeral(d).format("$0,0")
 const formatNumber = d => numeral(d).format("0,0a")

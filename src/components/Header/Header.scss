@@ -1,0 +1,53 @@
+@import "src/styles/lib";
+
+.Header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    z-index: 1000;
+    pointer-events: none;
+
+    &__link {
+        display: flex;
+        align-items: center;
+        color: $accent-3;
+        font-weight: 900;
+        pointer-events: all;
+
+        &--blog {
+            margin-left: auto;
+            margin-right: 1em;
+        }
+
+        &:hover {
+            .Header__link__title {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        &__title {
+            position: relative;
+            font-weight: 900;
+            margin-left: 0.6em;
+            z-index: 2;
+            opacity: 0;
+            transform: translateX(-1em);
+            transition: all 0.2s ease-out;
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -0.1em;
+                bottom: -0.1em;
+                left: -0.4em;
+                right: -0.4em;
+                background: white;
+                z-index: -1;
+            }
+        }
+    }
+}

@@ -8,7 +8,8 @@ import data from "./character-predictions_pose.json"
 import SimplexNoise from "simplex-noise"
 import * as d3 from "d3"
 import _ from "lodash"
-
+import './GameOfThrones.scss';
+console.log(OrbitControls)
 const characters = _.orderBy(data, "popularity", "desc").slice(0, 30)
 // const houses = _.uniq(_.map(characters, "house"))
 const houses = [ "House Stark", "House Greyjoy", "House Martell", "Night's Watch", "House Tyrell", "House Lannister", "House Frey", "House Targaryen", "Other" ]
@@ -29,7 +30,6 @@ const houseAngles = _.fromPairs(
 const yearsExtent = d3.extent(characters, d => _.isNumber(d.DateoFdeath) ? d.DateoFdeath : null)
 console.log(characters, houses, houseColors, countyBy, yearsExtent)
 
-import './GameOfThrones.scss';
 const GameOfThrones = () => {
   const [focusedYear, setFocusedYear] = useState(100)
   const [focusedCharacter, setFocusedCharacter] = useState(null)

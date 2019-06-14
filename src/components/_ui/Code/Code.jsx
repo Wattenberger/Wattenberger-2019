@@ -8,7 +8,7 @@ import { scrollTo } from "utils.js"
 
 import './Code.scss';
 import ClipboardTrigger from '../ClipboardTrigger/ClipboardTrigger';
-import Icon from '../Icon/Icon';
+import Icon from 'components/_ui/Icon/Icon';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
 const Code = ({

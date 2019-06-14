@@ -2,7 +2,6 @@ import React, {Component, PureComponent} from "react"
 import PropTypes from "prop-types"
 import * as THREE from "three"
 import OrbitControlsGenerator from "three-orbit-controls"
-const OrbitControls = OrbitControlsGenerator(THREE)
 import TWEEN from "@tweenjs/tween.js"
 import * as d3 from "d3"
 import { interpolateRdYlGn } from "d3-scale-chromatic"
@@ -17,10 +16,11 @@ import metricRankedCorrelationData from "./Wdvp_corr.json"
 import WDVPScatter from './WDVPScatter'
 
 import './WDVPMetrics.scss'
+const OrbitControls = OrbitControlsGenerator(THREE)
 
-const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb", 
+const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb",
 const numberFromValue = value =>
-  _.isFinite(value) ? value : 
+  _.isFinite(value) ? value :
   _.isString(value) ? +value.replace(/,/g, "") :
   null
 
@@ -150,7 +150,7 @@ class WDVPMetrics extends Component {
             />
           ))}
         </div>
-          
+
         {/* <div className="WDVPMap__controls">
           <div className="WDVPMetrics__toggles">
             <RadioGroup
@@ -159,7 +159,7 @@ class WDVPMetrics extends Component {
               value={isShowingPercentile}
               onChange={this.onIsShowingPercentileSelect}
             />
-          
+
             <RadioGroup
               className="WDVPMetrics__toggle"
               options={colorModeOptions}
@@ -167,7 +167,7 @@ class WDVPMetrics extends Component {
               onChange={this.onColorModeOptionsSelect}
             />
           </div>
-        
+
           <div className="WDVPMetrics__metrics">
             {_.map(filteredMetrics, (metric, index) => !!metricsInfo[metric] && (
               <div className={`WDVPMetrics__metrics__item WDVPMetrics__metrics__item--is-${metric == sort ? "selected" : "not-selected"}`} key={metric} onClick={this.onChangeSort(metric)}>
@@ -187,8 +187,8 @@ class WDVPMetrics extends Component {
             ))}
           </div>
         </div> */}
-        
-  
+
+
       </div>
     )
   }

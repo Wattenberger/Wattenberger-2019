@@ -1,23 +1,11 @@
-import { useState, usePrevious, useEffect } from 'react';
-import React, {Component} from "react"
-import PropTypes from "prop-types"
+import { useState, useEffect } from 'react';
+import React from "react"
 import numeral from "numeral"
-import domToImage from "dom-to-image"
 import * as d3 from "d3"
-import classNames from "classnames"
 import _ from "lodash"
-import Tooltip from "components/_ui/Tooltip/Tooltip"
-import Button from "components/_ui/Button/Button"
 import RadioGroup from "components/_ui/RadioGroup/RadioGroup"
-import Chart from "components/_ui/Chart/Chart"
-import { createScale } from 'components/_ui/Chart/utils/scale';
-import Line from 'components/_ui/Chart/Line/Line';
-import Scatter from "components/_ui/Chart/Scatter/Scatter"
-import Axis from "components/_ui/Chart/Axis/Axis"
-import Gradient from "components/_ui/Chart/Gradient/Gradient"
-import data from "./data"
+import data from "./data.json"
 import countryCodes from "./countryCodes"
-console.log(data)
 
 import './Fishing.scss';
 
@@ -59,8 +47,6 @@ const Fishing = () => {
   // const [sortedAuthors, setSortedAuthors] = useState([])
   const [metric, setMetric] = useState("boats")
   const setMetricToValue = d => setMetric(d.value)
-  useEffect(() => {
-  })
 
   return (
     <div className="Fishing">
@@ -80,7 +66,7 @@ const Fishing = () => {
 
         <div className="Fishing__circles">
           {_.map(data.slice(0, 69), d => d.name && (
-            <div className="Fishing__circles__item">
+            <div className="Fishing__circles__item" key={d.name}>
               <h6>{ countryCodes[d.name] || d.name }</h6>
               <div className="Fishing__circles__item__description">
                 { metricLabels[metric] } (2016)
@@ -110,7 +96,6 @@ const parseDate = d3.timeParse("%m/%d/%Y")
 const parseMonth = d3.timeParse("%m")
 const formatMonth = d3.timeFormat("%b")
 const FishingCircle = ({ data, metric, takenMetric, totalsMetric }) => {
-  if (!data) return null
 
   const width = 400
   const height = 400
@@ -139,7 +124,8 @@ const FishingCircle = ({ data, metric, takenMetric, totalsMetric }) => {
 
     const newTakenData = _.sortBy(padData(data[takenMetric]), dateAccessor)
     setTakenData(newTakenData)
-  }, [metric])
+  }, [metric, data, takenMetric])
+  if (!data) return null
 
   const dateScale = d3.scaleTime()
     // .domain(d3.extent(_.flatMap(countryData, "values"), dateAccessor))

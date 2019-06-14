@@ -9,9 +9,9 @@ import InteractionEvents from './InteractionEvents';
 import Link from 'components/_ui/Link/Link';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
-const exampleBars = require('!!raw-loader!./../examples/interactions/bars/chart.js').default
+const exampleBars = require('examples/interactions/bars/chart.js').default
 // eslint-disable-next-line import/no-webpack-loader-syntax
-const exampleBarsFull = require('!!raw-loader!./../examples/interactions/bars-full/chart.js').default
+const exampleBarsFull = require('examples/interactions/bars-full/chart.js').default
 
 
 const Interactions = () => {

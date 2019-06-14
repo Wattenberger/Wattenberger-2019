@@ -2,7 +2,6 @@ import React, {Component, PureComponent} from "react"
 import * as THREE from "three"
 // import Stats from "stats-js"
 import OrbitControlsGenerator from "three-orbit-controls"
-const OrbitControls = OrbitControlsGenerator(THREE)
 import TWEEN from "@tweenjs/tween.js"
 import * as d3 from "d3"
 import { interpolateRdYlGn } from "d3-scale-chromatic"
@@ -19,12 +18,13 @@ import metricsInfo from "./metric-info.json"
 import WDVPScatter from './WDVPScatter'
 
 import './WDVPBars.scss'
+const OrbitControls = OrbitControlsGenerator(THREE)
 
 // console.log(rawData)
 
-const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb", 
+const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb",
 const numberFromValue = value =>
-  _.isFinite(value) ? value : 
+  _.isFinite(value) ? value :
   _.isString(value) ? +value.replace(/,/g, "") :
   null
 
@@ -93,7 +93,7 @@ class WDVPBars extends Component {
       countryOrder: _.fromPairs(_.map(rawData, (country, index) => [
         country.Country,
         index,
-      ])),  
+      ])),
       scales: {},
       sort: defaultMetrics[3],
       processedData: [],
@@ -160,7 +160,7 @@ class WDVPBars extends Component {
   onChangeSort = metric => () => metric == this.state.sort ?
     this.setState({ isAscending: !this.state.isAscending }, this.createScales) :
     this.setState({ sort: metric, isAscending: this.state.isShowingPercentile ? true : false }, this.createScales)
-    
+
   onContinentsSelect = continents => this.setState({ selectedContinents: continents }, this.createScales)
   onColorModeOptionsSelect = newVal => this.setState({ colorMode: newVal.value })
   // onIsShowingPercentileSelect = newVal => this.setState({ isShowingPercentile: newVal.value, isAscending: !this.state.isAscending }, this.createScales)
@@ -190,7 +190,7 @@ class WDVPBars extends Component {
             onChangeHoveredCountry={this.onChangeHoveredCountry}
           />
         </div>
-          
+
         <div className="WDVPBars__controls">
           <div className="WDVPBars__toggles">
             <RadioGroup
@@ -199,7 +199,7 @@ class WDVPBars extends Component {
               value={isShowingPercentile}
               onChange={this.onIsShowingPercentileSelect}
             />
-          
+
             <RadioGroup
               className="WDVPBars__toggle"
               options={colorModeOptions}
@@ -207,7 +207,7 @@ class WDVPBars extends Component {
               onChange={this.onColorModeOptionsSelect}
             />
           </div>
-        
+
           <div className="WDVPBars__metrics">
             {_.map(filteredMetrics, metric => !!metricsInfo[metric] && (
               <div style={{ order: metricsOrder[metric] }} className={`WDVPBars__metrics__item WDVPBars__metrics__item--is-${metric == sort ? "selected" : "not-selected"}`} key={metric} onClick={this.onChangeSort(metric)}>
@@ -238,7 +238,7 @@ class WDVPBars extends Component {
               </div>
           </div>
         )}
-        
+
       </div>
     )
   }
@@ -336,7 +336,7 @@ class WDVPBarsChart extends PureComponent {
     const { width, height, margins, xScale, yScale } = this.state
 
     if (this.scene) return
-    
+
     this.camera = new THREE.PerspectiveCamera(53, width / height, 1, 10000)
     this.camera.position.set(
       xAxisLength * 0.27,
@@ -349,7 +349,7 @@ class WDVPBarsChart extends PureComponent {
     // this.scene.background = new THREE.Color(0x1d1d27)
     this.scene.background = new THREE.Color(0x282A38)
     // this.scene.fog = new THREE.FogExp2( 0x686B89, 0.0005 );
-    
+
     var light1 = new THREE.DirectionalLight( 0x686B89, 0.3 );
     light1.position.set( 1, 100, 1 );
     this.scene.add( light1 );
@@ -389,7 +389,7 @@ class WDVPBarsChart extends PureComponent {
     const options = {
       threshold: 0.01,
     }
-    
+
     this.observer = new IntersectionObserver(this.debouncedOnVisibilityChange, options);
     this.observer.observe(this.container.current);
 
@@ -417,13 +417,13 @@ class WDVPBarsChart extends PureComponent {
     const material = new THREE.MeshBasicMaterial ({
       color: 0x666666
     });
-    
+
     var xGeometry = new THREE.Geometry();
     xGeometry.vertices.push(
       new THREE.Vector3( -xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4 ),
       new THREE.Vector3( xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4 ),
     );
-    
+
     const xAxis = new THREE.Line( xGeometry, material );
     this.scene.add( xAxis );
 
@@ -432,19 +432,19 @@ class WDVPBarsChart extends PureComponent {
       new THREE.Vector3( xAxisLength / 2 + barDimension * 4, 0, -zAxisLength / 2 ),
       new THREE.Vector3( xAxisLength / 2 + barDimension * 4, 0, zAxisLength / 2 ),
     );
-    
+
     const zAxis = new THREE.Line( zGeometry, material );
     this.scene.add( zAxis );
   }
 
-  
+
   animate = (time) => {
     if (!this.isInView) return
     TWEEN.update(time);
     this.renderScene();
     // this.updateAxisLabelsPosition();
     // this.stats.update();
-    
+
     const tweens = TWEEN.getAll()
     if (tweens.length) requestAnimationFrame( this.animate );
 
@@ -530,7 +530,7 @@ class WDVPBarsChart extends PureComponent {
       country,
       metric,
     }
-    
+
     this.scene.add(object)
 
     return object
@@ -566,7 +566,7 @@ class WDVPBarsChart extends PureComponent {
 
     // const geometry = new THREE.BoxBufferGeometry( 20, 20, 20 )
     if (!this.countries) this.initBars()
-    
+
     _.map(this.countries, country => {
       _.map(country.metrics, metric => {
         this.drawBar({ country, metric, bar: metric.bar })
@@ -579,14 +579,14 @@ class WDVPBarsChart extends PureComponent {
 
   drawBar = ({ country, metric, bar }) => {
     const { data, metrics, metricsOrder, countryOrder, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
-    
+
     if (!bar) return
     // const scaledValue = scales[metric.name](country.country[metric.name])
-    
+
     const value = isShowingPercentile ?
       yPercentileScale(metric.percentileValue) + 1 :
       yScale(scales[metric.name](country.country[metric.name]))
-    
+
     metric.xTweenCoords = bar.position
     metric.xTween = new TWEEN.Tween(metric.xTweenCoords)
         .to({ x: this.countryIndexScale(countryOrder[country.country.Country]) }, 1200)
@@ -595,7 +595,7 @@ class WDVPBarsChart extends PureComponent {
         .onUpdate(function() {
             bar.position.x = metric.xTweenCoords.x
         })
-        
+
     metric.zTweenCoords = bar.position
     metric.zTween = new TWEEN.Tween(metric.zTweenCoords)
         .to({ z: metricIndexScale(metricsOrder[metric.name]) }, 1200)
@@ -607,7 +607,7 @@ class WDVPBarsChart extends PureComponent {
         .chain(metric.xTween)
         .start()
 
-    
+
     metric.yTweenCoords = bar.position
     metric.yTween = new TWEEN.Tween(metric.yTweenCoords)
         .to({ y: value }, 800)
@@ -626,7 +626,7 @@ class WDVPBarsChart extends PureComponent {
 
   changeZoom = (diff) => () => {
     const newZoom = Math.min(Math.max(this.camera.zoom + diff, 0.2), 6.5)
-    
+
     let zoomTweenAmount = { zoom: this.camera.zoom }
     this.zoomTween = new TWEEN.Tween(zoomTweenAmount)
         .to({ zoom: newZoom }, 300)

@@ -14,6 +14,7 @@ import Scatter from "components/_ui/Chart/Scatter/Scatter"
 import Axis from "components/_ui/Chart/Axis/Axis"
 import stephenKingBooks from "./kingBooks"
 import textInfo from "./textInfo"
+import './StephenKing.scss';
 
 
 // "Face in the Crowd, A",
@@ -42,7 +43,6 @@ const stephenKingBooksEnhanced = _.orderBy(_.map(stephenKingBooks, book => {
 }), "original_publication_year", "desc")
 console.log(stephenKingBooksEnhanced)
 
-import './StephenKing.scss';
 
 const formatSalary = d => numeral(d).format("$0,0")
 const formatNumber = d => numeral(d).format("0,0a")

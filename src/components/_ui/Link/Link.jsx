@@ -1,10 +1,17 @@
 import React from 'react'
+import {Link as RouterLink} from "react-router-dom"
 
 import './Link.scss';
 
-const Link = ({ href, className, children, ...props }) => {
+const Link = ({ href, to, type="inline", className, children, ...props }) => {
+    if (to) return (
+        <RouterLink to={to} className={`Link Link--type-${type} ${className}`} {...props}>
+            { children }
+        </RouterLink>
+    )
+
     return (
-        <a className={`Link ${className}`} href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        <a className={`Link Link--type-${type} ${className}`} href={href} target="_blank" rel="noopener noreferrer" {...props}>
             { children }
         </a>
     )

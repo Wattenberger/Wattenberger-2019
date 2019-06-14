@@ -9,6 +9,8 @@ import * as d3 from "d3"
 import _ from "lodash"
 import stephenKingBooks from "./kingBooks"
 import textInfo from "./textInfo"
+import './StephenKing3d.scss';
+
 console.log(OrbitControls)
 
 const bookNameMap = { "11_22_63_ A Novel": "11/22/63", "Nightmares & Dreamscapes": "Nightmares and Dreamscapes", "Finders Keepers": "Finders Keepers (Bill Hodges Trilogy, #2)", "Black House": "Black House (The Talisman, #2)", "Four Past Midnight": "Four Past Midnight ", "Colorado Kid, The": "The Colorado Kid (Hard Case Crime #13)", "Salem's Lot": "'Salem's Lot", "Shining, The": "The Shining (The Shining #1)", "Gunslinger, The": "The Gunslinger (The Dark Tower, #1)", "Dark Tower IV Wizard and Glass, The": "Wizard and Glass (The Dark Tower, #4)", "Dark Tower, The": "The Dark Tower (The Dark Tower, #7)", "Hearts In Atlantis": "Hearts in Atlantis", "Song of Susannah": "Song of Susannah (The Dark Tower, #6)", "IT": "It", "Talisman 01 - The TalismanCL Peter Straub": "The Talisman (The Talisman, #1)", "Doctor Sleep": "Doctor Sleep (The Shining, #2)", "Drawing of the Three, The": "The Drawing of the Three (The Dark Tower, #2)", "Wind Through the Keyhole, The": "The Wind Through the Keyhole (The Dark Tower, #4.5)", "End of Watch (The Bill Hodges Trilogy Book 3)": "End of Watch (Bill Hodges Trilogy, #3)", "Mr. Mercedes": "Mr. Mercedes (Bill Hodges Trilogy, #1)", "Wolves of the Calla": "Wolves of the Calla (The Dark Tower, #5)", "Everything's Eventual": "Everything's Eventual: 14 Dark Tales", "Waste Lands, The": "The Waste Lands (The Dark Tower, #3)", "Ur": "UR", "Green Mile, The": "The Green Mile, Part 1: The Two Dead Girls", "On Writing": "On Writing: A Memoir of the Craft" }
@@ -31,7 +33,6 @@ const stephenKingBooksEnhanced = _.orderBy(_.map(stephenKingBooks, book => {
 }), "original_publication_year", "desc")
 console.log(stephenKingBooksEnhanced)
 
-import './StephenKing3d.scss';
 
 const formatSalary = d => numeral(d).format("$0,0")
 const formatNumber = d => numeral(d).format("0,0a")

@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import _ from "lodash"
 import classNames from "classnames"
 import {movementUtils} from "./utils/movementUtils"
 import {canvasUtils} from "./utils/canvasUtils"

@@ -6,7 +6,7 @@ import classNames from "classnames"
 import _ from "lodash"
 import { createScale } from 'components/_ui/Chart/utils/scale';
 import RadioGroup from 'components/_ui/RadioGroup/RadioGroup';
-import Tooltip from 'components/_ui/Tooltip/Tooltip';
+import Tooltip from 'components/_ui/Tooltip-old/Tooltip';
 
 import rawData from "./Wdvp_gov_score.json"
 import countryPaths from "./country-paths.json"
@@ -66,7 +66,7 @@ class WDVPMap extends Component {
 
   createScales = () => {
     const { sort, selectedContinents, isAscending, isShowingPercentile } = this.state
-    
+
     const metricScales = _.fromPairs(
       _.map(defaultMetrics, (metric, i) => [
         metric,
@@ -78,7 +78,7 @@ class WDVPMap extends Component {
     )
     this.setState({ metricScales })
   }
-  
+
   removeTooltip = () => {
     if (!this._isMounted) return
 
@@ -182,7 +182,7 @@ class WDVPMap extends Component {
             value={isShowingPercentile}
             onChange={this.onIsShowingPercentileSelect}
           />
-        
+
           <div className="WDVPMap__metrics">
             {_.map(defaultMetrics, metric => (
               <div className={`WDVPMap__metrics__item WDVPMap__metrics__item--is-${metric == selectedMetric ? "selected" : "not-selected"}`} key={metric} onMouseEnter={this.onMetricChange(metric)}>
@@ -204,7 +204,7 @@ class WDVPMap extends Component {
             ))}
           </div>
         </div>
-        
+
       </div>
     )
   }

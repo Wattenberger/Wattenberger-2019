@@ -5,6 +5,8 @@ import foos1 from "./Images/foos1.jpg"
 import foos2 from "./Images/foos2.png"
 import foos3 from "./Images/foos3.jpg"
 import fishing from "./Images/fishing.png"
+import book from "./Images/book.png"
+import interaction from "./Images/interaction.png"
 // import foos4 from "./Images/foos4.jpg"
 // import seaholm from "./Images/seaholm.png"
 // import seaholm2 from "./Images/seaholm2.png"
@@ -23,11 +25,49 @@ import dogs from "./Images/dogs.png"
 import dogBreeds from "./Images/dog-breeds.png"
 import Day8 from "components/Sketches/sketches/Day8"
 import WDVPMap from "components/Articles/WDVP/WDVPMap"
+import List from "components/_ui/List/List";
+import Link from "components/_ui/Link";
 
 export const projects = [
     {
       category: "Development & Data Visualization",
       projects: [
+      {
+        title: "Interactive Charts with D3.js",
+        description: <div>
+          <p>
+            This article is the first in a series, showing how to make your web charts interactive. It runs through two ways to add a tooltip to a histogram, while trying to show how to generalize this knowledge to create your own custom interactions.
+          </p>
+
+          <p>
+            I love experimenting with taking advantage of the web to innovate on teaching. I experimented with ways to consistently keep the main code to the right of the article, which really helps keep changes in context.
+          </p>
+
+          <p>
+            There are some really interesting bits of code involved in making this article - check them out in <Link href="https://github.com/wattenberger/wattenberger-2019">this website's repo</Link>.
+          </p>
+
+        </div>,
+        tools: ["D3.js", "React.js", "SVG", "Words"],
+        images: [interaction],
+        // imageContentStyle: {backgroundPosition: "top"},
+        link: "/blog/d3-interactive-charts",
+      },
+      {
+        title: "Fullstack D3 and Data Visualization",
+        description: <div>
+          <p>
+            Having spent ten years teaching myself D3.js and designing dashboards and data visualizations, I wrote the book that I wish I could have read.
+          </p>
+          <p>
+            While most books teach data visualization design <i>or</i> development <i>or</i> theory, my book combines all three while walking through practical examples. You'll create your first chart by the end of the first chapter - <Link href="http://fullstack.io/fullstack-d3">download the first chapter for free right now</Link>.
+          </p>
+        </div>,
+        tools: ["D3.js", "SVG", "Words"],
+        images: [book],
+        imageContentStyle: {backgroundPosition: "top"},
+        link: "http://fullstack.io/fullstack-d3",
+      },
       {
         title: "Illegal Foreign Fishing",
         description: <div>
@@ -48,11 +88,11 @@ export const projects = [
           <p>
             A brief dive into combining many metrics to decide what makes a country <b>Good</b>. There are three distinct visualizations here, exploring:
           </p>
-          <ol>
-            <li>What countries are similar (below)</li>
-            <li>How can we group countries based on 27 metrics</li>
-            <li>How countries rank along your own custom Axis of Goodness</li>
-          </ol>
+          <List style={{margin: "0 0 1em"}} items={[
+            <>What countries are similar (below)</>,
+            <>How can we group countries based on 27 metrics</>,
+            <>How countries rank along your own custom Axis of Goodness</>,
+          ]} />
         </div>,
         tools: ["SVG", "D3.js", "Three.js"],
         imageStyle: {height: "auto"},
@@ -142,20 +182,20 @@ export const projects = [
           <p>
             There are many issues with how we receive our news (in the United States). I created a news aggregator (largely for personal use) that attempts to solve three core issues.
           </p>
-          <ol>
-            <li>
-              Stories are often biased towards the viewpoint of a political parties.
+          <List style={{margin: "0 0 1em"}} items={[
+            <>
+              <b style={{display: "inline-block", marginBottom: "0.2em"}}>Stories are often biased towards the viewpoint of a political parties.</b>
               <br /><b>Solution:</b> I aggregate stories from the most un-biased, fact-based publishers (based on Ad Fontes Media's <a href="https://www.adfontesmedia.com/" target="_blank">Media Bias Chart</a>).
-            </li>
-            <li>
-              One story has the tendency to flood public attention.
+            </>,
+            <>
+              <b style={{display: "inline-block", marginBottom: "0.2em"}}>One story has the tendency to flood public attention.</b>
               <br /><b>Solution:</b> I added a filter to hide stories with specific words in their title or description.
-            </li>
-            <li>
-              News stories are overwhelmingly sad and upsetting, which can be compelling to avoid all news.
+            </>,
+            <>
+              <b style={{display: "inline-block", marginBottom: "0.2em"}}>News stories are overwhelmingly sad and upsetting, which can be compelling to avoid all news.</b>
               <br /><b>Solution:</b> I added a sentiment filter so a reader can only see stories within a specific range -- only happy stories, or only sad stories (but why).
-            </li>
-          </ol>
+            </>,
+          ]} />
         </div>,
         tools: ["Sentiment", "React.js", "RSS parsing"],
         images: [newsImage],
@@ -186,7 +226,11 @@ export const projects = [
         title: "Umbel SXSW Party Photobooth",
         description: <div>
           <p>In 2015, Umbel hosted an official SXSW party (with Spoon!). To incorporate our brand and liven up the VIP section, I build a virtual photobooth that superimposes a luchador mask on guests’ faces.</p>
-          <p>I built a C++ app that detects faces from a webcam feed in real-time and renders a mask over anything that looks like a face (based on some training data). The face is broken into sections, and the mask is stretched to fit the different parts of the face, which makes it pretty realistic, even when someone is talking. The user can use a foot pedal to either cycle through the faces or take a picture. If you look closely, you can see people’s concentration as they try to balance and take a picture. Additionally, I built a web app to show the photos in real-time and allow people to share on social media.</p>
+          <p>I built a C++ app that detects faces from a webcam feed in real-time and renders a mask over anything that looks like a face (based on some training data). The face is broken into sections, and the mask is stretched to fit the different parts of the face, which makes it pretty realistic, even when someone is talking. The user can use a foot pedal to either cycle through the faces or take a picture.
+          </p>
+          <p>
+            If you look closely, you can see people’s concentration as they try to balance and take a picture. Additionally, I built a web app to show the photos in real-time and allow people to share on social media.
+          </p>
         <p>Read more about the construction <a href="https://www.umbel.com/engineering/blog/wrestling-ring">on the Umbel Engineering blog</a>.</p>
         </div>,
         tools: ["C++", "Xcode", "Open Frameworks", "React.js", "Amazon Web Services", "SCSS"],
@@ -210,7 +254,10 @@ export const projects = [
       {
         title: "Foosball Table",
         description: <div>
-          <p>From time to time, I find myself being more ambitious than I have time for. In Fall 2015, I started with the idea of scanning coworkers and replacing the players on a foosball field with their 3d-printed heads, and ended up building a whole table from scratch. I used <b>Adobe Illustrator</b> to create a design for the table, and reproduced it in <b>Cinema 4D</b> to get an idea of how it would look when finished. A coworker, who happens to be an amazing woodworker, turned the bed design into a real, wooden table. Along with another coworker, I cut and etched the field out of a sheet of brand-colored acrylic, using a laser cutter.</p>
+          <p>From time to time, I find myself being more ambitious than I have time for. In Fall 2015, I started with the idea of scanning coworkers and replacing the players on a foosball field with their 3d-printed heads, and ended up building a whole table from scratch.
+          </p>
+          <p>
+            I used <b>Adobe Illustrator</b> to create a design for the table, and reproduced it in <b>Cinema 4D</b> to get an idea of how it would look when finished. A coworker, who happens to be an amazing woodworker, turned the bed design into a real, wooden table. Along with another coworker, I cut and etched the field out of a sheet of brand-colored acrylic, using a laser cutter.</p>
           <p>All 26 foosball players’ bodies have been 3d printed, with a threaded hole in the top for the heads to screw into. One by one, I am molding 3D scans of coworkers and printing them with screws on the bottom. Sometime in the next month, the players will be installed, along with LED lights around the field that change color when the ball is hit.</p>
         </div>,
         category: "Other",

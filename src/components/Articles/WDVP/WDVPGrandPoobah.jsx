@@ -2,7 +2,6 @@ import React, {Component, PureComponent} from "react"
 import PropTypes from "prop-types"
 import * as THREE from "three"
 import OrbitControlsGenerator from "three-orbit-controls"
-const OrbitControls = OrbitControlsGenerator(THREE)
 import TWEEN from "@tweenjs/tween.js"
 import * as d3 from "d3"
 import ReactSlider from "react-slider"
@@ -22,10 +21,11 @@ import WDVPMetrics from "./WDVPMetrics"
 import WDVPScatter from './WDVPScatter'
 
 import './WDVPGrandPoobah.scss'
+const OrbitControls = OrbitControlsGenerator(THREE)
 
-const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb", 
+const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb",
 const numberFromValue = value =>
-  _.isFinite(value) ? value : 
+  _.isFinite(value) ? value :
   _.isString(value) ? +value.replace(/,/g, "") :
   null
 
@@ -199,7 +199,7 @@ class WDVPGrandPoobah extends Component {
       magicR2[1] - magicR3[1],
     ]
     if (_.sum(magicR2) > 0.001) {
-      magicR3 = _.map(magicR3, d => 
+      magicR3 = _.map(magicR3, d =>
         d * (magicR1[1] / magicR2[1])
       )
       magicR1 = [
@@ -207,7 +207,7 @@ class WDVPGrandPoobah extends Component {
         magicR1[1] - magicR3[1],
       ]
     }
-      
+
     const vectorOfMostVariance = [
       -magicR1[1] / magicR1[0],
       1,
@@ -266,7 +266,7 @@ class WDVPGrandPoobah extends Component {
             <div className="WDVPGrandPoobah__note">
               Note: These presets were discovered automatically using <a href="https://en.wikipedia.org/wiki/Non-negative_matrix_factorization" target="_blank" ref="noopener noreferrer">non-negative matrix factorization</a> and manually named.
             </div>
-    
+
           </div>
           <WDVPScatter
             data={dataWithWeights}
@@ -302,7 +302,7 @@ class WDVPGrandPoobahSliders extends PureComponent {
   }
 
   componentWillUnmount() {
-    if (this.listener) removeEventListener(this.listener)
+    if (this.listener) window.removeEventListener(this.listener)
   }
 
   onChangeMetricWeightLocal = (selectedMetric, doesNeedDragging=true) => newWeight => {
@@ -318,19 +318,19 @@ class WDVPGrandPoobahSliders extends PureComponent {
 
   onStartDragging = () => {
     this.setState({ isDragging: true })
-    this.listener = addEventListener("mouseup", this.onStopDragging)
+    this.listener = window.addEventListener("mouseup", this.onStopDragging)
   }
   onStopDragging = () => this.setState({ isDragging: false })
-    
+
   onPresetSelect = preset => {
     this.props.onChange(preset.metricWeights)
     this.setState({activePreset: preset.name})
   }
-  
+
   render() {
     const { title, metricWeights, isShowingLabels, onChange } = this.props
     const { isDragging, activePreset } = this.state
-    
+
     return (
       <div className={`WDVPGrandPoobahSliders WDVPGrandPoobahSliders--has-${isShowingLabels ? "labels" : "no-labels"}`}
         onMouseDown={this.onStartDragging}
@@ -368,7 +368,7 @@ class WDVPGrandPoobahSliders extends PureComponent {
 
 class WDVPGrandPoobahSlidersItem extends PureComponent {
   elem = React.createRef()
-  
+
   componentDidMount() {
     d3.select(this.elem.current).on("mousemove", this.onMouseMove)
     d3.select(this.elem.current).on("mousedown", this.onMouseMove)
@@ -396,7 +396,7 @@ class WDVPGrandPoobahSlidersItem extends PureComponent {
             { metric }
           </div>
         )}
-        
+
         <div className="WDVPGrandPoobahSlidersItem__slider"
         ref={this.elem}>
             <ReactSlider

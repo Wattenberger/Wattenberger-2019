@@ -8,7 +8,7 @@ import Chart from "components/_ui/Chart/Chart"
 import stats from "components/_ui/Chart/utils/stats"
 import Axis from "components/_ui/Chart/Axis/Axis"
 import Line from "components/_ui/Chart/Line/Line"
-import Tooltip from "components/_ui/Chart/Tooltip/Tooltip"
+import Tooltip from "components/_ui/Chart/Tooltip-old/Tooltip"
 
 // require('./HeadlineChart.less')
 

@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import PropTypes from "prop-types"
 import classNames from "classnames"
+import _ from "lodash"
 import * as d3 from "d3"
 
 require('./Scatter.scss')
@@ -44,11 +45,11 @@ class Scatter extends Component {
   update = () => {
     let {data, radius, xAccessor, yAccessor, dataKey, initTransition, transition, easing, onUpdate} = this.props
     let {dots} = this.state
-    
+
     let init = !dots
     dots = d3.select(this.elem.current).selectAll(".dot")
       .data((data || []), dataKey)
-    
+
     const newDots = dots.enter().append("circle")
       .attr("class", "dot")
 
@@ -64,9 +65,9 @@ class Scatter extends Component {
         .attr("r", radius)
         .attr("cx", xAccessor)
         .attr("cy", yAccessor)
-        
+
     dots.exit().remove()
-    
+
     dots.on("mouseenter", d => console.log(d))
 
     this.setState({dots})

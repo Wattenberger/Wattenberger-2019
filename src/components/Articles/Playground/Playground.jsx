@@ -155,7 +155,7 @@ const Dogs = () => {
   let group = useRef()
   dogs = _.map(dogs, (dog, i) => ({
     ...dog,
-    ref: useRef(),
+    // ref: useRef(),
     position: [
       (-(rows / 2) + (i % rows)) * spacing,
       0,

@@ -1,0 +1,100 @@
+@import "src/styles/lib";
+
+.InteractionEvents {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 3em 0;
+
+    &__circle {
+        flex: none;
+        height: 10em;
+        width: 10em;
+        background: #45aeb1;
+        border-radius: 100%;
+        margin: 1em 0;
+
+        &--index {
+            &-1 { background: $a1; }
+            &-2 {
+                background: $a2;
+                margin-left: 1em;
+                height: 6em;
+                width: 6em;
+            }
+        }
+    }
+
+    &__hint {
+        position: absolute;
+        bottom: 1em;
+        color: $grey4;
+        font-style: italic;
+        font-size: 0.6em;
+        line-height: 1.2em;
+    }
+
+    &__log {
+        position: relative;
+        display: flex;
+        flex: 1;
+        min-width: 9em;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin: 1em 0;
+        margin-left: 2em;
+        padding: 0 1em 0.7em;
+        height: 100%;
+        overflow: hidden;
+        align-self: stretch;
+        height: 10em;
+        background: $grey1;
+        user-select: none;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 5em;
+            background: linear-gradient(
+                to top,
+                rgba($grey1, 0),
+                rgba($grey1, 1) 72%,
+                rgba($grey1, 1)
+            );
+            z-index: 5;
+        }
+
+        h6 {
+            position: absolute;
+            top: 0;
+            color: $grey4;
+            z-index: 10;
+        }
+
+        &__items {
+            // align-self: flex-end;
+        }
+
+        &__item {
+            font-size: 0.7em;
+            line-height: 1.2em;
+            white-space: normal;
+            max-width: 100%;
+            word-break: break-all;
+
+            &--index {
+                &-1 { color: $a1; }
+                &-2 { color: $a2; }
+            }
+
+            .Icon {
+                margin-left: 0.1em;
+            }
+        }
+    }
+}

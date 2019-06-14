@@ -1,0 +1,9 @@
+@import "src/styles/lib";
+
+.Blog {
+    padding: 4em 2em;
+
+    &__post {
+        padding: 3em 0;
+    }
+}

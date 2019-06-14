@@ -9,7 +9,7 @@ import stats from "components/_ui/Chart/utils/stats"
 import Axis from "components/_ui/Chart/Axis/Axis"
 import Scatter from "components/_ui/Chart/Scatter/Scatter"
 import Line from "components/_ui/Chart/Line/Line"
-import Tooltip from "components/_ui/Chart/Tooltip/Tooltip"
+import Tooltip from "components/_ui/Chart/Tooltip-old/Tooltip"
 
 require('./RochesterRealEstateTimeSeries.scss')
 

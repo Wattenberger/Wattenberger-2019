@@ -32,12 +32,12 @@ export const useChartDimensions = passedSettings => {
     const ref = useRef()
     const dimensions = combineChartDimensions(passedSettings)
 
-    if (dimensions.width && dimensions.height) return [ref, dimensions]
-
     const [width, changeWidth] = useState(0)
     const [height, changeHeight] = useState(0)
 
     useEffect(() => {
+        if (dimensions.width && dimensions.height) return [ref, dimensions]
+
         const element = ref.current
         const resizeObserver = new window.ResizeObserver(entries => {
             if (!Array.isArray(entries)) return

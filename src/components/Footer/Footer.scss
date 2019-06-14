@@ -19,8 +19,14 @@
             right: -2em;
         }
     }
-    @media (max-width: 400px) {
-        padding-bottom: 7em;
+    @media (max-width: 500px) {
+        padding-bottom: 1em;
+
+        .Footer__image {
+            position: absolute;
+            height: 6em;
+            right: -1em;
+        }
     }
 
     &__links {

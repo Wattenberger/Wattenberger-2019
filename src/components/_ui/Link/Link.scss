@@ -7,4 +7,12 @@ a,
   &:visited {
     color: $a2;
   }
+
+  &--type {
+    &-button {
+        background: $accent-2;
+        // background: $a1;
+      // padding: 0.5em 1em;
+    }
+  }
 }

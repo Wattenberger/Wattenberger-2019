@@ -1,0 +1,153 @@
+@import "src/styles/lib";
+
+.I3 {
+    padding: 4em 2em;
+    background: #eaeef2;
+    min-height: 100vh;
+
+    &__shortcuts {
+        padding-top: 1em;
+        display: flex;
+        margin: -0.2rem;
+        cursor: pointer;
+
+        &__item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 2px;
+            margin: 0.2rem;
+            padding: 0.6em;
+            border: 2px solid transparent;
+
+            &:hover {
+                border-color: #9980FA;
+                // background: #FFC312;
+            }
+
+            h5 {
+                line-height: 1.3em;
+                margin-bottom: 1em;
+            }
+
+            p {
+                font-size: 0.7em;
+                line-height: 1.3em;
+                opacity: 0.5;
+            }
+
+            &__keys {
+                display: flex;
+                text-align: center;
+                margin-top: auto;
+                opacity: 0.3;
+
+                svg {
+                    margin-bottom: 0.1em;
+                }
+
+                &__item {
+
+                    &__plus {
+                        line-height: 1.6em;
+                        padding: 0 0.3em;
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    }
+
+    .Keyboard {
+        width: 100%;
+        display: flex;
+        margin: -0.2em;
+        max-width: 50em;
+        flex-direction: column;
+        cursor: pointer;
+
+        &__row {
+            flex: 1;
+            display: flex;
+        }
+
+        &__key {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 3rem;
+            margin: 0.2rem;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            background: #fff;
+            border-radius: 2px;
+            border: 1px solid transparent;
+
+            &:hover {
+                border-color: #9980FA;
+                // background: #FFC312;
+            }
+
+            &--is-selected {
+                background: #9980FA;
+                color: white;
+                fill: white;
+            }
+
+            &--is-long {
+                font-size: 0.8em;
+                &.Keyboard__key--position {
+                    &-first { justify-content: flex-start; }
+                    &-last  { justify-content: flex-end; }
+                }
+            }
+
+            &--Backspace { flex: 2.1; }
+            &--Tab       { flex: 1.7; }
+            &--Ctrl      { flex: 2; }
+            &--Shift     { flex: 2.3; }
+            &--Enter     { flex: 3; }
+            &--arrows    { flex: 3; }
+
+            &--Space {
+                font-size: 0;
+                // color: $bgc;
+                flex: 10;
+            }
+
+            &--arrows {
+                background: none;
+                padding: 0;
+                margin-left: 0;
+                margin-right: 0;
+
+                &:hover {
+                    border-color: transparent;
+                }
+            }
+
+            .KeyArrows {
+                flex: 1;
+                width: 100%;
+                display: flex;
+
+                &__center {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    .Keyboard__key {
+                        height: 1.3rem;
+                    }
+                }
+            }
+        }
+
+        .Caret {
+            transform-origin: center center;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}

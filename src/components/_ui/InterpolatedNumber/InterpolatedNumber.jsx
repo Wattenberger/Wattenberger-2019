@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react"
 import PropTypes from "prop-types"
 import numeral from "numeral"
+import _ from "lodash"
 import * as d3 from "d3"
 
 import "./InterpolatedNumber.scss"

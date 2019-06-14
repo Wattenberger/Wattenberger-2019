@@ -29,7 +29,7 @@ class Portfolio extends Component {
         {item.description}
         {!!item.link && (_.startsWith("/")
           ? <a href={item.link} className="Portfolio__item__link btn">Check it out ⇛</a>
-          : <Link to={item.link} className="Portfolio__item__link btn">Check it out ⇛</Link>
+          : <Link to={item.link} type="button" className="Portfolio__item__link btn">Check it out ⇛</Link>
         )}
       </div>
       <div className="Portfolio__item__images">

@@ -1,0 +1,357 @@
+@import "src/styles/lib";
+
+.News {
+  padding: 4em 2em;
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__about-toggle {
+      font-size: 0.6em;
+      margin-right: auto;
+      margin-bottom: 0.8em;
+      margin-left: 0.8em;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        text-decoration: underline;
+        opacity: 1;
+      }
+    }
+  }
+
+  &__histogram {
+    // position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    height: 1.5em;
+    align-items: flex-end;
+    transform: translate3d(0, -100%, 0);
+
+    &__bar {
+      flex: 1;
+      background: $gray;
+      background: $accent-4;
+      border-left: 0.6px solid $bgc;
+      // transition: all 0.3s ease-out;
+
+      &--is {
+        &-not-showing {
+          background: $accent-2;
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  &__slider {
+    position: relative;
+    width: 10em;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -0.2em;
+      height: 1.3em;
+      left: 50%;
+      border-left: 1px solid rgba($tc, 0.2);
+      z-index: 10;
+    }
+
+    &__values {
+      position: absolute;
+      top: -2.5em;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.6em;
+    }
+
+    .rc-slider-handle {
+      border-color: $accent-4;
+    }
+    .rc-slider-track {
+      background-color: $accent-4;
+    }
+  }
+
+  &__toggle {
+    margin-left: 1.3em;
+    margin-bottom: 1em;
+    font-size: 0.6em;
+
+    .Button {
+      position: relative;
+      padding-right: 2.4em;
+    }
+
+    @keyframes slideUp {
+      0%   { opacity: 0; transform: translate3d(-50%, 100%, 0); }
+      100% { opacity: 1; transform: translate3d(-50%, -50%, 0); }
+    }
+
+    &__notification {
+      position: absolute;
+      top: 50%;
+      right: -0.1rem;
+      height: 1.8em;
+      width: 1.8em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $bgc;
+      color: $accent-4;
+      // border: 1px solid;
+      font-size: 0.7em;
+      line-height: 1em;
+      // color: $bgc;
+      border-radius: 100%;
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 10;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    &__loader {
+      // content: "...";
+      // position: absolute;
+      // top: 50%;
+      // right: -0.1rem;
+      // height: 1.8em;
+      // width: 1.8em;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // color: $bgc;
+      // // border: 1px solid;
+      // // font-size: 0.7em;
+      // line-height: 1em;
+      // // color: $bgc;
+      // transform: translate3d(-50%, -50%, 0);
+      // z-index: 10;
+      // // animation: slideUp 0.3s ease-out;
+    }
+  }
+
+  &__articles {
+    // margin-top: 2em;
+
+    &--is-not-dimming-seen {
+      .NewsArticle--is-not-new {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__articles-separator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.54em;
+    margin: 3.6em 1rem 1em;
+
+    &__text {
+      color: $accent-2;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+    }
+
+    &__line {
+      flex: 1;
+      margin: 0 1.3em;
+      border-bottom: 1px solid rgba($accent-2, 0.3);
+    }
+
+  }
+
+  &__note {
+    font-size: 0.77em;
+    padding: 1em 1.8em;
+    line-height: 1.3em;
+    color: $tc;
+    font-size: 0.5em;
+    opacity: 0.5;
+  }
+
+  &__title-filter {
+    position: relative;
+    width: 100%;
+    margin-top: 1em;
+
+    @media (max-width: 500px) {
+      margin-top: 2em;
+    }
+
+    &__title {
+      position: absolute;
+      top: -1.4rem;
+      font-size: 0.5em;
+      opacity: 0.5;
+      left: 1rem;
+    }
+
+    .News__title-filter__input {
+      &__control {
+        min-height: 1em;
+        font-size: 0.6em;
+      }
+
+      &__menu {
+        font-size: 0.6em;
+      }
+
+      &__value-container {
+        height: 2.4em;
+      }
+
+      &__indicators {
+        height: 3.4em;
+      }
+
+      &__multi-value {
+        background: $gray;
+
+        &__label {
+          padding: 0.6em 1em;
+        }
+      }
+    }
+  }
+
+  &Article {
+    position: relative;
+    display: block;
+    font-size: 0.8em;
+    line-height: 1.3em;
+    padding: 1em 1em 1.2em;
+    transition: all 0.3s ease-out;
+
+    &:hover {
+      background: #fff;
+
+      .NewsArticle__sentiment {
+        opacity: 0.3;
+      }
+    }
+
+    &:visited {
+      .NewsArticle__title {
+        color: $accent-2;
+      }
+    }
+
+    .NewsArticle__title,
+    .NewsArticle__snippet,
+    .NewsArticle__site,
+    .NewsArticle__date {
+      transition: opacity 0.3s ease-out;
+    }
+
+    &--is-not-new {
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &__title {
+      padding-bottom: 0.4em;
+      color: $accent-4;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+
+      &__label {
+        flex: 1;
+        // font-family: $font-family-serif;;
+        // font-size: 1.2em;
+        font-weight: 800;
+      }
+    }
+
+    &__date {
+      flex: 0 0 4em;
+      width: 4em;
+      line-height: 1.3em;
+      color: $tc;
+      text-align: right;
+      font-size: 0.8em;
+      opacity: 0.4;
+      white-space: nowrap;
+    }
+
+    &__site {
+      font-size: 0.8em;
+      font-weight: 800;
+      opacity: 0.5;
+      // padding: 0 0 0.4em 0;
+    }
+
+    &__sentiment,
+    &__snippet {
+      font-size: 0.77em;
+      line-height: 1.3em;
+      color: $tc;
+      opacity: 0.5;
+    }
+
+    &__sentiment {
+      margin-top: 0.6em;
+      margin-bottom: -0.6em;
+      font-size: 0.73em;
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 500px) {
+    padding: 80px 0.4em;
+
+    &__controls {
+      flex-direction: column;
+    }
+
+    &__slider {
+      margin: auto;
+      margin-top: 2em;
+      width: 90%;
+    }
+
+    &Article {
+      &__title {
+        // flex-direction: column;
+        flex-wrap: wrap;
+
+        &__label {
+          min-width: 100%;
+          order: 3;
+        }
+      }
+
+      &__site {
+        flex: 1;
+        margin-top: 0.3rem;
+        width: 50%;
+        opacity: 0.5;
+        order: 1;
+      }
+
+      &__date {
+        flex: 1;
+        margin-top: 0.3rem;
+        width: 50%;
+        text-align: right;
+        opacity: 0.3;
+        order: 2;
+      }
+    }
+  }
+}

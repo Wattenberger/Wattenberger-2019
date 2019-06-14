@@ -15,9 +15,9 @@ import RadioGroup from "components/_ui/RadioGroup/RadioGroup"
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import pieces from "./emotion"
+import './Music.scss';
 console.log(pieces[0])
 
-import './Music.scss';
 
 const pieceNames = ["cello_ma_1-1", "cello_maisky_1-1", "cello_rostropovich_1-1", "violin_bell", "violin_ehnes", "violin_heifetz", "violin_perlman", "violin_zimmerman"]
 const emoji = {

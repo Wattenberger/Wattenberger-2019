@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import classNames from "classnames"
+import _ from "lodash"
 import * as d3 from "d3"
 import Chart from "components/_ui/Chart/Chart"
 import Scatter from "components/_ui/Chart/Scatter/Scatter"
