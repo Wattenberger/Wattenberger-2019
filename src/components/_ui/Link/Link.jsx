@@ -11,7 +11,7 @@ const Link = ({ href, to, type="inline", className, children, ...props }) => {
     )
 
     return (
-        <a className={`Link Link--type-${type} ${className}`} href={href} target="_blank" rel="noopener noreferrer" {...props}>
+        <a className={`Link Link--type-${type} ${className}`} href={href || to} target="_blank" rel="noopener noreferrer" {...props}>
             { children }
         </a>
     )
