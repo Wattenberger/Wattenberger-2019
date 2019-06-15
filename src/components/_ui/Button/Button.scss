@@ -2,20 +2,25 @@
 
 .Button {
   display: inline-block;
-  padding: 0.4em 0.6em;
-  border: 1px solid $accent-4;
-  background: none;
-  color: $accent-4;
+  padding: 0.6em 0.9em;
+  // border: 1px solid $accent-4;
+  background: $a1;
+  color: white;
   font-size: 0.9em;
-  font-weight: 900;
-  text-transform: uppercase;
+  // font-weight: 900;
+  // text-transform: uppercase;
   line-height: 1em;
   outline: none;
   cursor: pointer;
   border-radius: 2px;
   transition: background $transition-fast;
+  appearance: none;
+  border: none;
+
+  &:focus,
+  &:active,
   &:hover {
-    background: $accent-2;
+    background: $a2;
     color: $bgc;
   }
   & + .Button {

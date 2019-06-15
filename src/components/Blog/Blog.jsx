@@ -1,8 +1,8 @@
 import React, {Component} from "react"
 import _ from "lodash"
-import Logo from "components/_ui/Logo";
-import Link from "components/_ui/Link";
-import posts from "./blog-posts"
+import Link from "components/_ui/Link/Link";
+import Button from "components/_ui/Button/Button";
+import posts from "./blog-posts.jsx"
 
 require('./Blog.scss')
 
@@ -13,9 +13,20 @@ const Blog = () => (
     </h1>
     {_.map(posts, post => (
       <div className="Blog__post" key={post.link}>
-        <h3>
-          { post.title }
-        </h3>
+        <Link to={post.link}>
+          <h3 className="Blog__title">
+            { post.title }
+          </h3>
+        </Link>
+
+        <p className="Blog__post__description">
+          { post.description }
+        </p>
+        <Link to={post.link}>
+          <Button className="Blog__post__button">
+            Read more
+          </Button>
+        </Link>
       </div>
     ))}
   </div>

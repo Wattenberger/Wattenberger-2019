@@ -1,9 +1,21 @@
 @import "src/styles/lib";
 
 .Blog {
-    padding: 4em 2em;
+    padding: 4em 4em;
+
+    h1 {
+    }
 
     &__post {
         padding: 3em 0;
+
+        &__description {
+            max-width: 45em;
+        }
+
+        p {
+            margin: 1em 0;
+            padding: 0;
+        }
     }
 }
