@@ -12,8 +12,8 @@ const Blog = () => (
       Thoughts
     </h1>
     {_.map(posts, post => (
-      <div className="Blog__post" key={post.link}>
-        <Link to={post.link}>
+      <div className="Blog__post" key={post.id}>
+        <Link to={`blog/${post.id}`}>
           <h3 className="Blog__title">
             { post.title }
           </h3>
@@ -22,7 +22,7 @@ const Blog = () => (
         <p className="Blog__post__description">
           { post.description }
         </p>
-        <Link to={post.link}>
+        <Link to={`blog/${post.id}`}>
           <Button className="Blog__post__button">
             Read more
           </Button>

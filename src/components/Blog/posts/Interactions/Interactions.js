@@ -12,6 +12,7 @@ import InteractionEvents from "./InteractionEvents";
 import Link from "components/_ui/Link/Link";
 import Aside from "components/_ui/Aside/Aside";
 
+import image from "./image.png";
 import bookImage from "images/book.png";
 import d3SelectionImage from "images/d3-selection.png";
 import binsImage from "images/bins.png";
@@ -63,7 +64,8 @@ const Interactions = () => {
           <title>Interactive Charts with D3.js</title>
           <link rel="canonical" href="https://wattenberger.com/blog/d3-interactive-charts" />
           <meta property="og:type" content="website" />
-          <meta name="description" content="Hi I'm Amelia Wattenberger. I'm interested in teaching data visualization, frontend development, and design." />
+          <meta name="description" content="Learn how to make your web charts interactive with D3. We'll walk through adding a tooltip to a histogram, and learn general concepts that you can use for any kind of interaction for your own charts!" />
+          <meta property="og:image" content={image} />
       </Helmet>
 
       <WaveContainer />

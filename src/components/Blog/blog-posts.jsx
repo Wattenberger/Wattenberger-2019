@@ -17,7 +17,7 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 
 const posts = [{
     title: "Interactive Charts with D3.js",
-    link: "d3.interactive-charts",
+    id: "d3-interactive-charts",
     description: <>
 
         <p>
