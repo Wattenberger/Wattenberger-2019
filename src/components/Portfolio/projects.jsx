@@ -26,7 +26,7 @@ import dogBreeds from "./Images/dog-breeds.png"
 import Day8 from "components/Sketches/sketches/Day8"
 import WDVPMap from "components/Articles/WDVP/WDVPMap"
 import List from "components/_ui/List/List";
-import Link from "components/_ui/Link";
+import Link from "components/_ui/Link/Link";
 
 export const projects = [
     {
