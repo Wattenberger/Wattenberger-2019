@@ -79,6 +79,7 @@
     "seed-random": "^2.2.0",
     "semver": "6.0.0",
     "sentiment": "^5.0.1",
+    "serve": "^11.0.1",
     "style-loader": "0.23.1",
     "terser-webpack-plugin": "1.2.3",
     "three-orbit-controls": "^82.1.0",
