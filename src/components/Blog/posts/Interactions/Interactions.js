@@ -63,8 +63,10 @@ const Interactions = () => {
           <meta charSet="utf-8" />
           <title>Interactive Charts with D3.js</title>
           <link rel="canonical" href="https://wattenberger.com/blog/d3-interactive-charts" />
-          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Interactive Charts with D3.js" />
+          <meta property="og:type" content="article" />
           <meta name="description" content="Learn how to make your web charts interactive with D3. We'll walk through adding a tooltip to a histogram, and learn general concepts that you can use for any kind of interaction for your own charts!" />
+          <meta name="og:description" content="Learn how to make your web charts interactive with D3. We'll walk through adding a tooltip to a histogram, and learn general concepts that you can use for any kind of interaction for your own charts!" />
           <meta property="og:image" content={image} />
       </Helmet>
 
