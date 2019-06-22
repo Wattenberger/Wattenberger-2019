@@ -1,0 +1,21 @@
+@import "src/styles/lib";
+
+.NewsletterThankYou {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6em 3em;
+    text-align: center;
+
+    h1 {
+        margin-bottom: 0.38em;
+    }
+
+    &__content {
+        max-width: 40em;
+    }
+
+    .WDVPMap {
+        width: 100%;
+    }
+}

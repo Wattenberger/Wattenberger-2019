@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import _ from "lodash"
 
 const localStorageKey = "wattenberger--"
 
@@ -45,3 +46,11 @@ export const getPointFromAngleAndDistance = (angle, distance) => ({
   x: Math.cos(angle * Math.PI / 180) * distance,
   y: Math.sin(angle * Math.PI / 180) * distance,
 })
+
+export const areEqual = (obj1 = {}, obj2 = {}, keys, isDeep = false) =>
+    _.every(
+        _.map(
+            keys,
+            (key) => (isDeep ? _.isEqual((obj1 || {})[key], (obj2 || {})[key]) : (obj1 || {})[key] === (obj2 || {})[key])
+        )
+    );

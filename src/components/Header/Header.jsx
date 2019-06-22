@@ -14,8 +14,8 @@ const Header = () => (
     </Link>
      {/* <Link className="Header__link Header__link--blog" to="/blog">
       Thoughts
-    </Link>
-     <Link className="Header__link Header__link--about" to="/about">
+    </Link> */}
+     {/* <Link className="Header__link Header__link--about" to="/about">
       Who?
     </Link> */}
   </div>

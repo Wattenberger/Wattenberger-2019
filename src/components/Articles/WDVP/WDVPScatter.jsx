@@ -2,7 +2,6 @@ import React, {Component} from "react"
 import PropTypes from "prop-types"
 import * as d3 from "d3"
 import numeral from "numeral"
-import { interpolatePRGn } from "d3-scale-chromatic"
 import classNames from "classnames"
 import _ from "lodash"
 import { createScale } from 'components/_ui/Chart/utils/scale';
@@ -12,12 +11,8 @@ import selectStyles from './selectStyles';
 
 import Chart from "components/_ui/Chart/Chart"
 import Axis from "components/_ui/Chart/Axis/Axis"
-import Scatter from "components/_ui/Chart/Scatter/Scatter"
 
-// import data from "./WDVP Datasets - the future of government"
 import rawData from "./Wdvp_gov_score.json"
-import metricRankedCorrelationData from "./Wdvp_corr.json"
-// import data from "./WDVP Datasets - small countries are beautiful"
 
 import './WDVPScatter.scss'
 
@@ -446,8 +441,8 @@ const WDVPScatterLine = ({ angle, meanX, meanY, width, height, margin }) => {
   const y1 = meanY - boundedHeight / 2 * Math.sin(angle / 180 * Math.PI)
   const x2 = meanX - boundedWidth / 2 * Math.cos(angle / 180 * Math.PI)
   const y2 = meanY + boundedHeight / 2 * Math.sin(angle / 180 * Math.PI)
-  const arrowWidth = 10
-  const arrowHeight = 10
+  // const arrowWidth = 10
+  // const arrowHeight = 10
 
   return (
     <g

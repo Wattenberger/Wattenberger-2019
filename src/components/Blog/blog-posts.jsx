@@ -47,7 +47,14 @@ const posts = [{
         />
 
     </>,
-//     component: VisualDesign,
+// },{
+//     title: "How to learn D3.js",
+//     id: "d3",
+//     description: <>
+
+
+//     </>,
+    // component: VisualDesign,
 // },{
 //     title: "Visual vs. Visualization Design",
 // //     link: "visual-vs-visualization-design",

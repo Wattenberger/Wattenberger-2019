@@ -1,5 +1,74 @@
 @import "src/styles/lib";
 
 .LearnD3 {
+    position: relative;
 
+    h1 {
+        margin-bottom: 0;
+    }
+    h6 {
+        margin: 0.9em 0;
+        padding: 0;
+    }
+
+    p {
+        margin-top: 0.3em;
+        margin-bottom: 0;
+    }
+
+    &__content {
+        padding: 5em 2em 5em 4em;
+
+        .P {
+            display: inline-block;
+            margin: 0 0;
+            padding: 0 0.6em;
+            color: $a1;
+            background: rgba($a1, 0.1);
+            border-radius: 2px;
+            font-feature-settings: 'tnum' 1;
+            font-family: monospace;
+        }
+
+        h2 {
+            margin-bottom: 0.5em;
+        }
+
+        .Heading {
+            &__hash {
+                font-size: 0.6em;
+            }
+        }
+    }
+
+    &__section {
+        max-width: 60em;
+        min-height: 30vh;
+        padding-right: 20em;
+    }
+
+    &__diagram {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        margin-top: -3em;
+        // position: sticky;
+        // top: 10px;
+
+        .D3Modules__wrapper {
+            transition: all 0.5s ease-out;
+        }
+
+        &--is-shrunk {
+            justify-content: flex-end;
+
+            .D3Modules__wrapper {
+                position: fixed;
+                top: 10px;
+                right: 0;
+                transform-origin: center right;
+                transform: scale(0.5);
+            }
+        }
+    }
 }

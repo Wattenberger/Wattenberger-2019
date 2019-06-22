@@ -47,6 +47,11 @@
     }
   }
 
+  &__copy {
+    margin-left: auto;
+    height: 23px;
+  }
+
   &--wrap-none {
     code[class*="language-"], pre[class*="language-"] {
       white-space: pre;

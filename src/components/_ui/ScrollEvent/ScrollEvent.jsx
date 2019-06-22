@@ -21,6 +21,7 @@ class ScrollEvent extends Component {
   static propTypes = {
     isInViewChange: PropTypes.func,
     thresholdPercent: PropTypes.number,
+    hasIndicator: PropTypes.bool,
   }
 
   static defaultProps = {

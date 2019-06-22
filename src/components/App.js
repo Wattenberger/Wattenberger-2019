@@ -34,6 +34,9 @@ const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVS
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
 const ReactZdog = React.lazy(() => import("components/Articles/ReactZdog/ReactZdog"));
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
+const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
+const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
+const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 
 class App extends Component {
 
@@ -90,7 +93,10 @@ class App extends Component {
               <Route path="/react-zdog" component={ReactZdog} />
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />
+              <Route path="/blog/d3" component={LearnD3} />
               <Route path="/blog" component={Blog} />
+              <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
+              <Route path="/keep-in-touch" component={NewsletterSignupPage} />
 
               {/* <Route path="/docstats" component={DoctorateStats} /> */}
               <Route>

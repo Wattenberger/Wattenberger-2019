@@ -182,6 +182,11 @@ const Code = ({
                     <div className="Code__file__name">
                         { fileName }
                     </div>
+
+                    <ClipboardTrigger
+                        className="Code__copy"
+                        text={parsedCode}
+                    />
                 </div>
             )}
             <div className={[

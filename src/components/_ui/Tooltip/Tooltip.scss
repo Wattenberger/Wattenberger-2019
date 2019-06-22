@@ -1,35 +1,141 @@
 @import "src/styles/lib";
 
+$tooltip-color: white;
+$box-shadow-tooltip: 0px 1px 7px 0px rgba(45, 53, 69, 0.25);
+
 .Tooltip {
-  position: relative;
+    position: relative;
 
-  &__contents {
-    position: absolute;
-    padding: 0.3em 0.6em;
-    z-index: 100;
-    transform: translate(-50%, -100%);
-    opacity: 0;
-    background: white;
-    color: $tc;
-    font-size: 16px;
-    margin-top: -0.5em;
-    pointer-events: none;
-  }
+    &__contents {
+        position: fixed;
+        padding: 0.6em 1em;
+        background: $tooltip-color;
+        font-size: 1em;
+        text-align: center;
+        border-radius: 6px;
+        pointer-events: none;
+        opacity: 0;
+        transform: translate3d(-50%, -70%, 0);
+        z-index: 1000;
+        font-size: 0.8em;
+        max-width: 30em;
+        box-shadow: $box-shadow-tooltip;
+        border: 1px solid white;
+        transition: opacity 0.3s ease-out,
+        transform 0.3s ease-out;
 
-  &--position {
-    &-top-right {
-      .Tooltip__contents {
-        transform: translate(-0.3em, -100%);
-        box-shadow: 0 2px 26px rgba(102, 119, 136, 0.2), 0 1px 2px rgba(102, 119, 136, 0.3);
-      }
+        div {
+            -webkit-font-smoothing: antialiased;
+            -webkit-transform: translateZ(0) scale(1.0, 1.0);
+        }
+
+        &__note {
+            font-size: 0.86em;
+            line-height: 1.27em;
+            margin: 0.2em 0;
+            opacity: 0.6;
+        }
+
+        &__arrow {
+            // container to clip the box shadow of the arrow (rotated square)
+            bottom: -8px;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: 0px;
+            width: 21px;
+            height: 20px;
+            position: absolute;
+            top: 100%;
+            overflow: hidden;
+            border-top: 0 solid $tooltip-color; //to hide the white border separating the triangle and container
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 9px;
+                height: 9px;
+                background: $tooltip-color;
+                transform: translateX(-50%) translateY(-50%) rotate(45deg);
+                top: 0;
+                left: 50%;
+                box-shadow: $box-shadow-tooltip;
+            }
+        }
+
+        &__close {
+            position: absolute;
+            top: 0.6em;
+            right: 0.6em;
+            padding: 0.3em;
+            opacity: 0.5;
+            cursor: pointer;
+            z-index: 10;
+            transition: opacity 0.3s ease-out;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &--is-showing {
+          transform: translate3d(-50%, -100%, 0);
+          opacity: 1;
+        }
+
+        &--is-unmounting {
+            opacity: 0;
+        }
+
+        &--top {
+            margin-top: -10px;
+        }
+
+        &--bottom {
+            transform: translate3d(-50%, 0, 0);
+
+            .Tooltip__contents__arrow {
+                bottom: auto;
+                top: -20px;
+                transform-origin: center center;
+                transform: rotate(-180deg);
+            }
+        }
+
+        &--right {
+            transform: translate3d(13px, -50%, 0);
+
+            .Tooltip__contents__arrow {
+                bottom: auto;
+                top: 50%;
+                left: -10px;
+                margin-top: -10px;
+                border-bottom-width: 8px;
+                border-right-color: $tooltip-color;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-left-color: transparent;
+                transform: rotate(90deg);
+            }
+        }
+
+        &--left {
+            transform: translate3d(0, -50%, 0);
+            margin-left: -10px;
+            margin-top: 0;
+
+            .Tooltip__contents__arrow {
+                bottom: auto;
+                top: 50%;
+                right: -20px;
+                left: auto;
+                margin-top: -10px;
+                border-bottom-width: 10px;
+                border-left-color: $tooltip-color;
+                border-top-color: transparent;
+                border-bottom-color: transparent;
+                border-right-color: transparent;
+                transform: rotate(-90deg);
+            }
+        }
     }
-  }
-
-  &:hover {
-    .Tooltip {
-      &__contents {
-        opacity: 1;
-      }
-    }
-  }
 }

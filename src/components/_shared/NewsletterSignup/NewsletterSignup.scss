@@ -1,0 +1,29 @@
+@import "src/styles/lib";
+
+.NewsletterSignup {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 27em;
+    max-width: 100%;
+    padding: 0.3em;
+    background: #fff;
+
+    &__input {
+        flex: 1;
+        min-width: 10em;
+        width: auto;
+        padding: 0.4em 0.6em;
+        font-weight: 400;
+        border: 1px solid white;
+    }
+
+    &__submit {
+        display: flex;
+        align-items: center;
+
+        .Icon {
+            margin-left: 0.3em;
+        }
+    }
+}

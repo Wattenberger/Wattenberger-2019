@@ -8,6 +8,7 @@
     margin: 0 2rem 3em 2rem;
     // font-size: 0.9em;
     background: rgba($a1, 0.1);
+    padding-right: 1em;
 
     @media (max-width: 600px) {
         flex-direction: column;
@@ -29,10 +30,35 @@
         }
     }
 
+    &__image {
+        flex: none;
+        height: 10em;
+        margin-top: -6em;
+        // margin-bottom: -3em;
+        // margin-left: -1em;
+        // position: absolute;
+        // right: 0;
+        // bottom: 0;
+        // width: 10em;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        padding: 2em 1rem 1.6em 1rem;
+    }
+
+    &__siblings {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0.3em -0.5em 0;
+    }
+
     &__links {
         display: flex;
         flex-wrap: wrap;
-        margin: 0.3em -0.5em 0;
     }
 
     &__link {
@@ -45,22 +71,6 @@
         }
     }
 
-    &__text {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-        padding: 2em 1rem 1.6em 1rem;
-    }
-
-    &__image {
-        flex: none;
-        height: 10em;
-        margin-top: -6em;
-        // margin-bottom: -3em;
-        // margin-left: -1em;
-        // position: absolute;
-        // right: 0;
-        // bottom: 0;
-        // width: 10em;
+    &__signup {
     }
 }
