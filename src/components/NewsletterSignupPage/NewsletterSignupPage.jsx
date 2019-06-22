@@ -14,7 +14,8 @@ const NewsletterSignupPage = () => {
 
             <div className="NewsletterSignupPage__content">
                 <p>
-                    I'll be sending you updates on any blogs posts I'm working on, data visualization experiments, and frontend development & design tutorials.
+                    Want me to send you updates on the newest things I've made? Sign up for my newsletter!
+                     Content will be related to data visualization experiments, frontend development, and design.
                 </p>
             </div>
 
