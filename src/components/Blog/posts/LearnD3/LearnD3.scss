@@ -23,6 +23,21 @@
         font-weight: 600;
     }
 
+    &__promo {
+        display: flex;
+        align-items: center;
+
+        &__img {
+            flex: none;
+            width: auto;
+            height: 9em;
+            margin-left: -5em;
+            margin-right: 1em;
+            margin-top: -4em;
+            margin-bottom: -2em;
+        }
+    }
+
     &__content {
         position: relative;
         padding: 5em 2em 5em 4em;

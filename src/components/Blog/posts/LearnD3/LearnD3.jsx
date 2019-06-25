@@ -13,6 +13,8 @@ import List from "components/_ui/List/List";
 import Code from "components/_ui/Code/Code";
 import constructionGif from "./construction.gif";
 
+import bookImage from "images/book.png";
+
 import "./LearnD3.scss"
 
 const LearnD3 = () => {
@@ -312,11 +314,14 @@ setTimeout(() => {
 
                         <ReadMore id="d3-selection" />
 
-                        <Aside>
-                            <p>
-                                A great place to start is the <Link href="fullstack.io/fullstack-d3">Fullstack D3 and Data Visualization</Link> book.
-                            </p>
-                            <Link href="fullstack.io/fullstack-d3">Download the first chapter</Link> to dive in and you'll make your own custom data visualization by the end!
+                        <Aside className="LearnD3__promo">
+                            <img src={bookImage} alt="book" className="LearnD3__promo__img"/>
+                             <div className="LearnD3__promo__text">
+                                <p>
+                                    A great place to start is the <Link href="fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> book.
+                                </p>
+                                <Link href="fullstack.io/fullstack-d3">Download the first chapter</Link> to dive in and you'll make your own custom data visualization by the end!
+                            </div>
                         </Aside>
 
                         <h3>
