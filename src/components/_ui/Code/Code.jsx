@@ -5,10 +5,12 @@ import _ from "lodash"
 import * as d3 from "d3"
 
 import { scrollTo } from "utils.js"
+import Icon from 'components/_ui/Icon/Icon';
+import ClipboardTrigger from 'components/_ui/ClipboardTrigger/ClipboardTrigger';
+import ConfirmationFade from 'components/_ui/ConfirmationFade/ConfirmationFade';
+import Tooltip from 'components/_ui/Tooltip/Tooltip';
 
 import './Code.scss';
-import ClipboardTrigger from '../ClipboardTrigger/ClipboardTrigger';
-import Icon from 'components/_ui/Icon/Icon';
 
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
 const Code = ({
@@ -22,12 +24,14 @@ const Code = ({
     doScrollToTop=false,
     doKeepInitialLineNumbers=false,
     hasLineNumbers=true,
+    canEval=false,
     doOnlyShowHighlightedLines=false,
     doWrap=true,
     className, children, ...props
 }) => {
     const wrapper = useRef()
     const [expandedSteps, setExpandedSteps] = useState([])
+    const [hasRun, setHasRun] = useState(false)
     const needsToScroll = useRef()
     const currentHighlightedLines = useRef()
     currentHighlightedLines.current = highlightedLines
@@ -174,6 +178,11 @@ const Code = ({
         setExpandedSteps(newSteps)
     }
 
+    const onEval = () => {
+        window.eval(parsedCode)
+        setHasRun(true)
+    }
+
     return (
         <div className="Code__wrapper">
             {!!fileName && (
@@ -183,10 +192,24 @@ const Code = ({
                         { fileName }
                     </div>
 
-                    <ClipboardTrigger
-                        className="Code__copy"
-                        text={parsedCode}
-                    />
+                    <div className="Code__file__actions">
+                        {canEval && (
+                            <Tooltip className="Code__eval" contents="Run code">
+                                {hasRun && (
+                                    <ConfirmationFade onFaded={() => setHasRun(false)}>
+                                        Code has run!
+                                    </ConfirmationFade>
+                                )}
+                                <Icon name="play" onClick={onEval} />
+                            </Tooltip>
+                        )}
+
+                        <Tooltip className="Code__copy" contents="Copy code to my clipboard">
+                            <ClipboardTrigger
+                                text={parsedCode}
+                            />
+                        </Tooltip>
+                    </div>
                 </div>
             )}
             <div className={[

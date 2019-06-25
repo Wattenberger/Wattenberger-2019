@@ -8291,6 +8291,7 @@
   {
     "title": "Collections",
     "repo": "d3-collection",
+    "isDeprecated": true,
     "items": [
       {
         "title": "d3.keys - list the keys of an associative array.",

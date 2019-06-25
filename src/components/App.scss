@@ -21,6 +21,7 @@ body {
     line-height: 1.46em;
     font-family: $font-family-sans-serif;
     letter-spacing: -0.014em;
+    font-feature-settings: 'ss02', 'ss03', 'zero', 'cv08', 'cv11' 1;
     color: $tc;
     background: #f8f9fa;
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Icon from '../Icon/Icon'
+import Icon from 'components/_ui/Icon/Icon'
 
 import './ClipboardTrigger.scss'
-import ConfirmationFade from '../ConfirmationFade/ConfirmationFade';
+import ConfirmationFade from 'components/_ui/ConfirmationFade/ConfirmationFade';
 
 const ClipboardTrigger = ({ text, className, children, ...props }) => {
     const [canCopy, setCanCopy] = useState(false)

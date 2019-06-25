@@ -47,13 +47,13 @@ const posts = [{
         />
 
     </>,
-// },{
-//     title: "How to learn D3.js",
-//     id: "d3",
-//     description: <>
+},{
+    title: "How to learn D3.js",
+    id: "d3",
+    description: <>
 
 
-//     </>,
+    </>,
     // component: VisualDesign,
 // },{
 //     title: "Visual vs. Visualization Design",

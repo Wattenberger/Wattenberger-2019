@@ -2,6 +2,8 @@
 
 .LearnD3 {
     position: relative;
+    margin-bottom: 9em;
+    padding-bottom: 10em;
 
     h1 {
         margin-bottom: 0;
@@ -16,8 +18,18 @@
         margin-bottom: 0;
     }
 
+    i {
+        font-style: italic;
+        font-weight: 600;
+    }
+
     &__content {
+        position: relative;
         padding: 5em 2em 5em 4em;
+
+        @media (max-width: 860px) {
+            padding: 5em 2em 5em 2em;
+        }
 
         .P {
             display: inline-block;
@@ -34,6 +46,10 @@
             margin-bottom: 0.5em;
         }
 
+        h3 {
+            font-size: 2.6em;
+        }
+
         .Heading {
             &__hash {
                 font-size: 0.6em;
@@ -42,9 +58,17 @@
     }
 
     &__section {
-        max-width: 60em;
+        // max-width: 1100px;
         min-height: 30vh;
-        padding-right: 20em;
+        padding-right: 500px;
+
+        @media (min-width: 1300px) {
+            padding-right: 700px;
+        }
+
+        @media (max-width: 860px) {
+            padding-right: 0;
+        }
     }
 
     &__diagram {
@@ -55,20 +79,75 @@
         // position: sticky;
         // top: 10px;
 
+        max-width: calc(100% + 4em);
+        width: calc(100% + 4em);
+        margin-left: -2em;
+
+        @media (min-width: 1300px) {
+            margin-top: -6em;
+        }
+
+        @media (max-width: 860px) {
+            max-width: calc(100% + 4em);
+            width: calc(100% + 4em);
+            padding-left: 7em;
+        }
+
         .D3Modules__wrapper {
             transition: all 0.5s ease-out;
         }
 
         &--is-shrunk {
-            justify-content: flex-end;
+            @media (min-width: 860px) {
+                justify-content: flex-end;
 
-            .D3Modules__wrapper {
-                position: fixed;
-                top: 10px;
-                right: 0;
-                transform-origin: center right;
-                transform: scale(0.5);
+                .D3Modules__wrapper {
+                    position: fixed;
+                    top: 10px;
+                    right: 0;
+                    transform-origin: center right;
+                    transform: scale(0.8);
+                }
             }
         }
     }
+
+    &__modules-list {
+        margin-bottom: 2em;
+
+        .List__item {
+            padding-top: 0;
+            padding-bottom: 0;
+            align-items: center;
+
+            &:hover {
+                background: rgba($grey4, 0.1);
+            }
+
+            &__text {
+                padding-bottom: 0;
+            }
+
+            &__icon {
+                margin-top: -0.12em;
+            }
+        }
+
+        &__item {
+            padding: 0.5em 0;
+        }
+    }
+
+    .desktop {
+        @media (max-width: 860px) {
+            display: none;
+        }
+    }
+
+    .mobile {
+        @media (min-width: 860px) {
+            display: none;
+        }
+    }
+
 }

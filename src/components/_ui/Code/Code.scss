@@ -45,11 +45,29 @@
       margin-left: 0.5em;
       font-weight: 500;
     }
+
+    &__actions {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+    }
   }
 
   &__copy {
-    margin-left: auto;
     height: 23px;
+  }
+
+  &__eval {
+    height: 19px;
+    margin-right: 0.3em;
+    padding: 0 0.3em;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: opacity 0.2s ease-out;
+
+    &:hover {
+        opacity: 1;
+    }
   }
 
   &--wrap-none {
@@ -73,6 +91,7 @@
     display: flex;
     align-items: baseline;
     cursor: text;
+    min-height: 1.8em;
     // transition: all 0.03s ease-out;
 
     &:hover {

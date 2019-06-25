@@ -1,0 +1,143 @@
+@import "src/styles/lib";
+
+.D3ModulesInline {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: -0.3em 0 1em 0;
+    max-width: 100%;
+    overflow: hidden;
+
+    &Item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0.3em;
+        border: 3px solid transparent;
+        // border-radius: 100%;
+        border-radius: 2px;
+        background: rgba($a1, 0.2);
+        max-width: 100%;
+
+        &-wrapper {
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            margin: 0.6em;
+            // flex: 0;
+        }
+
+        &__text {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: $text-color;
+            text-align: center;
+            z-index: 10;
+            pointer-events: none;
+            z-index: 100;
+            // max-width: 100%;
+        }
+        &__title {
+            font-weight: 600;
+            line-height: 1.1em;
+            // max-width: 10em;
+        }
+        &__name {
+            font-size: 0.86em;
+            color: $grey5;
+            // min-width: 20em;
+
+            a:visited,
+            a {
+                color: $grey5;
+            }
+        }
+        &__size {
+            font-feature-settings: 'tnum' 1;
+            line-height: 1.2em;
+            font-size: 0.8em;
+        }
+
+        &__name,
+        &__size {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        &:active,
+        &:focus,
+        &:visited,
+        &:hover {
+            border-color: $a1;
+            outline: none;
+
+            & + .D3ModulesInlineItem__text {
+                .D3ModulesInlineItem {
+                    &__name,
+                    &__size {
+                        opacity: 1;
+                    }
+                }
+            }
+
+        }
+
+        &--is-external {
+            background: rgba($a3, 0.3);
+
+            &:active,
+            &:focus,
+            &:visited,
+            &:hover {
+                border-color: $a3;
+            }
+
+            .D3ModulesInlineItem {
+                &__child {
+                    background: rgba($a3, 0.3);
+                }
+            }
+        }
+
+        &__children {
+            @include abs(0, 0, 0, 0);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: space-around;
+            justify-content: center;
+            align-content: center;
+        }
+
+        &__child {
+            margin: 2px;
+            background: rgba($a1, 0.2);
+            // border-radius: 100%;
+            border-radius: 2px;
+
+            &:hover {
+                background: $a1;
+            }
+
+            &__contents {
+                max-width: 20em;
+                line-height: 1.3em;
+            }
+        }
+    }
+
+    &Scheme,
+    &Gradient {
+        width: 100%;
+        min-width: 10em;
+        height: 2em;
+        margin-top: 0.6em;
+    }
+}

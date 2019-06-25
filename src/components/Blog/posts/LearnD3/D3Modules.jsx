@@ -11,15 +11,18 @@ import "./D3Modules.scss"
 
 
 const numberFormat = d3.format(",.1f")
-const baseModules = ["d3-array","d3-axis","d3-brush","d3-chord","d3-collection","d3-color","d3-contour","d3-dispatch","d3-drag","d3-dsv","d3-ease","d3-fetch","d3-force","d3-format","d3-geo","d3-hierarchy","d3-interpolate","d3-path","d3-polygon","d3-quadtree","d3-random","d3-scale","d3-scale-chromatic","d3-selection","d3-shape","d3-time","d3-time-format","d3-timer","d3-transition","d3-voronoi","d3-zoom"]
-const isInCore = d => baseModules.includes(d)
+const coreModules = ["d3-array","d3-axis","d3-brush","d3-chord","d3-collection","d3-color","d3-contour","d3-dispatch","d3-drag","d3-dsv","d3-ease","d3-fetch","d3-force","d3-format","d3-geo","d3-hierarchy","d3-interpolate","d3-path","d3-polygon","d3-quadtree","d3-random","d3-scale","d3-scale-chromatic","d3-selection","d3-shape","d3-time","d3-time-format","d3-timer","d3-transition","d3-voronoi","d3-zoom"]
+const isInCore = d => coreModules.includes(d)
 
-const D3Modules = ({ focusedPackages, className }) => {
-    const width = Math.min(
-        // Math.max(900, window.innerWidth - 100),
-        window.innerWidth - 100,
-        window.innerHeight + 100,
-        2200
+const D3Modules = ({ focusedPackages, isShrunk, className }) => {
+    const width = Math.max(
+        Math.min(
+            // Math.max(900, window.innerWidth - 100),
+            window.innerWidth - 100,
+            window.innerHeight + 100,
+            2200
+        ),
+        700,
     )
     const height = width * 0.9
 
@@ -68,12 +71,26 @@ const D3Modules = ({ focusedPackages, className }) => {
         return {
             nodes, leftMostExternalPackage
         }
-    }, [])
+    }, [width, height])
+
+    const wrapperScale = useMemo(() => {
+        // const wrapperWidth = window.innerWidth - (16 * 30)
+        const wrapperScale = isShrunk && window.innerWidth >= 860
+            ? window.innerWidth > 1300
+                ? 750 / width
+                : 550 / width
+            : 1
+        return wrapperScale
+    }, [isShrunk, width])
 
 
     return (
-        <div className={`D3Modules ${className}`} style={{height: `${height}px`}}>
-            <div className="D3Modules__wrapper" style={{width: `${width}px`, height: `${height}px`}}>
+        <div className={`D3Modules ${className}`} style={{height: `${height + 20}px`}}>
+            <div className="D3Modules__wrapper" style={{
+                width: `${width}px`,
+                height: `${height}px`,
+                transform: `scale(${wrapperScale})`,
+            }}>
                 {nodes.map(module => (
                     <D3ModulesItem
                         key={module.title}
@@ -105,7 +122,7 @@ export const D3ModulesItem = ({ size, title, repo, name, r, x, y, isInCore, isUn
         href={`https://github.com/d3/${repo}`}
         className={[
             "D3ModulesItem",
-            `D3ModulesItem--is-${isInCore ? "core" : "external"}`,
+            `D3ModulesItem--is-${isDeprecated ? "deprecated" : isInCore ? "core" : "external"}`,
             `D3ModulesItem--is-${
                 isFocused ? "focused" :
                 isUnfocused ? "unfocused" :
