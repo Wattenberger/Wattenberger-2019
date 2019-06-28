@@ -101,7 +101,7 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
                     />
                 ))}
 
-                {leftMostExternalPackage && !focusedPackages && (
+                {leftMostExternalPackage && !focusedPackages && !isShrunk && (
                     <div className="D3Modules__annotation" style={{
                         transform: `translate(${leftMostExternalPackage.x}px, ${leftMostExternalPackage.y + leftMostExternalPackage.r * 1.5}px)`
                     }}>

@@ -149,7 +149,20 @@
         }
 
         &__item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 3em;
             padding: 0.5em 0;
+            line-height: 1.3em;
+            cursor: pointer;
+
+            &__flag {
+                padding: 0.3em 0.6em;
+                font-size: 0.82em;
+                color: darken($a3, 16%);
+                background: rgba($a3, 0.16);
+            }
         }
     }
 

@@ -3,8 +3,9 @@
   transform-origin: center center;
 
   &--direction {
-    &-s { transform: rotate( 90deg) }
-    &-w { transform: rotate(180deg) }
-    &-n { transform: rotate(-90deg) }
+    &-s  { transform: rotate( 90deg) }
+    &-w  { transform: rotate(180deg) }
+    &-n  { transform: rotate(-90deg) }
+    &-ne { transform: rotate(-45deg) }
   }
 }
