@@ -12,9 +12,9 @@ const Header = () => (
         Wattenberger
       </div>
     </Link>
-     {/* <Link className="Header__link Header__link--blog" to="/blog">
+     <Link className="Header__link Header__link--blog" to="/blog">
       Thoughts
-    </Link> */}
+    </Link>
      {/* <Link className="Header__link Header__link--about" to="/about">
       Who?
     </Link> */}

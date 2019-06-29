@@ -16,6 +16,11 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "How to learn D3.js",
+  id: "d3",
+  description: <>
+  </>,
+},{
     title: "Interactive Charts with D3.js",
     id: "d3-interactive-charts",
     description: <>
@@ -45,13 +50,6 @@ const posts = [{
           js={exampleBarsFull}
           data={dataCsv}
         />
-
-    </>,
-},{
-    title: "How to learn D3.js",
-    id: "d3",
-    description: <>
-
 
     </>,
     // component: VisualDesign,

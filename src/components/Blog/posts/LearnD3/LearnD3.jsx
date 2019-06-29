@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Helmet } from "react-helmet"
 import { Twemoji } from "react-emoji-render";
 
@@ -29,7 +29,7 @@ const sections = [{
     Component: LearnD3GetData,
 },{
     label: "Modules for manipulating data",
-    modules: ["d3-quadtree", "d3-array", "d3-random", "d3-collection"],
+    modules: ["d3-array", "d3-random", "d3-collection"],
     Component: LearnD3ChangeData,
 },{
   label: "Modules for manipulating the DOM",
@@ -66,7 +66,7 @@ const sections = [{
 }].map(d => ({
     ...d,
     id: d.label
-        .slice(11)
+        .slice(12)
         .replace(/ /g, "-")
 }))
 const LearnD3 = () => {
@@ -74,11 +74,20 @@ const LearnD3 = () => {
     const [tempFocusedPackages, setTempFocusedPackages] = useState(null)
     const [isDiagramShrunk, setIsDiagramShrunk] = useState(false)
 
+    useEffect(() => {
+        const hash = window.location.hash
+        if (!hash) return
+        onScrollToSectionLocal(hash.slice(1))()
+    }, [])
+
     const onScrollToSectionLocal = section => e => {
-      e.preventDefault()
+      if (e) e.preventDefault()
       window.history.pushState({}, '', `#${section}`);
 
-      const y = document.querySelector(`#${section}`).getBoundingClientRect().top
+      const sectionElement = document.querySelector(`#${section}`)
+      if (!sectionElement) return
+
+      const y = sectionElement.getBoundingClientRect().top
         + document.documentElement.scrollTop
         - 150
 
@@ -92,7 +101,7 @@ const LearnD3 = () => {
                 <title>An Introduction to D3.js</title>
                 <link rel="canonical" href="https://wattenberger.com/blog/d3" />
                 <meta property="og:type" content="website" />
-                <meta name="description" content="Hi I’m Amelia Wattenberger. I’m interested in teaching data visualization, frontend development, and design." />
+                <meta name="description" content="Learn the fundamentals of D3.js: what it is, how to use it, what are the different modules, and how to use the API. This article has tons of linked resources for digging deeper." />
             </Helmet>
 
             <div className="LearnD3__content">
@@ -194,7 +203,9 @@ const LearnD3 = () => {
                                 modules={modules}
                             />
 
-                            <Component />
+                            <Component
+                                onScrollToSectionLocal={onScrollToSectionLocal}
+                            />
 
                         </ScrollEvent>
                     ))}

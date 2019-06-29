@@ -27,6 +27,14 @@
     p {
         margin-top: 0.3em;
         margin-bottom: 0;
+
+        & + .Code__wrapper {
+            margin-top: 0;
+        }
+
+        & + .Aside {
+            margin-top: 0.6em;
+        }
     }
 
     i {

@@ -1,6 +1,7 @@
 @import "src/styles/lib";
 
 .Aside {
+  position: relative;
   margin: 1.7em 0;
   padding: 0.8em 1.5em;
   color: $grey4;
@@ -8,4 +9,13 @@
   line-height: 1.5em;
   border-left: 0.3em solid $a1;
   background: rgba($a1, 0.09);
+
+  &__icon {
+    @include abs(0.8em, auto, auto, 0.3em);
+    transform: translate(-80%, 0) rotate(-5deg);
+    color: white;
+    stroke: $grey3;
+    stroke-width: 1.3px;
+    overflow: visible;
+  }
 }

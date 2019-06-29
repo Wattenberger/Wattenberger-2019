@@ -1,0 +1,16 @@
+@import "src/styles/lib";
+
+.InlineExpandy {
+  position: relative;
+
+  &__trigger {
+    font-size: 0.9em;
+    text-decoration: underline;
+    color: $a2;
+    cursor: pointer;
+  }
+
+  &__contents {
+    padding: 0.6em 0;
+  }
+}
