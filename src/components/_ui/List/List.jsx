@@ -3,7 +3,7 @@ import Icon from '../Icon/Icon'
 
 import './List.scss';
 
-const List = ({ items=[], hasNumbers=false, className, ...props }) => {
+const List = ({ items=[], icon, hasNumbers=false, className, ...props }) => {
     return (
         <ul className={`List ${className}`} {...props}>
             { items.map((item, i) => (
@@ -13,7 +13,7 @@ const List = ({ items=[], hasNumbers=false, className, ...props }) => {
                             { i + 1 }.
                         </div>
                     ) : (
-                        <Icon className="List__item__icon" name="asterisk" size="m" />
+                        icon || <Icon className="List__item__icon" name="asterisk" size="m" />
                     )}
                     <div className="List__item__text">
                         { item }

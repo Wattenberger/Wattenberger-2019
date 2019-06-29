@@ -107,12 +107,16 @@ const LearnD3GetData = () => {
                 In <b>d3-fetch</b>, the methods are just the names of the file format, and they take one parameter: the URL of your file. When you execute one of these methods, they'll respond with a <b>Promise</b>, which will resolve with the parsed data <Twemoji svg text=":raised_hands:" />
             </p>
 
+            <Aside>
+                If you're unfamiliar with <b>Promises</b>, check out this great video explanation from <Link href="https://www.youtube.com/watch?v=QO4NXhWo_NM">The Coding Train</Link> or the <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">MDN docs</Link>.
+            </Aside>
+
             <p>
                 For example, to grab the current weather in Oslo, Norway, we can query the <Link href="https://www.metaweather.com/api/">MetaWeather API</Link> and grab the temperature from the parsed response.
             </p>
 
             <Aside>
-                If you're unfamiliar with <b>Promises</b>, check out this great video explanation from <Link href="https://www.youtube.com/watch?v=QO4NXhWo_NM">The Coding Train</Link> or the <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises">MDN docs</Link>.
+                Feel free to copy and run this example in your browser's <b>Dev Tools Console tab</b>, or run it by hitting <Icon name="play" size="s" />.
             </Aside>
 
                 {/* {`const url = "https://cors-anywhere.herokuapp.com/https://date.nager.at/Api/v2/NextPublicHolidaysWorldwide" */}

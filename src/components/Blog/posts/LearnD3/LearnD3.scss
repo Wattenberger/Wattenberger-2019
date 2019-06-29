@@ -5,9 +5,20 @@
     margin-bottom: 9em;
     padding-bottom: 10em;
 
-    h1 {
-        margin-bottom: 0;
+    h2 {
+        margin-bottom: 0.5em;
+        font-size: 3.6em;
+        line-height: 1.1em;
     }
+
+    h3 {
+        font-size: 2.1em;
+        font-weight: 900;
+        margin-top: 1em;
+        margin-bottom: 0.5em;
+        line-height: 1.3em;
+    }
+
     h6 {
         margin: 0.9em 0;
         padding: 0;
@@ -57,19 +68,15 @@
             font-family: monospace;
         }
 
-        h2 {
-            margin-bottom: 0.5em;
-        }
-
-        h3 {
-            font-size: 2.6em;
-        }
-
         .Heading {
             &__hash {
                 font-size: 0.6em;
             }
         }
+    }
+
+    &__module {
+        margin: 6em 0;
     }
 
     &__section {

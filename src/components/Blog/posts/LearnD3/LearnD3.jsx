@@ -13,6 +13,7 @@ import List from "components/_ui/List/List";
 import Code from "components/_ui/Code/Code";
 import LearnD3Selections from "./LearnD3Selections";
 import LearnD3GetData from "./LearnD3GetData";
+import LearnD3ChangeData from "./LearnD3ChangeData";
 
 import constructionGif from "./construction.gif";
 
@@ -27,17 +28,21 @@ const sections = [{
     modules: ["d3-fetch", "d3-dsv"],
     Component: LearnD3GetData,
 },{
-    label: "Modules for manipulating the DOM",
-    modules: ["d3-selection", "d3-selection-multi"],
-    Component: LearnD3Selections,
-},{
     label: "Modules for manipulating data",
     modules: ["d3-quadtree", "d3-array", "d3-random", "d3-collection"],
-    Component: DummySection,
+    Component: LearnD3ChangeData,
+},{
+  label: "Modules for manipulating the DOM",
+  modules: ["d3-selection", "d3-selection-multi"],
+  Component: LearnD3Selections,
 },{
     label: "Modules for drawing SVG shapes",
     modules: ["d3-shape", "d3-polygon", "d3-path"],
     Component: DummySection,
+},{
+  label: "Modules for converting between data domains",
+  modules: ["d3-scale"],
+  Component: DummySection,
 },{
     label: "Modules for animation",
     modules: ["d3-transition", "d3-ease", "d3-interpolate"],
@@ -170,11 +175,16 @@ const LearnD3 = () => {
                     {sections.map(({
                         Component, modules, id, label
                     }) => (
-                        <ScrollEvent key={id} isInViewChange={status => {
-                            // if (status < 0) return
+                        <ScrollEvent
+                          className="LearnD3__module"
+                          key={id}
+                          isInViewChange={status => {
+                            if (status != 0) return
+
                             setFocusedPackages(modules)
                             setIsDiagramShrunk(true)
-                        }} hasIndicator={false}>
+                          }}
+                          hasIndicator={false}>
                             <Heading id={id}>
                                 { label }
                             </Heading>
@@ -187,15 +197,16 @@ const LearnD3 = () => {
                             <Component />
 
                         </ScrollEvent>
-
                     ))}
+
+                    <br />
 
                     <ScrollEvent isInViewChange={d => {
                         if (d < 0) return
 
                         setFocusedPackages(null)
                         setIsDiagramShrunk(true)
-                    }} hasIndicator={false}>
+                    }} hasIndicator={"false"}>
 
                         <Heading id="wrap-up">
                             All together now
@@ -322,13 +333,8 @@ function DummySection() {
         <>
             <img alt="under construction" src={constructionGif} />
             <Aside>
-                Sorry about the dummy text! This section is under contruction.
+                Sorry about the dummy text! This section is under construction.
             </Aside>
-
-            <p>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                </p><p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-            </p>
 
             <p>
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.

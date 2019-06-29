@@ -59,25 +59,35 @@ h2 {
 }
 
 h3 {
-// font-family: $font-family-serif;
-font-size: 3em;
-line-height: 1.1em;
-margin-bottom: 0.6em;
-font-weight: 800;
-letter-spacing: -0.022em;
+  // font-family: $font-family-serif;
+  font-size: 3em;
+  line-height: 1.1em;
+  margin-bottom: 0.6em;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+}
+
+h5 {
+  // font-family: $font-family-serif;
+  font-size: 1.3em;
+  line-height: 1.1em;
+  margin-bottom: 0.3em;
+  margin-top: 0.6em;
+  font-weight: 800;
+  letter-spacing: -0.022em;
 }
 
 h6 {
-font-size: 0.9em;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-line-height: 1.1em;
-margin: 0.5em 0;
-margin-bottom: 0.6em;
-text-transform: uppercase;
-letter-spacing: 0.1em;
-font-weight: 400;
-color: $grey3;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.1em;
+  margin: 0.5em 0;
+  margin-bottom: 0.6em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  color: $grey3;
 
 b {
     font-weight: 900;
