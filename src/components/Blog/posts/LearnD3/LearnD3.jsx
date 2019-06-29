@@ -17,7 +17,7 @@ import LearnD3ChangeData from "./LearnD3ChangeData";
 
 import constructionGif from "./construction.gif";
 
-import bookImage from "images/book.png";
+import bookImage from "images/book2.png";
 
 import "./LearnD3.scss"
 import { scrollTo } from "utils";
@@ -269,12 +269,15 @@ const LearnD3 = () => {
                     <List items={[
                         <>
                             <b>Fullstack D3 and Data Visualization</b>
-                            <p>
-                                If you found this guide helpful, <Link href="http://fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> goes way more in-depth and digs into the nitty-gritty right away. You’ll be creating your own custom charts <i>by the end of the first chapter</i>.
-                            </p>
-                            <p>
-                                Plus, <Link href="http://fullstack.io/fullstack-d3">the first chapter is free</Link>, so you can try it out before commiting.
-                            </p>
+                            <img src={bookImage} alt="Fullstack D3 and Data Visualization book cover" className="LearnD3__book" />
+                            <div className="LearnD3__book-text">
+                                <p>
+                                    If you found this guide helpful, <Link href="http://fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> goes way more in-depth and digs into the nitty-gritty right away. You’ll be creating your own custom charts <i>by the end of the first chapter</i>.
+                                </p>
+                                <p>
+                                    Plus, <Link href="http://fullstack.io/fullstack-d3">the first chapter is free</Link>, so you can try it out before commiting.
+                                </p>
+                            </div>
                         </>,
                         <>
                             <b>The source</b>

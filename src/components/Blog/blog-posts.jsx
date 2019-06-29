@@ -19,6 +19,7 @@ const posts = [{
   title: "How to learn D3.js",
   id: "d3",
   description: <>
+    So, you want to create amazing data visualizations on the web and you keep hearing about D3.js. But what is D3.js, and how can you learn it? Let’s start with the question: What is D3?
   </>,
 },{
     title: "Interactive Charts with D3.js",
