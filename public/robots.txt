@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://wattenberger.com/sitemap.txt

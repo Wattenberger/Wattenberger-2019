@@ -236,9 +236,9 @@ paragraph.selectAll("div")
                 <img src={bookImage} alt="book" className="LearnD3__promo__img"/>
                     <div className="LearnD3__promo__text">
                     <p>
-                        A great place to start is the <Link href="fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> book.
+                        A great place to start is the <Link href="http://fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> book.
                     </p>
-                    <Link href="fullstack.io/fullstack-d3">Download the first chapter</Link> to dive in and you'll make your own custom data visualization by the end!
+                    <Link href="http://fullstack.io/fullstack-d3">Download the first chapter</Link> to dive in and you'll make your own custom data visualization by the end!
                 </div>
             </Aside>
 

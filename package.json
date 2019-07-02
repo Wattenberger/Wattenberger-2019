@@ -1,16 +1,19 @@
 {
-  "name": "blog",
+  "name": "wattenberger-2019",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.4.3",
+    "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.4.5",
     "@svgr/webpack": "4.1.0",
     "@tweenjs/tween.js": "^17.4.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
     "@typescript-eslint/parser": "1.6.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "10.0.1",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^23.4.2",
     "babel-loader": "8.0.5",
     "babel-plugin-named-asset-import": "^0.3.2",
     "babel-preset-react-app": "^9.0.0",
@@ -166,5 +169,11 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
   }
 }
