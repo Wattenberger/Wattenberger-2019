@@ -14,6 +14,7 @@ import Code from "components/_ui/Code/Code";
 import LearnD3Selections from "./LearnD3Selections";
 import LearnD3GetData from "./LearnD3GetData";
 import LearnD3ChangeData from "./LearnD3ChangeData";
+import LearnD3Shapes from "./LearnD3Shapes";
 
 import constructionGif from "./construction.gif";
 
@@ -38,7 +39,7 @@ const sections = [{
 },{
     label: "Modules for drawing SVG shapes",
     modules: ["d3-shape", "d3-polygon", "d3-path"],
-    Component: DummySection,
+    Component: LearnD3Shapes,
 },{
   label: "Modules for converting between data domains",
   modules: ["d3-scale"],
@@ -316,7 +317,7 @@ const LearnD3 = () => {
 export default LearnD3;
 
 
-const P = ({ children })=> (
+export const P = ({ children })=> (
   <code className="P">{ children }</code>
 )
 
@@ -358,3 +359,12 @@ function DummySection() {
         </>
     )
 }
+
+
+export const DocsLink = ({ id, repo }) => (
+    <Link href={`https://github.com/d3/d3-${repo}#${id}`}>
+        <P>
+            d3.{id}()
+        </P>
+    </Link>
+)

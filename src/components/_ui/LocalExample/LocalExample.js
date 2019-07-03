@@ -29,6 +29,8 @@ const getGeneratedPageURL = ({ html, css, js, data, removedLines={}, insertedLin
 
 const getHtmlBody = ({ html, removedLines, insertedLines })=> {
   let bodyContents = (/<body[^>]*>((.|[\n\r])*)<\/body>/gm.exec(html) || [])[1] || ""
+  if (!bodyContents) return html
+
   bodyContents = bodyContents.replace(/(\n)( )*(<script src=".\/chart.js"><\/script>)/g, "")
 
   if (removedLines) {
