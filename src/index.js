@@ -1,3 +1,6 @@
+import 'react-app-polyfill/stable';
+import 'react-app-polyfill/ie11';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -5,6 +8,8 @@ import App from 'components/App';
 import * as serviceWorker from './serviceWorker';
 import { render } from 'react-snapshot';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
+
+
 
 const AppWrapper = () => (
     <Router>
