@@ -7,7 +7,7 @@ require('./Button.scss')
 class Button extends Component {
   getClassName() {
     return classNames(
-      "Button", this.props.className
+      "Button", `Button--style-${this.props.styleType}`, this.props.className
     )
   }
 

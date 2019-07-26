@@ -18,8 +18,8 @@ class ButtonGroup extends Component {
   }
 
   getButtonClassName(button) {
-    return classNames({
-      "Button--active": button.active,
+    return classNames(button.className, {
+      "Button--active": button.isActive,
     })
   }
 
@@ -36,6 +36,7 @@ class ButtonGroup extends Component {
           <Button type="button"
                   key={idx}
                   className={this.getButtonClassName(button)}
+                  disabled={button.isDisabled}
                   onClick={this.onChange(button)}>
             {button.label || button}
             {button.children}

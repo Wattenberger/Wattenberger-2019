@@ -1,0 +1,42 @@
+
+@import "src/styles/lib";
+
+.WebGLDemo {
+    position: relative;
+    padding: 0;
+    width: 98vw;
+    height: 98vw;
+
+    &__toggles {
+        position: fixed;
+        top: 90px;
+        left: 60px;
+        z-index: 100;
+    }
+
+    &__scene {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        color: #c2ba8b;
+        font-family: serif;
+        font-size: 40vw;
+        mix-blend-mode: soft-light;
+        text-align: center;
+        z-index: 100;
+        pointer-events: none;
+    }
+}
+

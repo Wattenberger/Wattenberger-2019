@@ -33,6 +33,7 @@ const DVS = React.lazy(() => import("components/Articles/DVS/DVS"));
 const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVSChannels"));
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
 const ReactZdog = React.lazy(() => import("components/Articles/ReactZdog/ReactZdog"));
+const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDemo"));
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
@@ -91,6 +92,7 @@ class App extends Component {
               <Route path="/game-of-thrones" component={GameOfThrones} />
               <Route path="/traffic-sources" component={TrafficSources} />
               <Route path="/react-zdog" component={ReactZdog} />
+              <Route path="/webgl-demo" component={WebGLDemo} />
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />
               <Route path="/blog/d3" component={LearnD3} />
