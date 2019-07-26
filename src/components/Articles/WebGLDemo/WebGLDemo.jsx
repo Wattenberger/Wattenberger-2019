@@ -2,7 +2,6 @@ import React, { useState, useMemo } from "react"
 import { Canvas, useThree } from 'react-three-fiber'
 import { useSpring, a } from 'react-spring/three'
 import * as THREE from 'three'
-import _ from "lodash"
 import image1 from "./lady.jpg"
 import imageMap1 from "./lady-map.jpg"
 import image2 from "./mount.jpg"
@@ -50,16 +49,14 @@ const WebGLDemo = () => {
 
 export default WebGLDemo
 
-function Scene({ mouse, selectedOption, ...props }) {
-  const meshGeo = new THREE.SphereBufferGeometry(1, 0.5, 0.5)
+const Scene = ({ mouse, selectedOption, ...props }) => (
+  <Canvas {...props}>
+    <MainImage {...{mouse, selectedOption}} />
+  </Canvas>
+)
 
-  return (
-    <Canvas {...props}>
-      <MainImage {...{mouse, selectedOption}} />
-    </Canvas>
-  )
-}
-
+const planeGeomArgs = [8, 8]
+const scale = [1, aspectRatio, 1]
 const MainImage = ({ mouse, selectedOption }) => {
   const { invalidate } = useThree()
 
@@ -73,7 +70,7 @@ const MainImage = ({ mouse, selectedOption }) => {
 
     const option = options[selectedOption]
 
-    return {
+    return [{
       uniforms: {
         texture: { type: 't', value: loader.load(option.image, invalidate) },
         map: { type: 't', value: loader.load(option.imageMap, invalidate) },
@@ -86,15 +83,15 @@ const MainImage = ({ mouse, selectedOption }) => {
       },
       vertexShader,
       fragmentShader
-    }
+    }]
   }, [selectedOption, invalidate])
 
   return (
-    <mesh scale={[1, aspectRatio, 1]}>
-      <planeBufferGeometry attach="geometry" args={[8, 8]} />
+    <mesh scale={scale}>
+      <planeBufferGeometry attach="geometry" args={planeGeomArgs} />
       <a.shaderMaterial
         attach="material"
-        args={[args]}
+        args={args}
         uniforms-dispX-value={dispX}
         uniforms-dispY-value={dispY}
     />
