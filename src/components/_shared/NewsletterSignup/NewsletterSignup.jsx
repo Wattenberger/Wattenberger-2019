@@ -15,7 +15,7 @@ const NewsletterSignup = ({ className }) => {
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
             target="_blank"
-            novalidate>
+            noValidate>
             <input
                 className="NewsletterSignup__input"
                 type="email"
