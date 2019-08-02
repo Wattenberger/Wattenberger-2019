@@ -38,7 +38,7 @@ class Loader extends PureComponent {
       lastHoveredTriangleIndex: i,
     })
   }
-  
+
   onMouseOutTriangle = i => () => {
     const { hoveredTriangles } = this.state
     this.setState({ hoveredTriangles: _.without(hoveredTriangles, i) })
@@ -76,7 +76,7 @@ class Loader extends PureComponent {
               className="Loader__triangle"
               d={`M${points.join("L")}`}
               fill={colors[triangleColors[i]]}
-              fill-opacity="0.5"
+              fillOpacity="0.5"
               style={{
                 mixBlendMode: "multiply",
                 // pointerEvents: lastHoveredTriangleIndex == i ? "none" : "all",

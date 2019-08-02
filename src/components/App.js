@@ -38,6 +38,7 @@ const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
+const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
 
 class App extends Component {
 
@@ -93,6 +94,7 @@ class App extends Component {
               <Route path="/traffic-sources" component={TrafficSources} />
               <Route path="/react-zdog" component={ReactZdog} />
               <Route path="/webgl-demo" component={WebGLDemo} />
+              <Route path="/photoronoi" component={Photoronoi} />
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />
               <Route path="/blog/d3" component={LearnD3} />
