@@ -15,12 +15,21 @@
     }
   }
 
+  .Button--inactive {
+    background: $grey1;
+    color: $grey3;
+
+    &:hover {
+      background: darken($grey1, 3%);
+    }
+  }
+
   .Button--active {
-    background: $accent-4;
+    background: $a1;
     color: $bgc;
 
     &:hover {
-      background: darken($accent-4, 10%);
+      background: darken($a1, 10%);
     }
   }
 }

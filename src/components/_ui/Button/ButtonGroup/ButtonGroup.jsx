@@ -20,6 +20,7 @@ class ButtonGroup extends Component {
   getButtonClassName(button) {
     return classNames(button.className, {
       "Button--active": button.isActive,
+      "Button--inactive": !button.isActive,
     })
   }
 

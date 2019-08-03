@@ -2,34 +2,66 @@
 
 .Photoronoi {
     position: relative;
-    padding: 9em 6em;
+    padding: 3em 6em;
+
+    h3 {
+        margin: 0.3em 0;
+    }
+
+    p {
+        margin: 0.6em 0;
+        padding: 0;
+        font-size: 0.9em;
+        line-height: 1.4em;
+        max-width: 50em;
+
+        & + p {
+            margin-top: 0;
+            font-style: italic;
+            font-size: 0.8em;
+            line-height: 1.4em;
+        }
+    }
 
     &__controls {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        position: absolute;
-        top: 3em;
+        // position: absolute;
+        // top: 6em;
         width: 900px;
+        margin-bottom: 1em;
+        margin-top: 2em;
+        font-size: 0.75em;
 
         input {
             padding: 0.3em 0.6em;
             margin: 0;
-            width: 6em;
+            width: 5em;
         }
 
-        form input {
+        form {
             width: 23em;
+
+            input {
+                width: 19em;
+            }
+        }
+        .ButtonGroup {
+            width: 10.6em;
         }
     }
 
     &__field {
         display: flex;
         flex-direction: column;
+        margin: 0.3em;
 
         label {
             text-transform: uppercase;
             font-size: 0.7em;
+            height: 3em;
+            line-height: 1.3em;
             letter-spacing: 0.1em;
         }
 
@@ -41,21 +73,60 @@
     }
 
     &__slider {
-        width: 6em;
+        width: 4em;
+    }
+
+    &__file {
+        position: relative;
+        height: 2.3em;
+        width: 2.6em;
+        cursor: pointer;
+
+        input {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            padding: 0;
+            height: 2.3em;
+            width: 2.6em;
+            outline: 0;
+            opacity: 0;
+            // pointer-events: none;
+            // user-select: none;
+            cursor: pointer;
+        }
+        label {
+            display: block;
+            height: 3.3em;
+            width: 3.6em;
+        }
+
+        input:focus + label .Button {
+            background-color: $a2;
+        }
+    }
+
+    &__images {
+        position: relative;
     }
 
     &__canvas {
         position: absolute;
-        top: 9em;
-        left: 6em;
+        top: 0;
+        left: 0;
         opacity: 0.3;
     }
 
     .Voronoi {
         path {
             stroke: $grey5;
-            stroke-width: 2px;
+            // stroke-width: 2px;
             fill: none;
+            stroke-linejoin: round;
+            stroke-linecap: round;
+            transition: all 0.1s ease-out;
         }
     }
 }
