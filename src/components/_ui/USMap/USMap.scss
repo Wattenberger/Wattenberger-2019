@@ -2,6 +2,7 @@
 
 .USMap {
     position: relative;
+    z-index: 10;
 
     svg {
         overflow: visible;
@@ -11,6 +12,7 @@
         fill: white;
         fill: #2c3e50;
         text-anchor: middle;
+        pointer-events: none;
 
         &__name {
             font-weight: 900;
@@ -33,6 +35,10 @@
     &__state {
         stroke: white;
         stroke-width: 1.8;
+
+        &--is-hovered {
+            // stroke: purple;
+        }
     }
 
     &__legend {
@@ -103,6 +109,40 @@
                     transform: translateX(100%);
                 }
             }
+        }
+    }
+
+    &Tooltip {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        pointer-events: none;
+
+        &__wrapper {
+            background: rgba(white, 0.96);
+            padding: 0.9em 1em;
+            width: 15em;
+            transform: translate(-50%, 0);
+            z-index: 100;
+        }
+
+        h6 {
+            margin: 0;
+            text-align: center;
+        }
+
+        &__byline {
+            margin-top: 0.3em;
+            margin-bottom: 1em;
+            font-size: 0.7em;
+            line-height: 1.2em;
+            text-align: center;
+        }
+
+        &__item {
+            font-size: 0.7em;
+            line-height: 1.4em;
         }
     }
 }

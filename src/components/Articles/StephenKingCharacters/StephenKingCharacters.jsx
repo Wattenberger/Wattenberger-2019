@@ -22,14 +22,16 @@ console.log(sceneData)
 const StephenKingCharacters = () => {
     return (
         <div className="StephenKingCharacters">
-            <h1>
-                Which US state does <b>Stephen King</b> write about the most?
-            </h1>
+            <div className="StephenKingCharacters__wrapper">
+                <h1>
+                    Which US state does <b>Stephen King</b> write about the most?
+                </h1>
 
-            <USMap data={sceneData} />
+                <USMap data={sceneData} itemsByState={scenes} />
 
 
-            {/* <StephenKingCharactersListings /> */}
+                {/* <StephenKingCharactersListings /> */}
+            </div>
         </div>
     )
 }

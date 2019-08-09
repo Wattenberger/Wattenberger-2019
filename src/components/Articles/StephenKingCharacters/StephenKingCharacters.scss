@@ -9,6 +9,7 @@
     background: #cfdbe8;
 
     h1 {
+        position: absolute;
         max-width: 12em;
         margin-bottom: -2.6em;
         margin-right: -1.8em;
@@ -17,12 +18,17 @@
         line-height: 1.1em;
         // text-align: center;
         // font-weight: 400;
-        z-index: 10;
+        z-index: 20;
+        pointer-events: none;
 
         b {
             font-weight: 900;
             color: #c44569;
         }
+    }
+
+    &__wrapper {
+        position: relative;
     }
 
     &__book {

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import * as d3 from "d3"
 import usMapString from "./us.geojson"
 import statesString from "./states.geojson"
@@ -12,10 +12,11 @@ const usMap = JSON.parse(usMapString)
 const usMapPath = path(usMap)
 const statesObject = JSON.parse(statesString)
 const statesPaths = {}
+const stateCenters = {}
 statesObject.features.forEach(state => {
     statesPaths[state.properties.name] = path(state)
+    stateCenters[state.properties.name] = path.centroid(state)
 })
-console.log(path,statesObject, statesPaths)
 
 const color1 = "#dce5ee"
 // const color2 = "#2c3e50"
@@ -24,7 +25,9 @@ const color2 = "#546de5"
 const height = 500
 const width = 800
 
-const USMap = ({ data, className }) => {
+const USMap = ({ data, itemsByState, className }) => {
+    const [hoveredState, setHoveredState] = useState(null)
+
     const {
         colorScale, orderedStates, topStates
      } = useMemo(() => {
@@ -39,9 +42,7 @@ const USMap = ({ data, className }) => {
 
         const topStates = orderedStates.slice(0, 3).map(state => ({
             ...state,
-            middle: path.centroid(
-                statesObject.features.find(d => d.properties.name == state.name)
-            ),
+            middle: stateCenters[state.name],
         }))
 
         return {
@@ -50,63 +51,101 @@ const USMap = ({ data, className }) => {
     }, [data])
 
     return (
-        <div className={`USMap ${className}`}>
-            <svg {...{height, width}} viewBox={`0 0 ${width} ${height}`}>
-                <path d={usMapPath} className="USMap__outline" />
+        <>
+            <div className={`USMap ${className}`}>
+                <svg {...{height, width}} viewBox={`0 0 ${width} ${height}`}>
+                    <path d={usMapPath} className="USMap__outline" />
 
-                {Object.keys(statesPaths).map(state => (
-                    <path
-                        key={state}
-                        d={statesPaths[state]}
-                        className="USMap__state"
-                        fill={colorScale(data[state]) || "#fff"}
-                    >
-                        <title>
-                            { stateAbbreviationsMap[state] }: { data[state] } books
-                        </title>
-                    </path>
-                ))}
+                    {Object.keys(statesPaths).map(state => (
+                        <path
+                            key={state}
+                            d={statesPaths[state]}
+                            className={`USMap__state USMap__state--is-${hoveredState == state ? "hovered" : "normal"}`}
+                            fill={colorScale(data[state]) || "#fff"}
+                            onMouseEnter={e => setHoveredState(state)}
+                            onMouseLeave={e => setHoveredState(null)}
+                        >
+                            <title>
+                                { state }: { data[state] || 0 } { data[state] == 1 ? "book" : "books" }.
+                            </title>
+                        </path>
+                    ))}
 
-                {topStates.map(({ name, value, middle }) => (
-                    <g className="USMap__annotation" transform={`translate(${middle.join(", ")})`}>
-                        <g transform={`translate(${(
-                            name == "New York" ? [-36, -21] :
-                            name == "Massachusetts" ? [40, 0] :
-                            name == "Maine" ? [49, 1] :
-                                [0, 0]
-                        ).join(", ")})`}>
-                            <text transform={`translate(0, -8)`} className="USMap__annotation__name">
-                                { stateAbbreviationsMap[name] }
-                            </text>
-                            <text transform={`translate(0, 8)`} className="USMap__annotation__value">
-                                { value }
-                            </text>
+                    {topStates.map(({ name, value, middle }) => (
+                        <g className="USMap__annotation" transform={`translate(${middle.join(", ")})`}>
+                            <g transform={`translate(${(
+                                name == "New York" ? [-36, -21] :
+                                name == "Massachusetts" ? [40, 0] :
+                                name == "Maine" ? [49, 1] :
+                                    [0, 0]
+                            ).join(", ")})`}>
+                                <text transform={`translate(0, -8)`} className="USMap__annotation__name">
+                                    { stateAbbreviationsMap[name] }
+                                </text>
+                                <text transform={`translate(0, 8)`} className="USMap__annotation__value">
+                                    { value }
+                                </text>
+                            </g>
                         </g>
-                    </g>
-                ))}
-
-            </svg>
-
-            <div className="USMap__legend">
-                <div className="USMap__legend__color" style={{
-                    background: `linear-gradient(to right, ${colorScale.range().join(", ")})`,
-                }} />
-                <div className="USMap__legend__items">
-                    {colorScale.ticks(5).map(d => (
-                        <div className="USMap__legend__item" key={d}>
-                            <div className="USMap__legend__item__value">
-                                { d }
+                    ))}
+                </svg>
+                <div className="USMap__legend">
+                    <div className="USMap__legend__color" style={{
+                        background: `linear-gradient(to right, ${colorScale.range().join(", ")})`,
+                    }} />
+                    <div className="USMap__legend__items">
+                        {colorScale.ticks(5).map(d => (
+                            <div className="USMap__legend__item" key={d}>
+                                <div className="USMap__legend__item__value">
+                                    { d }
+                                </div>
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {hoveredState && (
+                <USMapTooltip
+                    state={hoveredState}
+                    value={data[hoveredState]}
+                    items={itemsByState[hoveredState]}
+                    center={stateCenters[hoveredState]}
+                />
+            )}
+        </>
+    )
+}
+
+export default USMap
+
+
+const USMapTooltip = ({ state, value, items=[], center}) => (
+    <div
+        className="USMapTooltip"
+        style={{
+            transform: `translate(${center[0]}px, ${center[1]}px)`
+        }}>
+            <div className="USMapTooltip__wrapper">
+                <h6>
+                    { state }
+                </h6>
+
+                <div className="USMapTooltip__byline">
+                    mentioned by { value || 0 } { value == 1 ? "book" : "books" }
+                </div>
+
+                <div className="USMapTooltip__items">
+                    {items.map(item => (
+                        <div className="USMapTooltip__item" key={item}>
+                            { item }
                         </div>
                     ))}
                 </div>
             </div>
-        </div>
-    )
-}
+    </div>
+)
 
-
-export default USMap
 
 const stateAbbreviationsMap = {
     "Alabama": "AL",
