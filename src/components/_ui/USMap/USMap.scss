@@ -1,0 +1,108 @@
+@import "src/styles/lib";
+
+.USMap {
+    position: relative;
+
+    svg {
+        overflow: visible;
+    }
+
+    &__annotation {
+        fill: white;
+        fill: #2c3e50;
+        text-anchor: middle;
+
+        &__name {
+            font-weight: 900;
+            font-size: 0.8em;
+        }
+        &__value {
+            // font-weight: 900;
+            font-size: 0.7em;
+        }
+    }
+
+    &__outline {
+        fill: none;
+        stroke: white;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    &__state {
+        stroke: white;
+        stroke-width: 1.8;
+    }
+
+    &__legend {
+        position: absolute;
+        bottom: 18%;
+        right: -3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__color {
+            flex: none;
+            height: 1.5em;
+            width: 10em;
+            border-radius: 2em;
+            border: 4px solid white;
+        }
+
+        &__items {
+            display: flex;
+            align-items: center;
+        }
+
+        &__item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            // text-align: right;
+            align-items: center;
+            width: 2.3em;
+            transform: translateX(50%);
+
+            &:before {
+                content: "";
+                position: absolute;
+                top: -0.5em;
+                left: 50%;
+                height: 0.5em;
+                width: 1px;
+                background: white;
+            }
+
+            &__color {
+                flex: none;
+                height: 1.5em;
+                width: 1.5em;
+                border-radius: 100%;
+                border: 4px solid white;
+            }
+
+            &__value {
+                position: relative;
+                font-size: 0.8em;
+                font-feature-settings: "ss03", "zero", "cv08", "cv11", "tnum" 1;
+                font-weight: 600;
+            }
+
+            &:last-of-type {
+                &:before {
+                    display: none;
+                }
+
+                .USMap__legend__item__value:after {
+                    content: " books";
+                    position: absolute;
+                    right: -0.3em;
+                    font-weight: 400;
+                    transform: translateX(100%);
+                }
+            }
+        }
+    }
+}

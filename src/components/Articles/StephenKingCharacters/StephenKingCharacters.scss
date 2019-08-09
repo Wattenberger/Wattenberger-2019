@@ -1,0 +1,67 @@
+@import "src/styles/lib";
+
+.StephenKingCharacters {
+    margin-bottom: 3em;
+    padding: 6em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #cfdbe8;
+
+    h1 {
+        max-width: 12em;
+        margin-bottom: -2.6em;
+        margin-right: -1.8em;
+        // margin-top: 2em;
+        font-size: 3.2em;
+        line-height: 1.1em;
+        // text-align: center;
+        // font-weight: 400;
+        z-index: 10;
+
+        b {
+            font-weight: 900;
+            color: #c44569;
+        }
+    }
+
+    &__book {
+        &__lists {
+            display: flex;
+            margin-left: -1em;
+        }
+
+        &__list {
+            padding: 1em;
+            width: 20em;
+            margin-right: 1em;
+            overflow: hidden;
+
+            &__item {
+                position: relative;
+                min-width: 10px;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 0.3em;
+                line-height: 1.3em;
+                white-space: nowrap;
+                overflow: hidden;
+
+                b {
+                    flex: 1;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                div {
+                    flex: none;
+                    margin-left: 1em;
+                    font-feature-settings: 'tnum' 1;
+                    font-size: 0.8em;
+                }
+            }
+        }
+    }
+}
+

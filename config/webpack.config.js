@@ -465,6 +465,10 @@ module.exports = function(webpackEnv) {
                   },
               ],
             },
+            {
+              test: /\.(geojson|csv)$/i,
+              use: 'raw-loader',
+            },
             // "file" loader makes sure those assets get served by WebpackDevServer.
             // When you `import` an asset, you get its (virtual) filename.
             // In production, they would get copied to the `build` folder.

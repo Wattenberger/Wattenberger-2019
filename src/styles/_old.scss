@@ -12,12 +12,6 @@ $bgc: $accent-1;
 
 @import url('https://rsms.me/inter/inter.css');
 html { font-family: 'Inter', sans-serif; }
-@supports (font-variation-settings: normal) {
-  html { font-family: 'Inter var', sans-serif; }
-}
-
-// font-feature-settings: 'ss01' 'ss02';
-// $font-family-serif: 'Merriweather', serif;
 $font-family-serif: 'Playfair Display', serif;
 $font-family-sans-serif: 'Inter', sans-serif;
 

@@ -18,17 +18,18 @@ body {
     background: $bgc;
     color: $tc;
     font-size: 18px;
-    line-height: 1.46em;
+    line-height: 1.8em;
     font-family: $font-family-sans-serif;
     letter-spacing: -0.014em;
-    font-feature-settings: 'ss02', 'ss03', 'zero', 'cv08', 'cv11' 1;
+    font-feature-settings: "ss03", "zero", "cv08", "cv11" 1;
     color: $tc;
     background: #f8f9fa;
+    text-transform: none;
 
-::selection {
-    background: $accent-4;
-    color: white;
-}
+    ::selection {
+        background: $accent-4;
+        color: white;
+    }
 }
 
 
@@ -79,8 +80,6 @@ h5 {
 
 h6 {
   font-size: 0.9em;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   line-height: 1.1em;
   margin: 0.5em 0;
   margin-bottom: 0.6em;
@@ -89,9 +88,9 @@ h6 {
   font-weight: 400;
   color: $grey3;
 
-b {
-    font-weight: 900;
-}
+    b {
+        font-weight: 900;
+    }
 }
 
 a {
@@ -155,7 +154,7 @@ border-radius: 2px;
 
 input, textarea, select, button {
   font-family: 'Inter', sans-serif;
-  font-feature-settings: "zero", "ss02", "frac", "case", "ss01" 1;
+  font-feature-settings: "zero", "frac", "case", "ss01" 1;
 }
 
 li {
@@ -188,8 +187,6 @@ b {
 }
 
 .App {
-  font-family: 'Inter var', sans-serif;
-  font-feature-settings: "zero", "ss02", "frac", "case", "ss01" 1;
 //   background: #f4f4f4;
 
   ::selection {

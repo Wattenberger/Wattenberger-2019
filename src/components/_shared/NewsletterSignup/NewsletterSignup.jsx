@@ -30,7 +30,7 @@ const NewsletterSignup = ({ className }) => {
             {/* For spam */}
             <Hidden>
                 <div aria-hidden="true">
-                    <input type="text" name="b_b1a88f725f5c5f17c410eb825_8de9751f22" tabIndex="-1" value="" />
+                    <input type="text" name="b_b1a88f725f5c5f17c410eb825_8de9751f22" tabIndex="-1" />
                 </div>
             </Hidden>
 
