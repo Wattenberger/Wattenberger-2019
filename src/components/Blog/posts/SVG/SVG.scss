@@ -1,0 +1,207 @@
+@import "src/styles/lib";
+
+.SVG {
+    max-width: 100vw;
+    // overflow: hidden;
+    font-size: 16px;
+    line-height: 1.3em;
+
+    & + .Footer {
+        display: none;
+    }
+
+    h1 {
+        font-size: 3em;
+        line-height: 1.1em;
+        position: relative;
+        z-index: 10;
+    }
+
+    h2 {
+        font-size: 2.3em;
+        line-height: 1.1em;
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (max-width: 800px) {
+        .SVG__iframe {
+            transform: scale(0.8);
+        }
+    }
+    @media (max-width: 1100px){
+        .ScrollEvent__indicator {
+            display: none;
+        }
+        .SVG {
+            &__trigger {
+                display: none;
+            }
+        }
+    }
+
+    .Code {
+        font-size: 1.4em;
+
+        @media (max-width: 800px) {
+            font-size: 0.7em;
+            line-height: 1.2em;
+        }
+    }
+
+    &__actions {
+        position: fixed;
+        top: 0;
+        left: 0.7em;
+        display: flex;
+        align-items: center;
+        padding: 0.9em 2em;
+        background: $bgc;
+        z-index: 1000;
+
+        .Button {
+            display: flex;
+            align-items: center;
+
+            .Icon {
+                margin: 0 0.5em 0 0;
+            }
+        }
+        .Button + .Button {
+            margin-left: 1em;
+
+            .Icon {
+                margin: 0 0 0 0.5em;
+            }
+        }
+    }
+
+    &__content {
+        position: relative;
+        padding: 3em 3rem 6em;
+        // padding-right: 43rem + 3rem;
+        width: calc(100% - 43rem - 1rem);
+        min-height: 80vh;
+        font-size: 1.3em;
+        line-height: 1.5em;
+        transition: all 0.5s ease-out;
+
+        @media (max-width: 1300px) {
+            width: calc(100% - 33rem - 1rem);
+        // padding-right: 33rem + 3rem;
+        }
+
+        @media (max-width: 1100px) {
+            width: auto;
+        // padding-right: 3rem;
+        }
+
+        @media (max-width: 800px) {
+            padding-right: 1.5rem;
+            padding-left: 1.5rem;
+            width: auto;
+        }
+
+        .P {
+            display: inline-block;
+            margin: 0 0;
+            padding: 0 0.6em;
+            color: $a1;
+            background: rgba($a1, 0.1);
+            border-radius: 2px;
+            font-feature-settings: 'tnum' 1;
+            font-family: monospace;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+
+    @keyframes slideLeft {
+          0% { opacity: 0; transform: translateX(2em); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+
+    &__code {
+        opacity: 0;
+        animation: slideLeft 0.5s ease-out;
+        animation-delay: 0.5s;
+        animation-fill-mode: forwards;
+    }
+
+    &__iframe {
+        height: 510px;
+        margin: 0 -3rem;
+        width: calc(100% + 6rem);
+
+        @media (max-width: 800px) {
+            margin: 0 -5rem;
+            width: calc(100% + 10rem);
+        }
+    }
+
+    &__fixed-code {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 43rem;
+        // padding-bottom: 3em;
+        z-index: 1000;
+        pointer-events: none;
+
+        @media (max-width: 1300px) {
+            width: 33rem;
+            font-size: 0.8em;
+        }
+        // @media (max-width: 1100px) {
+        //     width: 0;
+        // }
+
+        .Code__wrapper {
+            min-height: 100%;
+            margin-bottom: 0;
+            pointer-events: all;
+            overflow: auto;
+        }
+
+        .Code {
+            padding-bottom: 2em;
+
+            &__file {
+                font-size: 0.8em;
+                padding: 0.6em 2.38em;
+            }
+        }
+    }
+
+    &__iframe {
+        width: 100%;
+        height: 525px;
+        margin: 1em 0;
+    }
+
+    .note {
+        font-size: 0.6em;
+        opacity: 0.6;
+    }
+}
+
+.Heading {
+    position: relative;
+
+    &__hash {
+        position: absolute;
+        left: -0.9em;
+        color: $grey3;
+        font-weight: 300;
+        cursor: pointer;
+        transition: color 0.2s ease-out;
+
+        &:hover {
+            color: $a1;
+        }
+    }
+}

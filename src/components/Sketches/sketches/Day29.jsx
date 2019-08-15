@@ -212,7 +212,7 @@ const TurtleTail = ({ height, width, color, ...props }) => {
 const TurtleHead = ({ height, width, color, ...props }) => {
   // C x1 y1, x2 y2, x y (or c dx1 dy1, dx2 dy2, dx dy)
   // Q x1 y1, x y (or q dx1 dy1, dx dy)
-  const parsedColor = d3.hsl(color).brighter(_.random(0.7, 1.4, true))
+  const parsedColor = d3.hsl(color).brighter(_.random(0.1, 1, true))
   const eyelidColor = d3.hsl(parsedColor).darker(_.random(0, 0.3, true))
   const eyeColor = d3.hsl(eyelidColor).darker(_.random(1.3, 3.4, true))
   const startingHeight = height * _.random(0.3, 0.5, true)

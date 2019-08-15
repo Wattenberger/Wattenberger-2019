@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react'
+import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
 import "./prism.css"
 
 import _ from "lodash"
@@ -6,6 +7,7 @@ import * as d3 from "d3"
 
 import { scrollTo } from "utils.js"
 import Icon from 'components/_ui/Icon/Icon';
+import Button from 'components/_ui/Button/Button';
 import ClipboardTrigger from 'components/_ui/ClipboardTrigger/ClipboardTrigger';
 import ConfirmationFade from 'components/_ui/ConfirmationFade/ConfirmationFade';
 import Tooltip from 'components/_ui/Tooltip/Tooltip';
@@ -25,13 +27,18 @@ const Code = ({
     doKeepInitialLineNumbers=false,
     hasLineNumbers=true,
     canEval=false,
+    canEdit=false,
     doOnlyShowHighlightedLines=false,
     doWrap=true,
+    onExecuteEditedCode=() => {},
     className, children, ...props
 }) => {
     const wrapper = useRef()
+    const [iteration, setIteration] = useState(0)
     const [expandedSteps, setExpandedSteps] = useState([])
     const [hasRun, setHasRun] = useState(false)
+    const [hasRunEditedCode, setHasRunEditedCode] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
     const needsToScroll = useRef()
     const currentHighlightedLines = useRef()
     currentHighlightedLines.current = highlightedLines
@@ -54,12 +61,12 @@ const Code = ({
         }
 
         return codeArray.join("\n")
-    }, [removedLinesString, insertedLinesString, children])
+    }, [removedLinesString, insertedLinesString, iteration, children])
 
     // highlight code
     useEffect(() => {
         if (window.Prism) window.Prism.highlightAll()
-    }, [parsedCode])
+    }, [parsedCode, iteration])
 
     const scrollToHighlightedCode = () => {
         if (doOnlyShowHighlightedLines) return
@@ -163,12 +170,12 @@ const Code = ({
         })
 
         return parsedSteps
-    }, [parsedCode])
+    }, [parsedCode, iteration])
 
     useEffect(() => {
         needsToScroll.current = true
         debouncedOnChange.current()
-    }, [highlightedLines])
+    }, [highlightedLines, iteration])
 
     const onToggleStepLocal = number => () => {
         const stepIsExpanded = expandedSteps.includes(number)
@@ -181,6 +188,41 @@ const Code = ({
     const onEval = () => {
         window.eval(parsedCode)
         setHasRun(true)
+    }
+
+    const onStartEditingCode = () => {
+        setIsEditing(true)
+    }
+    const onStopEditingCode = () => {
+        setIsEditing(false)
+        onExecuteEditedCode(null)
+        setIteration(iteration + 1)
+    }
+
+    const onExecuteEditedCodeLocal = () => {
+        const codeBlocks = Array.from(
+            wrapper.current.querySelectorAll("code")
+        )
+        const editedCode = codeBlocks.map(d => d.innerText).join("\n")
+        onExecuteEditedCode(editedCode)
+        setHasRunEditedCode(true)
+        if (window.Prism) window.Prism.highlightAll()
+    }
+
+    const onEnterPress = e => {
+        console.log(e, e.location)
+        if (!isEditing) return
+        if (e.ctrlKey) {
+            onExecuteEditedCodeLocal()
+            return
+        }
+        const lineIndex = +e.target.getAttribute("data-line-index")
+        if (!Number.isFinite(lineIndex)) return
+
+    }
+
+    const keypresses = {
+      [KEYS.ENTER]: onEnterPress,
     }
 
     return (
@@ -218,12 +260,13 @@ const Code = ({
                 `Code--wrap-${doWrap ? "all" : "none"}`,
                 getLanguageString(language),
                 className,
-            ].join(" ")} ref={wrapper}>
+            ].join(" ")} ref={wrapper} key={iteration}>
                 {steps.map((step, i) => (
                     step.type === "string" ? (
                         <CodeLines
                             key={i}
                             {...{...step, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines}}
+                            isEditable={isEditing}
                         />
                     ) : (
                         <CodeStep
@@ -231,9 +274,36 @@ const Code = ({
                             {...{...step, highlightedLines, hasLineNumbers}}
                             isExpanded={expandedSteps.includes(step.number)}
                             onToggle={onToggleStepLocal(step.number)}
+                            isEditable={isEditing}
                         />
                     )
                 ))}
+            </div>
+
+            <div className="Code__run-buttons">
+                {isEditing ? (
+                    <>
+                        <Button className="Code__run-button" onClick={onExecuteEditedCodeLocal}>
+                            Run edited code [ctrl + enter]
+                            <Icon name="play" size="s" />
+                            {hasRunEditedCode && (
+                                <ConfirmationFade onFaded={() => setHasRunEditedCode(false)}>
+                                    Code has run!
+                                </ConfirmationFade>
+                            )}
+                        </Button>
+                        <Button className="Code__run-button" onClick={onStopEditingCode}>
+                            Reset code
+                            <Icon name="x" size="s" />
+                        </Button>
+                        <Keypress keys={keypresses} />
+                    </>
+                ) : canEdit ? (
+                    <Button className="Code__run-button" onClick={onStartEditingCode}>
+                        Edit code
+                        <Icon name="edit" />
+                    </Button>
+                ) : null}
             </div>
         </div>
     )
@@ -247,7 +317,7 @@ const languages = {
 
 const getLanguageString = lang => `language-${languages[lang] || lang}`
 
-const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
+const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, isEditable, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
     <div className={`CodeStep CodeStep--number-${number} CodeStep--is-${isExpanded ? "expanded" : "collapsed"}`} onClick={isExpanded ? () => {} : onToggle}>
         <div className="CodeStep__copyable-text">
             {`  // ${number}. ${name}`}
@@ -275,14 +345,14 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
 
         <div className="CodeStep__lines">
             <CodeLines
-                {...{ code, startLineIndex, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines }}
+                {...{ code, startLineIndex, highlightedLines, hasLineNumbers, isEditable, doOnlyShowHighlightedLines }}
             />
         </div>
 
     </div>
 )
 
-const CodeLines = ({ code, startLineIndex, highlightedLines, doOnlyShowHighlightedLines, ...props }) => {
+const CodeLines = ({ code, startLineIndex, highlightedLines, isEditable, doOnlyShowHighlightedLines, ...props }) => {
     if (!code) return null
 
     return (
@@ -295,6 +365,7 @@ const CodeLines = ({ code, startLineIndex, highlightedLines, doOnlyShowHighlight
                     key={index}
                     index={startLineIndex + index}
                     code={line}
+                    isEditable={isEditable}
                     isHighlighted={!doOnlyShowHighlightedLines && isHighlighted}
                     {...props}
                 />
@@ -303,7 +374,7 @@ const CodeLines = ({ code, startLineIndex, highlightedLines, doOnlyShowHighlight
     )
 }
 
-const CodeLine = ({ code, index, isHighlighted, hasLineNumbers }) => {
+const CodeLine = ({ code, index, isHighlighted, isEditable, hasLineNumbers }) => {
     const [isHovering, setIsHovering] = useState(false)
 
     return (
@@ -320,7 +391,11 @@ const CodeLine = ({ code, index, isHighlighted, hasLineNumbers }) => {
                 </div>
             )}
 
-            <code>
+            <code
+                contentEditable={isEditable}
+                suppressContentEditableWarning
+                data-line-index={index}
+                spellCheck={false}>
                 { code }
             </code>
 

@@ -1,0 +1,72 @@
+@import "src/styles/lib";
+
+.SVGElement {
+    a {
+        color: $a1;
+
+        &:visited {
+            color: $a1;
+        }
+    }
+
+    h2 {
+        margin-left: -0.68em;
+    }
+
+    i {
+        opacity: 0.3;
+        font-weight: 400;
+    }
+
+    &__link {
+        font-size: 0.8em;
+        font-weight: 600;
+    }
+
+    &__attributes {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 1em -0.5em;
+    }
+
+    &__attribute {
+        min-width: 10em;
+        width: 40%;
+        margin: 0.5em;
+        padding: 1rem 1.6rem 0;
+        background: #fff;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
+
+        &__name {
+            font-weight: 700;
+        }
+
+        &__types {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 0 -0.7em;
+        }
+
+        &__type {
+            font-size: 0.7em;
+            color: $grey4;
+            padding: 0.2em 1em;
+             & + & {
+                 border-left: 1px solid $grey1;
+             }
+        }
+
+        &__more {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: $grey1;
+            padding: 0.6rem 1.6rem;
+            margin: 1em -1.6rem 0;
+            color: $grey4;
+            font-size: 0.8em;
+        }
+    }
+}

@@ -31,4 +31,8 @@
     background: $accent-4;
     color: $bgc;
   }
+
+  &:disabled {
+      background: $grey3;
+  }
 }

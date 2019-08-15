@@ -37,6 +37,7 @@ const ReactZdog = React.lazy(() => import("components/Articles/ReactZdog/ReactZd
 const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDemo"));
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
+const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
@@ -100,6 +101,7 @@ class App extends Component {
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />
               <Route path="/blog/d3" component={LearnD3} />
+              <Route path="/blog/svg" component={SVG} />
               <Route path="/blog" component={Blog} />
               <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
               <Route path="/keep-in-touch" component={NewsletterSignupPage} />

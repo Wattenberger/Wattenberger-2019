@@ -3,7 +3,6 @@ import * as d3 from "d3"
 
 import "./LocalExample.scss"
 
-
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const d3js = require(`!!raw-loader!examples/d3.v5.js`).default
 
@@ -31,25 +30,29 @@ const getHtmlBody = ({ html, removedLines, insertedLines })=> {
   let bodyContents = (/<body[^>]*>((.|[\n\r])*)<\/body>/gm.exec(html) || [])[1] || ""
   if (!bodyContents) return html
 
-  bodyContents = bodyContents.replace(/(\n)( )*(<script src=".\/chart.js"><\/script>)/g, "")
+  const numberOfLinesAboveBody = html.split("\n").findIndex(str => str.includes("<body>"))
 
-  if (removedLines) {
-    bodyContents = bodyContents.split("\n")
-      .filter((d,i) => !removedLines.includes(i + 1))
-      .join("\n")
-  }
+  bodyContents = bodyContents.replace(/(\n)( )*(<script src=".\/chart.js"><\/script>)/g, "")
 
   if (insertedLines) {
     let parsedHtmlArray = bodyContents.split("\n")
+    parsedHtmlArray = parsedHtmlArray.filter((d, i) => !removedLines.includes(i + numberOfLinesAboveBody + 1))
+
     insertedLines.forEach(line => {
       parsedHtmlArray = [
-        ...parsedHtmlArray.slice(0, line.start),
+        ...parsedHtmlArray.slice(0, line.start - numberOfLinesAboveBody),
         line.code,
-        ...parsedHtmlArray.slice(line.start),
+        ...parsedHtmlArray.slice(line.start - numberOfLinesAboveBody),
       ]
     })
     bodyContents = parsedHtmlArray.join("\n")
   }
+
+//   if (removedLines) {
+//     bodyContents = bodyContents.split("\n")
+//       .filter((d,i) => !removedLines.includes(numberOfLinesAboveBody + i + 1))
+//       .join("\n")
+//   }
 
   return bodyContents
 }
@@ -121,9 +124,9 @@ const LocalExample = ({ html, css, js, data, removedLines={}, insertedLines={}, 
       (removedLines.html || []).join(" "),
     ].join(" ")
     const insertedLinesString = [
-      (removedLines.js || []).map(d => d.code).join(" "),
-      (removedLines.css || []).map(d => d.code).join(" "),
-      (removedLines.html || []).map(d => d.code).join(" "),
+      (insertedLines.js || []).map(d => d.code).join(" "),
+      (insertedLines.css || []).map(d => d.code).join(" "),
+      (insertedLines.html || []).map(d => d.code).join(" "),
     ].join(" ")
 
     useEffect(() => {

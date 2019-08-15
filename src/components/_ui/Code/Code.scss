@@ -234,6 +234,22 @@
       }
     }
   }
+  &__run-buttons {
+      display: flex;
+      align-items: center;
+      position: absolute;
+      bottom: 2em;
+      right: 2em;
+  }
+  &__run-button {
+      display: flex;
+      align-items: center;
+      font-size: 1.3em;
+
+      .Icon {
+          margin-left: 0.4em;
+      }
+  }
 }
 
 

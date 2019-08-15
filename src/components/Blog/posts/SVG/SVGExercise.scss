@@ -1,0 +1,29 @@
+@import "src/styles/lib";
+
+.SVGExercise {
+    display: flex;
+    flex-direction: column;
+    min-width: 20em;
+    margin: 0.5em;
+    padding: 2rem 1.6rem;
+    background: #fff;
+    color: $a1;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
+    font-size: 1.4em;
+    font-weight: 700;
+
+    h2 {
+        font-size: 2em;
+        margin: 0;
+    }
+
+    h6 {
+        font-size: 0.6em;
+    }
+
+    &__image {
+        width: 20em;
+        height: auto;
+        margin: 2em;
+    }
+}

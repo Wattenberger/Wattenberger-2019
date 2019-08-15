@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <svg
+            width="500"
+            height="500"
+            viewBox="0 0 10 10"
+            style="
+                background: linear-gradient(to right, turquoise, turquoise 1px, transparent 1px, transparent 49px, turquoise 49px ),
+                            linear-gradient(to bottom, turquoise, turquoise 1px, transparent 1px, transparent 49px, turquoise 49px );
+                background-size: 50px 50px;
+                border: 3px solid teal;
+            "
+        >
+            <circle
+                cx="1"
+                cy="3"
+                r="1"
+                fill="darkSlateBlue"
+            />
+            <circle
+                cx="9"
+                cy="3"
+                r="1"
+                fill="darkSlateBlue"
+            />
+            <rect
+                x="1"
+                y="1"
+                rx="2"
+                ry="2"
+                width="8"
+                height="7"
+                fill="SlateBlue"
+            />
+            <g id="eye">
+                <ellipse
+                    cx="3"
+                    cy="3.5"
+                    rx="1" ry="1.5"
+                    fill="white"
+                />
+                <ellipse
+                    cx="3"
+                    cy="3.5"
+                    rx="0.5" ry="0.75"
+                    fill="maroon"
+                />
+            </g>
+            <use
+                href="#eye"
+                x="4"
+            />
+            <circle
+                cx="5"
+                cy="6"
+                r="3"
+                fill="MediumPurple"
+            />
+            <ellipse
+                cx="5"
+                cy="5"
+                rx="1"
+                ry="0.75"
+            />
+            <polygon
+                points="
+                    5 9
+                    3 8
+                    3 10
+                    7 8
+                    7 10
+                "
+                fill="salmon"
+            />
+            <path
+                d="
+                    M 4 7
+                    A 1.1 1
+                        0
+                        0
+                        0
+                      6 7
+                "
+                d="
+                    M 4 7
+                    Q 5 8
+                      6 7
+                "
+                d="
+                    M 4 7
+                    C 4 8
+                      6 8
+                      6 7
+                "
+                d="
+                    M 4 7
+                    L 5 8
+                    L 6 7
+                    Z
+                "
+                fill="none"
+                stroke="black"
+                stroke-width="0.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+        </svg>
+    </body>
+</html>
