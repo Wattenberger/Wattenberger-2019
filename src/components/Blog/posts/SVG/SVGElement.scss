@@ -67,6 +67,19 @@
             margin: 1em -1.6rem 0;
             color: $grey4;
             font-size: 0.8em;
+            transition: all 0.3s ease-out;
+
+            .Icon {
+                transition: all 0.3s ease-out;
+            }
+
+            &:hover {
+                font-weight: 600;
+
+                .Icon {
+                    transform: rotate(-45deg) translate(0.2em, 0);
+                }
+            }
         }
     }
 }

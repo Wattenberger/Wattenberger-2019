@@ -7,8 +7,6 @@ import {canvasUtils} from "./utils/canvasUtils"
 require('./Day7.scss')
 
 let animationRequestId
-const MAX_DIAMETER = 30
-const MAX_ARC_SEGMENTS = 10
 const NUM_STREAMS = window.innerWidth * 0.13
 const NUM_STATIC_POINTS = window.innerWidth * 0.008
 const CANVAS_RGB = "18, 23, 56"
@@ -55,7 +53,7 @@ class Day7 extends Component {
   }
 
   draw = () => {
-    let {canvas, points, mousePos} = this.state
+    let {canvas, mousePos} = this.state
     animationRequestId = window.requestAnimationFrame(this.draw)
     if (!canvas) return
 
@@ -66,7 +64,7 @@ class Day7 extends Component {
   }
 
   drawPoint(idx) {
-    let {canvas, points, staticPoints, mousePos} = this.state
+    let {canvas, points, staticPoints} = this.state
     let point = points[idx] || movementUtils.createPoint({
       speedMin: SPEED_MIN,
       speedMax: SPEED_MAX,

@@ -11,10 +11,8 @@ let animationRequestId
 // const CANVAS_RGB = "250, 227, 151"
 const CANVAS_RGB = "255, 255, 255"
 const NUM_STARS = 1000
-const NUM_FOGS = 1
 const STAR_RGB = CANVAS_RGB
 const STAR_CYCLE_LENGTH = 200
-const TEXT_RGB = "24, 26, 39"
 
 class Day12 extends Component {
   constructor(props) {
@@ -51,7 +49,7 @@ class Day12 extends Component {
   }
 
   draw = () => {
-    let {width, height, canvas, stars} = this.state
+    let {canvas} = this.state
 
     if (canvas) {
       this.drawImage()
@@ -115,7 +113,7 @@ class Day12 extends Component {
   }
 
   drawFog = () => {
-    let {canvas, fogs, mousePos} = this.state
+    let {mousePos} = this.state
     if (!mousePos) return
 
     this.drawGradient(mousePos)
@@ -142,7 +140,7 @@ class Day12 extends Component {
     return star
   }
 
-  drawStars(opacity) {
+  drawStars() {
     let {canvas, stars} = this.state
 
     if (!stars) {

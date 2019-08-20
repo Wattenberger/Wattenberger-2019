@@ -1,0 +1,97 @@
+@import "src/styles/lib";
+
+.StephenKingMds {
+    margin-bottom: 3em;
+    padding: 6em 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // background: #cfdbe8;
+    background: #10273f;
+
+    &__wrapper {
+        position: relative;
+    }
+
+    &Chart {
+        position: relative;
+        // transform: scale(3);
+            width: 2000px;
+            height: 2000px;
+            background: #10273f;
+            margin-left: 1000px;
+
+        &__svg {
+            // width: 90vw;
+            // height: 90vw;
+            // max-width: 600px;
+            // max-height: 600px;
+            width: 2000px;
+            height: 2000px;
+            overflow: visible;
+        }
+
+        &__circle {
+            // fill: none;
+            // fill-opacity: 0.6;
+            // stroke-width: 1;
+            stroke-width: 0;
+            fill: #fafafa;
+            transition: all 0.3s ease-out;
+            // filter: url(#white-glow);
+        }
+
+        &__line {
+            stroke: white;
+            stroke-width: 1;
+            opacity: 0.5;
+            filter: url(#glow-neutral);
+
+            &__cover {
+                fill: #10273f;
+                filter: url(#glow-background);
+            }
+        }
+
+        &__title {
+            font-size: 0.5em;
+            font-weight: 600;
+            text-anchor: middle;
+        }
+
+        &__tooltip {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+
+            &-wrapper {
+                background: white;
+                padding: 1em 1em;
+                transform: translate(-50%, -100%);
+            }
+        }
+
+        &__label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 0.46em;
+            font-size: 0.09em;
+            font-size: 0.6em;
+            line-height: 1.2em;
+            font-weight: 600;
+            max-width: 4em;
+            // color: $tc;
+            text-align: center;
+
+            &__year {
+                opacity: 0.4;
+            }
+        }
+    }
+}

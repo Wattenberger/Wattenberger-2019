@@ -34,10 +34,10 @@ const getHtmlBody = ({ html, removedLines, insertedLines })=> {
 
   bodyContents = bodyContents.replace(/(\n)( )*(<script src=".\/chart.js"><\/script>)/g, "")
 
-  if (insertedLines) {
-    let parsedHtmlArray = bodyContents.split("\n")
-    parsedHtmlArray = parsedHtmlArray.filter((d, i) => !removedLines.includes(i + numberOfLinesAboveBody + 1))
+  let parsedHtmlArray = bodyContents.split("\n")
+  parsedHtmlArray = parsedHtmlArray.filter((d, i) => !(removedLines || []).includes(i + numberOfLinesAboveBody + 1))
 
+  if (insertedLines) {
     insertedLines.forEach(line => {
       parsedHtmlArray = [
         ...parsedHtmlArray.slice(0, line.start - numberOfLinesAboveBody),
@@ -45,8 +45,8 @@ const getHtmlBody = ({ html, removedLines, insertedLines })=> {
         ...parsedHtmlArray.slice(line.start - numberOfLinesAboveBody),
       ]
     })
-    bodyContents = parsedHtmlArray.join("\n")
   }
+  bodyContents = parsedHtmlArray.join("\n")
 
 //   if (removedLines) {
 //     bodyContents = bodyContents.split("\n")

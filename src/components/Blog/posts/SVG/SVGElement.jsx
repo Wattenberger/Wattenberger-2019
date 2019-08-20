@@ -291,12 +291,67 @@ const elements = {
             types: ["\"userSpaceOnUse\"", "\"objectBoundingBox\""],
             doesAnimate: true,
         },{
+            name: "gradientTransform",
+            types: ["\"pad\"","\"reflect\"", "\"repeat\""],
+            doesAnimate: true,
+        },{
             name: "spreadMethod",
             types: ["transform list"],
+            doesAnimate: true,
+        }]
+    },
+    radialGradient: {
+        attributes: [{
+            name: "href",
+            types: ["url"],
+            doesAnimate: true,
+        },{
+            name: "cx",
+            default: 5,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "cy",
+            default: 95,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "r",
+            default: 95,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "fx",
+            default: 95,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "fy",
+            default: 5,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "fr",
+            default: 95,
+            types: ["length"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "gradientUnits",
+            types: ["\"userSpaceOnUse\"", "\"objectBoundingBox\""],
             doesAnimate: true,
         },{
             name: "gradientTransform",
             types: ["\"pad\"","\"reflect\"", "\"repeat\""],
+            doesAnimate: true,
+        },{
+            name: "spreadMethod",
+            types: ["transform list"],
             doesAnimate: true,
         }]
     },

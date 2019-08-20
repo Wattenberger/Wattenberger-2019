@@ -8,7 +8,6 @@ let interval
 const INTERVAL_LENGTH = 10
 const MAX_DIAMETER = 30
 const NUM_INTERPOLATIONS = 10
-const MAX_ARC_SEGMENTS = 10
 const NUM_STREAMS = 10
 const CANVAS_RGB = "198, 215, 199"
 
@@ -39,7 +38,7 @@ class Day5 extends Component {
   }
 
   draw = () => {
-    let {canvas, point, interpolation} = this.state
+    let {canvas, interpolation} = this.state
     if (!canvas) return
 
     // canvas.clearRect(0, 0, width, height)
@@ -68,7 +67,7 @@ class Day5 extends Component {
   }
 
   drawPoint(idx, targetIdx) {
-    let {width, height, canvas, points, clockwise} = this.state
+    let {width, height, points} = this.state
     let point = points[idx] || {x: _.random(width), y: _.random(height), r: _.random(MAX_DIAMETER - idx * 2 - 10, MAX_DIAMETER - idx * 2)}
     let target = points[targetIdx]
     if (!target) {
@@ -124,6 +123,7 @@ class Day5 extends Component {
       let method = point.type || (moveTo || !idx ? "moveTo" : "lineTo")
       canvas[method](...point.args)
       moveTo = !!point.type
+      return
     })
   }
 

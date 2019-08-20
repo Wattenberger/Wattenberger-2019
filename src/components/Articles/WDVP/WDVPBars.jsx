@@ -15,18 +15,11 @@ import rawData from "./Wdvp_gov_score.json"
 import metricRankedCorrelationData from "./Wdvp_corr.json"
 import metricsInfo from "./metric-info.json"
 // import data from "./WDVP Datasets - small countries are beautiful"
-import WDVPScatter from './WDVPScatter'
 
 import './WDVPBars.scss'
 const OrbitControls = OrbitControlsGenerator(THREE)
 
 // console.log(rawData)
-
-const ordinalColors = ["#63cdda", "#cf6a87", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"]; // "#e77f67", "#778beb",
-const numberFromValue = value =>
-  _.isFinite(value) ? value :
-  _.isString(value) ? +value.replace(/,/g, "") :
-  null
 
 let continents = [
   {code: "AS", value: "Asia",          color: "#12CBC4"}, // #EF4E78, "#63cdda"
@@ -42,15 +35,6 @@ const continentColors = _.fromPairs(_.map(continents, continent => [
 ]))
 const blackAndWhiteColorScale = d3.scaleSequential(interpolateRdYlGn)
 continents = _.map(continents, (continent, i) => ({...continent, color: d3.interpolatePlasma(i /( continents.length - 1))}))
-const continentColorScales = _.fromPairs(
-  _.map(continents, continent => [
-    continent.code,
-    createScale({
-      domain: [-0.3, 0.6, 1.2],
-      range: ["#fff", continent.color, "#000"],
-    }),
-  ])
-)
 const percentileOrRawOptions = [{
   value: true,
   label: "Percentile",
@@ -76,10 +60,6 @@ const metricCorrelationSorts = _.fromPairs(
     metric.RankedCorrelationWithOtherFields,
   ])
 )
-const metricsColorScale = createScale({
-  domain: [0, defaultMetrics.length - 1],
-  range: ["#63cdda", "#e77f67"],
-})
 const formatNumber = d3.format(",")
 class WDVPBars extends Component {
   constructor(props) {
@@ -115,7 +95,7 @@ class WDVPBars extends Component {
   chart = React.createRef()
 
   createScales = () => {
-    const { sort, selectedContinents, isAscending, isShowingPercentile } = this.state
+    const { sort, selectedContinents, isAscending } = this.state
 
     const sortedMetrics = _.map(metricCorrelationSorts[sort], index => defaultMetrics[index - 1])
     // const metricIndices = _.zipObject(defaultMetrics, metricCorrelationSorts[sort])
@@ -332,8 +312,7 @@ class WDVPBarsChart extends PureComponent {
 
   initScene = () => {
     if (!this.container.current) return
-    const { data, metrics, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
-    const { width, height, margins, xScale, yScale } = this.state
+    const { width, height } = this.state
 
     if (this.scene) return
 
@@ -537,8 +516,7 @@ class WDVPBarsChart extends PureComponent {
   }
 
   initBars = () => {
-    const { data, metrics, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
-    const { width, height, margins, xScale, yScale } = this.state
+    const { data, metrics } = this.props
 
     if (_.isEmpty(data)) return;
 
@@ -557,8 +535,7 @@ class WDVPBarsChart extends PureComponent {
   }
 
   drawData = () => {
-    const { data, metrics, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
-    const { width, height, margins, xScale, yScale } = this.state
+    const { data } = this.props
 
     if (_.isEmpty(data)) return;
 
@@ -578,7 +555,7 @@ class WDVPBarsChart extends PureComponent {
   }
 
   drawBar = ({ country, metric, bar }) => {
-    const { data, metrics, metricsOrder, countryOrder, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
+    const { metricsOrder, countryOrder, scales, sort, colorMode, isShowingPercentile, onCountryHover, onMetricClick } = this.props
 
     if (!bar) return
     // const scaledValue = scales[metric.name](country.country[metric.name])
@@ -641,9 +618,6 @@ class WDVPBarsChart extends PureComponent {
   }
 
   render () {
-    const { data } = this.props
-    const { width, height, margins, xScale, yScale } = this.state
-
     return (
       <div className="WDVPBarsChart" ref={this.container}>
         <div className="WDVPBarsChart__zooms">

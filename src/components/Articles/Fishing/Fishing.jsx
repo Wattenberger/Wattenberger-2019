@@ -9,16 +9,13 @@ import countryCodes from "./countryCodes"
 
 import './Fishing.scss';
 
-const formatSalary = d => numeral(d).format("$0,0")
 const formatNumber = d => numeral(d).format("0,0a")
 const formatNumberLong = d => numeral(d).format("0,0")
-const formatNumberWithDecimal = d => numeral(d).format("0,0.0a")
 const ordinalColors = ["#c7ecee", "#778beb", "#f7d794", "#63cdda", "#cf6a87", "#e77f67", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3"];
 const countryColors = _.fromPairs(_.map(_.keys(countryCodes), (country, i) => [
   country,
   ordinalColors[i % (ordinalColors.length - 1)],
 ]))
-const colorScale = d3.scaleLinear().range(["#c7ecee", "#686de0"]).domain([0, 1])
 
 const metricOptions = [{
   value: "boats",
@@ -101,13 +98,10 @@ const FishingCircle = ({ data, metric, takenMetric, totalsMetric }) => {
   const height = 400
   const margin = {top: 50, right: 50, bottom: 50, left: 50}
   const boundedWidth = width - margin.left - margin.right
-  const boundedHeight = height - margin.top - margin.bottom
   const radius = boundedWidth / 2
-  const gradientId = `gradient-${_.uniqueId()}`
 
   const dateAccessor = d => d[0]
   const radiusAccessor = d => d[1]
-  const colorScale = d3.interpolateLab("cornflowerblue", "tomato")
 
   const [countryData, setCountryData] = useState([])
   const [takenData, setTakenData] = useState([])

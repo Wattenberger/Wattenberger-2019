@@ -24,6 +24,7 @@ const RocDevSurvey = React.lazy(() => import("components/Articles/RocDevSurvey/R
 const StephenKing = React.lazy(() => import("components/Articles/StephenKing/StephenKing"));
 const StephenKingCharacters = React.lazy(() => import("components/Articles/StephenKingCharacters/StephenKingCharacters"));
 const StephenKing3d = React.lazy(() => import("components/Articles/StephenKing3d/StephenKing3d"));
+const StephenKingMds = React.lazy(() => import("components/Articles/StephenKingMds/StephenKingMds"));
 const GameOfThrones = React.lazy(() => import("components/Articles/GameOfThrones/GameOfThrones"));
 const Chaconne = React.lazy(() => import("components/Articles/Chaconne/Chaconne"));
 const Playground = React.lazy(() => import("components/Articles/Playground/Playground"));
@@ -86,6 +87,7 @@ class App extends Component {
               <Route path="/king" component={StephenKing} />
               <Route path="/king-characters" component={StephenKingCharacters} />
               <Route path="/king3d" component={StephenKing3d} />
+              <Route path="/king-mds" component={StephenKingMds} />
               <Route path="/playground" component={Playground} />
               <Route path="/dvs" component={DVS} />
               <Route path="/dvs-channels" component={DVSChannels} />

@@ -140,10 +140,6 @@ const SVG = () => {
 
 export default SVG
 
-
-
-
-
 const P = ({ children })=> (
   <code className="P">{ children }</code>
 )

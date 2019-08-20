@@ -9,6 +9,8 @@ import SVGExercise from "./SVGExercise"
 const faceCode = require("!!raw-loader!./face.html").default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const gradientCode = require("!!raw-loader!./gradient.html").default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const textCode = require("!!raw-loader!./text.html").default
 
 const faceParts = {
     svgStyle: [8, 13],
@@ -877,32 +879,134 @@ export default [{
     removedLines: [
     ],
 },{
+    title: "<radialGradient>",
+    notes: <>
+        <SVGElement name="radialGradient" />
+    </>,
+    code: gradientCode,
+    highlightedLines: d3.range(10, 25),
+    insertedLines: [{
+        start: 9,
+        code: `      <radialGradient
+          id="gradient"
+        >
+          <stop
+            stop-color="teal"
+          />
+          <stop
+            stop-color="pink"
+            offset="100%"
+          />
+        </radialGradient>`
+    }],
+    removedLines: [
+        ...d3.range(10, 25),
+    ],
+},{
+    title: "gradientUnits",
+    notes: <>
+        <SVGElement name="radialGradient" />
+    </>,
+    code: gradientCode,
+    highlightedLines: [12],
+    insertedLines: [{
+        start: 9,
+        code: `      <radialGradient
+          id="gradient"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop
+            stop-color="teal"
+          />
+          <stop
+            stop-color="pink"
+            offset="100%"
+          />
+        </radialGradient>`
+    }],
+    removedLines: [
+        ...d3.range(10, 25),
+    ],
+},{
+    title: "We can get crazy",
+    notes: <>
+        <SVGElement name="radialGradient" />
+    </>,
+    code: gradientCode,
+    highlightedLines: d3.range(12, 19),
+    insertedLines: [{
+        start: 9,
+        code: `      <radialGradient
+          id="gradient"
+          spreadMethod="reflect"
+          cx="3%"
+          cy="35%"
+          r="53%"
+          fx="34%"
+          fy="28%"
+          fr="27%"
+        >
+          <stop
+            stop-color="teal"
+          />
+          <stop
+            stop-color="pink"
+            offset="100%"
+          />
+        </radialGradient>`
+    }],
+    removedLines: [
+        ...d3.range(10, 25),
+    ],
+},{
+    title: "How do we add a label?",
+    notes: <>
+    </>,
+    code: textCode,
+    highlightedLines: d3.range(11, 17),
+    removedLines: [
+        ...d3.range(17, 28),
+    ],
+},{
     title: "<text>",
     notes: <>
         <SVGElement name="text" />
     </>,
-    code: gradientCode,
-    highlightedLines: d3.range(34, 44),
-    insertedLines: [{
-        start: 33,
-        code: `      <text
-          x="75"
-          y="200"
-          style="
-            font-size: 100px;
-            fill: white;
-          "
-        >
-          HELLO
-        </text>`
-    }],
+    code: textCode,
+    highlightedLines: d3.range(17, 26),
+    removedLines: [
+        22, 23,
+    ],
+},{
+    title: "horizontal align",
+    notes: <>
+        <SVGElement name="text" />
+    </>,
+    code: textCode,
+    highlightedLines: [22],
+    removedLines: [
+        23,
+    ],
+},{
+    title: "vertical align",
+    notes: <>
+        <SVGElement name="text" />
+    </>,
+    code: textCode,
+    highlightedLines: [23],
     removedLines: [
     ],
+},{
+    title: "Let's draw a dog!",
+    description: <>
+        <img src="https://cdn.dribbble.com/users/3016/screenshots/7002574/dogs_4x.png" alt="a bunch o dogs" />
+        From <a href="https://dribbble.com/shots/7002574-Hot-Dogs" target="_blank" rel="noreferrer noopener">Skinny Ships</a>
+    </>,
 }]
 // scaling
 // transforming
 // gradients
 // text
-// clip paths & masks (star rating example?)
+// clip paths & masks
 // filters
-// using in real life - show react Icon?
+// advanced examples

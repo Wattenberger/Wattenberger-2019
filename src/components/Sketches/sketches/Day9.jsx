@@ -8,8 +8,6 @@ require('./Day9.scss')
 
 let animationRequestId
 const CANVAS_RGB = "255, 255, 255"
-const PATH_COLORS = ["#A6CFE2", "#F0CF61", "#DABAAF"]
-const NUM_POINTS = 3
 const SPEED_MIN = 40
 const SPEED_MAX = 120
 const RADIUS_MIN = 2
@@ -56,7 +54,7 @@ class Day9 extends Component {
   }
 
   drawLine = () => {
-    let {canvas, lastLine, line, lineWidth} = this.state
+    let {canvas, lastLine, line} = this.state
     if (!canvas) return
 
     lastLine = lastLine || movementUtils.createPoint()

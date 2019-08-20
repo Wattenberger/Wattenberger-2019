@@ -8,7 +8,6 @@ require('./Day19.scss')
 
 let animationRequestId
 const HEIGHT = 400
-const INTERVAL_LENGTH = 1000
 const CHANCE_OF_NEW_BLOB = 0.1
 const CANVAS_RGB = "245,247,249"
 const BLOB_COLORS = ["#539FA2","#72B1A4","#ABCCB1","#C4DBB4","#D4E2B6"]
@@ -45,7 +44,7 @@ class Day19 extends Component {
   }
 
   draw = () => {
-    let {canvas, height, width} = this.state
+    let {canvas} = this.state
 
     if (canvas) {
       canvasUtils.fadeCanvas(0.06, canvas, CANVAS_RGB)
@@ -56,7 +55,7 @@ class Day19 extends Component {
   }
 
   drawWatercolor = origin => {
-    let {canvas, blobs} = this.state
+    let {blobs} = this.state
 
     let doneBlobs = []
 

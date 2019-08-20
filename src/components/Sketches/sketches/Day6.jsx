@@ -8,8 +8,6 @@ require('./Day6.scss')
 
 let interval
 const INTERVAL_LENGTH = 10
-const MAX_DIAMETER = 30
-const MAX_ARC_SEGMENTS = 10
 const NUM_STREAMS = 90
 const CANVAS_RGB = "248, 235, 238"
 const SPEED_MIN = 1
@@ -50,7 +48,7 @@ class Day6 extends Component {
   }
 
   draw = () => {
-    let {canvas, points, mousePos} = this.state
+    let {canvas, mousePos} = this.state
     if (!canvas) return
 
     canvasUtils.fadeCanvas(0.6, canvas, CANVAS_RGB)
@@ -59,7 +57,7 @@ class Day6 extends Component {
   }
 
   drawPoint(idx) {
-    let {width, height, canvas, points, mousePos} = this.state
+    let {canvas, points, mousePos} = this.state
     let point = points[idx] || movementUtils.createPoint({
       speedMin: SPEED_MIN,
       speedMax: SPEED_MAX,

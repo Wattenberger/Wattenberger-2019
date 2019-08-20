@@ -1,0 +1,540 @@
+[
+    {
+      "x": -0.1284182984,
+      "y": 0.1860006268,
+      "title": "11_22_63_ A Novel",
+      "cluster": 4,
+      "length": 1482065
+    },
+    {
+      "x": -0.6978354528,
+      "y": -0.2532265051,
+      "title": "Eyes of the Dragon, The",
+      "cluster": 1,
+      "length": 564924
+    },
+    {
+      "x": -0.1696054748,
+      "y": 0.7105181101,
+      "title": "Night Shift",
+      "cluster": 2,
+      "length": 701736
+    },
+    {
+      "x": -0.1422496705,
+      "y": -0.714459021,
+      "title": "Bag of Bones",
+      "cluster": 4,
+      "length": 1084646
+    },
+    {
+      "x": -0.1450882008,
+      "y": 0.0064303874,
+      "title": "Face in the Crowd, A",
+      "cluster": 4,
+      "length": 89638
+    },
+    {
+      "x": 0.0932961764,
+      "y": 0.1041072298,
+      "title": "Nightmares & Dreamscapes",
+      "cluster": 4,
+      "length": 1502426
+    },
+    {
+      "x": 0.1067271505,
+      "y": -0.0563534551,
+      "title": "Bazaar of Bad Dreams, The",
+      "cluster": 4,
+      "length": 949697
+    },
+    {
+      "x": 0.6940450628,
+      "y": 0.0894000858,
+      "title": "Finders Keepers",
+      "cluster": 0,
+      "length": 698174
+    },
+    {
+      "x": -0.6840152316,
+      "y": 0.3097649426,
+      "title": "Pet Sematary",
+      "cluster": 4,
+      "length": 796303
+    },
+    {
+      "x": -0.7468165235,
+      "y": -0.0024745405,
+      "title": "Big Driver",
+      "cluster": 1,
+      "length": 282919
+    },
+    {
+      "x": 0.4681232085,
+      "y": 0.5321627616,
+      "title": "Firestarter",
+      "cluster": 4,
+      "length": 838753
+    },
+    {
+      "x": -0.1484757476,
+      "y": 0.7188438377,
+      "title": "Rage",
+      "cluster": 2,
+      "length": 293355
+    },
+    {
+      "x": -0.0021878677,
+      "y": 0.2555238936,
+      "title": "Black House",
+      "cluster": 4,
+      "length": 1365627
+    },
+    {
+      "x": -0.0450077032,
+      "y": -0.4455192723,
+      "title": "Four Past Midnight",
+      "cluster": 4,
+      "length": 1612319
+    },
+    {
+      "x": 0.1729012524,
+      "y": 0.5128290909,
+      "title": "Regulators, The",
+      "cluster": 4,
+      "length": 650645
+    },
+    {
+      "x": -0.6189377031,
+      "y": 0.1765137434,
+      "title": "Blockade Billy",
+      "cluster": 4,
+      "length": 82454
+    },
+    {
+      "x": 0.5596540094,
+      "y": 0.0202289649,
+      "title": "From a Buick 8",
+      "cluster": 0,
+      "length": 706481
+    },
+    {
+      "x": 0.5823301649,
+      "y": -0.38637972,
+      "title": "Revival",
+      "cluster": 4,
+      "length": 668483
+    },
+    {
+      "x": -0.1815361963,
+      "y": 0.702639292,
+      "title": "Carrie",
+      "cluster": 2,
+      "length": 338609
+    },
+    {
+      "x": -0.6466393839,
+      "y": 0.0198370181,
+      "title": "Full Dark, No Stars",
+      "cluster": 1,
+      "length": 761742
+    },
+    {
+      "x": 0.5383820322,
+      "y": 0.4739608545,
+      "title": "Riding the Bullet",
+      "cluster": 4,
+      "length": 84355
+    },
+    {
+      "x": 0.174609872,
+      "y": 0.7487891084,
+      "title": "Cell",
+      "cluster": 0,
+      "length": 676206
+    },
+    {
+      "x": -0.7608399453,
+      "y": 0.156752557,
+      "title": "Gerald's Game",
+      "cluster": 4,
+      "length": 687651
+    },
+    {
+      "x": 0.4441415084,
+      "y": -0.0532757838,
+      "title": "Roadwork",
+      "cluster": 4,
+      "length": 508758
+    },
+    {
+      "x": 0.2359654402,
+      "y": -0.7241269062,
+      "title": "Colorado Kid, The",
+      "cluster": 4,
+      "length": 193089
+    },
+    {
+      "x": -0.6406290027,
+      "y": 0.4304902933,
+      "title": "Girl Who Loved Tom Gordon, The",
+      "cluster": 4,
+      "length": 340543
+    },
+    {
+      "x": 0.1020786779,
+      "y": -0.7268804433,
+      "title": "Rose Madder",
+      "cluster": 4,
+      "length": 953286
+    },
+    {
+      "x": 0.3762275188,
+      "y": -0.6723531212,
+      "title": "Cujo",
+      "cluster": 4,
+      "length": 649687
+    },
+    {
+      "x": -0.3736107653,
+      "y": 0.0757675975,
+      "title": "Good Marriage",
+      "cluster": 4,
+      "length": 439566
+    },
+    {
+      "x": 0.3943989141,
+      "y": 0.6024674303,
+      "title": "Running Man, The",
+      "cluster": 4,
+      "length": 389561
+    },
+    {
+      "x": -0.2133224928,
+      "y": 0.704965729,
+      "title": "Cycle of the Werewolf",
+      "cluster": 2,
+      "length": 88014
+    },
+    {
+      "x": 0.6875937157,
+      "y": -0.3319520953,
+      "title": "Green Mile, The",
+      "cluster": 4,
+      "length": 727741
+    },
+    {
+      "x": -0.4685507416,
+      "y": -0.0509632621,
+      "title": "Salem's Lot",
+      "cluster": 4,
+      "length": 1069877
+    },
+    {
+      "x": 0.2553592356,
+      "y": -0.1417481728,
+      "title": "Danse Macabre",
+      "cluster": 4,
+      "length": 983232
+    },
+    {
+      "x": 0.697100418,
+      "y": 0.2800991963,
+      "title": "Guns (Kindle Single)",
+      "cluster": 4,
+      "length": 46219
+    },
+    {
+      "x": 0.532500243,
+      "y": -0.5237094116,
+      "title": "Shining, The",
+      "cluster": 4,
+      "length": 891951
+    },
+    {
+      "x": -0.5404733131,
+      "y": 0.5267524318,
+      "title": "Dark Half, The",
+      "cluster": 4,
+      "length": 851964
+    },
+    {
+      "x": -0.3927073512,
+      "y": -0.6212282288,
+      "title": "Gunslinger, The",
+      "cluster": 3,
+      "length": 373295
+    },
+    {
+      "x": 0.3598701455,
+      "y": -0.2714113855,
+      "title": "Skeleton Crew",
+      "cluster": 4,
+      "length": 1158796
+    },
+    {
+      "x": -0.4902746612,
+      "y": -0.5058771907,
+      "title": "Dark Tower IV Wizard and Glass, The",
+      "cluster": 3,
+      "length": 1438231
+    },
+    {
+      "x": 0.0982960535,
+      "y": 0.6333257018,
+      "title": "Hearts In Atlantis",
+      "cluster": 4,
+      "length": 1010053
+    },
+    {
+      "x": -0.5589958977,
+      "y": -0.4120185436,
+      "title": "Song of Susannah",
+      "cluster": 3,
+      "length": 705059
+    },
+    {
+      "x": -0.5095011514,
+      "y": -0.4374595768,
+      "title": "Dark Tower, The",
+      "cluster": 3,
+      "length": 1525240
+    },
+    {
+      "x": -0.4228654368,
+      "y": -0.1549249074,
+      "title": "IT",
+      "cluster": 4,
+      "length": 2449760
+    },
+    {
+      "x": 0.5690042441,
+      "y": 0.2639258685,
+      "title": "Stand, The",
+      "cluster": 4,
+      "length": 2561715
+    },
+    {
+      "x": 0.244235399,
+      "y": 0.4311287895,
+      "title": "Dead Zone, The",
+      "cluster": 4,
+      "length": 837752
+    },
+    {
+      "x": 0.6377685428,
+      "y": 0.4227431893,
+      "title": "Insomnia",
+      "cluster": 4,
+      "length": 1332592
+    },
+    {
+      "x": 0.1841502784,
+      "y": -0.5826425702,
+      "title": "Talisman 01 - The TalismanCL Peter Straub",
+      "cluster": 4,
+      "length": 1471930
+    },
+    {
+      "x": 0.2780859552,
+      "y": 0.3088995571,
+      "title": "Desperation",
+      "cluster": 4,
+      "length": 1072872
+    },
+    {
+      "x": -0.1339520503,
+      "y": -0.2820563864,
+      "title": "Joyland",
+      "cluster": 4,
+      "length": 434214
+    },
+    {
+      "x": -0.67533104,
+      "y": -0.1243894127,
+      "title": "Thinner",
+      "cluster": 4,
+      "length": 528588
+    },
+    {
+      "x": 0.6015404601,
+      "y": -0.1889679562,
+      "title": "Different Seasons",
+      "cluster": 0,
+      "length": 1103872
+    },
+    {
+      "x": 0.30333438,
+      "y": 0.0772315799,
+      "title": "Just After Sunset",
+      "cluster": 4,
+      "length": 740973
+    },
+    {
+      "x": 0.002730731,
+      "y": 0.4705967744,
+      "title": "Tommyknockers, The",
+      "cluster": 4,
+      "length": 1438230
+    },
+    {
+      "x": 0.4380121972,
+      "y": 0.2793637148,
+      "title": "Doctor Sleep",
+      "cluster": 4,
+      "length": 921837
+    },
+    {
+      "x": -0.0071314192,
+      "y": -0.7524237143,
+      "title": "Lisey's Story",
+      "cluster": 4,
+      "length": 1015111
+    },
+    {
+      "x": -0.1719303194,
+      "y": 0.6992596201,
+      "title": "Uncollected Stories 2003",
+      "cluster": 2
+    },
+    {
+      "x": -0.4082018453,
+      "y": 0.4201149846,
+      "title": "Dolores Claiborne",
+      "cluster": 4,
+      "length": 484926
+    },
+    {
+      "x": 0.3101705387,
+      "y": 0.6756920763,
+      "title": "Long Walk, The",
+      "cluster": 4,
+      "length": 497450
+    },
+    {
+      "x": 0.4144418558,
+      "y": -0.5426165707,
+      "title": "Under the Dome",
+      "cluster": 4,
+      "length": 1856559
+    },
+    {
+      "x": -0.4126683963,
+      "y": -0.4816327661,
+      "title": "Drawing of the Three, The",
+      "cluster": 3,
+      "length": 709338
+    },
+    {
+      "x": -0.4918886248,
+      "y": 0.2935079033,
+      "title": "Mile 81",
+      "cluster": 4,
+      "length": 93523
+    },
+    {
+      "x": 0.7379331432,
+      "y": -0.1861691549,
+      "title": "Ur",
+      "cluster": 4,
+      "length": 119729
+    },
+    {
+      "x": -0.3086620884,
+      "y": 0.2071859844,
+      "title": "Dreamcatcher",
+      "cluster": 4,
+      "length": 1212090
+    },
+    {
+      "x": -0.0600061117,
+      "y": -0.6166209239,
+      "title": "Misery",
+      "cluster": 4,
+      "length": 617184
+    },
+    {
+      "x": -0.5226690897,
+      "y": -0.4609767628,
+      "title": "Waste Lands, The",
+      "cluster": 3,
+      "length": 983798
+    },
+    {
+      "x": 0.1158473929,
+      "y": -0.4293006642,
+      "title": "Duma Key",
+      "cluster": 4,
+      "length": 1116411
+    },
+    {
+      "x": 0.4527363946,
+      "y": -0.3722443445,
+      "title": "Mist, The",
+      "cluster": 4,
+      "length": 274947
+    },
+    {
+      "x": -0.2901826337,
+      "y": -0.6665478589,
+      "title": "Wind Through the Keyhole, The",
+      "cluster": 4,
+      "length": 505132
+    },
+    {
+      "x": 0.7509287264,
+      "y": 0.049626082,
+      "title": "End of Watch (The Bill Hodges Trilogy Book 3)",
+      "cluster": 0,
+      "length": 661251
+    },
+    {
+      "x": 0.7535232763,
+      "y": 0.038188345,
+      "title": "Mr. Mercedes",
+      "cluster": 0,
+      "length": 773731
+    },
+    {
+      "x": -0.5245403577,
+      "y": -0.4312105948,
+      "title": "Wolves of the Calla",
+      "cluster": 3,
+      "length": 1357777
+    },
+    {
+      "x": -0.28844903,
+      "y": -0.3369778196,
+      "title": "Everything's Eventual",
+      "cluster": 3,
+      "length": 901132
+    },
+    {
+      "x": -0.2585276407,
+      "y": 0.4116776267,
+      "title": "Needful Things",
+      "cluster": 4,
+      "length": 1389437
+    },
+    {
+      "x": 0.2813640375,
+      "y": -0.4504433807,
+      "title": "Blaze",
+      "cluster": 4,
+      "length": 404363
+    },
+    {
+      "x": -0.4454751347,
+      "y": 0.5932437827,
+      "title": "Christine",
+      "cluster": 4,
+      "length": 1067871
+    },
+    {
+      "x": 0.0787916423,
+      "y": -0.228994339,
+      "title": "On Writing",
+      "cluster": 4,
+      "length": 434186
+    }
+  ]

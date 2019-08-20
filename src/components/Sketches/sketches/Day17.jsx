@@ -8,12 +8,9 @@ require('./Day17.scss')
 
 let animationRequestId
 const INTERVAL_LENGTH = 1000
-const NUM_TREES = 13
 const CANVAS_RGB = "245,247,249"
 const BLOT_COLOR = "white"
 const BLOT_STROKE_COLOR = "#3C485E"
-
-
 
 class Day17 extends Component {
   constructor(props) {
@@ -67,7 +64,6 @@ class Day17 extends Component {
     let margin = 10
     let angle = Math.PI / numSections
     let w = tempCanvas.width = width / 2 - margin * 2
-    let h = tempCanvas.height = w * Math.tan(0.5 * angle) - margin * 2
 
     let numPoints = 100
     let point = {

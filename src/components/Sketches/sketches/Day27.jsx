@@ -7,21 +7,11 @@ import Gradient from "components/_ui/Chart/Gradient/Gradient"
 
 require('./Day27.scss')
 
-const SVG_HEIGHT = 400
 const FISH_DIMENSION = window.innerWidth * 0.1
 const BUFFER = FISH_DIMENSION * 0.1
 const colors = ["#fe938c","#edaf97","#c49792","#ad91a3","#9d91a3","#e9c46a","#f4a261","#e76f51",   "#554971","#63768d","#8ac6d0","#1693A5","#FBB829","#ADD8C7","#CDD7B6","#FF9999","#CCCCCC",   "#7F94B0","#E7807B",   "#C5E0DC","#807C8B","#896872",]
-const waterColors = ["#2a9d8f","#45aeb1","#77CCA4","#3FB8AF","#90AB76","#61A598","#4ECDC4","#64B6B1","#A1C820",]
-const waterColor = _.sample(waterColors)
 
 const getFishDimWithinRange = (min = 0, max = 1) => FISH_DIMENSION * _.random(min, max, true)
-const getTriangle = (w, h) => (
-  "M" + [
-    [w / 2, 0].join(" "),
-    [w    , h].join(" "),
-    [0    , h].join(" "),
-  ].join("L ") + "Z"
-)
 const getJitteredPointFromDir = (pos, dir, distance) => ({
   x: Math.round(Math.cos(dir * Math.PI / 180) * distance + pos.x),
   y: Math.round(Math.sin(dir * Math.PI / 180) * distance + pos.y),

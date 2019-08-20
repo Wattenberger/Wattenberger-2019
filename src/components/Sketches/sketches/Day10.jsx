@@ -8,12 +8,10 @@ require('./Day10.scss')
 
 let animationRequestId
 const CANVAS_RGB = "255,255,255"
-const PATH_COLORS = ["#A6CFE2", "#F0CF61", "#DABAAF"]
 const RADIUS_MIN = 3
 const RADIUS_MAX = 20
 const MIN_PETALS = 4
 const MAX_PETALS = 10
-const PETAL_OFFSET = 4
 const COLORS = ["164,53,84", "147,29,61", "247,158,131", "231,89,19", "246,235,187"]
 const MIDDLE_COLOR = "#f4f4f4"
 
@@ -48,8 +46,6 @@ class Day10 extends Component {
   }
 
   draw = () => {
-    let {canvas} = this.state
-
     this.drawFlower()
     animationRequestId = window.requestAnimationFrame(this.draw)
   }
