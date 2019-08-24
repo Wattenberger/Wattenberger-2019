@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <svg
+            id="svg"
+            width="500"
+            height="300"
+            style="border: 3px solid teal;">
+            <defs>
+                <clipPath id="clip">
+                    <text
+                        style="
+                            font-size: 100px;
+                            font-weight: 900;
+                        "
+                        x="100"
+                        y="200"
+                        fill="url(#gradient)">
+                        HELLO
+                    </text>
+                </clipPath>
+                <linearGradient id="gradient">
+                    <stop
+                        stop-color="teal"
+                    />
+                    <stop
+                        stop-color="pink"
+                        offset="100%"
+                    />
+                </linearGradient>
+            </defs>
+            <circle
+                id="circle"
+                cx="300"
+                cy="100"
+                r="100"
+                width="300"
+                height="200"
+                fill="url(#gradient)"
+                clip-path="url(#clip)"
+            />
+
+        </svg>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+
+        <script>
+            d3.select("#svg")
+                .on("mousemove", function(e) {
+                    const mousePosition = d3.mouse(this)
+                    d3.select("circle")
+                    .attr("cx", mousePosition[0])
+                    .attr("cy", mousePosition[1])
+                })
+        </script>
+
+    </body>
+</html>

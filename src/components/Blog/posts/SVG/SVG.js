@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet"
 import * as d3 from "d3"
 import _ from "lodash"
 import Code from "components/_ui/Code/Code"
+import { useOnKeyPress } from "utils/utils"
 
 import "./SVG.scss"
 import steps from "./steps"
@@ -30,6 +31,9 @@ const SVG = () => {
       const newStepIndex = stepIndex + diff
       setStepIndex(newStepIndex)
   }
+
+//   useOnKeyPress("ArrowRight", onChangeStepLocal(1))
+//   useOnKeyPress("ArrowLeft", onChangeStepLocal(1))
 
   useEffect(() => {
     const stepInUrl = +(window.location.hash || "").slice(1)

@@ -93,7 +93,8 @@
     min-height: 1.8em;
     // transition: all 0.03s ease-out;
 
-    &:hover {
+    &:hover,
+    &:hover > code[class*="language-"] {
       background: #1e272e;
 
       .CodeLine__copy.ClipboardTrigger {
@@ -101,7 +102,8 @@
       }
     }
 
-    &--is-highlighted {
+    &--is-highlighted,
+    &--is-highlighted > code[class*="language-"] {
       background: #1e272e;
     }
 
@@ -126,7 +128,7 @@
     }
 
     code[class*="language-"] {
-      padding: 0.2em 0;
+      padding: 0.2em 1em 0.2em 0;
       flex: 1;
     }
   }

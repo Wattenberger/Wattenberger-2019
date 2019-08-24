@@ -414,4 +414,13 @@ const elements = {
             doesAnimate: true,
         }]
     },
+    clipPath: {
+        attributes: [{
+            name: "clipPathUnits",
+            type: "string",
+            types: ["userSpaceOnUse", "objectBoundingBox"],
+            doesAnimate: true,
+            isPosition: true,
+        }],
+    },
 }

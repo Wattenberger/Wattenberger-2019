@@ -2,6 +2,9 @@ import React from 'react'
 import * as d3 from "d3"
 import rasterCircle from "./raster-circle.png"
 import vectorCircle from "./circle.svg"
+import dearDataImage from "./deardata.png"
+import dearDataDescriptionImage from "./deardata-description.png"
+import cheatSheetImage from "./cheat-sheet.png"
 import SVGElement from "./SVGElement"
 import SVGExercise from "./SVGExercise"
 
@@ -11,6 +14,10 @@ const faceCode = require("!!raw-loader!./face.html").default
 const gradientCode = require("!!raw-loader!./gradient.html").default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const textCode = require("!!raw-loader!./text.html").default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const clipPathCode = require("!!raw-loader!./clip-path.html").default
+// eslint-disable-next-line import/no-webpack-loader-syntax
+const branchesCode = require("!!raw-loader!./branches.html").default
 
 const faceParts = {
     svgStyle: [8, 13],
@@ -990,6 +997,9 @@ export default [{
 },{
     title: "vertical align",
     notes: <>
+        <p>
+            Does not work in IE. <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline" target="_blank" rel="noreferrer noopener">MDN docs</a>
+        </p>
         <SVGElement name="text" />
     </>,
     code: textCode,
@@ -997,7 +1007,213 @@ export default [{
     removedLines: [
     ],
 },{
-    title: "Let's draw a dog!",
+    title: "Transform",
+    notes: <>
+        <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p>
+        <SVGElement name="text" />
+    </>,
+    code: textCode,
+    highlightedLines: [23],
+    removedLines: [
+    ],
+},{
+    title: "Clip Paths",
+    notes: <>
+        <p>
+        </p>
+        <SVGElement name="clipPath" />
+    </>,
+    code: clipPathCode,
+    highlightedLines: [23],
+    removedLines: [
+        ...d3.range(11, 23),
+        41,
+    ],
+},{
+    title: "Clip Paths",
+    notes: <>
+        <p>
+        </p>
+        <SVGElement name="clipPath" />
+    </>,
+    code: clipPathCode,
+    highlightedLines: d3.range(11, 23),
+    removedLines: [
+        41,
+    ],
+},{
+    title: "Clip Paths",
+    notes: <>
+        <p>
+        </p>
+        <SVGElement name="clipPath" />
+    </>,
+    code: clipPathCode,
+    highlightedLines: [41],
+    removedLines: [
+    ],
+},{
+    title: "Thinking outside of the chart types box",
+    description: <>
+        You can make anything that you can imagine
+        <br />
+        <br />
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+},{
+    title: "No limits!",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(5, 22),
+    removedLines: [
+        ...d3.range(314, 466),
+    ],
+},{
+    title: "Spacing branches",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(314, 334),
+    removedLines: [
+        ...d3.range(334, 466),
+    ],
+},{
+    title: "Drawing branches",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(335, 370),
+    removedLines: [
+        ...d3.range(371, 466),
+    ],
+},{
+    title: "Drawing leaves",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(371, 428),
+    removedLines: [
+        ...d3.range(428, 466),
+    ],
+},{
+    title: "Coloring the leaves",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: [428],
+    insertedLines: [{
+        start: 427,
+        code: `                .attr("fill", d => leafColors[d.type])`
+    }],
+    removedLines: [
+        ...d3.range(428, 466),
+    ],
+},{
+    title: "Styling the leaves",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(428, 435),
+    removedLines: [
+        ...d3.range(435, 466),
+    ],
+},{
+    title: "Drawing apostrophes",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(436, 466),
+    removedLines: [
+    ],
+},{
+    title: "Dynamic data",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={dearDataImage} />
+        <img src={dearDataDescriptionImage} />
+    </>,
+    code: branchesCode,
+    highlightedLines: d3.range(27, 36),
+    insertedLines: [{
+        start: 26,
+        code: `            const topics = new Array(d3.randomInt(8, 15)()).fill(null).map((d,i) => ({
+                symbol: ["☀", "☁", "☂", "☃", "☄", "★", "☆", "☇", "☈", "☉", "☊", "☋", "☍", "☎", "☏", "☐", "☑", "☒", "☓", "☔", "☕", "☖", "☗", "☙", "☚", "☛", "☜", "☝", "☞", "☟", "☠", "☡", "☢", "☣", "☥", "☦", "☧", "☨", "☩", "☪", "☫", "☬", "☭", "☮", "☯", "☱", "☲", "☳", "☴", "☵", "☶", "☷", "☸", "☹", "☺", "☻", "☽", "☾", "☿", "♀", "♁", "♂", "♃", "♄", "♅", "♆", "♇", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓", "♕", "♖", "♗", "♘", "♙", "♚", "♛", "♜", "♝", "♞", "♟", "♡", "♢", "♣", "♤", "♥", "♦", "♧", "♨", "♩", "♪", "♫", "♭", "♮", "♯", "♰", "♱", "♲", "♳",][d3.randomInt(0, 107)()],
+                type: d3.randomInt(2)() ? "personal" : "professional",
+                instapapers: d3.randomInt(0, 6)(),
+                articles: new Array(d3.randomInt(2, 12)()).fill(null).map((d,i) => ({
+                    type: ["article", "podcast", "paper", "video"][d3.randomInt(4)()],
+                    status: ["unfinished", "ok", "clicked"][d3.randomInt(4)()],
+                    readingTime: d3.randomInt(5)(),
+                })),
+            }))`
+    }],
+    removedLines: [
+        ...d3.range(26, 312),
+    ],
+},{
+    title: "Back to the basics",
+    notes: <>
+        {/* <p>
+            <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+        </p> */}
+
+        <img src={cheatSheetImage} />
+    </>,
+    code: branchesCode,
+    // highlightedLines: d3.range(314, 369),
+    removedLines: [
+    ],
+},{
+    title: "Let's draw dogs!",
     description: <>
         <img src="https://cdn.dribbble.com/users/3016/screenshots/7002574/dogs_4x.png" alt="a bunch o dogs" />
         From <a href="https://dribbble.com/shots/7002574-Hot-Dogs" target="_blank" rel="noreferrer noopener">Skinny Ships</a>

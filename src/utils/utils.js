@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useCallback, useEffect, useState, useRef } from "react"
 import _ from "lodash"
 
 const localStorageKey = "wattenberger--"
@@ -54,3 +54,38 @@ export const areEqual = (obj1 = {}, obj2 = {}, keys, isDeep = false) =>
             (key) => (isDeep ? _.isEqual((obj1 || {})[key], (obj2 || {})[key]) : (obj1 || {})[key] === (obj2 || {})[key])
         )
     );
+
+
+
+export const useOnKeyPress = (targetKey, onKeyDown, onKeyUp, isDebugging=false) => {
+    const [isKeyDown, setIsKeyDown] = useState(false);
+
+    const downHandler = useCallback(e => {
+        if (isDebugging) console.log("key down", e.key, e.key != targetKey ? "- isn't triggered" : "- is triggered");
+        if (e.key != targetKey) return;
+        setIsKeyDown(true);
+
+        if (typeof onKeyDown != "function") return;
+        onKeyDown(e);
+    })
+    const upHandler = useCallback(e => {
+        if (isDebugging) console.log("key up", e.key, e.key != targetKey ? "- isn't triggered" : "- is triggered");
+        if (e.key != targetKey) return;
+            setIsKeyDown(false);
+
+            if (typeof onKeyUp != "function") return;
+            onKeyUp(e);
+    })
+
+    useEffect(() => {
+        window.addEventListener('keydown', downHandler);
+        window.addEventListener('keyup', upHandler);
+
+        return () => {
+            window.removeEventListener('keydown', downHandler);
+            window.removeEventListener('keyup', upHandler);
+        };
+    }, []);
+
+    return isKeyDown;
+}

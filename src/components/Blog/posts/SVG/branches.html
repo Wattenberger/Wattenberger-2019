@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <svg
+            width="700"
+            height="400"
+            viewBox="0 0 700 400"
+            id="svg"
+            style="background: #E6E5EA">
+
+            <line
+                x1="50"
+                x2="650"
+                y1="200"
+                y2="200"
+                stroke="darkblue"
+                stroke-width="2"
+            />
+
+        </svg>
+
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3-random.v2.min.js"></script>
+        <script>
+            const topics = [{
+                symbol: "❤",
+                type: "personal",
+                instapapers: 2,
+                articles: [{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 3,
+                }]
+            },{
+                symbol: "⊙",
+                type: "professional",
+                instapapers: 7,
+                articles: [{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 3,
+                },{
+                    type: "paper",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 3,
+                }]
+            },{
+                symbol: "🞫",
+                type: "personal",
+                instapapers: 0,
+                articles: [{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 4,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 3,
+                }]
+            },{
+                symbol: "][",
+                type: "professional",
+                instapapers: 2,
+                articles: [{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 2,
+                }]
+            },{
+                symbol: "|||",
+                type: "professional",
+                instapapers: 2,
+                articles: [{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 2,
+                }]
+            },{
+                symbol: "n",
+                type: "personal",
+                instapapers: 2,
+                articles: [{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 2,
+                }]
+            },{
+                symbol: "✱",
+                type: "personal",
+                instapapers: 3,
+                articles: [{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 3,
+                },{
+                    type: "podcast",
+                    status: "ok",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 1,
+                }]
+            },{
+                symbol: "⏺",
+                type: "professional",
+                instapapers: 2,
+                articles: [{
+                    type: "video",
+                    status: "clicked",
+                    readingTime: 4,
+                },{
+                    type: "paper",
+                    status: "ok",
+                    readingTime: 2,
+                },{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 4,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                }]
+            },{
+                symbol: "⨁",
+                type: "personal",
+                instapapers: 0,
+                articles: [{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 1,
+                },{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 1,
+                }]
+            },{
+                symbol: "◐",
+                type: "professional",
+                instapapers: 1,
+                articles: [{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "clicked",
+                    readingTime: 1,
+                }]
+            },{
+                symbol: "□",
+                type: "personal",
+                instapapers: 4,
+                articles: [{
+                    type: "podcast",
+                    status: "unfinished",
+                    readingTime: 2,
+                },{
+                    type: "podcast",
+                    status: "clicked",
+                    readingTime: 3,
+                }]
+            },{
+                symbol: "⏀",
+                type: "professional",
+                instapapers: 4,
+                articles: [{
+                    type: "article",
+                    status: "unfinished",
+                    readingTime: 2,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 3,
+                },{
+                    type: "article",
+                    status: "ok",
+                    readingTime: 2,
+                }]
+            },{
+                symbol: "✔",
+                type: "personal",
+                instapapers: 2,
+                articles: [{
+                    type: "podcast",
+                    status: "ok",
+                    readingTime: 2,
+                },{
+                    type: "podcast",
+                    status: "unfinished",
+                    readingTime: 1,
+                },{
+                    type: "podcast",
+                    status: "unfinished",
+                    readingTime: 2,
+                }]
+            }]
+            const svg = d3.select("#svg")
+
+            const branchXScale = d3.scaleLinear()
+                .domain([0, topics.length])
+                .range([100, 600])
+
+            const branchElements = svg.selectAll(".branch")
+              .data(topics)
+              .join("g")
+                .attr("class", "branch")
+
+            branchElements.append("text")
+                .text(d => d.symbol)
+                .attr("x", (d,i) => branchXScale(i) - 3)
+                .attr("y", d => (
+                    200 + (d.type == "personal" ? -10 : 10)
+                ))
+                .attr("fill", "darkblue")
+                .style("dominant-baseline", "middle")
+                .style("text-anchor", "end")
+                .style("font-size", "11")
+                .style("font-weight", "900")
+
+            const branchYScale = d3.scaleLinear()
+                .domain([0, d3.max(
+                    topics.map(branch => (
+                        branch.articles.length
+                    ))
+                )])
+                .range([0, 150])
+
+            const branchWidth = 50
+            const createBranchDString = (branch, index) => {
+                const height = branchYScale(branch.articles.length)
+                    * (branch.type == "personal" ? 1  : -1)
+                const xStart = branchXScale(index)
+                const xEnd = xStart + branchWidth
+                const yStart = 200
+                const yEnd = yStart - height
+                const yDiff = yEnd - yStart
+
+                const points = [
+                    ["M", xStart, yStart], // startPoint
+                    ["C", xStart + 40, yStart + yDiff * (1/3)], // controlPoint1
+                    [     xStart + 15, yEnd], // controlPoint2
+                    [     xEnd, yEnd], // endPoint
+                ]
+                return points.map(d => (
+                    d.join(" ")
+                )).join(" ")
+            }
+
+            branchElements.append("path")
+                .attr("class", "branch-path")
+                .attr("d", createBranchDString)
+                .attr("fill", "none")
+                .attr("stroke", "darkblue")
+                .attr("stroke-width", "2")
+
+            const createLeafDString = (leaf, index, elem) => {
+                const branch = leaf.branch
+                const isOnTop = branch.type == "personal"
+                const isOnLeft = leaf.status == "clicked"
+                const width = leaf.readingTime * 10
+                const height = 20
+                const branchElem = svg.selectAll(".branch-path")._groups[0][leaf.branchIndex]
+                const branchLength = branchElem.getTotalLength()
+                const leafPositionScale = d3.scaleLinear()
+                    .domain([0, branch.articles.length - 1])
+                    .range([20, branchLength - 29])
+                const leafPosition = leafPositionScale(leaf.leafIndex)
+                const {x, y} = branchElem.getPointAtLength(leafPosition)
+                const branchHeight = branchYScale(branch.articles.length)
+                    * (isOnTop ? -1  : 1)
+                const leafYScale = d3.scaleLinear()
+                    .domain([-1, branch.articles.length])
+                    .range([0, branchHeight])
+                const yDiff = width
+                    * (isOnTop ? -1 : 1)
+                    * (isOnLeft ? 1 : 0.3)
+                const xDiff = width * (isOnLeft ? -1 : 1)
+                const yEnd = y + yDiff
+                const xEnd = x + xDiff
+
+                const points = [
+                    ["M", x, y], // start point
+                    ["Q", x + xDiff * (1/2), y + yDiff * 1.5],
+                    [     xEnd, yEnd],
+                    ["Q", x + xDiff * (1/2), y],
+                    [     x, y], // back to start
+                ]
+                return points.map(d => (
+                    d.join(" ")
+                )).join(" ")
+            }
+            const leafColors = {
+                article: "darkblue",
+                video: "skyblue",
+                podcast: "cornflowerblue",
+                paper: "green",
+            }
+
+            const leafElements = branchElements.selectAll(".leaf")
+              .data((branch, branchIndex) => (
+                  branch.articles.map(
+                    (article, articleIndex) => ({
+                        ...article,
+                        branch,
+                        branchIndex,
+                        leafIndex: articleIndex,
+                    })
+                  )
+              ))
+              .join("path")
+                .attr("class", "leaf")
+                .attr("d", createLeafDString)
+                .attr("fill", d => (
+                    d.status == "unfinished"
+                        ? "transparent"
+                        : leafColors[d.type]
+                ))
+                .attr("stroke", d => leafColors[d.type])
+                .attr("stroke-width", "1.5")
+
+            const apostrophes = branchElements.selectAll(".apostrophe")
+                .data((branch, branchIndex) => (
+                    new Array(branch.instapapers).fill(branch).map((leaf, leafIndex) => {
+                        const branch = svg.selectAll(".branch-path")._groups[0][branchIndex]
+                        const endPosition = branch.getPointAtLength(
+                            branch.getTotalLength()
+                        )
+                        const isOnTop = leaf.type == "personal"
+                        const xOffset = Math.cos(leafIndex + 9)
+                            * (leafIndex * 6)
+                            - 10
+                        const yOffset = Math.sin(leafIndex + 9)
+                            + (leafIndex * 6)
+                            + (isOnTop ? -10 : 10)
+                        return {
+                            ...leaf,
+                            x: endPosition.x + xOffset,
+                            y: endPosition.y + yOffset,
+                        }
+                    })
+                ))
+                .join("text")
+                    .text("❛")
+                    .attr("x", d => d.x)
+                    .attr("y", d => d.y)
+                    .attr("class", "apostrophe")
+                    .attr("fill", "darkblue")
+                    .style("dominant-baseline", "middle")
+                    .style("text-anchor", "middle")
+                    .style("font-size", "20px")
+
+        </script>
+    </body>
+</html>
