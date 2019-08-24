@@ -1062,7 +1062,7 @@ export default [{
         <br />
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
 },{
     title: "No limits!",
@@ -1073,7 +1073,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(5, 22),
@@ -1089,7 +1089,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(314, 334),
@@ -1105,7 +1105,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(335, 370),
@@ -1121,7 +1121,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(371, 428),
@@ -1137,7 +1137,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: [428],
@@ -1157,7 +1157,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(428, 435),
@@ -1173,7 +1173,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(436, 466),
@@ -1188,7 +1188,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
-        <div className="note">From Dear Data</div>
+        <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(27, 36),
