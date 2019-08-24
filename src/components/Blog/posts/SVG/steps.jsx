@@ -1191,7 +1191,7 @@ export default [{
         <div className="note">Image from <a href="https://www.amazon.com/Dear-Data-Giorgia-Lupi-ebook/dp/B01K9D6CMM/ref=sr_1_2" target="_blank" rel="noreferrer noopener">Dear Data</a></div>
     </>,
     code: branchesCode,
-    highlightedLines: d3.range(27, 36),
+    highlightedLines: d3.range(27, 37),
     insertedLines: [{
         start: 26,
         code: `            const topics = new Array(d3.randomInt(8, 15)()).fill(null).map((d,i) => ({
@@ -1208,6 +1208,7 @@ export default [{
     removedLines: [
         ...d3.range(26, 312),
     ],
+    doAllowRefresh: true,
 },{
     title: "Back to the basics",
     notes: <>

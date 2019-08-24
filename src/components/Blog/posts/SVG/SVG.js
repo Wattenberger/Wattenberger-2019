@@ -19,6 +19,7 @@ import { scrollTo } from "utils";
 
 const SVG = () => {
   const [highlightedLines, setHighlightedLines] = useState([])
+  const [exampleIteration, setExampleIteration] = useState(0)
   const [title, setTitle] = useState("")
   const [step, setStep] = useState({})
   const [editedCode, setEditedCode] = useState("")
@@ -112,14 +113,23 @@ const SVG = () => {
           </>
         )}
 
+        {step.doAllowRefresh && (
+            <Button className={`SVG__refresh-button SVG__refresh-button--iteration-${exampleIteration % 2}`} onClick={() => setExampleIteration(exampleIteration + 1)}>
+                <Icon name="refresh" />
+                Refresh
+            </Button>
+        )}
+
         {editedCode ? (
           <LocalExample
             html={editedCode}
+            key={exampleIteration}
             className="SVG__iframe"
           />
         ) : (
           <LocalExample
             html={code}
+            key={exampleIteration}
           //   css={exampleBarsCss}
           //   js={exampleBars}
           //   data={dataCsv}

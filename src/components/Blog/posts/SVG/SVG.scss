@@ -183,6 +183,27 @@
         margin: 1em 0;
     }
 
+    &__refresh-button {
+        .Icon {
+            margin: 4px 0.5em -4px 0;
+            transform-origin: 45% 45%;
+        }
+
+        @keyframes rotateAround {
+            0% { transform: none; }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes rotateAround2 {
+            0% { transform: none; }
+            100% { transform: rotate(360deg); }
+        }
+
+        &--iteration {
+            &-0 .Icon { animation: rotateAround 0.6s ease-out; }
+            &-1 .Icon { animation: rotateAround2 0.6s ease-out; }
+        }
+    }
+
     .note {
         font-size: 0.6em;
         opacity: 0.6;
