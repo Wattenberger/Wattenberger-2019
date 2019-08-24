@@ -1062,6 +1062,7 @@ export default [{
         <br />
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
 },{
     title: "No limits!",
@@ -1072,6 +1073,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(5, 22),
@@ -1087,6 +1089,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(314, 334),
@@ -1102,6 +1105,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(335, 370),
@@ -1117,6 +1121,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(371, 428),
@@ -1132,6 +1137,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: [428],
@@ -1151,6 +1157,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(428, 435),
@@ -1166,6 +1173,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(436, 466),
@@ -1180,6 +1188,7 @@ export default [{
 
         <img src={dearDataImage} />
         <img src={dearDataDescriptionImage} />
+        <div className="note">From Dear Data</div>
     </>,
     code: branchesCode,
     highlightedLines: d3.range(27, 36),
