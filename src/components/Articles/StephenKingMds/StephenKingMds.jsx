@@ -146,14 +146,14 @@ const StephenKingMdsChart = () => {
                 <defs>
 
                     <filter id="glow-background" x="-5" y="-5" width="20" height="20">
-                            <feFlood result="flood" flood-color="#10273f" flood-opacity="1"></feFlood>
-                            <feComposite in="flood" result="mask" in2="SourceGraphic" operator="in"></feComposite>
-                            <feMorphology in="mask" result="dilated" operator="dilate" radius="2"></feMorphology>
-                            <feGaussianBlur in="dilated" result="blurred" stdDeviation="5"></feGaussianBlur>
-                            <feMerge>
-                                <feMergeNode in="blurred"></feMergeNode>
-                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                            </feMerge>
+                        <feFlood result="flood" flood-color="#10273f" flood-opacity="1"></feFlood>
+                        <feComposite in="flood" result="mask" in2="SourceGraphic" operator="in"></feComposite>
+                        <feMorphology in="mask" result="dilated" operator="dilate" radius="2"></feMorphology>
+                        <feGaussianBlur in="dilated" result="blurred" stdDeviation="5"></feGaussianBlur>
+                        <feMerge>
+                            <feMergeNode in="blurred"></feMergeNode>
+                            <feMergeNode in="SourceGraphic"></feMergeNode>
+                        </feMerge>
                     </filter>
                     <filter id="glow-neutral">
                         <feGaussianBlur in="dilated" result="blurred" stdDeviation="0.5"></feGaussianBlur>

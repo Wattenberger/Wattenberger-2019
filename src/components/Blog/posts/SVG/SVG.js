@@ -140,6 +140,7 @@ const SVG = () => {
               html: insertedLines,
             }}
             className="SVG__iframe"
+            doInsertD3
           />
         )}
 

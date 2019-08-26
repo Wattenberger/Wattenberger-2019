@@ -31,8 +31,8 @@ export default SVGExercise
 
 
 const exercises = [{
-    name: "Rects, circles, & ellipses",
-    fileName: "rect_circle_ellipse",
+    name: "Trains",
+    fileName: "train",
     image: e1,
 },{
     name: "Wavy rect",

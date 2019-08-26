@@ -10,14 +10,14 @@ const getBlobURL = (code, type) => {
   const blob = new Blob([code], { type })
   return URL.createObjectURL(blob)
 }
-const getGeneratedPageURL = ({ html, css, js, data, removedLines={}, insertedLines={} }) => {
+const getPageURL = ({ html, css, js, data, removedLines={}, insertedLines={}, doInsertD3 }) => {
   const source = `
     <html>
       <head>
         ${css && `<link rel="stylesheet" type="text/css" href="${getCssUrl({ css, removedLines: removedLines.css, insertedLines: insertedLines.css })}" />`}
       </head>
       <body>
-        ${getHtmlBody({ html, removedLines: removedLines.html, insertedLines: insertedLines.html })}
+        ${getHtmlBody({ html, removedLines: removedLines.html, insertedLines: insertedLines.html, doInsertD3 })}
         ${js && `<script src="${getJsURL({ js, data, removedLines: removedLines.js, insertedLines: insertedLines.js })}"></script>`}
       </body>
     </html>
@@ -26,7 +26,7 @@ const getGeneratedPageURL = ({ html, css, js, data, removedLines={}, insertedLin
   return getBlobURL(source, 'text/html')
 }
 
-const getHtmlBody = ({ html, removedLines, insertedLines })=> {
+const getHtmlBody = ({ html, removedLines, insertedLines, doInsertD3 })=> {
   let bodyContents = (/<body[^>]*>((.|[\n\r])*)<\/body>/gm.exec(html) || [])[1] || ""
   if (!bodyContents) return html
 
@@ -46,6 +46,19 @@ const getHtmlBody = ({ html, removedLines, insertedLines })=> {
       ]
     })
   }
+
+  if (doInsertD3) {
+    const firstScript = parsedHtmlArray.findIndex(d => d.includes(`<script`))
+    const indexToInsertD3 = firstScript != -1 ? firstScript : parsedHtmlArray.length - 1
+    parsedHtmlArray = [
+      ...parsedHtmlArray.slice(0, indexToInsertD3),
+      "<script>",
+      d3js,
+      "</script>",
+      ...parsedHtmlArray.slice(indexToInsertD3),
+    ]
+  }
+
   bodyContents = parsedHtmlArray.join("\n")
 
 //   if (removedLines) {
@@ -115,7 +128,7 @@ const getJsURL = ({ js, data, removedLines, insertedLines }) => {
   return getBlobURL(parsedJs, 'text/javascript')
 }
 
-const LocalExample = ({ html, css, js, data, removedLines={}, insertedLines={}, ...props }) => {
+const LocalExample = ({ html, css, js, data, removedLines={}, insertedLines={}, doInsertD3=false, ...props }) => {
     const iframe = useRef()
 
     const removedLinesString = [
@@ -130,11 +143,11 @@ const LocalExample = ({ html, css, js, data, removedLines={}, insertedLines={}, 
     ].join(" ")
 
     useEffect(() => {
-        const url = getGeneratedPageURL({
+        const url = getPageURL({
             html: html || "",
             css: css || "",
             js: js || "",
-            data, removedLines, insertedLines,
+            data, removedLines, insertedLines, doInsertD3,
         })
 
         iframe.current.src = url

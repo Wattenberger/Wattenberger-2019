@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <svg
+            width="600"
+            height="450"
+            viewBox="-30 -40 500 500"
+            style="background: #F5F5F5; border: none;"
+            preserveAspectRatio="xMidYMid">
+            <filter id="shadow" width="300%" height="300%">
+                <feDropShadow
+                    dx="20"
+                    dy="20"
+                    stdDeviation="10"
+                    flood-color="#45aeb1"
+                    flood-opacity="0.4"
+                />
+            </filter>
+
+            <filter id="glow" x="-5" y="-5" width="20" height="20">
+                <feGaussianBlur in="dilated" result="blurred" stdDeviation="5"></feGaussianBlur>
+            </filter>
+
+            <rect
+                x="0"
+                y="0"
+                width="100"
+                height="100"
+                rx="25"
+                fill="teal"
+                style="filter: url(#shadow)"
+            />
+            <rect
+                x="150"
+                y="0"
+                width="100"
+                height="100"
+                rx="25"
+                fill="orchid"
+                style="filter: url(#glow)"
+            />
+        </svg>
+    </body>
+</html>

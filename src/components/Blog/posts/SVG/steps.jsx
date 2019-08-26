@@ -17,6 +17,8 @@ const textCode = require("!!raw-loader!./text.html").default
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const clipPathCode = require("!!raw-loader!./clip-path.html").default
 // eslint-disable-next-line import/no-webpack-loader-syntax
+const filtersCode = require("!!raw-loader!./filters.html").default
+// eslint-disable-next-line import/no-webpack-loader-syntax
 const branchesCode = require("!!raw-loader!./branches.html").default
 
 const faceParts = {
@@ -224,6 +226,10 @@ export default [{
             <li>Browser default</li>
         </ul>
 
+        <br />
+        <p>
+            For example, use <P>.style()</P> instead of <P>.attr()</P> to override a linked stylesheet
+        </p>
 
         <SVGElement name="svg" />
     </>,
@@ -266,6 +272,9 @@ export default [{
 },{
     title: "Adding a grid",
     code: faceCode,
+    notes: <>
+        <SVGElement name="svg" />
+    </>,
     highlightedLines: faceParts.grid,
     removedLines: [
         ...faceParts.ear1,
@@ -520,10 +529,11 @@ export default [{
         start: 65,
         code: `            <line
               x1="1"
-              y1="1"
+              y1="5"
               x2="9"
-              y2="6"
+              y2="5"
               stroke="pink"
+              stroke-width="1"
           />`
     }],
     removedLines: [
@@ -891,10 +901,10 @@ export default [{
         <SVGElement name="radialGradient" />
     </>,
     code: gradientCode,
-    highlightedLines: d3.range(10, 25),
+    highlightedLines: d3.range(10, 21),
     insertedLines: [{
         start: 9,
-        code: `      <radialGradient
+        code: `        <radialGradient
           id="gradient"
         >
           <stop
@@ -1011,11 +1021,19 @@ export default [{
     notes: <>
         <p>
             <a href="https://css-tricks.com/transforms-on-svg-elements/" target="_blank">Css Tricks article</a>
+            <br />
+            Act differently than normal HTML elements, and across browsers.
         </p>
+        <img src="https://res.cloudinary.com/css-tricks/image/fetch/q_auto,f_auto/https://css-tricks.com/wp-content/uploads/2015/04/svg-transforms-fig2.png" />
         <SVGElement name="text" />
     </>,
     code: textCode,
-    highlightedLines: [23],
+    insertedLines: [{
+        start: 23,
+        code: `                    transform: rotate(45deg);
+                    transform-origin: center center`
+    }],
+    highlightedLines: [24, 25],
     removedLines: [
     ],
 },{
@@ -1052,6 +1070,34 @@ export default [{
     </>,
     code: clipPathCode,
     highlightedLines: [41],
+    removedLines: [
+    ],
+},{
+    title: "Filters",
+    notes: <>
+        <p>
+        </p>
+        <ul>
+            <li>
+                <a href="https://yoksel.github.io/svg-filters/#/" target="_blank" rel="noreferrer noopener">
+                    SVG Filters Playground
+                </a>
+            <li>
+            </li>
+                <a href="https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/" target="_blank" rel="noreferrer noopener">
+                    Text effects
+                </a>
+            <li>
+            </li>
+                <a href="https://tympanus.net/codrops/2019/01/15/svg-filters-101/" target="_blank" rel="noreferrer noopener">
+                    101 Overview
+                </a>
+            </li>
+        </ul>
+        <SVGElement name="filter" />
+    </>,
+    code: filtersCode,
+    highlightedLines: [],
     removedLines: [
     ],
 },{
@@ -1223,16 +1269,16 @@ export default [{
     removedLines: [
     ],
 },{
-    title: "Let's draw dogs!",
+    title: "Thank you!",
     description: <>
-        <img src="https://cdn.dribbble.com/users/3016/screenshots/7002574/dogs_4x.png" alt="a bunch o dogs" />
-        From <a href="https://dribbble.com/shots/7002574-Hot-Dogs" target="_blank" rel="noreferrer noopener">Skinny Ships</a>
     </>,
 }]
-// scaling
 // transforming
-// gradients
-// text
-// clip paths & masks
 // filters
-// advanced examples
+
+
+function P ({ children }) {
+    return (
+        <code className="P">{ children }</code>
+    )
+}

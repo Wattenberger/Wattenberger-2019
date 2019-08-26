@@ -423,4 +423,38 @@ const elements = {
             isPosition: true,
         }],
     },
+    filter: {
+        attributes: [{
+            name: "x",
+            default: 5,
+            types: ["length", "percentage"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "y",
+            default: 10,
+            types: ["length", "percentage"],
+            doesAnimate: true,
+            isPosition: true,
+        },{
+            name: "width",
+            default: 90,
+            types: ["auto", "length", "percentage"],
+            doesAnimate: true,
+        },{
+            name: "height",
+            default: 80,
+            types: ["auto", "length", "percentage"],
+            doesAnimate: true,
+        },{
+            name: "filterUnits",
+            types: ["userSpaceOnUse", "objectBoundingBox"],
+        },{
+            name: "primitiveUnits",
+            types: ["userSpaceOnUse", "objectBoundingBox"],
+        },{
+            name: "href",
+            types: ["url"],
+        }]
+    }
 }
