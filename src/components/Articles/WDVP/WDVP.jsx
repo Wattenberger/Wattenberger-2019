@@ -34,7 +34,7 @@ class WDVP extends Component {
       <div className={this.getClassName()}>
           <div className="WDVP__header">
             <h1 className="WDVP__title">
-              What makes a <b>good</b> country?
+              What makes a country <b>“good”</b>?
             </h1>
           </div>
 
@@ -79,7 +79,7 @@ class WDVP extends Component {
               <div className="WDVP__cards-intro">
                 A few interesting things can be learned here:
               </div>
-              
+
               <div className="WDVP__cards">
                 <div className="WDVP__cards__item">
                   <div className="WDVP__cards__item__header">
@@ -134,7 +134,7 @@ class WDVP extends Component {
                 <div className="WDVP__cards__item WDVP__cards__item--dark">
                   <div>
                     <div className="WDVP__cards__item__header">
-                      Some countries are similar across metrics  
+                      Some countries are similar across metrics
                     </div>
                     For example, the countries in the white bounding box all rank low on the selected metric, but rank high on many other metrics.
                   </div>
@@ -164,13 +164,13 @@ class WDVP extends Component {
                 Axes of “goodness”
               </div>
               <p>
-                It’s time to combine metrics and rank countries by how good they are. The sliders below let you set how much each metric contributes to the ranking. Since we have established that countries can be good at some metrics and bad at others, you can create two sets of weights to combine metrics. 
+                It’s time to combine metrics and rank countries by how good they are. The sliders below let you set how much each metric contributes to the ranking. Since we have established that countries can be good at some metrics and bad at others, you can create two sets of weights to combine metrics.
               </p>
 
               <p>
                 Play around with different weights or select from our presets.
               </p>
-                
+
               <p>
                 <span style={{fontSize: "0.8em", lineHeight: "1em", opacity: 0.6}}>
                   Note: once you have picked your favorite metrics to combine, the scatter plot will update to show how each country performs under your conditions. We then find the “axis of good” in this plot by finding the line that explains the maximum amount of variability across countries. The black line shows the axis of good given the two sets of metrics you selected.
@@ -187,7 +187,7 @@ Another takeaway is that the Northern European countries are doing well on many 
 </p>
 
 
-              
+
             <div className="WDVP__cards">
               <div className="WDVP__cards__item">
                 <div className="WDVP__cards__item__header">
@@ -240,7 +240,7 @@ Another takeaway is that the Northern European countries are doing well on many 
       </div>
 
 <p>
-Overall, what makes a "good" country will not be the same for everyone, but it is clear from the analyses above that Northern Europe is dominating many metrics in the dataset provided by WDVP. While it is almost impossible to infer the cause of their success from these correlational analyses, they are well known for implementing a <a href="https://en.wikipedia.org/wiki/Welfare_state" target="_blank" ref="noreferrer noopener">welfare state</a>, where the government promotes the social well-being of its citizens. It is not surprising that they dominate the social metrics, however, these data reveal that this in no way hurts their economic indicators. In other words, if a country wants to knock Northern Europe off the top of the list, cutting corners on social fronts isn't necessarily a shortcut to better economic metrics. 
+Overall, what makes a "good" country will not be the same for everyone, but it is clear from the analyses above that Northern Europe is dominating many metrics in the dataset provided by WDVP. While it is almost impossible to infer the cause of their success from these correlational analyses, they are well known for implementing a <a href="https://en.wikipedia.org/wiki/Welfare_state" target="_blank" ref="noreferrer noopener">welfare state</a>, where the government promotes the social well-being of its citizens. It is not surprising that they dominate the social metrics, however, these data reveal that this in no way hurts their economic indicators. In other words, if a country wants to knock Northern Europe off the top of the list, cutting corners on social fronts isn't necessarily a shortcut to better economic metrics.
 </p>
             </div>
 
