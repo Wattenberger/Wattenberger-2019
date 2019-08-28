@@ -5,7 +5,7 @@ import { scrollTo } from "utils.js"
 
 import './Expandy.scss';
 
-const Expandy = ({ trigger, className, children, ...props }) => {
+const Expandy = ({ trigger, doHideIfCollapsed=false, className, children, ...props }) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const ref = useRef()
 
@@ -46,7 +46,7 @@ const Expandy = ({ trigger, className, children, ...props }) => {
                 </div>
             </Tooltip>
             <div className="Expandy__contents">
-                { children }
+                { (!doHideIfCollapsed || isExpanded) && children }
             </div>
         </div>
     )

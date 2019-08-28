@@ -15,6 +15,7 @@ import LearnD3Selections from "./LearnD3Selections";
 import LearnD3GetData from "./LearnD3GetData";
 import LearnD3ChangeData from "./LearnD3ChangeData";
 import LearnD3Shapes from "./LearnD3Shapes";
+import LearnD3Scales from "./LearnD3Scales";
 
 import constructionGif from "./construction.gif";
 
@@ -41,9 +42,9 @@ const sections = [{
     modules: ["d3-shape", "d3-polygon", "d3-path"],
     Component: LearnD3Shapes,
 },{
-  label: "Modules for converting between data domains",
+  label: "Modules for converting data to the physical domain",
   modules: ["d3-scale"],
-  Component: DummySection,
+  Component: LearnD3Scales,
 },{
     label: "Modules for animation",
     modules: ["d3-transition", "d3-ease", "d3-interpolate"],
@@ -218,7 +219,7 @@ const LearnD3 = () => {
 
                         setFocusedPackages(null)
                         setIsDiagramShrunk(true)
-                    }} hasIndicator={"false"}>
+                    }} hasIndicator={false}>
 
                         <Heading id="wrap-up">
                             All together now
@@ -324,8 +325,16 @@ export const P = ({ children })=> (
 
 const Heading = ({ id, children }) => {
   const onClickHash = () => {
-    window.location.hash = `#${id}`
+    window.history.pushState({}, '', `#${id}`);
 
+    const sectionElement = document.querySelector(`#${id}`)
+    if (!sectionElement) return
+
+    const y = sectionElement.getBoundingClientRect().top
+      + document.documentElement.scrollTop
+      - 150
+
+    scrollTo(y, 100)
   }
 
   return (
@@ -338,7 +347,7 @@ const Heading = ({ id, children }) => {
 
 export const ReadMore = ({ id }) => (
     <Aside>
-        Read more about <b>{ id }</b> on <Link href={`https://github.com/d3/${ id }`}>the docs</Link>.
+        Read more about <b>d3-{ id }</b> in <Link href={`https://github.com/d3/d3-${ id }`}>the docs</Link>.
     </Aside>
 )
 
@@ -361,10 +370,16 @@ function DummySection() {
 }
 
 
-export const DocsLink = ({ id, repo }) => (
-    <Link href={`https://github.com/d3/d3-${repo}#${id}`}>
-        <P>
-            d3.{id}()
-        </P>
+export const DocsLink = ({ id, repo, children }) => (
+    <Link href={`https://github.com/d3/d3-${repo}${!!id ? `#${id}` : ""}`}>
+        {children || id ? (
+            <P>
+                { children || `d3.${id}()` }
+            </P>
+        ) : (
+            <b>
+                { repo }
+            </b>
+        )}
     </Link>
 )

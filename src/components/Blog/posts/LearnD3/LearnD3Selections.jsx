@@ -230,7 +230,7 @@ paragraph.selectAll("div")
                 And these are just the highlights! Take some time to learn these basics before overwhelming yourself in the deep end.
             </p>
 
-            <ReadMore id="d3-selection" />
+            <ReadMore id="selection" />
 
             <Aside className="LearnD3__promo">
                 <img src={bookImage} alt="book" className="LearnD3__promo__img"/>
@@ -282,7 +282,7 @@ paragraph.selectAll("div")
                 As you can see, this module mostly helps with code organization -- you might even prefer the original format!
             </p>
 
-            <ReadMore id="d3-selection-multi" />
+            <ReadMore id="selection-multi" />
 
         </div>
     )
