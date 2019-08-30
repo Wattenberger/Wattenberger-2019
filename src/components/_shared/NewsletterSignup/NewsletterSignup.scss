@@ -8,6 +8,7 @@
     max-width: 100%;
     padding: 0.3em;
     background: #fff;
+    max-width: 74vw;
 
     &__input {
         flex: 1;
@@ -16,6 +17,7 @@
         padding: 0.4em 0.6em;
         font-weight: 400;
         border: 1px solid white;
+        max-width: 100%;
     }
 
     &__submit {

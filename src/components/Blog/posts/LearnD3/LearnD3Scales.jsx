@@ -5,6 +5,7 @@ import * as d3 from "d3"
 import Aside from "components/_ui/Aside/Aside"
 import Expandy from "components/_ui/Expandy/Expandy"
 import InlineExpandy from "components/_ui/InlineExpandy/InlineExpandy"
+import Button from "components/_ui/Button/Button"
 import Link from "components/_ui/Link/Link"
 import Icon from "components/_ui/Icon/Icon"
 import List from "components/_ui/List/List"
@@ -17,6 +18,7 @@ const possibleConditions = [
 ]
 const numberOfDataPoints = 4
 const LearnD3Scales = ({ onScrollToSectionLocal }) => {
+    const [iteration, setIteration] = useState(0)
 
     const weatherData = useMemo(() => {
         const today = new Date()
@@ -26,7 +28,7 @@ const LearnD3Scales = ({ onScrollToSectionLocal }) => {
             chanceOfPrecipitation: Number(d3.format("0.1f")(Math.random())),
             humidity: Number(d3.format("0.1f")(Math.random())),
         }))
-    }, [])
+    }, [iteration])
 
     return (
         <div className="LearnD3Scales">
@@ -34,6 +36,10 @@ const LearnD3Scales = ({ onScrollToSectionLocal }) => {
                 A <b>scale</b> is an essential concept when visualizing data. To physicalize a dataset, you must turn each metric into a <b>visual feature</b>. For example, say we have this weather dataset:
             </p>
 
+            <Button className={`RefreshButton RefreshButton--iteration-${iteration % 2}`} onClick={() => setIteration(iteration + 1)} style={refreshButtonStyle}>
+                <Icon name="refresh" />
+                Re-generate data
+            </Button>
             <Code size="s" fileName="data.json">
                 { JSON.stringify(weatherData, null, 2) }
             </Code>
@@ -44,18 +50,18 @@ const LearnD3Scales = ({ onScrollToSectionLocal }) => {
 
             <List items={[
                  <><P>date</P>
-                 <p>An <b>ordinal</b> variable <br /> between <b>{ weatherData[0].date }</b> and <b>{ weatherData[weatherData.length - 1].date }</b></p></>,
+                 <p>An <b>ordinal</b> variable <br /> between <P>{ weatherData[0].date }</P> and <P>{ weatherData[weatherData.length - 1].date }</P></p></>,
                  <><P>conditions</P>
                  <p>A <b>nominal</b> variable <br /> {possibleConditions.map((d, i) => (
                     <>
                         {(i == possibleConditions.length - 1) ? ", or " : !!i ? ", " : ""}
-                        <b>{ d }</b>
+                        <P>{ d }</P>
                     </>
                  ))}</p></>,
                  <><P>chanceOfPrecipitation</P>
-                 <p>A <b>continuous</b> variable <br /> between <b>0</b> and <b>1</b></p></>,
+                 <p>A <b>continuous</b> variable <br /> between <P>0</P> and <P>1</P></p></>,
                  <><P>humidity</P>
-                 <p>A <b>continuous</b> variable <br /> between <b>0</b> and <b>1</b></p></>,
+                 <p>A <b>continuous</b> variable <br /> between <P>0</P> and <P>1</P></p></>,
             ]} />
 
             <Aside className="LearnD3__promo">
@@ -69,12 +75,12 @@ const LearnD3Scales = ({ onScrollToSectionLocal }) => {
             </Aside>
 
             <p>
-                Now that we know what variables we're dealing with, we can decide <b>how to visually represent each metric</b>. For example, we could create:
+                Now that we know what variables we’re dealing with, we can decide <b>how to visually represent each metric</b>. For example, we could create:
             </p>
 
             <List items={[
-                <><b>a timeline</b>, with a line's <P>date</P> represented as horizontal position, and <P>chanceOfPrecipitation</P> represented as vertical position</>,
-                <><b>a scatter plot</b> with each day's <P>chanceOfPrecipitation</P> represented as horizontal position, and <P>humidity</P> represented as vertical position</>,
+                <><b>a timeline</b>, with a line’s <P>date</P> represented as horizontal position, and <P>chanceOfPrecipitation</P> represented as vertical position</>,
+                <><b>a scatter plot</b> with each day’s <P>chanceOfPrecipitation</P> represented as horizontal position, and <P>humidity</P> represented as vertical position</>,
                 <>we could even <b>calculate a derivative metric</b>, bucketing days with similar <P>conditions</P>, and creating a bar chart representing frequency of each <P>condition</P></>,
             ]} />
 
@@ -85,7 +91,7 @@ const LearnD3Scales = ({ onScrollToSectionLocal }) => {
             <h3>d3-scale</h3>
 
             <p>
-                To help with these calculations, we can create <DocsLink repo="scale">d3 scales</DocsLink>. A <b>scale</b> will convert a metric's value into the physical value we need to create our charts.
+                To help with these calculations, we can create <DocsLink repo="scale">d3 scales</DocsLink>. A <b>scale</b> will convert a metric’s value into the physical value we need to create our charts.
             </p>
 
             <p>
@@ -163,7 +169,7 @@ alert(output)`}
                 <>
                     <DocsLink repo="scale" id="continuous_invert">.invert()</DocsLink>
                     <p>
-                        converts a value backwards, from the output <b>range</b> to the data <b>domain</b>. This comes in handy for things like surfacing a tooltip where a user's mouse is hovering.
+                        converts a value backwards, from the output <b>range</b> to the data <b>domain</b>. This comes in handy for things like surfacing a tooltip where a user’s mouse is hovering.
                     </p>
 
             <Code canEval highlightedLines={[5, 6]} fileName="our-chart.js" doOnlyShowHighlightedLines>
@@ -222,3 +228,10 @@ alert(\`rgb: \${halfwayPointRgb}, \\nhcl: \${halfwayPointHcl}\`)`}
 
 export default LearnD3Scales
 
+const refreshButtonStyle = {
+    position: "absolute",
+    marginTop: "3em",
+    right: "0.5em",
+    paddingBottom: "0.8em",
+    zIndex: "10",
+}

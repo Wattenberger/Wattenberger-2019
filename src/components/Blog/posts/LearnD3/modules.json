@@ -2911,6 +2911,10 @@
         "subCategory": "Sequential (Multi-Hue)"
       },
       {
+        "title": "d3.interpolateTurbo -",
+        "subCategory": "Sequential (Multi-Hue)"
+      },
+      {
         "title": "d3.interpolateViridis -",
         "subCategory": "Sequential (Multi-Hue)"
       },
@@ -3187,6 +3191,10 @@
         "value": 18948
       },
       {
+        "name": "d3.interpolateCividis -",
+        "value": 18948
+      },
+      {
         "name": "d3.interpolatePuBu -",
         "value": 18948
       },
@@ -3200,6 +3208,10 @@
       },
       {
         "name": "d3.interpolateRdPu -",
+        "value": 18948
+      },
+      {
+        "name": "d3.interpolateTurbo -",
         "value": 18948
       },
       {

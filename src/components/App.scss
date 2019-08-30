@@ -109,6 +109,10 @@ p {
 padding-bottom: 1em;
 }
 
+.tnum {
+  font-feature-settings: 'tnum' 1;
+}
+
 .btn {
     @extend h6;
     color: $accent-2;

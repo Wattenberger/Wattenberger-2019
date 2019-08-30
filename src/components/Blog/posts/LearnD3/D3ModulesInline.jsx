@@ -4,6 +4,7 @@ import _ from "lodash"
 import * as d3ScaleChromatic from "d3-scale-chromatic"
 import Link from "components/_ui/Link/Link"
 import Tooltip from "components/_ui/Tooltip/Tooltip"
+import { Gradient, Scheme } from "./D3Modules"
 import { useChartDimensions } from "components/_ui/Chart/utils/utils"
 
 import baseModules from "./modules.json"
@@ -17,7 +18,7 @@ const isInCore = d => coreModules.includes(d)
 
 const D3ModulesInline = ({ modules, className }) => {
 
-    const parsedModules = modules.map(id => (
+    const parsedModules = (modules || []).map(id => (
         baseModules.filter(d => d.repo == id)[0]
     )).filter(d => !!d)
     .sort((a,b) => b.size - a.size)
@@ -130,41 +131,3 @@ const parseName = (str="", parent, child) => {
         </div>
     </>
 }
-
-
-const Gradient = ({ name }) => (
-    <div className="D3ModulesGradient" style={{
-        background: [
-            "linear-gradient(to right, ",
-            _.times(10, i => (
-                d3ScaleChromatic[name](i / 9)
-            )).join(","),
-            ")",
-        ].join("")
-    }} />
-)
-
-const Scheme = ({ name, numColors, isSet }) => (
-    <div className="D3ModulesScheme" style={{
-        background: [
-            "linear-gradient(to right, ",
-            _.times(numColors, i => [
-                [
-                    (isSet
-                        ? d3ScaleChromatic[name]
-                        : d3ScaleChromatic[name][numColors]
-                    )[i],
-                    `${100 / (numColors - 1) * i}%`,
-                ].join(" "),
-                [
-                    (isSet
-                        ? d3ScaleChromatic[name]
-                        : d3ScaleChromatic[name][numColors]
-                    )[i],
-                    `${100 / (numColors - 1) * (i + 1)}%`,
-                ].join(" "),
-            ].join(",")).join(","),
-            ")",
-        ].join("")
-    }} />
-)

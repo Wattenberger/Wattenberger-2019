@@ -24,7 +24,7 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
         ),
         700,
     )
-    const height = width * 0.9
+    const height = width * 0.96
 
     const {
         nodes, leftMostExternalPackage
@@ -85,7 +85,9 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
 
 
     return (
-        <div className={`D3Modules ${className}`} style={{height: `${height + 20}px`}}>
+        <div className={`D3Modules ${className}`}
+            // style={{height: `${height + 20}px`}}
+        >
             <div className="D3Modules__wrapper" style={{
                 width: `${width}px`,
                 height: `${height}px`,
@@ -205,19 +207,19 @@ const parseName = (str="", parent, child) => {
 }
 
 
-const Gradient = ({ name }) => (
+export const Gradient = ({ name }) => (
     <div className="D3ModulesGradient" style={{
         background: [
             "linear-gradient(to right, ",
             _.times(10, i => (
-                d3ScaleChromatic[name](i / 9)
+                d3ScaleChromatic[name] ? d3ScaleChromatic[name](i / 9) : "white"
             )).join(","),
             ")",
         ].join("")
     }} />
 )
 
-const Scheme = ({ name, numColors, isSet }) => (
+export const Scheme = ({ name, numColors, isSet }) => (
     <div className="D3ModulesScheme" style={{
         background: [
             "linear-gradient(to right, ",

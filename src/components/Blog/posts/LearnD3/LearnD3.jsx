@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Helmet } from "react-helmet"
+import { debounce } from "lodash"
+import * as d3 from "d3"
 import { Twemoji } from "react-emoji-render";
 
 import D3Modules from "./D3Modules"
@@ -16,6 +18,11 @@ import LearnD3GetData from "./LearnD3GetData";
 import LearnD3ChangeData from "./LearnD3ChangeData";
 import LearnD3Shapes from "./LearnD3Shapes";
 import LearnD3Scales from "./LearnD3Scales";
+import LearnD3Animation from "./LearnD3Animation";
+import LearnD3Time from "./LearnD3Time";
+import LearnD3Geo from "./LearnD3Geo";
+import LearnD3Specific from "./LearnD3Specific";
+import LearnD3Colors from "./LearnD3Colors";
 
 import constructionGif from "./construction.gif";
 
@@ -26,75 +33,151 @@ import { scrollTo } from "utils";
 
 
 const sections = [{
-    label: "Modules for grabbing data",
+    label: "Intro",
+    Component: Intro,
+},{
+    label: "Grabbing data",
     modules: ["d3-fetch", "d3-dsv"],
     Component: LearnD3GetData,
 },{
-    label: "Modules for manipulating data",
+    label: "Manipulating data",
     modules: ["d3-array", "d3-random", "d3-collection"],
     Component: LearnD3ChangeData,
 },{
-  label: "Modules for manipulating the DOM",
+  label: "Manipulating the DOM",
   modules: ["d3-selection", "d3-selection-multi"],
   Component: LearnD3Selections,
 },{
-    label: "Modules for drawing SVG shapes",
+    label: "Drawing SVG shapes",
     modules: ["d3-shape", "d3-polygon", "d3-path"],
     Component: LearnD3Shapes,
 },{
-  label: "Modules for converting data to the physical domain",
+  label: "Converting data to the physical domain",
   modules: ["d3-scale"],
   Component: LearnD3Scales,
 },{
-    label: "Modules for animation",
-    modules: ["d3-transition", "d3-ease", "d3-interpolate"],
-    Component: DummySection,
+    label: "Dealing with colors",
+    modules: ["d3-color", "d3-scale-chromatic", "d3-hsv", "d3-interpolate"],
+    Component: LearnD3Colors,
 },{
-    label: "Modules for specific visualizations",
-    modules: ["d3-chord", "d3-voronoi", "d3-delaunay", "d3-force", "d3-sankey", "d3-contour", "d3-hexbin", "d3-hierarchy"],
-    Component: DummySection,
+    label: "Dealing with datetimes",
+    modules: ["d3-time", "d3-time-format"],
+    Component: LearnD3Time,
 },{
-    label: "Modules for maps and globes",
+    label: "Animation",
+    modules: ["d3-transition", "d3-ease", "d3-interpolate", "d3-timer",
+    // "d3-queue"
+  ],
+    Component: LearnD3Animation,
+},{
+    label: "Maps and globes",
     modules: ["d3-geo", "d3-geo-polygon", "d3-geo-projection"],
-    Component: DummySection,
+    Component: LearnD3Geo,
 },{
-    label: "Modules for dealing with time",
-    modules: ["d3-time", "d3-time-interval", "d3-timer"],
-    Component: DummySection,
+    label: "Specific visualizations",
+    modules: ["d3-chord", "d3-voronoi", "d3-delaunay", "d3-force", "d3-sankey", "d3-contour", "d3-hexbin", "d3-hierarchy", "d3-brush", "d3-zoom", "d3-drag"],
+    Component: LearnD3Specific,
 },{
-    label: "Modules for dealing with colors",
-    modules: ["d3-color", "d3-scale-chromatic", "d3-hsv"],
-    Component: DummySection,
+    label: "Resources",
+    Component: Resources,
 }].map(d => ({
     ...d,
     id: d.label
-        .slice(12)
+        // .replace("Modules for ", "")
         .replace(/ /g, "-")
+        .toLowerCase()
 }))
 const LearnD3 = () => {
-    const [focusedPackages, setFocusedPackages] = useState(null)
+    // const [focusedSection, setFocusedSection] = useState(sections[0].id)
+    // const currentSection = useRef(sections[0].id)
+    // const [focusedPackages, setFocusedPackages] = useState(null)
     const [tempFocusedPackages, setTempFocusedPackages] = useState(null)
-    const [isDiagramShrunk, setIsDiagramShrunk] = useState(false)
+    const [iteration, setIteration] = useState(0)
+    // const isChangingPages = useRef(false)
+    // const [isDiagramShrunk, setIsDiagramShrunk] = useState(false)
+
+    const onScrollToSectionLocal = section => e => {
+        if (e) e.preventDefault()
+        document.scrollingElement.scrollTop = 0
+        // scrollTo(0, 100)
+        // setFocusedSection(section)
+        window.history.pushState({}, '', `#${section}`);
+        setIteration(iteration + 1)
+        // const sectionIndex = Math.max(0,
+        //   Math.min(
+        //     sections.length - 1,
+        //     sections.findIndex(d => d.id == section) || 0
+        //   )
+        // )
+        // const { id, label, modules, Component } = sections[sectionIndex] || {}
+        // setFocusedPackages(modules)
+        // currentSection.current = section
+    }
+
 
     useEffect(() => {
         const hash = window.location.hash
         if (!hash) return
-        onScrollToSectionLocal(hash.slice(1))()
+        // onScrollToSectionLocal(hash.slice(1))()
+
+        // const onScroll = e => {
+        //     if (isChangingPages.current) {
+        //         document.scrollingElement.scrollTop = 0
+        //         return
+        //     }
+
+        //     const bufferHeight = 1200
+        //     const numberOfPixelsBelowBuffer = 500
+        //     const startOfBuffer = document.documentElement.offsetHeight - bufferHeight - window.innerHeight - numberOfPixelsBelowBuffer
+        //     const scrollPosition = document.documentElement.scrollTop
+        //     const percentScrolledToNextSection = Math.max(
+        //         (scrollPosition - startOfBuffer) / bufferHeight,
+        //         0,
+        //     )
+
+        //     const teaserElem = d3.select("#next-section-teaser")
+
+        //     teaserElem.style("transform", `translateY(${ 100 - (percentScrolledToNextSection * 100) }%)`)
+        //     teaserElem.style("opacity", percentScrolledToNextSection)
+
+        //     if (percentScrolledToNextSection < 1) return
+
+        //     const sectionIndex = Math.max(0,
+        //         Math.min(
+        //             sections.length - 1,
+                    // sections.findIndex(d => d.id == currentSection.current) + 1
+        //         )
+        //     )
+        //     setFocusedSection(sections[sectionIndex].id)
+        //     teaserElem.style("transform", `translateY(${ 100 }%)`)
+        //     teaserElem.style("opacity", 0)
+        //     scrollTo(0, 0)
+        //     isChangingPages.current = true
+        //     setTimeout(() => isChangingPages.current = false, 2600)
+
+        // }
+        // const debouncedOnScroll = debounce(onScroll, 30)
+
+        // window.addEventListener("scroll", onScroll)
+        // return () => {
+        //     window.removeEventListener("scroll", onScroll)
+        // }
     }, [])
 
-    const onScrollToSectionLocal = section => e => {
-      if (e) e.preventDefault()
-      window.history.pushState({}, '', `#${section}`);
+    const focusedSection = window.location.hash.slice(1).toLowerCase()
+    console.log("focusedSection", focusedSection)
+    const sectionIndex = Math.max(0,
+        Math.min(
+          sections.length - 1,
+          sections.findIndex(d => d.id == focusedSection) || 0
+        )
+      )
+    const { id, label, modules, Component } = sections[sectionIndex] || {}
+    const focusedPackages = modules
+    const previousSection = sections[sectionIndex - 1]
+    const nextSection = sections[sectionIndex + 1]
 
-      const sectionElement = document.querySelector(`#${section}`)
-      if (!sectionElement) return
-
-      const y = sectionElement.getBoundingClientRect().top
-        + document.documentElement.scrollTop
-        - 150
-
-      scrollTo(y, 100)
-    }
+    const isDiagramShrunk = !!focusedSection
 
     return (
         <div className="LearnD3">
@@ -106,7 +189,29 @@ const LearnD3 = () => {
                 <meta name="description" content="Learn the fundamentals of D3.js: what it is, how to use it, what are the different modules, and how to use the API. This article has tons of linked resources for digging deeper." />
             </Helmet>
 
+            <div className="LearnD3__links">
+                <Icon name="list" />
+                <Link to="#" onClick={onScrollToSectionLocal("intro")}><h6>Intro to D3</h6></Link>
+                <div className="LearnD3__links__arrows">
+                    <Link to="#" className="LearnD3__links__link__main" onClick={previousSection && onScrollToSectionLocal(previousSection.id)}>
+                        <Icon className="LearnD3__links__link__arrow" name="arrow" direction="w" size="s" />
+                    </Link>
+                    <Link to="#" className="LearnD3__links__link__main" onClick={nextSection && onScrollToSectionLocal(nextSection.id)}>
+                    <Icon className="LearnD3__links__link__arrow" name="arrow" direction="e" size="s" />
+                    </Link>
+                </div>
+                <div className="LearnD3__links__options">
+                    {sections.map(section => (
+                        <Link to="#" className={`LearnD3__links__options__item LearnD3__links__options__item--is-${section.id == focusedSection ? "selected" : "normal"}`} key={section.id} onClick={onScrollToSectionLocal(section.id)}>
+                            { section.label }
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
             <div className="LearnD3__content">
+
+                {/* <Intro />
 
                 <h1>
                     How to learn D3.js
@@ -181,9 +286,80 @@ const LearnD3 = () => {
                       </div>
                     ))
                   } />
-                </ScrollEvent>
+                </ScrollEvent> */}
 
-                    {sections.map(({
+                    {focusedSection == "intro" ? (
+                        <Component
+                            {...{tempFocusedPackages, focusedPackages, setTempFocusedPackages, onScrollToSectionLocal}}
+                        />
+                    ) : (
+                        <>
+                        <D3Modules
+                            className="LearnD3__diagram LearnD3__diagram--solo"
+                            isShrunk
+                            focusedPackages={tempFocusedPackages || focusedPackages}
+                        />
+                            <div className="LearnD3__section">
+
+                                <div className="LearnD3__module" key={focusedSection}>
+                                    {focusedSection != "resources" && <h6>D3.js Modules for</h6>}
+                                    <div className="LearnD3__module__heading" id={id}>
+                                        { label }
+                                    </div>
+
+                                    <D3ModulesInline
+                                        className="mobile"
+                                        modules={modules}
+                                    />
+
+                                    <Component
+                                        {...{tempFocusedPackages, focusedPackages, setTempFocusedPackages, onScrollToSectionLocal}}
+                                    />
+
+                                </div>
+                            </div>
+                        </>
+                    )}
+
+                    {!!nextSection && (
+                        <Link to="#" className="LearnD3__next" onClick={onScrollToSectionLocal(nextSection.id)}>
+                            <h6>Up next</h6>
+                            <div className="LearnD3__next__content">
+                                <h3 className="LearnD3__next__heading">
+                                    { nextSection.label }
+                                </h3>
+                                <Icon name="arrow" direction="e" className="LearnD3__next__arrow" />
+                            </div>
+                        </Link>
+                    )}
+
+                            {/* <div className="LearnD3__section">
+                    <List className="LearnD3__modules-list" items={
+                            sections.map(({ id, label, modules, Component }) => (
+                                <div
+                                    key={id}
+                                    className={[
+                                        "LearnD3__modules-list__item",
+                                        `LearnD3__modules-list__item--is-${Component == DummySection ? "under-construction" : "done"}`,
+                                        `LearnD3__modules-list__item--is-${focusedSection == id ? "selected" : "normal"}`,
+                                    ].join(" ")}
+                                    onMouseEnter={() => setTempFocusedPackages(modules)}
+                                    onMouseLeave={() => setTempFocusedPackages(null)}
+                                    onClick={onScrollToSectionLocal(id)}>
+                                    <div>
+                                        { label }
+                                    </div>
+                                    {Component == DummySection && (
+                                        <div className="LearnD3__modules-list__item__flag">
+                                            Under construction
+                                        </div>
+                                    )}
+                                </div>
+                            ))
+                        } />
+                            </div> */}
+
+                    {/* {sections.map(({
                         Component, modules, id, label
                     }) => (
                         <ScrollEvent
@@ -210,9 +386,9 @@ const LearnD3 = () => {
                             />
 
                         </ScrollEvent>
-                    ))}
+                    ))} */}
 
-                    <br />
+                    {/* <br />
 
                     <ScrollEvent isInViewChange={d => {
                         if (d < 0) return
@@ -309,7 +485,7 @@ const LearnD3 = () => {
                         <div style={{height: "100px"}} />
                     </ScrollEvent>
 
-                </div>
+                </div> */}
             </div>
         </div>
     )
@@ -346,7 +522,7 @@ const Heading = ({ id, children }) => {
 }
 
 export const ReadMore = ({ id }) => (
-    <Aside>
+    <Aside className="ReadMore">
         Read more about <b>d3-{ id }</b> in <Link href={`https://github.com/d3/d3-${ id }`}>the docs</Link>.
     </Aside>
 )
@@ -378,8 +554,174 @@ export const DocsLink = ({ id, repo, children }) => (
             </P>
         ) : (
             <b>
-                { repo }
+                d3-{ repo }
             </b>
         )}
     </Link>
 )
+
+function Intro({ focusedPackages, onScrollToSectionLocal }) {
+    const [isDiagramShrunk, setIsDiagramShrunk] = useState(false)
+    const [tempFocusedPackages, setTempFocusedPackages] = useState(null)
+    return (
+        <div className="Intro">
+
+            <h1>
+                How to learn D3.js
+            </h1>
+            <div className="LearnD3__section">
+                <p>
+                    So, you want to create amazing data visualizations on the web and you keep hearing about D3.js. But what <i>is</i> D3.js, and how can you learn it? Let’s start with the question: <b>What is D3?</b>
+                </p>
+                <p>
+                    While it might seem like D3.js is an all-encompassing framework, it’s really just a collection of small modules. Here are all of the modules: each is visualized as a circle - larger circles are modules with larger file sizes.
+                </p>
+            </div>
+
+            <D3Modules
+                className={`LearnD3__diagram LearnD3__diagram--within-page LearnD3__diagram--is-${isDiagramShrunk ? "shrunk" : "normal"}`}
+                isShrunk={isDiagramShrunk}
+                focusedPackages={tempFocusedPackages}
+            />
+
+            <div className="LearnD3__section" style={{
+                paddingBottom: "10em",
+                marginBottom: "-10em",
+            }}>
+
+                <ScrollEvent isInViewChange={d => {
+                    setIsDiagramShrunk(d >= 0)
+                }} hasIndicator={false}>
+                    <p>
+                        Wow! This is really overwhelming to see all of these packages at once.
+                    </p>
+
+                    <p>
+                        Let's talk about specific modules, grouped by function.
+                    </p>
+                </ScrollEvent>
+
+
+                <List className="LearnD3__modules-list" items={
+                    sections.map(({ id, label, modules, Component }) => (
+                        <div
+                        key={id}
+                        className={[
+                            "LearnD3__modules-list__item",
+                            `LearnD3__modules-list__item--is-${Component == DummySection ? "under-construction" : "done"}`
+                        ].join(" ")}
+                        onMouseEnter={() => setTempFocusedPackages(modules)}
+                        onMouseLeave={() => setTempFocusedPackages(null)}
+                        onClick={onScrollToSectionLocal(id)}>
+                        <div>
+                            { label }
+                        </div>
+                        {Component == DummySection && (
+                            <div className="LearnD3__modules-list__item__flag">
+                                Under construction
+                            </div>
+                        )}
+                        </div>
+                    ))
+                } />
+            </div>
+        </div>
+    )
+}
+function Resources({ setTempFocusedPackages, onScrollToSectionLocal }) {
+    return (
+        <div className="Resources">
+
+            <Heading id="wrap-up">
+                All together now
+            </Heading>
+
+            <p>
+                Whew! Now that we’ve done a whirlwind tour of the d3 modules, you can see that d3 contains many modules that do many different things.
+            </p>
+
+            <p>
+                Here’s a recap of the groupings that we’ve talked about:
+            </p>
+
+            <List className="LearnD3__modules-list" items={
+                sections.map(({ id, label, modules, Component }) => (
+                    <div
+                        key={id}
+                        className={[
+                            "LearnD3__modules-list__item",
+                            `LearnD3__modules-list__item--is-${Component == DummySection ? "under-construction" : "done"}`
+                        ].join(" ")}
+                        onMouseEnter={() => setTempFocusedPackages(modules)}
+                        onMouseLeave={() => setTempFocusedPackages(null)}
+                        onClick={onScrollToSectionLocal(id)}>
+                        <div>
+                            { label }
+                        </div>
+                        {Component == DummySection && (
+                            <div className="LearnD3__modules-list__item__flag">
+                                Under construction
+                            </div>
+                        )}
+                    </div>
+                ))
+            } />
+
+            <p>
+                One of the main takeaways here is that d3 is not a comprehensive library, but instead a collection of modules that can be learned, and used, individually.
+            </p>
+
+            <h2>
+                Other Resources
+            </h2>
+            <p>
+                Where do we go from here? Here is a collection of handy resources that I recommend for learning more about d3:
+            </p>
+
+            <List items={[
+                <>
+                    <b>Fullstack D3 and Data Visualization</b>
+                    <img src={bookImage} alt="Fullstack D3 and Data Visualization book cover" className="LearnD3__book" />
+                    <div className="LearnD3__book-text">
+                        <p>
+                            If you found this guide helpful, <Link href="http://fullstack.io/fullstack-d3"><b>Fullstack D3 and Data Visualization</b></Link> goes way more in-depth and digs into the nitty-gritty right away. You’ll be creating your own custom charts <i>by the end of the first chapter</i>.
+                        </p>
+                        <p>
+                            Plus, <Link href="http://fullstack.io/fullstack-d3">the first chapter is free</Link>, so you can try it out before commiting.
+                        </p>
+                    </div>
+                </>,
+                <>
+                    <b>The source</b>
+                    <p>
+                        <Link href="https://github.com/d3/d3/blob/master/API.md">The docs</Link> can be a bit dense, but once you get the hang of the d3 API, they are invaluable. As a bonus, the code is all open source! I’d highly recommend digging in and looking at how wonderfully modular it is.
+                    </p>
+                </>,
+                <>
+                    <b>“ I only learn through examples ”</b>
+                    <p>
+                        Me too! There are tons of up-to-date examples on <Link href="https://observablehq.com/">Observable</Link>, a web community of interactive notebooks. This is the new venture of Mike Bostock (one of the founders and main maintainer of d3) and it’s a wonderful tool that lets you dig in and edit code for many, many examples.
+                    </p>
+                    <p>
+                        A good starting place is <Link href="https://observablehq.com/collection/@observablehq/visualization">this collection of visualization examples</Link>.
+                    </p>
+                </>,
+                // <>
+                // </>,
+            ]} />
+
+            <br />
+            <br />
+            <br />
+
+            <img alt="under construction" src={constructionGif} />
+            <p className="note" style={{
+              margin: "-10px 50px 0",
+              maxWidth: "470px",
+              textAlign: "center",
+            }}>
+              Please take a minute to thank these little people who have been working hard this article. They always get removed when a site is finished, and never get credit.
+            </p>
+        </div>
+    )
+}
