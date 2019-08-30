@@ -129,8 +129,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        top: 0.5em;
+        top: 0;
+        background: white;
+        padding: 0.2em 6em;
         z-index: 100;
+        // left: 80px;
         left: 50%;
         transform: translateX(-50%);
 
@@ -197,7 +200,7 @@
             white-space: nowrap;
             background: white;
             padding: 0.3em;
-            left: -1.1em;
+            left: 4.8em;
             box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
             opacity: 0;
             pointer-events: none;

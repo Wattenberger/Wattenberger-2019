@@ -24,7 +24,7 @@ const LearnD3Specific = ({ onScrollToSectionLocal }) => {
           <p>
             There's a module for creating <DocsLink repo="chord">chord diagrams</DocsLink>,
           </p>
-          <img src="https://raw.githubusercontent.com/d3/d3-chord/master/img/chord.png" alt="Chord diagram" />
+          <img src="https://raw.githubusercontent.com/d3/d3-chord/master/img/chord.png" alt="Chord diagram"  style={{maxWidth: "27em"}} />
           <br />
           <br />
           <p>
@@ -68,7 +68,9 @@ const LearnD3Specific = ({ onScrollToSectionLocal }) => {
             There are even modules for specific interactions, like <DocsLink repo="brush">brushing</DocsLink>, <DocsLink repo="zoom">zooming</DocsLink>, and <DocsLink repo="drag">dragging</DocsLink>.
           </p>
 
-
+          <p>
+            While these specialized modules aren't worth learning just for learning's sake, it's good to know what's available.
+          </p>
 
         </div>
     )
