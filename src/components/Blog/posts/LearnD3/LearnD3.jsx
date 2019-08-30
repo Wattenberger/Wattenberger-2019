@@ -70,7 +70,7 @@ const sections = [{
     Component: LearnD3Geo,
 },{
     label: "Specific visualizations",
-    modules: ["d3-chord", "d3-voronoi", "d3-delaunay", "d3-force", "d3-sankey", "d3-contour", "d3-hexbin", "d3-hierarchy", "d3-brush", "d3-zoom", "d3-drag"],
+    modules: ["d3-chord", "d3-voronoi", "d3-delaunay", "d3-force", "d3-sankey", "d3-contour", "d3-hexbin", "d3-hierarchy", "d3-brush", "d3-zoom", "d3-drag", "d3-axis"],
     Component: LearnD3Specific,
 },{
     label: "Resources",

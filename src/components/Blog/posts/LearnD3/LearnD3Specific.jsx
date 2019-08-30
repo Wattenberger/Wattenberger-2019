@@ -69,6 +69,10 @@ const LearnD3Specific = ({ onScrollToSectionLocal }) => {
           </p>
 
           <p>
+            And there are modules for specific parts of charts, like <DocsLink repo="axis">axes</DocsLink>.
+          </p>
+
+          <p>
             While these specialized modules aren't worth learning just for learning's sake, it's good to know what's available.
           </p>
 

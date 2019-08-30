@@ -313,15 +313,15 @@
         // max-width: 1100px;
         position: relative;
         min-height: 30vh;
-        padding-right: 500px;
+        margin-right: 500px;
         z-index: 10;
 
         @media (min-width: 1300px) {
-            padding-right: 700px;
+            margin-right: 700px;
         }
 
         @media (max-width: 860px) {
-            padding-right: 0;
+            margin-right: 0;
         }
     }
 

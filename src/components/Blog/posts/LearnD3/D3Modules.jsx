@@ -47,7 +47,7 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
             .padding(6)(
             d3.hierarchy({name: "root", children: strippedModules})
                 .sum(d => d.value)
-                .sort((a, b) => b.size - a.size)
+                // .sort((a, b) => b.size - a.size)
         )
 
         const nodes = pack.children.map(d => ({

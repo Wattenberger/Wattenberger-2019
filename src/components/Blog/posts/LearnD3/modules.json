@@ -5104,6 +5104,15 @@
     ]
   },
   {
+    "title": "Selection Multi",
+    "repo": "d3-selection-multi",
+    "url": "https://d3js.org/d3-selection-multi.v1.min.js",
+    "items": [],
+    "name": "d3-selection-multi",
+    "size": 1741,
+    "children": []
+  },
+  {
     "title": "Transitions",
     "repo": "d3-transition",
     "items": [
@@ -6395,6 +6404,339 @@
       {
         "name": "radial.y - set the target center y-coordinate.",
         "value": 7978
+      }
+    ]
+  },
+  {
+    "title": "Collections",
+    "repo": "d3-collection",
+    "isDeprecated": true,
+    "items": [
+      {
+        "title": "d3.keys - list the keys of an associative array.",
+        "subCategory": "Objects"
+      },
+      {
+        "title": "d3.values - list the values of an associated array.",
+        "subCategory": "Objects"
+      },
+      {
+        "title": "d3.entries - list the key-value entries of an associative array.",
+        "subCategory": "Objects"
+      },
+      {
+        "title": "d3.map - create a new, empty map.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.has - returns true if the map contains the given key.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.get - get the value for the given key.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.set - set the value for the given key.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.remove - remove the entry for given key.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.clear - remove all entries.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.keys - get the array of keys.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.values - get the array of values.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.entries - get the array of entries (key-values objects).",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.each - call a function for each entry.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.empty - returns false if the map has at least one entry.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "map.size - compute the number of entries.",
+        "subCategory": "Maps"
+      },
+      {
+        "title": "d3.set - create a new, empty set.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.has - returns true if the set contains the given value.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.add - add the given value.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.remove - remove the given value.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.clear - remove all values.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.values - get the array of values.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.each - call a function for each value.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.empty - returns true if the set has at least one value.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "set.size - compute the number of values.",
+        "subCategory": "Sets"
+      },
+      {
+        "title": "d3.nest - create a new nest generator.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.key - add a level to the nest hierarchy.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.sortKeys - sort the current nest level by key.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.sortValues - sort the leaf nest level by value.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.rollup - specify a rollup function for leaf values.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.map - generate the nest, returning a map.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.object - generate the nest, returning an associative array.",
+        "subCategory": "Nests"
+      },
+      {
+        "title": "nest.entries - generate the nest, returning an array of key-values tuples.",
+        "subCategory": "Nests"
+      }
+    ],
+    "name": "d3-collection",
+    "size": 2842,
+    "children": [
+      {
+        "name": "d3.keys - list the keys of an associative array.",
+        "value": 2842
+      },
+      {
+        "name": "d3.values - list the values of an associated array.",
+        "value": 2842
+      },
+      {
+        "name": "d3.entries - list the key-value entries of an associative array.",
+        "value": 2842
+      },
+      {
+        "name": "d3.map - create a new, empty map.",
+        "value": 2842
+      },
+      {
+        "name": "map.has - returns true if the map contains the given key.",
+        "value": 2842
+      },
+      {
+        "name": "map.get - get the value for the given key.",
+        "value": 2842
+      },
+      {
+        "name": "map.set - set the value for the given key.",
+        "value": 2842
+      },
+      {
+        "name": "map.remove - remove the entry for given key.",
+        "value": 2842
+      },
+      {
+        "name": "map.clear - remove all entries.",
+        "value": 2842
+      },
+      {
+        "name": "map.keys - get the array of keys.",
+        "value": 2842
+      },
+      {
+        "name": "map.values - get the array of values.",
+        "value": 2842
+      },
+      {
+        "name": "map.entries - get the array of entries (key-values objects).",
+        "value": 2842
+      },
+      {
+        "name": "map.each - call a function for each entry.",
+        "value": 2842
+      },
+      {
+        "name": "map.empty - returns false if the map has at least one entry.",
+        "value": 2842
+      },
+      {
+        "name": "map.size - compute the number of entries.",
+        "value": 2842
+      },
+      {
+        "name": "d3.set - create a new, empty set.",
+        "value": 2842
+      },
+      {
+        "name": "set.has - returns true if the set contains the given value.",
+        "value": 2842
+      },
+      {
+        "name": "set.add - add the given value.",
+        "value": 2842
+      },
+      {
+        "name": "set.remove - remove the given value.",
+        "value": 2842
+      },
+      {
+        "name": "set.clear - remove all values.",
+        "value": 2842
+      },
+      {
+        "name": "set.values - get the array of values.",
+        "value": 2842
+      },
+      {
+        "name": "set.each - call a function for each value.",
+        "value": 2842
+      },
+      {
+        "name": "set.empty - returns true if the set has at least one value.",
+        "value": 2842
+      },
+      {
+        "name": "set.size - compute the number of values.",
+        "value": 2842
+      },
+      {
+        "name": "d3.nest - create a new nest generator.",
+        "value": 2842
+      },
+      {
+        "name": "nest.key - add a level to the nest hierarchy.",
+        "value": 2842
+      },
+      {
+        "name": "nest.sortKeys - sort the current nest level by key.",
+        "value": 2842
+      },
+      {
+        "name": "nest.sortValues - sort the leaf nest level by value.",
+        "value": 2842
+      },
+      {
+        "name": "nest.rollup - specify a rollup function for leaf values.",
+        "value": 2842
+      },
+      {
+        "name": "nest.map - generate the nest, returning a map.",
+        "value": 2842
+      },
+      {
+        "name": "nest.object - generate the nest, returning an associative array.",
+        "value": 2842
+      },
+      {
+        "name": "nest.entries - generate the nest, returning an array of key-values tuples.",
+        "value": 2842
+      }
+    ]
+  },
+  {
+    "title": "Random",
+    "repo": "d3-random",
+    "items": [
+      {
+        "title": "d3.randomUniform - from a uniform distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.randomNormal - from a normal distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.randomLogNormal - from a log-normal distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.randomBates - from a Bates distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.randomIrwinHall - from an Irwin–Hall distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.randomExponential - from an exponential distribution.",
+        "subCategory": null
+      },
+      {
+        "title": "random.source - set the source of randomness.",
+        "subCategory": null
+      }
+    ],
+    "name": "d3-random",
+    "size": 1298,
+    "children": [
+      {
+        "name": "d3.randomUniform - from a uniform distribution.",
+        "value": 1298
+      },
+      {
+        "name": "d3.randomNormal - from a normal distribution.",
+        "value": 1298
+      },
+      {
+        "name": "d3.randomLogNormal - from a log-normal distribution.",
+        "value": 1298
+      },
+      {
+        "name": "d3.randomBates - from a Bates distribution.",
+        "value": 1298
+      },
+      {
+        "name": "d3.randomIrwinHall - from an Irwin–Hall distribution.",
+        "value": 1298
+      },
+      {
+        "name": "d3.randomExponential - from an exponential distribution.",
+        "value": 1298
+      },
+      {
+        "name": "random.source - set the source of randomness.",
+        "value": 1298
       }
     ]
   },
@@ -8056,6 +8398,80 @@
     ]
   },
   {
+    "title": "Fetches",
+    "repo": "d3-fetch",
+    "items": [
+      {
+        "title": "d3.blob - get a file as a blob.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.buffer - get a file as an array buffer.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.csv - get a comma-separated values (CSV) file.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.dsv - get a delimiter-separated values (CSV) file.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.image - get an image.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.json - get a JSON file.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.text - get a plain text file.",
+        "subCategory": null
+      },
+      {
+        "title": "d3.tsv - get a tab-separated values (TSV) file.",
+        "subCategory": null
+      }
+    ],
+    "name": "d3-fetch",
+    "size": 1571,
+    "children": [
+      {
+        "name": "d3.blob - get a file as a blob.",
+        "value": 1571
+      },
+      {
+        "name": "d3.buffer - get a file as an array buffer.",
+        "value": 1571
+      },
+      {
+        "name": "d3.csv - get a comma-separated values (CSV) file.",
+        "value": 1571
+      },
+      {
+        "name": "d3.dsv - get a delimiter-separated values (CSV) file.",
+        "value": 1571
+      },
+      {
+        "name": "d3.image - get an image.",
+        "value": 1571
+      },
+      {
+        "name": "d3.json - get a JSON file.",
+        "value": 1571
+      },
+      {
+        "name": "d3.text - get a plain text file.",
+        "value": 1571
+      },
+      {
+        "name": "d3.tsv - get a tab-separated values (TSV) file.",
+        "value": 1571
+      }
+    ]
+  },
+  {
     "title": "Dsv",
     "repo": "d3-dsv",
     "items": [
@@ -8297,273 +8713,6 @@
       {
         "name": "axis.tickPadding - set the padding between ticks and labels.",
         "value": 2985
-      }
-    ]
-  },
-  {
-    "title": "Collections",
-    "repo": "d3-collection",
-    "isDeprecated": true,
-    "items": [
-      {
-        "title": "d3.keys - list the keys of an associative array.",
-        "subCategory": "Objects"
-      },
-      {
-        "title": "d3.values - list the values of an associated array.",
-        "subCategory": "Objects"
-      },
-      {
-        "title": "d3.entries - list the key-value entries of an associative array.",
-        "subCategory": "Objects"
-      },
-      {
-        "title": "d3.map - create a new, empty map.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.has - returns true if the map contains the given key.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.get - get the value for the given key.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.set - set the value for the given key.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.remove - remove the entry for given key.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.clear - remove all entries.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.keys - get the array of keys.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.values - get the array of values.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.entries - get the array of entries (key-values objects).",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.each - call a function for each entry.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.empty - returns false if the map has at least one entry.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "map.size - compute the number of entries.",
-        "subCategory": "Maps"
-      },
-      {
-        "title": "d3.set - create a new, empty set.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.has - returns true if the set contains the given value.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.add - add the given value.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.remove - remove the given value.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.clear - remove all values.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.values - get the array of values.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.each - call a function for each value.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.empty - returns true if the set has at least one value.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "set.size - compute the number of values.",
-        "subCategory": "Sets"
-      },
-      {
-        "title": "d3.nest - create a new nest generator.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.key - add a level to the nest hierarchy.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.sortKeys - sort the current nest level by key.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.sortValues - sort the leaf nest level by value.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.rollup - specify a rollup function for leaf values.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.map - generate the nest, returning a map.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.object - generate the nest, returning an associative array.",
-        "subCategory": "Nests"
-      },
-      {
-        "title": "nest.entries - generate the nest, returning an array of key-values tuples.",
-        "subCategory": "Nests"
-      }
-    ],
-    "name": "d3-collection",
-    "size": 2842,
-    "children": [
-      {
-        "name": "d3.keys - list the keys of an associative array.",
-        "value": 2842
-      },
-      {
-        "name": "d3.values - list the values of an associated array.",
-        "value": 2842
-      },
-      {
-        "name": "d3.entries - list the key-value entries of an associative array.",
-        "value": 2842
-      },
-      {
-        "name": "d3.map - create a new, empty map.",
-        "value": 2842
-      },
-      {
-        "name": "map.has - returns true if the map contains the given key.",
-        "value": 2842
-      },
-      {
-        "name": "map.get - get the value for the given key.",
-        "value": 2842
-      },
-      {
-        "name": "map.set - set the value for the given key.",
-        "value": 2842
-      },
-      {
-        "name": "map.remove - remove the entry for given key.",
-        "value": 2842
-      },
-      {
-        "name": "map.clear - remove all entries.",
-        "value": 2842
-      },
-      {
-        "name": "map.keys - get the array of keys.",
-        "value": 2842
-      },
-      {
-        "name": "map.values - get the array of values.",
-        "value": 2842
-      },
-      {
-        "name": "map.entries - get the array of entries (key-values objects).",
-        "value": 2842
-      },
-      {
-        "name": "map.each - call a function for each entry.",
-        "value": 2842
-      },
-      {
-        "name": "map.empty - returns false if the map has at least one entry.",
-        "value": 2842
-      },
-      {
-        "name": "map.size - compute the number of entries.",
-        "value": 2842
-      },
-      {
-        "name": "d3.set - create a new, empty set.",
-        "value": 2842
-      },
-      {
-        "name": "set.has - returns true if the set contains the given value.",
-        "value": 2842
-      },
-      {
-        "name": "set.add - add the given value.",
-        "value": 2842
-      },
-      {
-        "name": "set.remove - remove the given value.",
-        "value": 2842
-      },
-      {
-        "name": "set.clear - remove all values.",
-        "value": 2842
-      },
-      {
-        "name": "set.values - get the array of values.",
-        "value": 2842
-      },
-      {
-        "name": "set.each - call a function for each value.",
-        "value": 2842
-      },
-      {
-        "name": "set.empty - returns true if the set has at least one value.",
-        "value": 2842
-      },
-      {
-        "name": "set.size - compute the number of values.",
-        "value": 2842
-      },
-      {
-        "name": "d3.nest - create a new nest generator.",
-        "value": 2842
-      },
-      {
-        "name": "nest.key - add a level to the nest hierarchy.",
-        "value": 2842
-      },
-      {
-        "name": "nest.sortKeys - sort the current nest level by key.",
-        "value": 2842
-      },
-      {
-        "name": "nest.sortValues - sort the leaf nest level by value.",
-        "value": 2842
-      },
-      {
-        "name": "nest.rollup - specify a rollup function for leaf values.",
-        "value": 2842
-      },
-      {
-        "name": "nest.map - generate the nest, returning a map.",
-        "value": 2842
-      },
-      {
-        "name": "nest.object - generate the nest, returning an associative array.",
-        "value": 2842
-      },
-      {
-        "name": "nest.entries - generate the nest, returning an array of key-values tuples.",
-        "value": 2842
       }
     ]
   },
@@ -8923,15 +9072,6 @@
     ]
   },
   {
-    "title": "Selection Multi",
-    "repo": "d3-selection-multi",
-    "url": "https://d3js.org/d3-selection-multi.v1.min.js",
-    "items": [],
-    "name": "d3-selection-multi",
-    "size": 1741,
-    "children": []
-  },
-  {
     "title": "Hexbin",
     "repo": "d3-hexbin",
     "url": "https://d3js.org/d3-hexbin.v0.2.min.js",
@@ -8939,80 +9079,6 @@
     "name": "d3-hexbin",
     "size": 1706,
     "children": []
-  },
-  {
-    "title": "Fetches",
-    "repo": "d3-fetch",
-    "items": [
-      {
-        "title": "d3.blob - get a file as a blob.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.buffer - get a file as an array buffer.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.csv - get a comma-separated values (CSV) file.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.dsv - get a delimiter-separated values (CSV) file.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.image - get an image.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.json - get a JSON file.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.text - get a plain text file.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.tsv - get a tab-separated values (TSV) file.",
-        "subCategory": null
-      }
-    ],
-    "name": "d3-fetch",
-    "size": 1571,
-    "children": [
-      {
-        "name": "d3.blob - get a file as a blob.",
-        "value": 1571
-      },
-      {
-        "name": "d3.buffer - get a file as an array buffer.",
-        "value": 1571
-      },
-      {
-        "name": "d3.csv - get a comma-separated values (CSV) file.",
-        "value": 1571
-      },
-      {
-        "name": "d3.dsv - get a delimiter-separated values (CSV) file.",
-        "value": 1571
-      },
-      {
-        "name": "d3.image - get an image.",
-        "value": 1571
-      },
-      {
-        "name": "d3.json - get a JSON file.",
-        "value": 1571
-      },
-      {
-        "name": "d3.text - get a plain text file.",
-        "value": 1571
-      },
-      {
-        "name": "d3.tsv - get a tab-separated values (TSV) file.",
-        "value": 1571
-      }
-    ]
   },
   {
     "title": "Polygons",
@@ -9061,72 +9127,6 @@
       {
         "name": "d3.polygonLength - compute the length of the given polygon’s perimeter.",
         "value": 1545
-      }
-    ]
-  },
-  {
-    "title": "Random",
-    "repo": "d3-random",
-    "items": [
-      {
-        "title": "d3.randomUniform - from a uniform distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.randomNormal - from a normal distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.randomLogNormal - from a log-normal distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.randomBates - from a Bates distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.randomIrwinHall - from an Irwin–Hall distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "d3.randomExponential - from an exponential distribution.",
-        "subCategory": null
-      },
-      {
-        "title": "random.source - set the source of randomness.",
-        "subCategory": null
-      }
-    ],
-    "name": "d3-random",
-    "size": 1298,
-    "children": [
-      {
-        "name": "d3.randomUniform - from a uniform distribution.",
-        "value": 1298
-      },
-      {
-        "name": "d3.randomNormal - from a normal distribution.",
-        "value": 1298
-      },
-      {
-        "name": "d3.randomLogNormal - from a log-normal distribution.",
-        "value": 1298
-      },
-      {
-        "name": "d3.randomBates - from a Bates distribution.",
-        "value": 1298
-      },
-      {
-        "name": "d3.randomIrwinHall - from an Irwin–Hall distribution.",
-        "value": 1298
-      },
-      {
-        "name": "d3.randomExponential - from an exponential distribution.",
-        "value": 1298
-      },
-      {
-        "name": "random.source - set the source of randomness.",
-        "value": 1298
       }
     ]
   }

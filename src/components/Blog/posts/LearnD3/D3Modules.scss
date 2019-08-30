@@ -52,7 +52,7 @@
             // color: darken($a3, 10%);
             font-weight: 600;
             transform: translate(-100%, calc(-100% + 0.2em));
-            width: 9em;
+            width: 7em;
             text-align: right;
             z-index: 4;
 
@@ -124,7 +124,7 @@
         &__name,
         &__size {
             opacity: 0;
-            transition: opacity 0.3s ease-out;
+            transition: opacity 0.2s ease-out;
         }
 
         &:active,
