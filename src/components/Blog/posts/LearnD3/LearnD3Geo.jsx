@@ -109,7 +109,7 @@ const exampleProjections = [
   "geoInterruptedMollweide (d3-geo-projection)",
   "geoHealpix (d3-geo-projection)",
   "geoBerghaus (d3-geo-projection)",
-  "geoDodecahedral (d3-geo-polygon)",
+  "geoGingery (d3-geo-projection)",
 ]
 
 

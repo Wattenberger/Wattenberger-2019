@@ -8,25 +8,25 @@ import Aside from "components/_ui/Aside/Aside";
 import Link from "components/_ui/Link/Link";
 import Icon from "components/_ui/Icon/Icon";
 import List from "components/_ui/List/List";
-import LearnD3Selections from "./LearnD3Selections";
-import LearnD3GetData from "./LearnD3GetData";
-import LearnD3ChangeData from "./LearnD3ChangeData";
-import LearnD3Shapes from "./LearnD3Shapes";
-import LearnD3Scales from "./LearnD3Scales";
-import LearnD3Animation from "./LearnD3Animation";
-import LearnD3Time from "./LearnD3Time";
-import LearnD3Geo from "./LearnD3Geo";
-import LearnD3Specific from "./LearnD3Specific";
-import LearnD3Colors from "./LearnD3Colors";
-
 import constructionGif from "./construction.gif";
 
 import bookImage from "images/book2.png";
 
 import "./LearnD3.scss"
 import { scrollTo } from "utils";
+const LearnD3Selections = React.lazy(() => import("./LearnD3Selections"))
+const LearnD3GetData = React.lazy(() => import("./LearnD3GetData"))
+const LearnD3ChangeData = React.lazy(() => import("./LearnD3ChangeData"))
+const LearnD3Shapes = React.lazy(() => import("./LearnD3Shapes"))
+const LearnD3Scales = React.lazy(() => import("./LearnD3Scales"))
+const LearnD3Animation = React.lazy(() => import("./LearnD3Animation"))
+const LearnD3Time = React.lazy(() => import("./LearnD3Time"))
+const LearnD3Geo = React.lazy(() => import("./LearnD3Geo"))
+const LearnD3Specific = React.lazy(() => import("./LearnD3Specific"))
+const LearnD3Colors = React.lazy(() => import("./LearnD3Colors"))
 
 
+console.log(LearnD3GetData)
 const sections = [{
     label: "Intro",
     Component: Intro,

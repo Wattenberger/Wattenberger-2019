@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
+import ResizeObserver from '@juggle/resize-observer';
 
 export const dimensionsPropsType = (
     PropTypes.shape({
@@ -39,7 +40,7 @@ export const useChartDimensions = passedSettings => {
         if (dimensions.width && dimensions.height) return [ref, dimensions]
 
         const element = ref.current
-        const resizeObserver = new window.ResizeObserver(entries => {
+        const resizeObserver = new ResizeObserver(entries => {
             if (!Array.isArray(entries)) return
             if (!entries.length) return
 

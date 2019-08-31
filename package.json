@@ -6,6 +6,7 @@
     "@babel/core": "7.4.3",
     "@babel/register": "^7.0.0",
     "@babel/runtime": "^7.4.5",
+    "@juggle/resize-observer": "^2.3.0",
     "@svgr/webpack": "4.1.0",
     "@tweenjs/tween.js": "^17.4.0",
     "@typescript-eslint/eslint-plugin": "1.6.0",
