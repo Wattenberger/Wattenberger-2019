@@ -178,14 +178,14 @@ const GeoExample = ({ projectionName="geoMercator" }) => {
 
 
 const GeoExampleSelect = () => {
-  const [projectionName, setProjectionName] = useState()
+  const [projectionName, setProjectionName] = useState("geoMercator")
 
   return (
     <div className="GeoExampleSelect">
       <div className="GeoExampleSelect__controls">
         <select
             className="GeoExampleSelect__select"
-            value={projectionName}
+            defaultValue={projectionName}
             onChange={e => setProjectionName(e.target.value)}
         >
           {builtInProjections.map(d => (

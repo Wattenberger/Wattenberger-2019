@@ -26,7 +26,6 @@ const LearnD3Specific = React.lazy(() => import("./LearnD3Specific"))
 const LearnD3Colors = React.lazy(() => import("./LearnD3Colors"))
 
 
-console.log(LearnD3GetData)
 const sections = [{
     label: "Intro",
     Component: Intro,

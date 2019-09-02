@@ -364,7 +364,7 @@ const CurveExample = () => {
                 <h6>Curve function</h6>
                 <select
                     className="CurveExample__select"
-                    value={curve}
+                    defaultValue={curve}
                     onChange={e => setCurve(e.target.value)}
                 >
                     {curves.map(d => (
