@@ -2,7 +2,8 @@
 
 .Code {
   flex: 1;
-  background: #485460;
+  background: #334150;
+  background: #334150;
   color: white;
   padding: 1em 0;
   overflow: auto;
@@ -95,7 +96,7 @@
 
     &:hover,
     &:hover > code[class*="language-"] {
-      background: #1e272e;
+      background: #16222f;
 
       .CodeLine__copy.ClipboardTrigger {
         opacity: 1;
@@ -104,7 +105,7 @@
 
     &--is-highlighted,
     &--is-highlighted > code[class*="language-"] {
-      background: #1e272e;
+      background: #16222f;
     }
 
     &__number {
@@ -227,8 +228,8 @@
         bottom: 0;
         left: 0;
         background: linear-gradient(to bottom,
-          rgba(#485460, 0),
-          #485460
+          rgba(#334150, 0),
+          #334150
         );
         opacity: 0;
         transition: all 0.3s ease-out;

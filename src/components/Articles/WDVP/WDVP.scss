@@ -101,7 +101,7 @@ $c-accent-4: #686B89;
     &__full-width {
         margin: 0 -2rem;
         @media (max-width: 700px) {
-            margin: 0 -1rem;
+            margin: 0;
         }
     }
 
@@ -248,6 +248,10 @@ $c-accent-4: #686B89;
             padding-left: 2rem;
             font-weight: 800;
             // font-family: $font-family-serif;
+
+            @media (max-width: 700px) {
+                padding-left: 0;
+            }
 
             &__index {
                 display: none;

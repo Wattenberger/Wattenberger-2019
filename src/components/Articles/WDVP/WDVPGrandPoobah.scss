@@ -59,6 +59,9 @@ $main-color: #30336b;
         line-height: 1.2em;
         font-style: italic;
         opacity: 0.6;
+        @media (max-width: 700px) {
+            margin-bottom: 5em;
+        }
     }
 
     .WDVPMetrics {

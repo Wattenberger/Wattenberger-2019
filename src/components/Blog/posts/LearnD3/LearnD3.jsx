@@ -9,6 +9,7 @@ import Link from "components/_ui/Link/Link";
 import Icon from "components/_ui/Icon/Icon";
 import List from "components/_ui/List/List";
 import constructionGif from "./construction.gif";
+import metaImage from "./../d3.png";
 
 import bookImage from "images/book2.png";
 
@@ -123,6 +124,7 @@ const LearnD3 = () => {
                 <link rel="canonical" href="https://wattenberger.com/blog/d3" />
                 <meta property="og:type" content="website" />
                 <meta name="description" content="Learn the fundamentals of D3.js: what it is, how to use it, what are the different modules, and how to use the API. This article has tons of linked resources for digging deeper." />
+                <meta name="image" content={metaImage} />
             </Helmet>
 
             <div className="LearnD3__links">

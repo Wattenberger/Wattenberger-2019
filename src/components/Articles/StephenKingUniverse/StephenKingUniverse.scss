@@ -1,16 +1,46 @@
 @import "src/styles/lib";
 
-.StephenKingMds {
+.StephenKingUniverse {
     margin-bottom: 3em;
     padding: 6em 3em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
     // background: #cfdbe8;
-    background: #10273f;
+    background: #1e243d;
+
+    h1 {
+        position: absolute;
+        color: white;
+        top: 10em;
+    }
 
     &__wrapper {
         position: relative;
+        padding-left: 200px;
+    }
+
+    &__fade-in {
+        @keyframes fadeIn {
+              0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInFill {
+              0% { fill-opacity: 0; }
+            100% { fill-opacity: 1; }
+        }
+
+        // opacity: 0;
+        // animation: fadeIn 1s ease-out;
+        animation-fill-mode: forwards;
+        animation-delay: 11s;
+
+        &--fill {
+            // fill-opacity: 0;
+            // animation: fadeInFill 1s ease-out;
+            animation-fill-mode: forwards;
+            animation-delay: 11s;
+        }
     }
 
     &Chart {
@@ -18,8 +48,7 @@
         // transform: scale(3);
             width: 2000px;
             height: 2000px;
-            background: #10273f;
-            margin-left: 1000px;
+            background: #1e243d;
 
         &__svg {
             // width: 90vw;
@@ -48,7 +77,7 @@
             filter: url(#glow-neutral);
 
             &__cover {
-                fill: #10273f;
+                fill: #1e243d;
                 filter: url(#glow-background);
             }
         }
@@ -57,6 +86,10 @@
             font-size: 0.5em;
             font-weight: 600;
             text-anchor: middle;
+        }
+
+        &__rating {
+            // opacity: 0.5;
         }
 
         &__tooltip {
@@ -77,21 +110,48 @@
             top: 0;
             left: 0;
             display: flex;
-            align-items: center;
+            // align-items: center;
             flex-direction: column;
             justify-content: center;
+            // margin-top: 0.3em;
             font-size: 0.46em;
             font-size: 0.09em;
-            font-size: 0.6em;
-            line-height: 1.2em;
+            font-size: 0.7em;
+            line-height: 1.1em;
             font-weight: 600;
-            max-width: 4em;
+            max-width: 7em;
             // color: $tc;
-            text-align: center;
+            color: rgba(white, 0.7);
+            color: #b8cfcc;
+            color: #858cbf;
+            color: #a27e54;
+            transform: translateY(-50%);
+            // text-align: center;
+            user-select: none;
+            pointer-events: none;
 
             &__year {
+                margin-top: 0.3em;
                 opacity: 0.4;
+                color: rgba(white, 1);
+                font-weight: 400;
+            }
+
+            &--side {
+                &-left {
+                    text-align: right;
+                    align-items: flex-end;
+                }
             }
         }
+    }
+
+    &Annotation {
+        fill: none;
+        // stroke: white;
+        stroke: #a27e54;
+        stroke-width: 1;
+        opacity: 0.5;
+        // filter: url(#glow-neutral);
     }
 }

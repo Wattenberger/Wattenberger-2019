@@ -91,7 +91,7 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
             <div className="D3Modules__wrapper" style={{
                 width: `${width}px`,
                 height: `${height}px`,
-                transform: `scale(${wrapperScale})`,
+                transform: `scale(${wrapperScale}) translateX(10px)`,
             }}>
                 {nodes.map(module => (
                     <D3ModulesItem

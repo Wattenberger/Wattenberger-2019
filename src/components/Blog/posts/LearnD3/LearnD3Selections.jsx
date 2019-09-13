@@ -123,13 +123,13 @@ document.querySelector("#this-paragraph").append(newDiv)`}
 
             <Code hasLineNumbers={false} canEval fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>}>
 {`d3.select("#this-other-paragraph")
-.style("color", "cornflowerblue")
-.style("font-style", "italic")
-.style("font-weight", "bold")
-.selectAll("div")
-.data([1, 2, 3, 4, 5])
-.enter().append("div")
-.text(d => d)`}
+  .style("color", "cornflowerblue")
+  .style("font-style", "italic")
+  .style("font-weight", "bold")
+  .selectAll("div")
+  .data([1, 2, 3, 4, 5])
+  .enter().append("div")
+  .text(d => d)`}
             </Code>
 
             <Aside>
@@ -156,20 +156,20 @@ document.querySelector("#this-paragraph").append(newDiv)`}
 let array = [1, 2, 3, 4, 5]
 
 paragraph.style("color", "cornflowerblue")
-.style("font-style", "italic")
-.style("font-weight", "bold")
-.selectAll("div")
-.data(array)
-.enter().append("div")
-.text(d => d)
+  .style("font-style", "italic")
+  .style("font-weight", "bold")
+  .selectAll("div")
+  .data(array)
+  .enter().append("div")
+  .text(d => d)
 
 setTimeout(() => {
 array = ["this", "is", "new", "content"]
 paragraph.style("color", "tomato")
 paragraph.selectAll("div")
-.data(array)
-.text(d => d)
-.exit().remove()
+  .data(array)
+  .text(d => d)
+  .exit().remove()
 }, 2000)`}
             </Code>
 
@@ -262,20 +262,20 @@ paragraph.selectAll("div")
 
             <Code hasLineNumbers={false} fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>}>
 {`d3.select("#this-other-paragraph")
-.style("color", "cornflowerblue")
-.style("font-style", "italic")
-.style("font-weight", "bold")`}
+  .style("color", "cornflowerblue")
+  .style("font-style", "italic")
+  .style("font-weight", "bold")`}
             </Code>
 
             <p>can be written like so:</p>
 
             <Code hasLineNumbers={false} fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>}>
 {`d3.select("#this-other-paragraph")
-.styles({
-"color":       "cornflowerblue",
-"font-style":  "italic",
-"font-weight": "bold",
-})`}
+  .styles({
+    "color":       "cornflowerblue",
+    "font-style":  "italic",
+    "font-weight": "bold",
+  })`}
             </Code>
 
             <p>

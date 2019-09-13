@@ -24,13 +24,14 @@ const RocDevSurvey = React.lazy(() => import("components/Articles/RocDevSurvey/R
 const StephenKing = React.lazy(() => import("components/Articles/StephenKing/StephenKing"));
 const StephenKingCharacters = React.lazy(() => import("components/Articles/StephenKingCharacters/StephenKingCharacters"));
 const StephenKing3d = React.lazy(() => import("components/Articles/StephenKing3d/StephenKing3d"));
-const StephenKingMds = React.lazy(() => import("components/Articles/StephenKingMds/StephenKingMds"));
+const StephenKingUniverse = React.lazy(() => import("components/Articles/StephenKingUniverse/StephenKingUniverse"));
 const GameOfThrones = React.lazy(() => import("components/Articles/GameOfThrones/GameOfThrones"));
 const Chaconne = React.lazy(() => import("components/Articles/Chaconne/Chaconne"));
 const Playground = React.lazy(() => import("components/Articles/Playground/Playground"));
 const Authors = React.lazy(() => import("components/Articles/Authors/Authors"));
 const Fishing = React.lazy(() => import("components/Articles/Fishing/Fishing"));
 const TrafficSources = React.lazy(() => import("components/Articles/TrafficSources/TrafficSources"));
+const ElectionHeads = React.lazy(() => import("components/ElectionHeads/ElectionHeads"));
 const DVS = React.lazy(() => import("components/Articles/DVS/DVS"));
 const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVSChannels"));
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
@@ -39,6 +40,7 @@ const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDe
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
 const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
+const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
@@ -67,8 +69,6 @@ class App extends Component {
               <meta name="description" content="Learn how to make charts interactive using d3.js" />
           </Helmet>
 
-          <Header />
-
           <Suspense fallback={<Loader />}>
             <Switch>
               <Route exact path="/" component={Home} />
@@ -85,9 +85,10 @@ class App extends Component {
               <Route path="/wdvp" component={WDVP} />
               <Route path="/rocdev" component={RocDevSurvey} />
               <Route path="/king" component={StephenKing} />
+              <Route path="/election-heads" component={ElectionHeads} />
               <Route path="/king-characters" component={StephenKingCharacters} />
               <Route path="/king3d" component={StephenKing3d} />
-              <Route path="/king-mds" component={StephenKingMds} />
+              <Route path="/king-universe" component={StephenKingUniverse} />
               <Route path="/playground" component={Playground} />
               <Route path="/dvs" component={DVS} />
               <Route path="/dvs-channels" component={DVSChannels} />
@@ -104,6 +105,7 @@ class App extends Component {
               <Route path="/blog/i3" component={I3} />
               <Route path="/blog/d3" component={LearnD3} />
               <Route path="/blog/svg" component={SVG} />
+              <Route path="/blog/react-hooks" component={Hooks} />
               <Route path="/blog" component={Blog} />
               <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
               <Route path="/keep-in-touch" component={NewsletterSignupPage} />
@@ -123,6 +125,8 @@ class App extends Component {
                 </div>
               </Route>
             </Switch>
+
+            <Header />
 
             <Footer />
           </Suspense>

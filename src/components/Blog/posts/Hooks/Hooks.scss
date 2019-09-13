@@ -1,0 +1,14 @@
+@import "src/styles/lib";
+
+.Hooks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3em 2em;
+  text-align: center;
+
+  &__content {
+    max-width: 60em;
+    margin: 0 auto;
+  }
+}

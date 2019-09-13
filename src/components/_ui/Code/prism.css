@@ -8,9 +8,10 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
 
 code[class*="language-"],
 pre[class*="language-"] {
-	color: #ccc;
+	color: #f2f2f7;
 	background: none;
-	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	 font-family: 'Operator Mono', 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	 /* font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; */
 	font-size: 1em;
 	text-align: left;
 	white-space: pre;
@@ -54,43 +55,43 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #999;
+	color: #8c9cad;
 }
 
 .token.punctuation {
-	color: #ccc;
+	color: #e3e8ee;
 }
 
+.token.selector,
 .token.tag,
-.token.attr-name,
 .token.namespace,
 .token.deleted {
-	color: #e2777a;
+	color: #75f7a6;
 }
 
 .token.function-name {
 	color: #6196cc;
 }
 
+.token.attr-name,
 .token.boolean,
 .token.number,
 .token.function {
-	color: #f08d49;
+	color: #65ddd9;
 }
 
 .token.property,
 .token.class-name,
 .token.constant,
 .token.symbol {
-	color: #f8c555;
+	color: #ff767b;
 }
 
-.token.selector,
 .token.important,
 .token.atrule,
 .token.keyword,
 .token.builtin {
-	color: #cc99cd;
+	color: #FFC312;
 }
 
 .token.string,
@@ -98,13 +99,13 @@ pre[class*="language-"] {
 .token.attr-value,
 .token.regex,
 .token.variable {
-	color: #7ec699;
+	color: #b9a7ff;
 }
 
 .token.operator,
 .token.entity,
 .token.url {
-	color: #67cdcc;
+	color: #ff8d58;
 }
 
 .token.important,
@@ -142,7 +143,7 @@ pre[class*="language-"].line-numbers > code {
 	left: -3.8em;
 	width: 3em; /* works for line-numbers below 1000 lines */
 	letter-spacing: -1px;
-	border-right: 1px solid #999;
+	border-right: 1px solid #8c9cad;
 
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -151,17 +152,17 @@ pre[class*="language-"].line-numbers > code {
 
 }
 
-	.line-numbers-rows > span {
-		pointer-events: none;
-		display: block;
-		counter-increment: linenumber;
-	}
+.line-numbers-rows > span {
+	pointer-events: none;
+	display: block;
+	counter-increment: linenumber;
+}
 
-		.line-numbers-rows > span:before {
-			content: counter(linenumber);
-			color: #999;
-			display: block;
-			padding-right: 0.8em;
-			text-align: right;
-		}
+.line-numbers-rows > span:before {
+	content: counter(linenumber);
+	color: #8c9cad;
+	display: block;
+	padding-right: 0.8em;
+	text-align: right;
+}
 

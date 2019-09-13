@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+  <channel>
+    <title>Amelia Wattenberger</title>
+    <atom:link href="https://wattenberger.com/rss" rel="self" type="application/rss+xml" />
+    <link>https://wattenberger.com</link>
+    <description>Thoughts on data visualization, d3.js, frontend development, and design.</description>
+    <lastBuildDate>Sun, 08 Sep 2019 23:51:01 +0000</lastBuildDate>
+    <language>en-US</language>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <generator>https://wordpress.org/?v=4.8.3</generator>
+
+  <image>
+    <url>https://wattenberger.com/favicon.png</url>
+    <title>Amelia Wattenberger</title>
+    <link>https://wattenberger.com</link>
+    <width>32</width>
+    <height>32</height>
+  </image>
+
+	<item>
+		<title>How to learn D3.js</title>
+		<link>https://wattenberger.com/blog/d3</link>
+		<pubDate>Wed, 04 Sep 2019 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+				<category><![CDATA[D3.js]]></category>
+		<category><![CDATA[data visualization]]></category>
+		<category><![CDATA[intro]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/d3.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/blog/d3</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/d3"><img width="750" height="665" src="http://wattenberger.com/d3.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>So, you want to create amazing data visualizations on the web and you keep hearing about D3.js. But what is D3.js, and how can you learn it? Let’s start with the question: What is D3?</p>]]></description>
+				<content:encoded><![CDATA[<p>So, you want to create amazing data visualizations on the web and you keep hearing about D3.js. But what <i>is</i> D3.js, and how can you learn it? Let’s start with the question: <b>What is D3?</b></p><p>While it might seem like D3.js is an all-encompassing framework, it’s really just a collection of small modules. Here are all of the modules: each is visualized as a circle - larger circles are modules with larger file sizes.</p>]]></content:encoded>
+			</item>
+	<item>
+		<title>Interactive Charts with D3.js</title>
+		<link>https://wattenberger.com/blog/d3-interactive-charts</link>
+		<pubDate>Sun, 04 Aug 2019 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+				<category><![CDATA[D3.js]]></category>
+		<category><![CDATA[data visualization]]></category>
+		<category><![CDATA[interactive charts]]></category>
+		<category><![CDATA[intro]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/d3-interactive.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/blog/d3-interactive-charts</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/d3-interactive-charts"><img width="750" height="665" src="http://wattenberger.com/d3-interactive.png" class="attachment-medium size-medium wp-post-image" /></a><p><b>This is 2019</b> and the web browser opens up a whole new realm of possibilities when visualizing data.</p>]]></description>
+				<content:encoded><![CDATA[<p>You did it! You grabbed a data set and visualized it, right here in the browser. Congratulations, that is no easy feat!</p><p><b>This is 2019</b> and the web browser opens up a whole new realm of possibilities when visualizing data. Let’s take advantage of these new possibilities and talk about how to take your chart to the next level.</p>]]></content:encoded>
+			</item>
+  </channel>
+</rss>

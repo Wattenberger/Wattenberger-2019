@@ -7,6 +7,8 @@ import foos3 from "./Images/foos3.jpg"
 import fishing from "./Images/fishing.png"
 import book from "./Images/book.png"
 import interaction from "./Images/interaction.png"
+import d3js from "./Images/d3js.png"
+import debateGame from "./Images/debate-game.png"
 // import foos4 from "./Images/foos4.jpg"
 // import seaholm from "./Images/seaholm.png"
 // import seaholm2 from "./Images/seaholm2.png"
@@ -32,6 +34,50 @@ export const projects = [
     {
       category: "Development & Data Visualization",
       projects: [
+        {
+          title: "Debate Games",
+          description: <div>
+            <p>
+              I teamed up with a friend on a game for people to play during the 2020 United States Democratic Primary Debates. While they watched, users could click on a candidate's balloon when they agreed with what they were saying.
+            </p>
+
+            <p>
+              At the end, we have a quantified metric for how well each candidate resonated with players. It was really fun to create an in-browser game, and figuring out the best ways to sync the game with an external video.
+            </p>
+
+          </div>,
+          tools: ["D3.js", "React.js", "SVG"],
+          images: [debateGame],
+          imageContentStyle: {backgroundPosition: "top right"},
+          link: "http://debate.games",
+        },
+      ],
+    },
+    {
+      category: "Development & Data Visualization",
+      projects: [
+        {
+          title: "Intro to D3.js",
+          description: <div>
+            <p>
+              D3.js is the de facto library for drawing data visualization on the web. Unless you are very intimately familiar with the API, you probably view it as a monolithic framework, and make charts by copy + pasting code from bl.ocks.
+            </p>
+
+            <p>
+              In this extensive article, I talk about every individual D3.js module, and how they factor into your goals. Writing this article was really rewarding, since I got to delve into parts of the API that I had never looked at before. For example, the <a href="/blog/d3#maps-and-globes">different geographic projections</a> and <a href="/blog/d3#drawing-svg-shapes">polygon methods</a> will definitely come in handy in the future!
+            </p>
+
+          </div>,
+          tools: ["D3.js", "React.js", "SVG"],
+          images: [d3js],
+          imageContentStyle: {backgroundPosition: "top"},
+          link: "/blog/d3",
+        },
+      ],
+    },
+    {
+      category: "Development & Data Visualization",
+      projects: [
       {
         title: "Interactive Charts with D3.js",
         description: <div>
@@ -48,7 +94,7 @@ export const projects = [
           </p>
 
         </div>,
-        tools: ["D3.js", "React.js", "SVG", "Words"],
+        tools: ["D3.js", "React.js", "SVG"],
         images: [interaction],
         // imageContentStyle: {backgroundPosition: "top"},
         link: "/blog/d3-interactive-charts",
