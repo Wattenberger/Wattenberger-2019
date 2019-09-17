@@ -10,13 +10,18 @@ const ClipboardTrigger = ({ text, className, children, ...props }) => {
 
     useEffect(() => {
         async function checkSupport () {
-            const copySupport = await navigator.permissions.query({name: "clipboard-write"})
-            setCanCopy(copySupport.state === "granted")
+            try {
+                const copySupport = await navigator.permissions.query({name: "clipboard-write"})
+                setCanCopy(copySupport.state === "granted")
+            } catch(e) {
+                setCanCopy(false)
+            }
         }
         checkSupport()
     })
 
     const onCopy = () => {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) return
         navigator.clipboard.writeText(text)
         setHasCopied(true)
     }

@@ -3,12 +3,326 @@
 .Hooks {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 3em 2em;
-  text-align: center;
+  padding: 6em 2em;
+
+  @media (min-width: 900px) {
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      width: 100%;
+    }
+  }
 
   &__content {
-    max-width: 60em;
     margin: 0 auto;
+    width: 100%;
+
+    h2 {
+      margin-bottom: 0.9em;
+    }
+
+    blockquote {
+      position: relative;
+      display: inline-block;
+      background: rgba($a1, 0.1);
+      margin: 1em 0;
+      padding: 2em 3em;
+      color: desaturate(darken($a1, 20%), 40%);
+
+      &:before {
+        content: "“";
+        position: absolute;
+        font-family: "Bodoni", "Georgia", serif;
+        font-size: 3em;
+        top: 50%;
+        left: -0.2em;
+        margin-top: -0.05em;
+      }
+      &:after {
+        content: "”";
+        position: absolute;
+        font-family: "Georgia", serif;
+        font-size: 3em;
+        top: 50%;
+        right: -0.2em;
+        margin-top: -0.05em;
+      }
+    }
+    p + blockquote {
+      margin-top: -1em;
+    }
+  }
+
+  p {
+    margin: 1.2em auto;
+    max-width: 60em;
+  }
+
+  .SideBySide {
+    margin: 3em auto;
+    max-width: 90em;
+
+    &__section {
+      display: flex;
+
+
+      & > .Code__wrapper,
+      &__item {
+        flex: 1;
+        overflow: hidden;
+
+        @media (max-width: 900px) {
+          overflow: auto;
+        }
+      }
+    }
+    @media (min-width: 1100px) and (max-width: 1300px) {
+      .Code {
+        font-size: 0.7em;
+        line-height: 1.2em;
+      }
+    }
+    &__titles {
+      &__item {
+        margin-bottom: 0;
+        text-align: left;
+
+        @media (min-width: 900px) {
+          padding: 0 2em;
+        }
+        @media (max-width: 900px) {
+          margin-top: 2em;
+        }
+      }
+    }
+    &__descriptions {
+      &__item {
+        text-align: left;
+
+        @media (min-width: 900px) {
+          padding: 0 2em;
+        }
+
+        p {
+          margin: 1.2em 0;
+          padding-bottom: 0;
+        }
+      }
+    }
+    .Code__wrapper {
+      &:first-of-type {
+        .CodeLine--has-marker {
+          border-left-width: 0;
+          border-right-width: 6px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        font-size: 0.8em;
+        margin: 0 -2.5em;
+      }
+    }
+    .Code--theme-light {
+      background: rgba(#e4e6f5, 0.6);
+    }
+    .CodeLine {
+      &--is-highlighted {
+        background: #24303d;
+      }
+      &--is-highlighted > code[class*="language-"] {
+        background: none;
+      }
+
+      &:hover,
+      &:hover > code[class*="language-"] {
+        background: #24303d;
+      }
+    }
+    &CodeMiddle {
+      // height: 100%;
+      position: absolute;
+      top: 18px;
+      right: -2px;
+      left: 0;
+      height: calc(100% - 3.3em);
+      width: 100%;
+      overflow: visible;
+      z-index: 100;
+
+      @keyframes slideOut {
+        0% { transform: scaleX(0) }
+        100% { transform: scaleX(1) }
+      }
+
+      &__highlight {
+        @supports (mix-blend-mode: soft-light) {
+          mix-blend-mode: soft-light;
+        }
+        width: calc(50vw - 70%);
+        position: absolute;
+        top: 18px;
+        left: calc(-50vw + 70%);
+        height: calc(100% - 3.3em);
+        z-index: 100;
+        pointer-events: none;
+
+        &--right {
+          left: auto;
+          right: 0;
+          transform: translateX(100%);
+
+          .SideBySideCodeMiddle__highlight__marker {
+            transform-origin: center left;
+          }
+        }
+
+        &__group {
+          opacity: 0.92;
+          transition: all 0.2s ease-out;
+
+          &:hover {
+            clip-path: none !important;
+          }
+
+          &--is {
+            &-hovering {
+              opacity: 1;
+
+              .SideBySideCodeMiddle__highlight__marker {
+                animation: slideOut 0.6s ease-out;
+                transform: scaleX(0);
+                animation-fill-mode: forwards;
+
+                @for $i from 0 through 30 {
+                  &:nth-of-type(#{$i}) {
+                    animation-delay: #{$i * 0.06}s;
+                  }
+                }
+              }
+            }
+            &-hovering-other {
+              opacity: 0;
+            }
+            &-normal {
+              opacity: 0;
+            }
+          }
+        }
+
+        &__marker {
+          transform-origin: center right;
+        }
+      }
+
+      &-wrapper {
+        position: relative;
+        width: 5em;
+        flex: none;
+        // margin-bottom: 1.3em;
+        max-width: 100%;
+      }
+
+      &__marker {
+        &--i {
+          // &-0 { fill: $grey2 }
+          // &-1 { fill: $grey3 }
+          // &-2 { fill: $grey4 }
+          // &-3 { fill: $grey5 }
+          // &-4 { fill: #494964 }
+        }
+        // fill: url(#middle);
+      }
+
+      &__group {
+        opacity: 0.92;
+        // mix-blend-mode: color-burn;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+          clip-path: none !important;
+        }
+
+        &--is {
+          &-hovering-other {
+            opacity: 0.2;
+          }
+        }
+      }
+    }
+
+    @media (min-width: 1100px) {
+      &__section__item {
+        &:nth-of-type(2) {
+          margin-left: 5em;
+        }
+      }
+    }
+    @media (max-width: 1100px) {
+      &__section {
+        flex-direction: column
+      }
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .mobile {
+      display: block;
+    }
+    .desktop {
+      display: none;
+    }
+  }
+  @media (min-width: 1100px) {
+    .mobile {
+      display: none;
+    }
+    .desktop {
+      display: block;
+    }
+  }
+
+  .P {
+    display: inline-block;
+    margin: 0 0;
+    padding: 0 0.6em;
+    color: $a1;
+    background: rgba($a1, 0.1);
+    border-radius: 2px;
+    font-feature-settings: 'tnum' 1;
+    font-family: monospace;
+    font-weight: 600;
+  }
+
+  .CrossOutQuote {
+    margin-top: -1em;
+
+    &__scratch {
+      position: absolute;
+      left: -2em;
+      width: 109%;
+      top: 50%;
+      // height: 2px;
+      stroke: $a3;
+      fill: none;
+      // margin-top: -1px;
+      // transform-origin: center left;
+      transform: translateY(-50%);
+      mix-blend-mode: multiply;
+      overflow: visible;
+
+      path {
+        stroke-width: 6;
+        stroke-dasharray: 5000px;
+        transition: all 0.2s ease-out;
+      }
+    }
+  }
+
+  .a3 {
+    color: $a3;
   }
 }

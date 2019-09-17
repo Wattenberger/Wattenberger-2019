@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react'
 import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
-import "./prism.css"
+import "./prism-dark.scss"
+import "./prism-light.scss"
 
 import _ from "lodash"
 import * as d3 from "d3"
@@ -17,7 +18,9 @@ import './Code.scss';
 const stepRegex = /(?!\n)( )*(\/\/ [\d]. )(.*\n)/gm
 const Code = ({
     highlightedLines=[],
+    markers=[],
     language="js",
+    theme="dark",
     initialExpandedSteps,
     removedLines=[],
     insertedLines=[],
@@ -210,7 +213,6 @@ const Code = ({
     }
 
     const onEnterPress = e => {
-        console.log(e, e.location)
         if (!isEditing) return
         if (e.ctrlKey) {
             onExecuteEditedCodeLocal()
@@ -256,6 +258,7 @@ const Code = ({
             )}
             <div className={[
                 "Code",
+                `Code--theme-${theme}`,
                 `Code--size-${size}`,
                 `Code--wrap-${doWrap ? "all" : "none"}`,
                 getLanguageString(language),
@@ -265,13 +268,13 @@ const Code = ({
                     step.type === "string" ? (
                         <CodeLines
                             key={i}
-                            {...{...step, highlightedLines, hasLineNumbers, doOnlyShowHighlightedLines}}
+                            {...{...step, highlightedLines, markers, hasLineNumbers, doOnlyShowHighlightedLines}}
                             isEditable={isEditing}
                         />
                     ) : (
                         <CodeStep
                             key={step.name}
-                            {...{...step, highlightedLines, hasLineNumbers}}
+                            {...{...step, highlightedLines, markers, hasLineNumbers}}
                             isExpanded={expandedSteps.includes(step.number)}
                             onToggle={onToggleStepLocal(step.number)}
                             isEditable={isEditing}
@@ -317,7 +320,7 @@ const languages = {
 
 const getLanguageString = lang => `language-${languages[lang] || lang}`
 
-const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpanded, isEditable, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
+const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, markers, isExpanded, isEditable, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
     <div className={`CodeStep CodeStep--number-${number} CodeStep--is-${isExpanded ? "expanded" : "collapsed"}`} onClick={isExpanded ? () => {} : onToggle}>
         <div className="CodeStep__copyable-text">
             {`  // ${number}. ${name}`}
@@ -345,19 +348,20 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, isExpa
 
         <div className="CodeStep__lines">
             <CodeLines
-                {...{ code, startLineIndex, highlightedLines, hasLineNumbers, isEditable, doOnlyShowHighlightedLines }}
+                {...{ code, startLineIndex, highlightedLines, markers, hasLineNumbers, isEditable, doOnlyShowHighlightedLines }}
             />
         </div>
 
     </div>
 )
 
-const CodeLines = ({ code, startLineIndex, highlightedLines, isEditable, doOnlyShowHighlightedLines, ...props }) => {
+const CodeLines = ({ code, startLineIndex, highlightedLines, markers, isEditable, doOnlyShowHighlightedLines, ...props }) => {
     if (!code) return null
 
     return (
         code.split("\n").slice(0, -1).map((line, index) => {
             const isHighlighted = highlightedLines.includes(startLineIndex + index + 1)
+            const markerIndex = markers && markers.findIndex(list => list.includes(startLineIndex + index + 1))
             if (doOnlyShowHighlightedLines && !isHighlighted) return null
 
             return (
@@ -367,6 +371,7 @@ const CodeLines = ({ code, startLineIndex, highlightedLines, isEditable, doOnlyS
                     code={line}
                     isEditable={isEditable}
                     isHighlighted={!doOnlyShowHighlightedLines && isHighlighted}
+                    markerIndex={markerIndex}
                     {...props}
                 />
             )
@@ -374,12 +379,14 @@ const CodeLines = ({ code, startLineIndex, highlightedLines, isEditable, doOnlyS
     )
 }
 
-const CodeLine = ({ code, index, isHighlighted, isEditable, hasLineNumbers }) => {
+const CodeLine = ({ code, index, isHighlighted, markerIndex, isEditable, hasLineNumbers }) => {
     const [isHovering, setIsHovering] = useState(false)
 
     return (
         <div className={[
             "CodeLine",
+            `CodeLine--has-${markerIndex == -1 ? "no-marker" : "marker"}`,
+            `CodeLine--marker-${markerIndex}`,
             `CodeLine--is-${isHighlighted ? "highlighted" : "normal"}`,
         ].join(" ")}
         onMouseEnter={() => setIsHovering(true)}

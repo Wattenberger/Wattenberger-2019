@@ -16,10 +16,10 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
-  title: "Thinking in React Hooks",
-  id: "react-hooks",
-  // component: Hooks,
-},{
+//   title: "Thinking in React Hooks",
+//   id: "react-hooks",
+//   // component: Hooks,
+// },{
   title: "How to learn D3.js",
   id: "d3",
   description: <>
