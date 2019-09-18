@@ -11,18 +11,19 @@ const Blog = () => (
     <h1>
       Thoughts
     </h1>
-    {_.map(posts, post => (
-      <div className="Blog__post" key={post.id}>
-        <Link to={`/blog/${post.id}`}>
+    {_.map(posts, ({ id, title, description, image }) => (
+      <div className="Blog__post" key={id}>
+        <Link to={`/blog/${id}`}>
           <h3 className="Blog__title">
-            { post.title }
+            { title }
           </h3>
+          <img src={image} />
         </Link>
 
         <p className="Blog__post__description">
-          { post.description }
+          { description }
         </p>
-        <Link to={`/blog/${post.id}`}>
+        <Link to={`/blog/${id}`}>
           <Button className="Blog__post__button">
             Read more
           </Button>

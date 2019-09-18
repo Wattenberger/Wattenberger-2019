@@ -27,6 +27,29 @@
   </image>
 
 	<item>
+		<title>Thinking in React Hooks</title>
+		<link>https://wattenberger.com/blog/react-hooks</link>
+		<pubDate>Fri, 20 Sep 2019 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+				<category><![CDATA[React]]></category>
+		<category><![CDATA[React Hooks]]></category>
+		<category><![CDATA[Javascript]]></category>
+		<category><![CDATA[deep dive]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/react-hooks.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/blog/react-hooks</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/react-hooks"><img width="750" height="665" src="http://wattenberger.com/react-hooks.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks.</p>]]></description>
+				<content:encoded><![CDATA[<p>React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks.</p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>How to learn D3.js</title>
 		<link>https://wattenberger.com/blog/d3</link>
 		<pubDate>Wed, 04 Sep 2019 08:00:00 EST</pubDate>

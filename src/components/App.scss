@@ -279,3 +279,10 @@ b {
   }
 }
 
+.button-no-appearance {
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  text-align: left;
+}
+

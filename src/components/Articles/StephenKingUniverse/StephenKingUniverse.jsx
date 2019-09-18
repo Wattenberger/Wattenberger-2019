@@ -319,7 +319,7 @@ const StephenKingUniverseChart = () => {
                                     cy={y}
                                     r="6"
                                     fill="white"
-                                    filter="url(#glow-neutral)"
+                                    // filter="url(#glow-neutral)"
                                 />
                             ))}
                             <path
@@ -332,7 +332,7 @@ const StephenKingUniverseChart = () => {
                                     ])
                                 }
                                 fill="white"
-                                filter="url(#glow-0)"
+                                // filter="url(#glow-0)"
                             />
                         </g>
                     ))}
@@ -396,7 +396,7 @@ const StephenKingUniverseChart = () => {
                                 stroke={clusterColors[+d.cluster]}
                                 // fill={colorScale(d.year)}
                                 style={{
-                                    filter: `url(#glow-${+d.cluster})`,
+                                    // filter: `url(#glow-${+d.cluster})`,
                                     animationDelay: `${animationDelayScale(d.year)}s`,
                                 }}
                                 onMouseEnter={() => setHoveredBook(d)}

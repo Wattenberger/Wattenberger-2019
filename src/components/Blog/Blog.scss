@@ -9,6 +9,10 @@
     &__post {
         padding: 3em 0;
 
+        img {
+            max-width: 30em;
+        }
+
         &__description {
             max-width: 45em;
         }

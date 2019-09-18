@@ -7,17 +7,17 @@
     // flex-direction: column;
     // align-items: center;
     // background: #cfdbe8;
-    background: #1e243d;
+    background: #223443;
 
     h1 {
-        position: absolute;
         color: white;
-        top: 10em;
+        text-align: center;
+        width: 100%;
     }
 
     &__wrapper {
         position: relative;
-        padding-left: 200px;
+        // padding-left: 200px;
     }
 
     &__fade-in {
@@ -46,9 +46,9 @@
     &Chart {
         position: relative;
         // transform: scale(3);
-            width: 2000px;
-            height: 2000px;
-            background: #1e243d;
+            // width: 1500px;
+            height: 3000px;
+            background: #223443;
 
         &__svg {
             // width: 90vw;
@@ -74,11 +74,11 @@
             stroke: white;
             stroke-width: 1;
             opacity: 0.5;
-            filter: url(#glow-neutral);
+            // filter: url(#glow-neutral);
 
             &__cover {
-                fill: #1e243d;
-                filter: url(#glow-background);
+                fill: #223443;
+                // filter: url(#glow-background);
             }
         }
 
@@ -124,7 +124,8 @@
             color: rgba(white, 0.7);
             color: #b8cfcc;
             color: #858cbf;
-            color: #a27e54;
+            color: #B8723E;
+            color: #ab7044;
             transform: translateY(-50%);
             // text-align: center;
             user-select: none;
@@ -149,9 +150,15 @@
     &Annotation {
         fill: none;
         // stroke: white;
-        stroke: #a27e54;
+        stroke: #ab7044;
         stroke-width: 1;
-        opacity: 0.5;
+        opacity: 0.3;
         // filter: url(#glow-neutral);
+    }
+
+    & + .Header {
+        .Header__link + .Header__link  {
+            display: none;
+        }
     }
 }

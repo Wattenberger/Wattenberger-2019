@@ -5,7 +5,7 @@ import { scrollTo } from "utils.js"
 
 import './Expandy.scss';
 
-const Expandy = ({ trigger, doHideIfCollapsed=false, className, children, ...props }) => {
+const Expandy = ({ trigger, triggerExpandText, doHideIfCollapsed=false, className, children, ...props }) => {
     const [isExpanded, setIsExpanded] = useState(false)
     const ref = useRef()
 
@@ -24,19 +24,19 @@ const Expandy = ({ trigger, doHideIfCollapsed=false, className, children, ...pro
 
     return (
         <div className={`Expandy Expandy--is-${isExpanded ? "expanded" : "collapsed"} ${className}`} {...props} ref={ref}>
-            <div className="Expandy__trigger" onClick={onToggleExpanded}>
+            <button className="Expandy__trigger button-no-appearance" onClick={onToggleExpanded}>
                 <div className="Expandy__trigger__text">
                     <b>{ trigger }</b>
                     <div className="Expandy__trigger__info">
-                        tap me {isExpanded ? "to hide" : "for more" } details
+                        { triggerExpandText || `tap me ${isExpanded ? "to hide" : "for more" } details` }
                     </div>
                 </div>
                 <div className="Expandy__trigger__mark">ἰ</div>
-            </div>
+            </button>
 
             <Tooltip
                 className="Expandy__toggle"
-                contents={isExpanded ? "Collapse me" : "Expand me"}
+                contents={<button className="button-no-appearance">(isExpanded ? "Collapse me" : "Expand me")</button>}
                 onClick={onToggleExpanded}>
                 <div className="Expandy__toggle__arrow Expandy__toggle__arrow--up">
                     <Icon name="arrow" direction="n" size="s" />

@@ -2,6 +2,9 @@ import React from "react"
 import _ from "lodash"
 import List from "components/_ui/List/List"
 import LocalExample from "components/_ui/LocalExample/LocalExample";
+import hooksImage from "./posts/react-hooks.png"
+import d3Image from "./posts/d3.png"
+import d3InteractiveImage from "./posts/d3-interactive.png"
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -16,18 +19,24 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
-//   title: "Thinking in React Hooks",
-//   id: "react-hooks",
-//   // component: Hooks,
-// },{
+  title: "Thinking in React Hooks",
+  id: "react-hooks",
+  image: hooksImage,
+  description: <>
+    React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the <b>fundamental mindset change</b> when switching from React class components to function components + hooks.
+  </>
+  // component: Hooks,
+},{
   title: "How to learn D3.js",
   id: "d3",
+  image: d3Image,
   description: <>
     So, you want to create amazing data visualizations on the web and you keep hearing about D3.js. But what is D3.js, and how can you learn it? Let’s start with the question: What is D3?
   </>,
 },{
     title: "Interactive Charts with D3.js",
     id: "d3-interactive-charts",
+    image: d3InteractiveImage,
     description: <>
 
         <p>
