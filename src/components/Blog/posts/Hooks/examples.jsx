@@ -269,14 +269,14 @@ export const codeExamples = [
   }
 
   componentDidMount() {
-    const data = getDataWithinRange(this.props.dateRange)
-    this.setState({ data })
+    const newData = getDataWithinRange(this.props.dateRange)
+    this.setState({ data: newData })
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.dateRange != this.props.dateRange) {
-      const data = getDataWithinRange(this.props.dateRange)
-      this.setState({ data })
+      const newData = getDataWithinRange(this.props.dateRange)
+      this.setState({ data: newData })
     }
   }
 
@@ -304,8 +304,8 @@ export const codeExamples = [
   const [data, setData] = useState()
 
   useEffect(() => {
-    const data = getDataWithinRange(dateRange)
-    setData(data)
+    const newData = getDataWithinRange(dateRange)
+    setData(newData)
   }, [dateRange])
 
   return (
@@ -315,7 +315,12 @@ export const codeExamples = [
   highlightedLines: [4, 5, 6, 7],
   markers: [
       [4, 5, 6, 7],
-  ]
+  ],
+  afterCodeText: <>
+    <Aside>
+      Let's pretend that we're either defining <P>getDataWithinRange()</P> outside of the component, or substituting it for inline code that generates the <P>newData</P>. For this simple example, we'll skip that definition so we can focus on the concepts.
+    </Aside>
+  </>,
 }],
 
 [{
@@ -330,14 +335,14 @@ export const codeExamples = [
   }
 
   componentDidMount() {
-    const data = getDataWithinRange(this.props.dateRange)
-    this.setState({ data })
+    const newData = getDataWithinRange(this.props.dateRange)
+    this.setState({ data: newData })
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.dateRange != this.props.dateRange) {
-    const data = getDataWithinRange(this.props.dateRange)
-      this.setState({ data })
+    const newData = getDataWithinRange(this.props.dateRange)
+      this.setState({ data: newData })
     }
   }
 
@@ -386,7 +391,7 @@ export const codeExamples = [
           hasLineNumbers={false}
           doWrap={false}>
 {`const Chart = ({ dateRange }) => {
-  const data = getDataWithinRange(dateRange)
+  const newData = getDataWithinRange(dateRange)
 
   return (
     <svg className="Chart" />
@@ -429,8 +434,8 @@ export const codeExamples = [
   }
 
   componentDidMount() {
-    const data = getDataWithinRange(this.props.dateRange)
-    this.setState({ data })
+    const newData = getDataWithinRange(this.props.dateRange)
+    this.setState({ data: newData })
     this.setState({dimensions: getDimensions()})
     this.setState({xScale: getXScale()})
     this.setState({yScale: getYScale()})
@@ -438,8 +443,8 @@ export const codeExamples = [
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dateRange != this.props.dateRange) {
-      const data = getDataWithinRange(this.props.dateRange)
-      this.setState({ data })
+      const newData = getDataWithinRange(this.props.dateRange)
+      this.setState({ data: newData })
     }
     if (prevProps.margins != this.props.margins) {
       this.setState({dimensions: getDimensions()})
@@ -526,8 +531,8 @@ export const codeExamples = [
   }
 
   componentDidMount() {
-    const data = getDataWithinRange(this.props.dateRange)
-    this.setState({ data })
+    const newData = getDataWithinRange(this.props.dateRange)
+    this.setState({ data: newData })
     this.setState({dimensions: getDimensions()})
     this.setState({xScale: getXScale()})
     this.setState({yScale: getYScale()})
@@ -535,8 +540,8 @@ export const codeExamples = [
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dateRange != this.props.dateRange) {
-      const data = getDataWithinRange(this.props.dateRange)
-      this.setState({ data })
+      const newData = getDataWithinRange(this.props.dateRange)
+      this.setState({ data: newData })
     }
     if (
       prevProps.margins != this.props.margins

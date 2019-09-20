@@ -483,6 +483,10 @@ const resources = [{
     name: "Why React Hooks?",
     description: "A look at the historical ways to create React components, and some problems that hooks solve.",
 },{
+    url: "https://usehooks.com/",
+    name: "useHooks(🐠)",
+    description: "An awesome resources of custom hooks",
+},{
     url: "https://reactjs.org/docs/hooks-overview.html",
     name: "Hooks at a Glance",
     description: "An overview of the different types of built-in hooks.",
