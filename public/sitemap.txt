@@ -22,6 +22,7 @@ http://wattenberger.com/react-zdog
 http://wattenberger.com/blog/d3-interactive-charts
 http://wattenberger.com/blog/i3
 http://wattenberger.com/blog/d3
+http://wattenberger.com/blog/react-hooks
 http://wattenberger.com/blog
 http://wattenberger.com/thanks-for-signing-up
 http://wattenberger.com/keep-in-touch

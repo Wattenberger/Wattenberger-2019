@@ -36,7 +36,7 @@ const Expandy = ({ trigger, triggerExpandText, doHideIfCollapsed=false, classNam
 
             <Tooltip
                 className="Expandy__toggle"
-                contents={<button className="button-no-appearance">(isExpanded ? "Collapse me" : "Expand me")</button>}
+                contents={<button className="button-no-appearance">{isExpanded ? "Collapse me" : "Expand me"}</button>}
                 onClick={onToggleExpanded}>
                 <div className="Expandy__toggle__arrow Expandy__toggle__arrow--up">
                     <Icon name="arrow" direction="n" size="s" />

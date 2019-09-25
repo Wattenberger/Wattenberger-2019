@@ -27,7 +27,7 @@ export const customHooks = [{
 },{
   name: `useIsInView`,
   description: <>
-    For triggering animations that start when a user scrolls to an element. I used this a lot for the <Link to="parse.ly">parse.ly</Link> marketing site.
+    For triggering animations that start when a user scrolls to an element. I used this a lot for the <Link to="https://parse.ly">parse.ly</Link> marketing site.
   </>,
   code:
 `const useIsInView = (margin="0px") => {
@@ -37,7 +37,7 @@ export const customHooks = [{
   useEffect(() => {
     const observer = new IntersectionObserver(([ entry ]) => {
       setIntersecting(entry.isIntersecting)
-    }, { margin })
+    }, { rootMargin: margin })
     if (ref.current) observer.observe(ref.current)
     return () => {
       observer.unobserve(ref.current)
@@ -160,7 +160,7 @@ export const useChartDimensions = passedSettings => {
   const [height, changeHeight] = useState(0)
 
   useEffect(() => {
-    if (dimensions.width && dimensions.height) return [ref, dimensions]
+    if (dimensions.width && dimensions.height) return
 
     const element = ref.current
     const resizeObserver = new ResizeObserver(entries => {
@@ -270,13 +270,13 @@ export const codeExamples = [
 
   componentDidMount() {
     const newData = getDataWithinRange(this.props.dateRange)
-    this.setState({ data: newData })
+    this.setState({data: newData})
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.dateRange != this.props.dateRange) {
       const newData = getDataWithinRange(this.props.dateRange)
-      this.setState({ data: newData })
+      this.setState({data: newData})
     }
   }
 
@@ -336,13 +336,13 @@ export const codeExamples = [
 
   componentDidMount() {
     const newData = getDataWithinRange(this.props.dateRange)
-    this.setState({ data: newData })
+    this.setState({data: newData})
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.dateRange != this.props.dateRange) {
     const newData = getDataWithinRange(this.props.dateRange)
-      this.setState({ data: newData })
+      this.setState({data: newData})
     }
   }
 
@@ -419,7 +419,7 @@ export const codeExamples = [
                   the <P>dimensions</P> of a chart when the <P>margins</P> change, and
               </>,
               <>
-                  our <P>scales</P> when our <P>data</P> or <P>dimensions</P> change
+                  our <P>scales</P> when our <P>data</P> changes
               </>,
           ]} />
       </>
@@ -435,7 +435,7 @@ export const codeExamples = [
 
   componentDidMount() {
     const newData = getDataWithinRange(this.props.dateRange)
-    this.setState({ data: newData })
+    this.setState({data: newData})
     this.setState({dimensions: getDimensions()})
     this.setState({xScale: getXScale()})
     this.setState({yScale: getYScale()})
@@ -444,12 +444,12 @@ export const codeExamples = [
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dateRange != this.props.dateRange) {
       const newData = getDataWithinRange(this.props.dateRange)
-      this.setState({ data: newData })
+      this.setState({data: newData})
     }
     if (prevProps.margins != this.props.margins) {
       this.setState({dimensions: getDimensions()})
     }
-    if (prevProps.data != this.props.data) {
+    if (prevState.data != this.state.data) {
       this.setState({xScale: getXScale()})
       this.setState({yScale: getYScale()})
     }
@@ -481,7 +481,7 @@ export const codeExamples = [
 
   ),
   code:
-`const Chart = ({ data }) => {
+`const Chart = ({ dateRange, margins }) => {
   const data = useMemo(() => (
     getDataWithinRange(dateRange)
   ), [dateRange])
@@ -532,7 +532,7 @@ export const codeExamples = [
 
   componentDidMount() {
     const newData = getDataWithinRange(this.props.dateRange)
-    this.setState({ data: newData })
+    this.setState({data: newData})
     this.setState({dimensions: getDimensions()})
     this.setState({xScale: getXScale()})
     this.setState({yScale: getYScale()})
@@ -541,15 +541,15 @@ export const codeExamples = [
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.dateRange != this.props.dateRange) {
       const newData = getDataWithinRange(this.props.dateRange)
-      this.setState({ data: newData })
+      this.setState({data: newData})
     }
-    if (
-      prevProps.margins != this.props.margins
-      || prevState.dimensions != this.state.dimensions
-    ) {
+    if (prevProps.margins != this.props.margins) {
       this.setState({dimensions: getDimensions()})
     }
-    if (prevProps.data != this.props.data) {
+    if (
+      prevState.data != this.state.data
+      || prevState.dimensions != this.state.dimensions
+    ) {
       this.setState({xScale: getXScale()})
       this.setState({yScale: getYScale()})
     }
@@ -561,10 +561,10 @@ export const codeExamples = [
     )
   }
 }`,
-  highlightedLines: [24],
+  highlightedLines: [27],
   markers: [
-      [10, 11, 17, 18, 19, 20],
-      [12, 26],
+      [10, 11, 18, 19, 20, 21],
+      [12, 23],
       [13, 29],
       [14, 30],
   ]
@@ -576,7 +576,7 @@ export const codeExamples = [
 
   ),
   code:
-`const Chart = ({ data }) => {
+`const Chart = ({ dateRange, margins }) => {
   const data = useMemo(() => (
     getDataWithinRange(dateRange)
   ), [dateRange])
