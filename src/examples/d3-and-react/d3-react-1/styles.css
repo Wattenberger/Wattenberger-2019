@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em 2em 0;
+    color: #34495e;
+    background: #f8f9fa;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    position: relative;
+}
+
+svg {
+    overflow: visible;
+}
+
+.dot {
+    fill: #686de0;
+    transition: all 0.2s ease-out;
+}
+

@@ -1,0 +1,307 @@
+@import "src/styles/lib";
+
+.D3AndReact {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  padding: 6em 2em;
+  max-width: 82em;
+  // max-width: 73em;
+  margin: 0 auto;
+  // overflow: hidden;
+  // font-size: 16px;
+  // line-height: 1.3em;
+
+  h1 {
+    max-width: 60em;
+    text-align: center;
+    margin: 0 auto 0.4em;
+  }
+
+  &__centered {
+    // text-align: center;
+
+    p {
+      margin: 1.2em auto 0.8em;
+      max-width: 60em;
+    }
+
+    & > div > div > .List {
+      margin: 1.2em auto 0.8em;
+      max-width: 60em;
+    }
+
+    & > div > div > .Expandy {
+      margin: 0 auto 3em;
+      max-width: 60em;
+      .Expandy__trigger {
+        width: 100%;
+      }
+    }
+
+    h2 {
+      margin-bottom: 0.9em;
+      text-align: center;
+    }
+  }
+
+  i {
+    font-style: italic;
+  }
+
+  &__marked-list {
+    .List__item {
+      transition: background 0.2s ease-out;
+
+      &:nth-child(1) .List__item__number { background: rgba($a1, 0.9); }
+      &:nth-child(2) .List__item__number { background: rgba($a2, 0.9); }
+      &:nth-child(3) .List__item__number { background: rgba($a3, 0.9); }
+      &:nth-child(4) .List__item__number { background: rgba($a4, 0.9); }
+      &:nth-child(5) .List__item__number { background: rgba($grey4, 0.9); }
+      &:nth-child(1):hover { background: rgba($a1, 0.2); }
+      &:nth-child(2):hover { background: rgba($a2, 0.2); }
+      &:nth-child(3):hover { background: rgba($a3, 0.2); }
+      &:nth-child(4):hover { background: rgba($a4, 0.2); }
+      &:nth-child(5):hover { background: rgba($grey4, 0.2); }
+
+      &__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 2em;
+        width: 2em;
+        padding-left: 0.2em;
+        color: $tc;
+        font-weight: 600;
+        border-radius: 100%;
+      }
+    }
+  }
+
+  &__left {
+    position: relative;
+    padding: 0 3rem 6em;
+    margin-top: 10em;
+    // padding-right: 43rem + 3rem;
+    width: calc(100% - 43rem - 1rem);
+    // font-size: 1.3em;
+    // line-height: 1.5em;
+    transition: all 0.5s ease-out;
+
+    @media (max-width: 1300px) {
+        width: calc(100% - 33rem - 1rem);
+    // padding-right: 33rem + 3rem;
+    }
+
+    @media (max-width: 1100px) {
+        width: auto;
+    // padding-right: 3rem;
+    }
+
+    @media (max-width: 800px) {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        width: auto;
+    }
+
+    img {
+        max-width: 100%;
+    }
+  }
+
+  &__fixed-code {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 43rem;
+    // padding-bottom: 3em;
+    z-index: 2000;
+    pointer-events: none;
+
+    @media (max-width: 1300px) {
+        width: 33rem;
+        font-size: 0.8em;
+    }
+    @media (max-width: 1100px) {
+        width: 0;
+    }
+
+    .Code__wrapper {
+        min-height: 100%;
+        margin-bottom: 0;
+        pointer-events: all;
+        overflow: auto;
+    }
+
+    .Code {
+        padding-bottom: 2em;
+
+        &__file {
+            font-size: 0.8em;
+            padding: 0.6em 2.38em;
+        }
+    }
+  }
+
+  &__code {
+    opacity: 0;
+    animation: slideLeft 0.5s ease-out;
+    animation-delay: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  &__trigger {
+      position: sticky;
+      top: 48.3vh;
+      margin-top: -18vh;
+      margin-bottom: -9vh;
+      height: 27vh;
+      left: 0.5em;
+      width: 1.6em;
+      background: rgba($a3, 0.3);
+      margin-left: -2em;
+      transform: translateY(-50%);
+      z-index: 50;
+
+      &:before {
+          content: "Code change zone";
+          position: absolute;
+          top: -0.3em;
+          left: 50%;
+          font-size: 0.6em;
+          text-align: center;
+          color: darken($a3, 13%);
+          font-weight: 500;
+          line-height: 1.15em;
+          transform: translate(-50%, -100%);
+          opacity: 0;
+          pointer-events: none;
+          transition: all 0.3s ease-out;
+      }
+
+      &:hover:before {
+          opacity: 1;
+      }
+  }
+
+  .D3Modules {
+    margin-top: 6em;
+  }
+
+  &__side-by-side {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1.2em -1.6em 0.8em;
+
+    .Expandy {
+      margin-top: 0;
+      margin-bottom: 0.6em;
+    }
+    .Expandy__trigger {
+      width: 100%;
+    }
+
+    &__section {
+      flex: 1;
+      align-self: flex-start;
+      min-width: 27em;
+      padding: 0 1.6em;
+
+      @media (min-width: 900px) {
+        position: sticky;
+        top: 100px;
+      }
+    }
+
+    &--constrained {
+      max-width: 60em;
+      margin: 0 auto;
+    }
+  }
+
+  .P {
+    display: inline-block;
+    margin: 0 0;
+    padding: 0 0.6em;
+    color: $a1;
+    background: rgba($a1, 0.1);
+    border-radius: 2px;
+    font-feature-settings: 'tnum' 1;
+    font-family: monospace;
+  }
+
+  blockquote {
+    position: relative;
+    display: inline-block;
+    // text-align: center;
+    background: rgba($a1, 0.1);
+    margin: 1em auto;
+    padding: 2em 3em;
+    color: desaturate(darken($a1, 20%), 40%);
+    max-width: 60em;
+
+    &:before {
+      content: "“";
+      position: absolute;
+      font-family: "Bodoni", "Georgia", serif;
+      font-size: 3em;
+      top: 50%;
+      left: -0.2em;
+      margin-top: -.3em;
+    }
+    &:after {
+      content: "”";
+      position: absolute;
+      font-family: "Georgia", serif;
+      font-size: 3em;
+      top: 50%;
+      right: -0.2em;
+      margin-top: -.3em;
+    }
+  }
+  p + blockquote {
+    margin-top: -1em;
+  }
+
+  .Blockquote {
+    margin: 0 auto;
+    text-align: center;
+
+    &__source {
+      margin-top: 0.4em;
+      margin-bottom: -0.8em;
+      font-size: 0.8em;
+      font-style: italic;
+      text-align: left;
+
+      &:before {
+        content: "- ";
+      }
+    }
+  }
+
+  .note {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3em;
+    color: $grey4;
+    font-style: italic;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+
+    img {
+      margin-bottom: -1em;
+    }
+  }
+}
+
+.is-scrolling:not(.is-scrolling-to-code) .D3AndReact {
+  .D3AndReact__marked-list {
+    pointer-events: none;
+  }
+}

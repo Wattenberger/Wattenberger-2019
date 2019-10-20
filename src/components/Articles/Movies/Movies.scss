@@ -1,0 +1,69 @@
+@import "src/styles/lib";
+
+.Movies {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  padding: 6em 2em;
+
+  h1 {
+    margin-bottom: 0;
+    font-size: 3em;
+  }
+
+  &__title {
+    // display: flex;
+    // align-items: center;
+  }
+
+  &__key {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      margin: 0.5em 0;
+      padding-right: 1em;
+      font-size: 0.9em;
+    }
+  }
+
+  .Movie {
+    display: flex;
+    align-items: center;
+
+    &__year {
+      flex: 0 0 5em;
+      width: 5em;
+      color: $grey4;
+    }
+
+    &__title {
+      flex: 0 0 20em;
+      width: 20em;
+      font-weight: 700;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &__cast {
+      // font-size: 0.8em;
+      // line-height: 1.3em;
+      display: flex;
+      align-items: center;
+
+      &__item {
+        // flex: 1;
+        width: 3em;
+        height: 2em;
+
+        &:nth-of-type(1n + 4) {
+          opacity: 0.2;
+        }
+      }
+    }
+  }
+
+}

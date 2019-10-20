@@ -1,0 +1,80 @@
+@import "src/styles/lib";
+
+.Dating {
+  padding: 6em 2em;
+
+  h1 {
+    // margin-bottom: 0;
+    font-size: 3em;
+  }
+
+  &__title {
+    // display: flex;
+    // align-items: center;
+  }
+
+  &__key {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      margin: 0.5em 0;
+      padding-right: 1em;
+      font-size: 0.9em;
+    }
+  }
+
+  &__people {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    margin-left: 43em;
+    z-index: 100;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10em;
+
+    h6 {
+      margin-top: -1em;
+      margin-bottom: 2em;
+      font-size: 0.8em;
+      color: $grey4;
+    }
+
+    select {
+      width: 12em;
+      padding: 0.3em;
+      margin-bottom: 1em;
+    }
+  }
+
+  &__group {
+    margin: 0.3em 0;
+    font-size: 0.8em;
+    line-height: 1.3em;
+    font-weight: 600;
+  }
+
+  &__viz {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 45em;
+    overflow: visible;
+
+    svg {
+      overflow: visible;
+    }
+  }
+
+  &__note {
+    font-size: 0.9em;
+    line-height: 1.3em;
+    margin-top: auto;
+    color: $grey4;
+  }
+}

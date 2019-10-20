@@ -126,6 +126,14 @@
     }
   }
 
+  &--highlighted-marker {
+    &-0 .CodeLine__marker-0 { background: rgba($a1, 0.27); }
+    &-1 .CodeLine__marker-1 { background: rgba($a2, 0.27); }
+    &-2 .CodeLine__marker-2 { background: rgba($a3, 0.27); }
+    &-3 .CodeLine__marker-3 { background: rgba($a4, 0.27); }
+    &-4 .CodeLine__marker-4 { background: rgba($grey4, 0.27); }
+  }
+
   &Line {
     position: relative;
     // width: 100%;
@@ -143,13 +151,18 @@
       }
     }
 
-    &--has-marker {
-      border: 6px solid $a1;
+    &__marker {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      border: 0 solid $a1;
       border-width: 0;
-      border-left-width: 6px;
-    }
+      border-left-width: 0.8em;
+      pointer-events: none;
+      transition: all 0.2s ease-out;
 
-    &--marker {
         // &:before {
         //   content: "";
         //   width: 0.25em;
@@ -164,10 +177,11 @@
         //   transform: translate(-50%, 0);
         // }
         // margin-left: -3px;
-      &-0 { border-color: $a1 }
-      &-1 { border-color: $a2 }
-      &-2 { border-color: $a3 }
-      &-3 { border-color: $a4 }
+      &-0 { border-color: $a1; background: rgba($a1, 0); }
+      &-1 { border-color: $a2; background: rgba($a2, 0); }
+      &-2 { border-color: $a3; background: rgba($a3, 0); }
+      &-3 { border-color: $a4; background: rgba($a4, 0); }
+      &-4 { border-color: $grey4; background: rgba($grey4, 0); }
       // &-0 { &:before {background: $a1 }}
       // &-1 { &:before {background: $a2 }}
       // &-2 { &:before {background: $a3 }}
@@ -357,6 +371,5 @@
     border-radius: 0;
     white-space: pre-wrap;
     line-height: 1.5em;
-	}
-
+  }
 }

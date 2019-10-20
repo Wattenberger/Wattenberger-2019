@@ -21,11 +21,13 @@ const Code = ({
     markers=[],
     language="js",
     theme="dark",
+    highlightedMarker,
     initialExpandedSteps,
     removedLines=[],
     insertedLines=[],
     size="m",
     fileName=null,
+    doScrollWrapper=true,
     doScrollToTop=false,
     doKeepInitialLineNumbers=false,
     hasLineNumbers=true,
@@ -71,13 +73,14 @@ const Code = ({
         if (window.Prism) window.Prism.highlightAll()
     }, [parsedCode, iteration])
 
-    const scrollToHighlightedCode = () => {
+    const scrollToHighlightedCode = (lines=[]) => {
         if (doOnlyShowHighlightedLines) return
 
-        const lines = currentHighlightedLines.current
         if (!lines.length) return
 
         // const isStepCollapsed = lines
+
+        const scrollElem = doScrollWrapper ? wrapper.current : document.scrollingElement || document.documentElement
 
         const lineStartElem = d3.select(wrapper.current)
             .select(`#CodeLine-${lines[0] || 1}`).node()
@@ -89,26 +92,39 @@ const Code = ({
 
         const lineStartY = lineStartElem.getBoundingClientRect().top
         const lineEndY = lineEndElem.getBoundingClientRect().top
-        const height = wrapper.current.offsetHeight
+        const height = doScrollWrapper ? wrapper.current.offsetHeight : window.innerHeight
 
         const doesFitOnScreen = (lineEndY - lineStartY) < height * 0.7
         const y = !doScrollToTop && doesFitOnScreen
             ? lineStartY
                 + (lineEndY - lineStartY) / 2
                 - height / 2
-                + wrapper.current.scrollTop
+                + scrollElem.scrollTop
             : lineStartY
-                + wrapper.current.scrollTop
+                + scrollElem.scrollTop
                 - 35
 
-        scrollTo(y, 600, wrapper.current)
+
+        const documentScrollingElem = document.scrollingElement || document.documentElement
+        documentScrollingElem.classList.add("is-scrolling-to-code")
+        scrollTo(y, 600, scrollElem, false, () => {
+            setTimeout(() => {
+                documentScrollingElem.classList.remove("is-scrolling-to-code")
+            }, 400)
+        })
     }
     const onChange = () => {
         if (needsToScroll.current) {
-            scrollToHighlightedCode()
+            scrollToHighlightedCode(currentHighlightedLines.current)
             needsToScroll.current = false
         }
     }
+    useEffect(() => {
+        if (!highlightedMarker) return
+        scrollToHighlightedCode(
+            markers[highlightedMarker]
+        )
+    }, [highlightedMarker])
 
     useEffect(() => {
         debouncedOnChange.current = _.debounce(onChange, 400)
@@ -178,7 +194,7 @@ const Code = ({
     useEffect(() => {
         needsToScroll.current = true
         debouncedOnChange.current()
-    }, [highlightedLines, iteration])
+    }, [highlightedLines.join(", "), iteration])
 
     const onToggleStepLocal = number => () => {
         const stepIsExpanded = expandedSteps.includes(number)
@@ -261,6 +277,7 @@ const Code = ({
                 `Code--theme-${theme}`,
                 `Code--size-${size}`,
                 `Code--wrap-${doWrap ? "all" : "none"}`,
+                `Code--highlighted-marker-${highlightedMarker}`,
                 getLanguageString(language),
                 className,
             ].join(" ")} ref={wrapper} key={iteration}>
@@ -385,13 +402,16 @@ const CodeLine = ({ code, index, isHighlighted, markerIndex, isEditable, hasLine
     return (
         <div className={[
             "CodeLine",
-            `CodeLine--has-${markerIndex == -1 ? "no-marker" : "marker"}`,
-            `CodeLine--marker-${markerIndex}`,
             `CodeLine--is-${isHighlighted ? "highlighted" : "normal"}`,
         ].join(" ")}
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         id={`CodeLine-${index + 1}`}>
+            {markerIndex != -1 && (
+                <div
+                    className={`CodeLine__marker CodeLine__marker-${markerIndex}`}
+                />
+            )}
             {hasLineNumbers && (
                 <div className="CodeLine__number">
                     { index + 1 }.

@@ -1,0 +1,70 @@
+@import "src/styles/lib";
+
+.Dating {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // text-align: center;
+  padding: 6em 2em;
+  // display: flex;
+
+  h1 {
+    // margin-bottom: 0;
+    font-size: 3em;
+  }
+
+  &__title {
+    // display: flex;
+    // align-items: center;
+  }
+
+  &__key {
+    display: flex;
+    align-items: center;
+
+    &__item {
+      margin: 0.5em 0;
+      padding-right: 1em;
+      font-size: 0.9em;
+    }
+  }
+
+  &__people {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__content {
+    margin-left: 30em;
+    min-height: 100vh;
+  }
+
+  &__group {
+    font-size: 0.8em;
+    line-height: 1.3em;
+  }
+
+  &__viz {
+    position: fixed;
+    top: 60px;
+    left: 6em;
+    bottom: 60px;
+    width: 20em;
+    overflow: visible;
+
+    svg {
+      overflow: visible;
+    }
+  }
+
+  .Person {
+    height: 6px;
+    width: 6px;
+    // mix-blend-mode: multiply;
+    // opacity: 0.6;
+    // transition: all 1.6s ease-out;
+    // margin: 0.3px;
+    // border-radius: 100%;
+  }
+}

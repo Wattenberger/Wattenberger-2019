@@ -33,7 +33,10 @@ const Fishing = React.lazy(() => import("components/Articles/Fishing/Fishing"));
 const TrafficSources = React.lazy(() => import("components/Articles/TrafficSources/TrafficSources"));
 const ElectionHeads = React.lazy(() => import("components/ElectionHeads/ElectionHeads"));
 const DVS = React.lazy(() => import("components/Articles/DVS/DVS"));
+const Dating = React.lazy(() => import("components/Articles/Dating/Dating"));
+const Diet = React.lazy(() => import("components/Articles/Diet/Diet"));
 const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVSChannels"));
+const Movies = React.lazy(() => import("components/Articles/Movies/Movies"));
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
 const ReactZdog = React.lazy(() => import("components/Articles/ReactZdog/ReactZdog"));
 const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDemo"));
@@ -41,6 +44,7 @@ const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
 const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
+const D3AndReact = React.lazy(() => import("components/Blog/posts/D3AndReact/D3AndReact"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
@@ -94,7 +98,10 @@ class App extends Component {
               <Route path="/dvs-channels" component={DVSChannels} />
               <Route path="/authors" component={Authors} />
               <Route path="/fishing" component={Fishing} />
+              <Route path="/movies" component={Movies} />
               <Route path="/music" component={Music} />
+              <Route path="/diet" component={Diet} />
+              <Route path="/dating" component={Dating} />
               <Route path="/chaconne" component={Chaconne} />
               <Route path="/game-of-thrones" component={GameOfThrones} />
               <Route path="/traffic-sources" component={TrafficSources} />
@@ -106,6 +113,7 @@ class App extends Component {
               <Route path="/blog/d3" component={LearnD3} />
               <Route path="/blog/svg" component={SVG} />
               <Route path="/blog/react-hooks" component={Hooks} />
+              <Route path="/blog/react-and-d3" component={D3AndReact} />
               <Route path="/blog" component={Blog} />
               <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
               <Route path="/keep-in-touch" component={NewsletterSignupPage} />
