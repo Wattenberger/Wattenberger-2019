@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import { Helmet } from "react-helmet"
-import * as d3 from "d3"
-import { range } from "d3"
-import { debounce } from "lodash"
+import {useSpring, animated} from 'react-spring'
+import { area, curveBasis, randomNormal } from "d3"
+import { debounce, times, uniqueId } from "lodash"
 
 import Code from "components/_ui/Code/Code"
 import Expandy from "components/_ui/Expandy/Expandy"
@@ -19,6 +19,7 @@ import constructionGif from "./construction.gif";
 
 import "./D3AndReact.scss"
 import { sections } from "./examples"
+import { useInterval } from "utils/utils"
 
 const D3AndReact = () => {
     const [highlightedLines, setHighlightedLines] = useState([])
@@ -75,6 +76,7 @@ const D3AndReact = () => {
 
             <div className="D3AndReact__content">
                 <div className="D3AndReact__centered">
+                    <HeaderBackground />
                     <h1>
                         React + D3.js
                     </h1>
@@ -356,3 +358,113 @@ const HoursScatterplot = () => {
     />
   )
 }`
+
+
+const colors = [
+    "#2c3e50",
+    "#9980FA",
+    "#f2f2f7",
+]
+const gradients = [
+    ["#f2f2f7", "#9980FA", "#f2f2f7",],
+    ["#f2f2f7", "#12CBC4", "#f2f2f7",],
+    ["#f2f2f7", "#FFC312", "#f2f2f7",],
+]
+const numberOfWiggles = 20
+const heightOfBackground = 30
+const getPath = () => (
+    area()
+        .x(([x, y]) => x)
+        .y0(([x, y]) => -y)
+        .y1(([x, y, y1]) => y1)
+        .curve(curveBasis)
+    (
+        times(numberOfWiggles, i => (
+            [
+                // i + randomNormal(0, 0.5)(), // x
+                i, // x
+                Math.max(0,
+                    heightOfBackground / 2
+                    * (1 / ((Math.abs(i - numberOfWiggles / 2) || 1)))
+                    + randomNormal(0, 8)()
+                    + 3
+                ), // y0
+                Math.min(0,
+                    -heightOfBackground / 2
+                    * (1 / ((Math.abs(i - numberOfWiggles / 2) || 1)))
+                    + randomNormal(0, 8)()
+                    - 3
+                ), // y1
+            ]
+        ))
+    )
+)
+const springConfig = {
+    duration: 3000,
+}
+const HeaderBackground = () => {
+    const gradientIds = useMemo(() => (
+        times(3, () => (
+            `HeaderBackground__gradient--id-${uniqueId()}`
+        ))
+    ), [])
+
+    const [path1, setPath1] = useState(getPath)
+    const [path2, setPath2] = useState(getPath)
+    const [path3, setPath3] = useState(getPath)
+
+    useInterval(() => {
+        setPath1(getPath())
+        setPath2(getPath())
+        setPath3(getPath())
+    }, 3000)
+
+    const spring1 = useSpring({ config: springConfig, d: path1 })
+    const spring2 = useSpring({ config: springConfig, d: path2 })
+    const spring3 = useSpring({ config: springConfig, d: path3 })
+
+    return (
+        <div className="HeaderBackground">
+            <svg
+                className="HeaderBackground__svg"
+                viewBox={[
+                    0,
+                    -heightOfBackground / 2,
+                    numberOfWiggles - 1,
+                    heightOfBackground
+                ].join(" ")}
+                preserveAspectRatio="none">
+                <defs>
+                    {gradients.map((colors, gradientIndex) => (
+                        <linearGradient id={gradientIds[gradientIndex]}>
+                            {colors.map((color, colorIndex) => (
+                                <stop
+                                    key={[gradientIndex, colorIndex].join("-")}
+                                    stopColor={color}
+                                    offset={`${
+                                        colorIndex / (colors.length - 1) * 100
+                                    }%`}
+                                />
+                            ))}
+                        </linearGradient>
+                    ))}
+                </defs>
+                <animated.path
+                    className="HeaderBackground__path"
+                    {...spring1}
+                    fill={`url(#${gradientIds[0]})`}
+                />
+                <animated.path
+                    className="HeaderBackground__path"
+                    {...spring2}
+                    fill={`url(#${gradientIds[1]})`}
+                />
+                <animated.path
+                    className="HeaderBackground__path"
+                    {...spring3}
+                    fill={`url(#${gradientIds[2]})`}
+                />
+            </svg>
+        </div>
+    )
+}

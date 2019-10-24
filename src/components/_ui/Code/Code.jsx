@@ -120,7 +120,7 @@ const Code = ({
         }
     }
     useEffect(() => {
-        if (!highlightedMarker) return
+        if (!Number.isFinite(highlightedMarker)) return
         scrollToHighlightedCode(
             markers[highlightedMarker]
         )

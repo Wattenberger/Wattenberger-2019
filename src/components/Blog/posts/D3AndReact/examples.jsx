@@ -30,6 +30,30 @@ const sectionLabels = [
     "Creating many SVG elements",
     CreatingManySVGElements,
   ],
+  [
+    "Sizing & Responsivity",
+    () => <></>,
+  ],
+  [
+    "Axes",
+    () => <></>,
+  ],
+  [
+    "Animations",
+    () => <></>,
+  ],
+  [
+    "Maps",
+    () => <></>,
+  ],
+  [
+    "Complex visualization layouts",
+    () => <></>,
+  ],
+  [
+    "Linking multiple charts",
+    () => <></>,
+  ],
 ]
 export const sections = sectionLabels.map(([label, Component]) => ({
   label,
@@ -56,19 +80,33 @@ export const Blockquote = ({ source, children, ...props }) => (
 
 export const CodeAndExample = ({ code, markers, example, fileName, theme, size, highlightedLines, hasLineNumbers=true }) => {
   const [highlightedMarker, setHighlightedMarker] = useState(null)
+  const [hoveredMarker, setHoveredMarker] = useState(null)
+
+  const getHighlightedMarkerProps = index => ({
+    onMouseEnter: () => setHoveredMarker(index),
+    onMouseLeave: () => {
+      setHoveredMarker(null)
+      setHighlightedMarker(null)
+    },
+    onClick: () => setHighlightedMarker(index),
+    style: {
+      cursor: "zoom-in",
+    }
+  })
 
   return (
     <div className="CodeAndExample D3AndReact__side-by-side">
       <div className={`D3AndReact__side-by-side__section CodeAndExample__code--marker-${highlightedMarker}`}>
         <Code
           {...{markers, highlightedMarker, fileName, theme, size, highlightedLines, hasLineNumbers}}
+          className={`Code--highlighted-marker-${hoveredMarker}`}
           doWrap={false}
           doScrollWrapper={false}>
           { code }
         </Code>
       </div>
       <div className="D3AndReact__side-by-side__section">
-        { example(setHighlightedMarker) }
+        { example(getHighlightedMarkerProps) }
       </div>
     </div>
   )

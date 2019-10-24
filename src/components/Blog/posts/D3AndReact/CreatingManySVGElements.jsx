@@ -38,7 +38,7 @@ const CreatingManySVGElements = () => {
         <CodeAndExample
           code={generateDatasetCode}
           hasLineNumbers={false}
-          example={setHighlightedMarker => (
+          example={getHighlightedMarkerProps => (
             <>
               <Button style={{
                 position: "absolute",
@@ -96,7 +96,7 @@ const CreatingManySVGElements = () => {
           ]}
           fileName="Circles.jsx (d3 version)"
           theme="light"
-          example={setHighlightedMarker => (
+          example={getHighlightedMarkerProps => (
             <>
               <br />
 
@@ -107,13 +107,13 @@ const CreatingManySVGElements = () => {
               </p>
 
               <List className="D3AndReact__marked-list" items={[
-                  <div onMouseEnter={() => setHighlightedMarker(0)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(0)}>
                       We're creating a selection of all <P>{`<circle>`}</P> elements and using our d3 selection's <Link to="https://github.com/d3/d3-selection#selection_join"><P>.join()</P></Link> method to add a circle for each data point
                     </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(1)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(1)}>
                       We're re-running our d3 code whenever <P>dataset</P> changes
                     </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(2)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(2)}>
                       We're using <P>useInterval()</P> (from the end of <Link to="/blog/react-hooks">Thinking in React Hooks</Link>) to re-calculate our <P>dataset</P> every two seconds
                     </div>,
                 ]} hasNumbers />
@@ -139,7 +139,7 @@ const CreatingManySVGElements = () => {
             [14, 15, 16, 17, 18],
           ]}
           fileName="Circles.jsx (React version)"
-          example={setHighlightedMarker => (
+          example={getHighlightedMarkerProps => (
             <>
               <br />
 
@@ -150,10 +150,10 @@ const CreatingManySVGElements = () => {
               </p>
 
               <List className="D3AndReact__marked-list" items={[
-                  <div onMouseEnter={() => setHighlightedMarker(0)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(0)}>
                     Looping over each data point, and
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(1)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(1)}>
                     rendering a <P>{`<circle`}</P> at <P>[x, y]</P>
                   </div>,
                 ]} hasNumbers />
@@ -186,7 +186,7 @@ const CreatingManySVGElements = () => {
           fileName="Transitions.jsx (d3 version)"
           theme="light"
           size="s"
-          example={setHighlightedMarker => (
+          example={getHighlightedMarkerProps => (
             <>
               <br />
 
@@ -201,13 +201,13 @@ const CreatingManySVGElements = () => {
               </p>
 
               <List className="D3AndReact__marked-list" items={[
-                  <div onMouseEnter={() => setHighlightedMarker(0)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(0)}>
                     circles that are new are animated in in <span style={{color: "cornflowerblue", fontWeight: 600}}>blue</span>,
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(1)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(1)}>
                     circles that stay for multiple rounds turn <span style={{color: "lightgrey", fontWeight: 600}}>grey</span>,
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(2)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(2)}>
                     circles that aren't in the new round are animated out in <span style={{color: "tomato", fontWeight: 600}}>red</span>,
                   </div>,
                 ]} hasNumbers />
@@ -232,7 +232,7 @@ const CreatingManySVGElements = () => {
           ]}
           fileName="Transitions.jsx (d3 version)"
           // size="s"
-          example={setHighlightedMarker => (
+          example={getHighlightedMarkerProps => (
             <>
               <br />
 
@@ -247,19 +247,19 @@ const CreatingManySVGElements = () => {
               </p>
 
               <List className="D3AndReact__marked-list" items={[
-                  <div onMouseEnter={() => setHighlightedMarker(0)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(0)}>
                     loop over our <P>allCircles</P> array and create a <P>{`<AnimatedCircle>`}</P> for each item,
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(1)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(1)}>
                     define a <P>AnimatedCircle</P> component that takes to props: <P>index</P> (for positioning), and <P>isShowing</P>
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(2)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(2)}>
                     cache the last <P>isShowing</P> value, so we can see whether the <P>{`<circle>`}</P> is entering or exiting
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(3)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(3)}>
                     use the <P>useSpring</P> hook from <Link to="https://www.react-spring.io">react-spring</Link> to animate the <P>{`<circle>`}</P>'s <b>radius</b> and <b>opacity</b>
                   </div>,
-                  <div onMouseEnter={() => setHighlightedMarker(4)} onMouseLeave={() => setHighlightedMarker(null)}>
+                  <div  {...getHighlightedMarkerProps(4)}>
                     use <P>animated</P> from <Link to="https://www.react-spring.io">react-spring</Link> to animate our <P>{`<circle>`}</P>'s and spread our animated values as element attributes
                   </div>,
                 ]} hasNumbers />

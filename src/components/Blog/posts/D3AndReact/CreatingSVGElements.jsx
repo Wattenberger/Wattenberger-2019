@@ -54,7 +54,7 @@ const CreatingSVGElements = () => {
               ]}
               fileName="Circle.jsx (d3 version)"
               theme="light"
-              example={setHighlightedMarker => (
+              example={getHighlightedMarkerProps => (
                 <>
                   <CircleWithD3 />
 
@@ -62,16 +62,16 @@ const CreatingSVGElements = () => {
                       Our component does a few new things:
                   </p>
                   <List className="D3AndReact__marked-list" items={[
-                    <div onMouseEnter={() => setHighlightedMarker(0)} onMouseLeave={() => setHighlightedMarker(null)}>
+                    <div {...getHighlightedMarkerProps(0)}>
                       uses a <P>ref</P> to store a reference to our rendered <P>{`<svg>`}</P> element
                     </div>,
-                    <div onMouseEnter={() => setHighlightedMarker(1)} onMouseLeave={() => setHighlightedMarker(null)}>
+                    <div {...getHighlightedMarkerProps(1)}>
                       runs d3 code when the Component mounts
                     </div>,
-                    <div onMouseEnter={() => setHighlightedMarker(2)} onMouseLeave={() => setHighlightedMarker(null)}>
+                    <div {...getHighlightedMarkerProps(2)}>
                       uses <P>d3.select()</P> to turn our <P>ref</P> into a <b>d3 selection object</b>
                     </div>,
-                    <div onMouseEnter={() => setHighlightedMarker(3)} onMouseLeave={() => setHighlightedMarker(null)}>
+                    <div {...getHighlightedMarkerProps(3)}>
                       uses our <b>d3 selection object</b> to <P>append</P> a <P>{`<circle>`}</P> element
                     </div>
                   ]} hasNumbers />
