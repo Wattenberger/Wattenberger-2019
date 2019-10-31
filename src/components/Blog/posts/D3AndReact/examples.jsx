@@ -3,6 +3,7 @@ import { kebabCase } from "lodash"
 
 import CreatingSVGElements from "./CreatingSVGElements"
 import CreatingManySVGElements from "./CreatingManySVGElements"
+import Axes from "./Axes"
 
 import Code from "components/_ui/Code/Code"
 
@@ -31,11 +32,11 @@ const sectionLabels = [
     CreatingManySVGElements,
   ],
   [
-    "Sizing & Responsivity",
-    () => <></>,
+    "Axes",
+    Axes,
   ],
   [
-    "Axes",
+    "Sizing & Responsivity",
     () => <></>,
   ],
   [
@@ -55,7 +56,7 @@ const sectionLabels = [
     () => <></>,
   ],
 ]
-export const sections = sectionLabels.map(([label, Component]) => ({
+export const sections = sectionLabels.map(([label, Component=() => <></>]) => ({
   label,
   Component,
   slug: kebabCase(label),

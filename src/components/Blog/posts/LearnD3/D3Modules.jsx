@@ -4,17 +4,18 @@ import _ from "lodash"
 import * as d3ScaleChromatic from "d3-scale-chromatic"
 import Link from "components/_ui/Link/Link"
 import Tooltip from "components/_ui/Tooltip/Tooltip"
-import { useChartDimensions } from "components/_ui/Chart/utils/utils"
 
 import modules from "./modules.json"
 import "./D3Modules.scss"
-
 
 const numberFormat = d3.format(",.1f")
 const coreModules = ["d3-array","d3-axis","d3-brush","d3-chord","d3-collection","d3-color","d3-contour","d3-dispatch","d3-drag","d3-dsv","d3-ease","d3-fetch","d3-force","d3-format","d3-geo","d3-hierarchy","d3-interpolate","d3-path","d3-polygon","d3-quadtree","d3-random","d3-scale","d3-scale-chromatic","d3-selection","d3-shape","d3-time","d3-time-format","d3-timer","d3-transition","d3-voronoi","d3-zoom"]
 const isInCore = d => coreModules.includes(d)
 
-const D3Modules = ({ focusedPackages, isShrunk, className }) => {
+const D3Modules = ({ focusedPackages, hasSearch=false, isShrunk=false, className }) => {
+    const [searchValue, setSearchValue] = useState("")
+    const parsedSearchValue = isShrunk ? "" : searchValue
+
     const width = Math.max(
         Math.min(
             // Math.max(900, window.innerWidth - 100),
@@ -22,7 +23,7 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
             window.innerHeight + 100,
             2200
         ),
-        700,
+        900,
     )
     const height = width * 0.96
 
@@ -83,11 +84,18 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
         return wrapperScale
     }, [isShrunk, width])
 
-
     return (
         <div className={`D3Modules ${className}`}
             // style={{height: `${height + 20}px`}}
         >
+            {hasSearch && (
+                <input
+                    className="D3Modules__search"
+                    value={searchValue}
+                    onChange={e => setSearchValue(e.target.value)}
+                    placeholder="Find a module"
+                />
+            )}
             <div className="D3Modules__wrapper" style={{
                 width: `${width}px`,
                 height: `${height}px`,
@@ -98,12 +106,13 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
                         key={module.title}
                         {...module.data}
                         {...module}
+                        searchValue={parsedSearchValue}
                         isUnfocused={focusedPackages && !focusedPackages.includes(module.data.repo)}
                         isFocused={!!focusedPackages && focusedPackages.includes(module.data.repo)}
                     />
                 ))}
 
-                {leftMostExternalPackage && !focusedPackages && !isShrunk && (
+                {leftMostExternalPackage && !focusedPackages && !isShrunk && !parsedSearchValue && (
                     <div className="D3Modules__annotation" style={{
                         transform: `translate(${leftMostExternalPackage.x}px, ${leftMostExternalPackage.y + leftMostExternalPackage.r * 1.5}px)`
                     }}>
@@ -119,11 +128,12 @@ const D3Modules = ({ focusedPackages, isShrunk, className }) => {
 
 export default D3Modules;
 
-export const D3ModulesItem = ({ size, title, repo, name, r, x, y, isInCore, isUnfocused, isFocused, children, isDeprecated }) => (
+export const D3ModulesItem = ({ size, title, repo, name, r, x, y, searchValue, isInCore, isUnfocused, isFocused, children, isDeprecated }) => (
     <Link
         href={`https://github.com/d3/${repo}`}
         className={[
             "D3ModulesItem",
+            `D3ModulesItem--is-${searchValue ? "searching" : "normal"}`,
             `D3ModulesItem--is-${isDeprecated ? "deprecated" : isInCore ? "core" : "external"}`,
             `D3ModulesItem--is-${
                 isFocused ? "focused" :
@@ -157,12 +167,16 @@ export const D3ModulesItem = ({ size, title, repo, name, r, x, y, isInCore, isUn
 
         <div className="D3ModulesItem__children">
             {children.length > 1 && children.map(d => (
-                <Tooltip className="D3ModulesItem__child" key={d.data.name} contents={d.name} style={{
-                    height: `${d.r * 2}px`,
-                    width: `${d.r * 2}px`,
-                    transform: `translate(${d.x}px, ${d.y}px)`
-                }}>
-                </Tooltip>
+                <Tooltip className={`D3ModulesItem__child D3ModulesItem__child--is-${
+                        !searchValue ? "normal" :
+                        (d.data.name || d.data.title || "").split(" -")[0].toLowerCase().includes(searchValue.toLowerCase()) ? "match" :
+                            "not-match"
+                    }`} key={d.data.name || d.data.title} contents={d.name} style={{
+                        height: `${d.r * 2}px`,
+                        width: `${d.r * 2}px`,
+                        transform: `translate(${d.x}px, ${d.y}px)`
+                    }}
+                />
             ))}
         </div>
     </Link>

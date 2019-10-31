@@ -31,7 +31,8 @@
       max-width: 60em;
     }
 
-    & > div > div > .List {
+    & > div > div > .List,
+    & > div > .Aside {
       margin: 1.2em auto 0.8em;
       max-width: 60em;
     }
@@ -52,6 +53,22 @@
 
   i {
     font-style: italic;
+  }
+
+  &__section {
+    &__header {
+      &:hover {
+        .D3AndReact__section__header__anchor {
+          opacity: 1;
+        }
+      }
+
+      &__anchor {
+        position: absolute;
+        margin-left: -0.9em;
+        opacity: 0;
+      }
+    }
   }
 
   &__marked-list {
@@ -81,6 +98,39 @@
         font-weight: 600;
         border-radius: 100%;
       }
+    }
+  }
+
+  &__inputs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 -1em 3em;
+
+    &__note {
+      color: $grey4;
+      font-style: italic;
+      font-size: 0.8em;
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+      min-width: 15em;
+      margin: 0 1em;
+
+      &__label {
+        font-weight: 700;
+        margin-right: 1em;
+      }
+    }
+
+    input {
+      width: 3.7em;
+      margin: 0 0.5em;
+      padding: 0.3em 0.4em;
+      border-color: transparent;
+      border-bottom-color: $a2;
     }
   }
 

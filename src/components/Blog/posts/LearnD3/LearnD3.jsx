@@ -291,6 +291,7 @@ function Intro({ focusedPackages, onScrollToSectionLocal }) {
                 className={`LearnD3__diagram LearnD3__diagram--within-page LearnD3__diagram--is-${isDiagramShrunk ? "shrunk" : "normal"}`}
                 isShrunk={isDiagramShrunk}
                 focusedPackages={tempFocusedPackages}
+                hasSearch
             />
 
             <div className="LearnD3__section" style={{

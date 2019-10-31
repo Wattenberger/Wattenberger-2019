@@ -19,17 +19,36 @@ import constructionGif from "./construction.gif";
 
 import "./D3AndReact.scss"
 import { sections } from "./examples"
-import { useInterval } from "utils/utils"
+import { useInterval, useHash } from "utils/utils"
+import { scrollTo } from "utils"
 
 const D3AndReact = () => {
     const [highlightedLines, setHighlightedLines] = useState([])
     const [initialExpandedSteps, setInitialExpandedSteps] = useState()
     const [code, setCode] = useState(null)
+    const [hash, setHash] = useHash(null)
     const [fileName, setFileName] = useState(null)
     const [removedLines, setRemovedLines] = useState([])
     const [insertedLines, setInsertedLines] = useState([])
     const ref = useRef()
     const [isScrolling, setIsScrolling] = useState([])
+
+    const onSetHash = (newHash, e) => {
+        if (e) e.preventDefault()
+        if (!newHash) return
+        // if (newHash == hash) return
+        const elem = document.getElementById(newHash)
+        if (!elem) return
+        const y = elem.getBoundingClientRect().top
+            + document.documentElement.scrollTop
+            - 150
+        scrollTo(y, 300)
+        setHash(newHash)
+    }
+
+    useEffect(() => {
+        if (hash) onSetHash(hash)
+    }, [])
 
     useEffect(() => {
         const scrollingElem = document.scrollingElement || document.documentElement
@@ -125,9 +144,12 @@ const D3AndReact = () => {
                         Let's start at the beginning, shall we?
                     </p>
 
-                    {sections.map(({ id, label, Component }) => (
-                        <div className="D3AndReact__section" key={id} id={id}>
-                            <h2>
+                    {sections.map(({ slug, label, Component }) => (
+                        <div className="D3AndReact__section" key={slug} id={slug}>
+                            <h2 className="D3AndReact__section__header">
+                                <Link className="D3AndReact__section__header__anchor" to={`#${slug}`} onClick={e => onSetHash(slug, e)}>
+                                    #
+                                </Link>
                                 { label }
                             </h2>
                             <Component />

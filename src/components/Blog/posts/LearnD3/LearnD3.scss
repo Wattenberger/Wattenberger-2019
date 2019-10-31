@@ -355,16 +355,18 @@
             z-index: 5;
         }
 
+        &--solo {
+            @media (max-width: 860px) {
+                display: none;
+            }
+        }
+
         &--solo,
         &--is-shrunk {
             // position: fixed;
             overflow: visible;
             position: sticky;
             // top: 10px;
-
-            @media (max-width: 860px) {
-                display: none;
-            }
 
             @media (min-width: 860px) {
                 justify-content: flex-end;
@@ -379,8 +381,11 @@
         }
 
         .D3Modules__wrapper {
-            overflow: hidden;
             transition: all 0.5s ease-out;
+
+            @media (min-width: 860px) {
+                overflow: hidden;
+            }
         }
 
     }

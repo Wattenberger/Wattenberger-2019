@@ -70,9 +70,6 @@
         "title": "geoConicConformal"
       },
       {
-        "title": "geoConicEqualArea"
-      },
-      {
         "title": "geoConicEquidistant"
       },
       {
@@ -160,13 +157,7 @@
         "title": "geoHammerRetroazimuthal"
       },
       {
-        "title": "geoHealpix"
-      },
-      {
         "title": "geoHill"
-      },
-      {
-        "title": "geoEckert4"
       },
       {
         "title": "geoHomolosine"
@@ -205,43 +196,22 @@
         "title": "geoMiller"
       },
       {
-        "title": "geoMercator"
-      },
-      {
         "title": "geoModifiedStereographic"
       },
       {
         "title": "geoModifiedStereographicAlaska"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicGs48"
-      },
-      {
-        "title": "geoModifiedStereographic"
       },
       {
         "title": "geoModifiedStereographicGs50"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicMiller"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicLee"
-      },
-      {
-        "title": "geoModifiedStereographic"
-      },
-      {
-        "title": "geoMollweide"
       },
       {
         "title": "geoMtFlatPolarParabolic"
@@ -346,46 +316,16 @@
         "title": "geoInterrupt"
       },
       {
-        "title": "geoInterruptedHomolosine"
-      },
-      {
-        "title": "geoInterrupt"
-      },
-      {
-        "title": "geoInterruptedHomolosine"
-      },
-      {
-        "title": "geoHomolosine"
-      },
-      {
         "title": "geoInterruptedSinusoidal"
-      },
-      {
-        "title": "geoSinusoidal"
-      },
-      {
-        "title": "geoInterruptedBoggs"
-      },
-      {
-        "title": "geoBoggs"
       },
       {
         "title": "geoInterruptedSinuMollweide"
       },
       {
-        "title": "geoSinuMollweide"
-      },
-      {
         "title": "geoInterruptedMollweide"
       },
       {
-        "title": "geoMollweide"
-      },
-      {
         "title": "geoInterruptedMollweideHemispheres"
-      },
-      {
-        "title": "geoMollweide"
       },
       {
         "title": "geoInterruptedQuarticAuthalic"
@@ -407,12 +347,6 @@
       },
       {
         "title": "geoGringortenQuincuncial"
-      },
-      {
-        "title": "geoPeirceQuincuncial"
-      },
-      {
-        "title": "geoGuyou"
       },
       {
         "title": "geoProject"
@@ -500,9 +434,6 @@
         "title": "geoConicConformal"
       },
       {
-        "title": "geoConicEqualArea"
-      },
-      {
         "title": "geoConicEquidistant"
       },
       {
@@ -590,13 +521,7 @@
         "title": "geoHammerRetroazimuthal"
       },
       {
-        "title": "geoHealpix"
-      },
-      {
         "title": "geoHill"
-      },
-      {
-        "title": "geoEckert4"
       },
       {
         "title": "geoHomolosine"
@@ -635,43 +560,22 @@
         "title": "geoMiller"
       },
       {
-        "title": "geoMercator"
-      },
-      {
         "title": "geoModifiedStereographic"
       },
       {
         "title": "geoModifiedStereographicAlaska"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicGs48"
-      },
-      {
-        "title": "geoModifiedStereographic"
       },
       {
         "title": "geoModifiedStereographicGs50"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicMiller"
       },
       {
-        "title": "geoModifiedStereographic"
-      },
-      {
         "title": "geoModifiedStereographicLee"
-      },
-      {
-        "title": "geoModifiedStereographic"
-      },
-      {
-        "title": "geoMollweide"
       },
       {
         "title": "geoMtFlatPolarParabolic"
@@ -776,46 +680,16 @@
         "title": "geoInterrupt"
       },
       {
-        "title": "geoInterruptedHomolosine"
-      },
-      {
-        "title": "geoInterrupt"
-      },
-      {
-        "title": "geoInterruptedHomolosine"
-      },
-      {
-        "title": "geoHomolosine"
-      },
-      {
         "title": "geoInterruptedSinusoidal"
-      },
-      {
-        "title": "geoSinusoidal"
-      },
-      {
-        "title": "geoInterruptedBoggs"
-      },
-      {
-        "title": "geoBoggs"
       },
       {
         "title": "geoInterruptedSinuMollweide"
       },
       {
-        "title": "geoSinuMollweide"
-      },
-      {
         "title": "geoInterruptedMollweide"
       },
       {
-        "title": "geoMollweide"
-      },
-      {
         "title": "geoInterruptedMollweideHemispheres"
-      },
-      {
-        "title": "geoMollweide"
       },
       {
         "title": "geoInterruptedQuarticAuthalic"
@@ -837,12 +711,6 @@
       },
       {
         "title": "geoGringortenQuincuncial"
-      },
-      {
-        "title": "geoPeirceQuincuncial"
-      },
-      {
-        "title": "geoGuyou"
       },
       {
         "title": "geoProject"
@@ -4790,6 +4658,10 @@
         "subCategory": "Joining Data"
       },
       {
+        "title": "selection.join - join elements to data.",
+        "subCategory": "Joining Data"
+      },
+      {
         "title": "selection.enter - get the enter selection (data missing elements).",
         "subCategory": "Joining Data"
       },
@@ -5003,6 +4875,10 @@
       },
       {
         "name": "selection.data - join elements to data.",
+        "value": 13052
+      },
+      {
+        "name": "selection.join - join elements to data.",
         "value": 13052
       },
       {

@@ -69,7 +69,7 @@ class Tooltip extends Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
-        return !areEqual(nextProps, this.props, [ "contents", "placement", "isKeptOnScroll", "children", "iteration" ]) ||
+        return !areEqual(nextProps, this.props, [ "contents", "placement", "isKeptOnScroll", "children", "iteration", "className" ]) ||
                !areEqual(nextState, this.state, [ "isShowing", "isRendered", "isUnmounting", "top",  "left",  "arrowXOffset" ])
     }
 

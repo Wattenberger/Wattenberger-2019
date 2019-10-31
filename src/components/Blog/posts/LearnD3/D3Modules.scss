@@ -26,6 +26,16 @@
         position: relative;
     }
 
+    &__search {
+        position: absolute;
+        top: 3em;
+        right: 3em;
+        font-size: 1.2em;
+        padding: 0.6em 1.3em;
+        pointer-events: all;
+        z-index: 100;
+    }
+
     &__annotation {
         position: absolute;
         top: 0;
@@ -143,68 +153,96 @@
 
         }
 
-        &--is-external {
-            background: rgba($a3, 0.3);
+        &--is {
+            &-external {
+                background: rgba($a3, 0.3);
 
-            &:active,
-            &:focus,
-            &:visited,
-            &:hover {
-                border-color: $a3;
-            }
+                &:active,
+                &:focus,
+                &:visited,
+                &:hover {
+                    border-color: $a3;
+                }
 
-            .D3ModulesItem {
-                &__child {
-                    background: rgba($a3, 0.3);
+                .D3ModulesItem {
+                    &__child {
+                        background: rgba($a3, 0.3);
+                    }
+                }
+
+                &.D3ModulesItem--is-focused {
+                    border-color: $a3;
                 }
             }
 
-            &.D3ModulesItem--is-focused {
-                border-color: $a3;
-            }
-        }
+            &-deprecated {
+                background: rgba(#ccccd4, 0.3);
 
-        &--is-deprecated {
-            background: rgba(#ccccd4, 0.3);
+                &:active,
+                &:focus,
+                &:visited,
+                &:hover {
+                    border-color: #ccccd4;
+                }
 
-            &:active,
-            &:focus,
-            &:visited,
-            &:hover {
-                border-color: #ccccd4;
-            }
+                .D3ModulesItem {
+                    &__child {
+                        background: rgba(#ccccd4, 0.3);
+                    }
+                }
 
-            .D3ModulesItem {
-                &__child {
-                    background: rgba(#ccccd4, 0.3);
+                &.D3ModulesItem--is-focused {
+                    border-color: #ccccd4;
                 }
             }
 
-            &.D3ModulesItem--is-focused {
-                border-color: #ccccd4;
-            }
-        }
+            &-unfocused {
+                background: rgba($grey4, 0.1);
+                // pointer-events: none;
 
-        &--is-unfocused {
-            background: rgba($grey4, 0.1);
-            // pointer-events: none;
+                .D3ModulesItem {
+                    &__child {
+                        background: rgba($grey4, 0.1);
+                    }
+                }
 
-            .D3ModulesItem {
-                &__child {
-                    background: rgba($grey4, 0.1);
+                &:active,
+                &:focus,
+                &:visited,
+                &:hover {
+                    border-color: $grey4;
                 }
             }
 
-            &:active,
-            &:focus,
-            &:visited,
-            &:hover {
-                border-color: $grey4;
+            &-focused {
+                border-color: $a1;
             }
-        }
 
-        &--is-focused {
-            border-color: $a1;
+            &-searching {
+                background: rgba($grey3, 0.3);
+
+                .D3ModulesItem {
+                    &__child {
+                        opacity: 1;
+
+                        &--is {
+                            &-not-match {
+                                background: white;
+                                opacity: 0.6;
+                            }
+                            &-match {
+                                background: $a1;
+                            }
+                        }
+                    }
+                }
+                &:active,
+                &:focus,
+                &:visited,
+                &:hover {
+                    border-color: $grey4;
+                }
+            }
         }
 
         &__children {
