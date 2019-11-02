@@ -39,6 +39,7 @@ const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVS
 const Movies = React.lazy(() => import("components/Articles/Movies/Movies"));
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
 const ReactZdog = React.lazy(() => import("components/Articles/ReactZdog/ReactZdog"));
+const ReactRepo = React.lazy(() => import("components/Articles/ReactRepo/ReactRepo"));
 const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDemo"));
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
@@ -100,6 +101,7 @@ class App extends Component {
               <Route path="/fishing" component={Fishing} />
               <Route path="/movies" component={Movies} />
               <Route path="/music" component={Music} />
+              <Route path="/react-repo" component={ReactRepo} />
               <Route path="/diet" component={Diet} />
               <Route path="/dating" component={Dating} />
               <Route path="/chaconne" component={Chaconne} />

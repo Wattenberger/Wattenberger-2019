@@ -1,0 +1,175 @@
+@import "src/styles/lib";
+
+.ReactRepo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6em 2em;
+
+  h1 {
+    // margin-bottom: 0;
+    font-size: 3em;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: flex-start;
+    position: fixed;
+    bottom: 0;
+    right: 2em;
+    padding: 0.3em 1em 0.9em;
+    background: white;
+    font-size: 0.9em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
+    z-index: 100;
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &__toggle {
+    margin-right: 1em;
+  }
+
+  &__chart {
+    position: relative;
+    margin-left: auto;
+    padding-right: 10em;
+  }
+
+  &__svg {
+    // width: 100%;
+    overflow: visible;
+    // transition: all 0.3s ease-out;
+  }
+
+  &__note {
+    font-size: 1em;
+    padding: 1em 1.8em;
+    line-height: 1.3em;
+    color: $tc;
+    opacity: 0.5;
+  }
+
+  .Node {
+    transition: all 0.3s ease-out;
+
+    &--is {
+      &-hidden {
+        opacity: 0;
+      }
+    }
+
+    &--type {
+      &-folder {
+        cursor: pointer;
+      }
+    }
+
+    &__folder {
+      color: $grey2;
+      cursor: pointer;
+    }
+
+    &__circle {
+      fill: $grey2;
+      // fill-opacity: 0.6;
+      stroke: $tc;
+      stroke-width: 0;
+      mix-blend-mode: multiply;
+      cursor: pointer;
+    }
+
+    &__text {
+      fill: $tc;
+      font-size: 0.9em;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &:hover {
+      .Node {
+        &__folder {
+          color: $tc;
+        }
+        &__circle {
+          stroke-width: 2;
+        }
+        &__text {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .NodeLink {
+    fill: none;
+    stroke: $grey2;
+    stroke-width: 0.9px;
+    shape-rendering: crispEdges;
+    transition: all 0.3s ease-out;
+  }
+
+  .Folder {
+    fill: white;
+    stroke: currentColor;
+    stroke-width: 2;
+    transform: translate(-3px, -5px);
+  }
+
+  .NodeTooltip {
+    position: absolute;
+    top: -12em;
+    left: 0;
+    min-width: 10em;
+    background: white;
+    padding: 0.3em 1em 0.6em;
+    font-size: 0.9em;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
+    transition: transform 0.2s ease-out;
+    pointer-events: none;
+
+    &__name {
+      font-weight: 800;
+    }
+
+    &__type,
+    &__size {
+      display: flex;
+      justify-content: space-between;
+      line-height: 1.5em;
+
+      span:nth-of-type(2) {
+        font-feature-settings: 'tnum' 1;
+      }
+    }
+
+    &__repo {
+      font-size: 0.8em;
+      line-height: 1.2em;
+      color: $grey4;
+      overflow: hidden;
+    }
+
+    &__note {
+      margin: 0.6em -0.8em -0.3em;
+      padding: 0 1em;
+      font-size: 0.9em;
+      background: rgba($a1, 0.1);
+      color: $a1;
+      font-style: italic;
+    }
+  }
+
+  & + .Header {
+    .Header__link + .Header__link  {
+        display: none;
+    }
+  }
+}
