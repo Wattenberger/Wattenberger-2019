@@ -91,7 +91,7 @@ const ReactRepo = () => {
       .separation((a, b) => (a.parent == b.parent ? 1 : 2) / a.depth)
       (d3.hierarchy(data))
 
-    const allNodes = flatMapDeep(tree.children, flattenArray)
+    const allNodes = flatMapDeep({children: tree}, flattenArray)
     const positions = fromPairs(
       allNodes.map(({ x, y, data }) => [
         data.id,
