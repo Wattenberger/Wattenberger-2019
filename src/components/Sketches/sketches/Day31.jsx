@@ -5,14 +5,14 @@ require('./Day31.scss')
 
 const SVG_HEIGHT = 600
 const SVG_WIDTH = 1500
-const NUMBER_OF_LARGE_CONFETTI = 6
-const NUMBER_OF_SMALL_CONFETTI = 40
+const NUMBER_OF_LARGE_CONFETTI = 9
+const NUMBER_OF_SMALL_CONFETTI = 50
 const COLORS = ["#c7ecee", "#778beb", "#f7d794", "#63cdda", "#cf6a87", "#e77f67", "#786fa6", "#FDA7DF"];
 
 const Day31 = () => {
     const [confetti, setConfetti] = useState([])
     const [mousePosition, setMousePosition] = useState(null)
-    const debouncedMousePosition = useDebounce(mousePosition, 300)
+    const throttledMousePosition = useThrottle(mousePosition, 600)
     const container = useRef()
 
     useEffect(() => {
@@ -28,7 +28,9 @@ const Day31 = () => {
     }
 
     const onMouseLeave = () => {
-        setMousePosition(null)
+        setTimeout(() => {
+            setMousePosition(null)
+        }, 300)
     }
 
     return (
@@ -47,7 +49,7 @@ const Day31 = () => {
                     <ConfettiFlake
                         key={i}
                         {...flake}
-                        mousePosition={debouncedMousePosition}
+                        mousePosition={throttledMousePosition}
                     />
                 ))}
             </svg>
@@ -85,15 +87,26 @@ const ConfettiFlake = React.memo(({ type, size, isHollow, mousePosition }) => {
 
     useInterval(
         updateAttrs,
-        !attrs.rotation ? getRandomInRange(10, 3000) : getRandomInRange(6000, 27000)
+        !attrs.rotation ? getRandomInRange(10, 9000) : getRandomInRange(2000, 27000)
     )
 
     const Component = useMemo(() => animated[typeElements[type]], [])
     const sizeProps = useMemo(() => getPropsForType[type](size), [])
 
     const spring = useSpring({
-        config: springConfig,
+        config: {
+            mass: size * 1.6 + 5,
+            tension: 500,
+            friction: 140,
+        },
         settings: [attrs.x, attrs.y, attrs.rotation],
+    })
+    const colorSpring = useSpring({
+        config: {
+            mass: 50,
+            tension: 100,
+            friction: 50,
+        },
         color: attrs.color,
     })
 
@@ -102,23 +115,18 @@ const ConfettiFlake = React.memo(({ type, size, isHollow, mousePosition }) => {
             className="Flake"
             {...sizeProps}
             style={{ transform: spring.settings.interpolate(getTransform) }}
-            fill={isHollow ? "none" : spring.color}
-            stroke={spring.color}
+            fill={isHollow ? "none" : colorSpring.color}
+            stroke={colorSpring.color}
             strokeWidth={isHollow ? size * 0.3 : 0}
         />
     )
 })
 
 
-const springConfig = {
-    mass: 136,
-    tension: 295,
-    friction: 176,
-}
 const TRIANGLE_POINTS = [
-    0, 0,
-    0.6, 1,
-    -0.6, 1,
+    0, -0.5,
+    0.6, 0.5,
+    -0.6, 0.5,
 ]
 const typeElements = {
     circle: "circle",
@@ -132,6 +140,8 @@ const getPropsForType = {
     rect: size => ({
         height: size,
         width: size,
+        x: -size / 2,
+        y: -size / 2,
     }),
     triangle: size => ({
         points: TRIANGLE_POINTS.map(d => (
@@ -194,35 +204,26 @@ function useInterval(callback, delay) {
 }
 
 
-// from https://dev.to/gabe_ragland/debouncing-with-react-hooks-jci
-function useDebounce(value, delay) {
-    // State and setters for debounced value
-    const [debouncedValue, setDebouncedValue] = useState(value);
+// from https://github.com/bhaskarGyan/use-throttle/blob/master/src/index.js
+const useThrottle = (value, limit) => {
+    const [throttledValue, setThrottledValue] = useState(value);
+    const lastRan = useRef(Date.now());
 
     useEffect(
       () => {
-        // Set debouncedValue to value (passed in) after the specified delay
-        const handler = setTimeout(() => {
-          setDebouncedValue(value);
-        }, delay);
+        const handler = setTimeout(function() {
+          if (Date.now() - lastRan.current >= limit) {
+            setThrottledValue(value);
+            lastRan.current = Date.now();
+          }
+        }, limit - (Date.now() - lastRan.current));
 
-        // Return a cleanup function that will be called every time ...
-        // ... useEffect is re-called. useEffect will only be re-called ...
-        // ... if value changes (see the inputs array below).
-        // This is how we prevent debouncedValue from changing if value is ...
-        // ... changed within the delay period. Timeout gets cleared and restarted.
-        // To put it in context, if the user is typing within our app's ...
-        // ... search box, we don't want the debouncedValue to update until ...
-        // ... they've stopped typing for more than 500ms.
         return () => {
           clearTimeout(handler);
         };
       },
-      // Only re-call effect if value changes
-      // You could also add the "delay" var to inputs array if you ...
-      // ... need to be able to change that dynamically.
-      [value]
+      [value, limit]
     );
 
-    return debouncedValue;
-  }
+    return throttledValue;
+  };
