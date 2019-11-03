@@ -1,0 +1,20 @@
+@import "src/styles/lib";
+
+
+.Day31 {
+    width: 100%;
+    // filter: blur(16px) contrast(15);
+    // transition: all 0.3s ease-out;
+
+    &__svg {
+        width: 100%;
+    }
+
+    &:hover {
+        filter: none;
+    }
+
+    .Flake {
+        mix-blend-mode: multiply;
+    }
+}
