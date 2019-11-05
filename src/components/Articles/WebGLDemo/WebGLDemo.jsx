@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react"
-import { Canvas, useThree } from 'react-three-fiber'
+import { extend, Canvas, useThree } from 'react-three-fiber'
 import { useSpring, a } from 'react-spring/three'
 import * as THREE from 'three'
 import image1 from "./lady.jpg"

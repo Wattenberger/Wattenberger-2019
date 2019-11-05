@@ -1,5 +1,5 @@
 import React, { Component, useState, usePrevious, useEffect, useRef, useMemo } from "react"
-import { apply, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
+import { extend, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
 import { useSpring, animated } from 'react-spring/three'
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
@@ -9,6 +9,9 @@ import * as d3 from "d3"
 import _ from "lodash"
 
 import './Playground.scss';
+
+extend({ OrbitControls })
+
 const Playground = () => {
 
   return (
@@ -24,7 +27,7 @@ export default Playground
 
 
 
-apply({ OrbitControls })
+// apply({ OrbitControls })
 
 function Controls(props) {
   const ref = useRef()

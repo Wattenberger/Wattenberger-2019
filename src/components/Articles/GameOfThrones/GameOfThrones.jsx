@@ -1,5 +1,5 @@
 import React, { Component, useState, usePrevious, useEffect, useRef, useMemo } from "react"
-import { apply, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
+import { extend, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
 import { useSpring, animated } from 'react-spring/three'
 import * as THREE from 'three'
 import OrbitControls from "utils/OrbitControls"
@@ -9,7 +9,9 @@ import SimplexNoise from "simplex-noise"
 import * as d3 from "d3"
 import _ from "lodash"
 import './GameOfThrones.scss';
-console.log(OrbitControls)
+
+extend({ OrbitControls })
+
 const characters = _.orderBy(data, "popularity", "desc").slice(0, 30)
 // const houses = _.uniq(_.map(characters, "house"))
 const houses = [ "House Stark", "House Greyjoy", "House Martell", "Night's Watch", "House Tyrell", "House Lannister", "House Frey", "House Targaryen", "Other" ]
@@ -76,7 +78,7 @@ export default GameOfThrones
 
 
 
-apply({ OrbitControls })
+// apply({ OrbitControls })
 
 function Controls(props) {
   const ref = useRef()

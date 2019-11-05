@@ -1,6 +1,6 @@
 import { useState, usePrevious, useEffect, useRef } from 'react';
 import React, {Component} from "react"
-import { apply, Canvas, useRender, useThree } from 'react-three-fiber'
+import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
 import numeral from "numeral"
@@ -115,7 +115,7 @@ export default StephenKing3d
 
 
 
-apply({ OrbitControls })
+// apply({ OrbitControls })
 
 function Controls(props) {
   const ref = useRef()
@@ -150,6 +150,7 @@ const camera = {
   fov: 75, near: 0.1, far: 1000,
   // "position.z": 2,
 }
+extend({ OrbitControls })
 
 function Wrapper({ focusedBook, vertices, color, onMouseOver, onMove, ...props }) {
   const meshGeo = new THREE.SphereBufferGeometry(1, 50, 50)
