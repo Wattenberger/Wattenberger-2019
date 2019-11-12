@@ -22,9 +22,10 @@
 	.token.tag,
 	.token.namespace,
 	.token.deleted {
-		color: #75f7a6;
+		color: rgb(128, 104, 224);
 	}
 
+	.token.property,
 	.token.function-name {
 		color: #467db4;
 	}
@@ -36,7 +37,6 @@
 		color: #00beb8;
 	}
 
-	.token.property,
 	.token.class-name,
 	.token.constant,
 	.token.symbol {
