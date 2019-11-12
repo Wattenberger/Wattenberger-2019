@@ -1,0 +1,60 @@
+@import "src/styles/lib";
+
+.Gauge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__svg {
+    width: 9em;
+    height: 6em;
+    overflow: visible;
+  }
+
+  &__midpoint {
+    stroke: #fff;
+    stroke-width: 0.027;
+  }
+
+  &__background {
+    fill: $grey2;
+  }
+
+  &__filled {
+    fill: url(#Gauge__gradient);
+  }
+
+  &__marker {
+    stroke: $tc;
+    stroke-width: 0.01;
+    transition: all 0.1s ease-out;
+  }
+
+  &__arrow {
+      transform-origin: 50% 100%;
+      fill: $grey5;
+      transition: all 0.1s ease-out;
+  }
+
+  &__metric {
+    margin-top: 0.6em;
+    font-size: 3em;
+    font-weight: 900;
+    font-feature-settings: 'zero', 'tnum' 1;
+  }
+
+  &__label {
+    color: $grey4;
+    margin-top: 1em;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-weight: 700;
+  }
+
+  &__units {
+    color: $grey4;
+    line-height: 1.3em;
+    font-weight: 300;
+  }
+}

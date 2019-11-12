@@ -46,6 +46,7 @@ const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3")
 const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
 const D3AndReact = React.lazy(() => import("components/Blog/posts/D3AndReact/D3AndReact"));
+const GaugeWalkthrough = React.lazy(() => import("components/Blog/posts/GaugeWalkthrough/GaugeWalkthrough"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
@@ -116,6 +117,7 @@ class App extends Component {
               <Route path="/blog/svg" component={SVG} />
               <Route path="/blog/react-hooks" component={Hooks} />
               <Route path="/blog/react-and-d3" component={D3AndReact} />
+              <Route path="/blog/gauge" component={GaugeWalkthrough} />
               <Route path="/blog" component={Blog} />
               <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
               <Route path="/keep-in-touch" component={NewsletterSignupPage} />
