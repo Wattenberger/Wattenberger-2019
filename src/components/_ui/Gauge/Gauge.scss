@@ -38,15 +38,16 @@
   }
 
   &__metric {
-    margin-top: 0.6em;
+    margin-top: 0.4em;
     font-size: 3em;
+    line-height: 1em;
     font-weight: 900;
     font-feature-settings: 'zero', 'tnum' 1;
   }
 
   &__label {
     color: $grey4;
-    margin-top: 1em;
+    margin-top: 0.6em;
     font-size: 1.3em;
     line-height: 1.3em;
     font-weight: 700;

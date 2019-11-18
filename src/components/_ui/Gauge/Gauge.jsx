@@ -1,5 +1,5 @@
 import React from "react"
-import { arc, format, scaleLinear } from "d3"
+import { arc, format as d3Format, scaleLinear } from "d3"
 
 import "./Gauge.scss"
 
@@ -24,12 +24,13 @@ const angleScale = scaleLinear()
   .range([-Math.PI / 2, Math.PI / 2])
   .clamp(true)
 
-const formatNumber = format(",")
+const formatNumber = d3Format(",")
 
 const Gauge = ({
   value=50,
   min=0,
   max=100,
+  format=formatNumber,
   label,
   units,
 }) => {
@@ -41,7 +42,7 @@ const Gauge = ({
   const angle = angleScale(percent)
 
   const filledArc = arc()
-    .cornerRadius((d,i) => {console.log(d,i); return i < 3 ? 0 : 1})
+    .cornerRadius(3)
     ({
       innerRadius: 0.65,
       outerRadius: 1,
@@ -104,7 +105,7 @@ const Gauge = ({
       </svg>
 
       <div className="Gauge__metric">
-        { formatNumber(value) }
+        { format(value) }
       </div>
 
       {!!label && (

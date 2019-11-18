@@ -1,0 +1,47 @@
+@import "src/styles/lib";
+
+.Blockquote {
+  position: relative;
+  display: inline-block;
+  background: rgba($a1, 0.1);
+  margin: 1em auto;
+  padding: 1.6em 3em;
+  color: desaturate(darken($a1, 20%), 40%);
+  max-width: 60em;
+  text-align: center;
+
+  &:before {
+    content: "“";
+    position: absolute;
+    font-family: "Bodoni", "Georgia", serif;
+    font-size: 3em;
+    top: 50%;
+    left: -0.2em;
+    margin-top: -.3em;
+  }
+  &:after {
+    content: "”";
+    position: absolute;
+    font-family: "Georgia", serif;
+    font-size: 3em;
+    top: 50%;
+    right: -0.2em;
+    margin-top: -.3em;
+  }
+
+  p + & {
+    margin-top: -1em;
+  }
+
+  &__source {
+    margin-top: 0.6em;
+    margin-bottom: -0.8em;
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: left;
+
+    &:before {
+      content: "- ";
+    }
+  }
+}

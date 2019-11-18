@@ -10,7 +10,6 @@ import List from "components/_ui/List/List"
 import Code from "components/_ui/Code/Code"
 import { ReadMore } from "./LearnD3"
 import bookImage from "images/book.png";
-import constructionGif from "./construction.gif";
 
 const LearnChangeData = ({ onScrollToSectionLocal }) => {
     return (

@@ -73,7 +73,7 @@ const D3AndReact = () => {
         <div className="D3AndReact" ref={ref}>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>React + D3.js</title>
+                <title>Using React with D3.js</title>
                 <link rel="canonical" href="https://wattenberger.com/blog/react-and-d3" />
                 <meta property="og:type" content="website" />
                 <meta name="description" content="React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks." />
