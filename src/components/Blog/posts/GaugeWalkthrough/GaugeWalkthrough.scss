@@ -16,7 +16,7 @@
   &__content {
     position: relative;
     width: 100%;
-    padding: 0 2em 4em;
+    padding: 0 0 4em;
     // margin-top: 43em;
     margin-top: -2em;
     display: flex;
@@ -39,7 +39,9 @@
 
   &__section {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     max-width: 60em;
     margin: auto;
 
@@ -48,8 +50,60 @@
       margin: 1em;
     }
 
+    &__left {
+      max-width: 30em;
+    }
+
     .Code__wrapper {
       flex: 1;
+    }
+  }
+
+  &__main {
+    display: flex;
+    width: 100%;
+
+    &__text {
+      flex: 1;
+      padding: 2em 3em 0 5em;
+      overflow: hidden;
+    }
+
+    .ScrollEvent__indicator {
+      left: -2.6em;
+    }
+  }
+
+  &__sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 38em;
+    height: 100vh;
+    order: 2;
+
+    &__code {
+      flex: 1;
+      overflow: hidden;
+      // order: 2;
+
+      .Code {
+        height: 100%;
+        overflow: auto;
+
+        &__wrapper {
+          height: 100%;
+        }
+      }
+    }
+
+    &__example {
+      flex: 0 0 17em;
+      display: flex;
+      height: 17em;
+      padding: 1em;
     }
   }
 
@@ -159,6 +213,20 @@
       position: absolute;
       bottom: 6em;
       left: -2em;
+      overflow: visible;
+
+      @keyframes flashPurple {
+        0% { stroke: white; }
+       50% { stroke: $a3; }
+      100% { stroke: white; }
+      }
+
+      &__staff {
+        &--iteration-0,
+        &--iteration-1 {
+          animation: flashPurple 0.9s ease-out;
+        }
+      }
     }
   }
 
@@ -175,6 +243,200 @@
 
     img {
       margin-bottom: -1em;
+    }
+  }
+
+  .P {
+    display: inline-block;
+    margin: 0 0;
+    padding: 0 0.6em;
+    color: $a1;
+    background: rgba($a1, 0.1);
+    border-radius: 2px;
+    font-feature-settings: 'tnum' 1;
+    font-family: monospace;
+  }
+
+  &__grid {
+    position: relative;
+    margin: 2.6em auto 3.6em;
+    width: 20em;
+
+    &__corner {
+      position: absolute;
+      font-feature-settings: 'tnum' 1;
+
+      &--nw {
+        top: -1.6em;
+        left: -1.6em;
+      }
+      &--ne {
+        top: -1.6em;
+        right: -1.6em;
+      }
+      &--n {
+        top: -1.6em;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+      }
+      &--s {
+        bottom: -1em;
+        left: 50%;
+        text-align: center;
+        transform: translateX(-50%);
+      }
+      &--sw {
+        bottom: -1em;
+        left: -1.6em;
+      }
+      &--se {
+        bottom: -1em;
+        right: -1.6em;
+      }
+    }
+  }
+
+  .TelescopeExplorable {
+    display: flex;
+    flex-direction: column;
+    max-width: 35em;
+    margin: 1em auto;
+
+    &__main {
+      display: flex;
+      // align-items: center;
+      justify-content: space-between;
+    }
+
+    &__controls {
+      display: flex;
+      flex-direction: column;
+      padding: 2em;
+      background: #191847;
+      color: white;
+      border-radius: 1em;
+      margin-right: auto;
+      margin-bottom: -1em;
+      transform: rotate(-6deg);
+
+      &__item {
+        display: flex;
+        align-items: center;
+
+        label {
+          width: 2.5em;
+          text-align: right;
+        }
+
+        .rc-slider {
+          width: 10em;
+          margin: 0 1em;
+        }
+
+        &__value {
+          font-feature-settings: 'tnum' 1;
+          width: 2.5em;
+          text-align: right;
+        }
+      }
+
+      &__summary {
+        width: 100%;
+        margin: 1em 0 -0.6em;
+        text-align: center;
+        font-feature-settings: 'tnum' 1;
+      }
+    }
+
+    &__person {
+      svg {
+        width: 20em;
+      }
+    }
+
+    &__svg {
+      position: relative;
+      flex: 0 0 15em;
+      height: 15em;
+      margin-bottom: auto;
+      border: 1px solid pink;
+      transform: perspective(30em) rotateY(-30deg);
+
+      &__corner {
+        position: absolute;
+        font-feature-settings: 'tnum' 1;
+
+        &--nw {
+          top: -1em;
+          left: -1em;
+        }
+        &--ne {
+          top: -1em;
+          right: -1em;
+        }
+        &--sw {
+          bottom: -1em;
+          left: -1em;
+        }
+        &--se {
+          bottom: -1em;
+          right: -1em;
+        }
+      }
+    }
+  }
+
+  .ArcExample {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0.8em;
+    margin-bottom: 2em;
+
+    &__controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        max-width: 30em;
+    }
+
+    &__control {
+        display: flex;
+        align-items: center;
+        font-size: 0.7em;
+        min-width: 13em;
+        margin: 0 1em;
+
+        &__label {
+            width: 6em;
+            font-weight: 600;
+        }
+
+        &__value {
+            text-align: right;
+            margin-right: 1em;
+            width: 3em;
+            font-feature-settings: "tnum" 1;
+        }
+    }
+
+    &__slider {
+        width: 5em;
+    }
+
+    svg {
+        width: 100px;
+        flex: none;
+    }
+
+    .Expandy {
+        width: 100%;
+        margin-top: 1.6em;
+
+        &__trigger {
+          width: 100%;
+        }
     }
   }
 
