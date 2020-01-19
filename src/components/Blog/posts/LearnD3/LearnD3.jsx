@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react"
 import { Helmet } from "react-helmet"
+import * as d3 from "d3"
 
 import D3Modules from "./D3Modules"
 import D3ModulesInline from "./D3ModulesInline"
@@ -88,6 +89,10 @@ const LearnD3 = () => {
     // const [focusedPackages, setFocusedPackages] = useState(null)
     const [tempFocusedPackages, setTempFocusedPackages] = useState(null)
     const [iteration, setIteration] = useState(0)
+
+    useEffect(() => {
+        window.d3 = d3
+    }, [])
 
     const onScrollToSectionLocal = section => e => {
         if (e) e.preventDefault()

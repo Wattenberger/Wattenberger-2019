@@ -8,9 +8,9 @@ import Loader from 'components/_ui/Loader'
 import Blog from "components/Blog/Blog"
 import Link from "components/_ui/Link/Link"
 import Header from "components/Header/Header"
+import { scrollTo } from "utils";
 
 import './App.scss'
-import { scrollTo } from "utils";
 
 const Home = React.lazy(() => import("components/Home/Home"));
 const Sketches = React.lazy(() => import("components/Sketches/Sketches"));
@@ -35,6 +35,7 @@ const ElectionHeads = React.lazy(() => import("components/ElectionHeads/Election
 const DVS = React.lazy(() => import("components/Articles/DVS/DVS"));
 const Dating = React.lazy(() => import("components/Articles/Dating/Dating"));
 const Diet = React.lazy(() => import("components/Articles/Diet/Diet"));
+// // // const Approval = React.lazy(() => import("components/Articles/Approval/Approval"));
 const DVSChannels = React.lazy(() => import("components/Articles/DVSChannels/DVSChannels"));
 const Movies = React.lazy(() => import("components/Articles/Movies/Movies"));
 const Music = React.lazy(() => import("components/Articles/Music/Music"));
@@ -46,10 +47,12 @@ const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3")
 const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
 const D3AndReact = React.lazy(() => import("components/Blog/posts/D3AndReact/D3AndReact"));
+const CssCascade = React.lazy(() => import("components/Blog/posts/CssCascade/CssCascade"));
 const GaugeWalkthrough = React.lazy(() => import("components/Blog/posts/GaugeWalkthrough/GaugeWalkthrough"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
 const Photoronoi = React.lazy(() => import("components/Photoronoi/Photoronoi"));
+const ScalingSvg = React.lazy(() => import("components/Guides/ScalingSvg/ScalingSvg"));
 
 class App extends Component {
 
@@ -102,6 +105,7 @@ class App extends Component {
               <Route path="/fishing" component={Fishing} />
               <Route path="/movies" component={Movies} />
               <Route path="/music" component={Music} />
+              {/* <Route path="/approval" component={Approval} /> */}
               <Route path="/react-repo" component={ReactRepo} />
               <Route path="/diet" component={Diet} />
               <Route path="/dating" component={Dating} />
@@ -117,8 +121,10 @@ class App extends Component {
               <Route path="/blog/svg" component={SVG} />
               <Route path="/blog/react-hooks" component={Hooks} />
               <Route path="/blog/react-and-d3" component={D3AndReact} />
+              <Route path="/blog/css-cascade" component={CssCascade} />
               <Route path="/blog/gauge" component={GaugeWalkthrough} />
               <Route path="/blog" component={Blog} />
+              <Route path="/guide/scaling-svg" component={ScalingSvg} />
               <Route path="/thanks-for-signing-up" component={NewsletterThankYou} />
               <Route path="/keep-in-touch" component={NewsletterSignupPage} />
 

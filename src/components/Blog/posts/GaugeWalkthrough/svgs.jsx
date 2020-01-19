@@ -29,7 +29,7 @@ export const Explorer = ({ iteration=0 }) => (
     </svg>
 )
 
-export const ExplorerWithTelescope = () => (
+export const ExplorerWithTelescope = ({rotation=0}) => (
   <svg width="348" height="530" viewBox="0 0 348 530" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect x="282.535" y="109" width="65" height="50" rx="25" fill="#191847"/>
     <path d="M225.071 269.097L131 472.748" stroke="#C6D2DE" strokeWidth="9" strokeLinecap="round"/>
@@ -49,8 +49,11 @@ export const ExplorerWithTelescope = () => (
     <rect x="197.535" y="116" width="113" height="36" rx="18" fill="#D5DCE3"/>
     <rect x="120.535" y="124" width="89" height="20" rx="10" fill="#191847"/>
     <circle cx="130.535" cy="134" r="6" fill="#F8F9FA"/>
-    <circle cx="226" cy="153" r="9" fill="white"/>
-    <circle cx="226" cy="284" r="15" fill="white"/>
+    <g style={{transform: `translate(226px, 153px) rotate(${rotation}deg)`}}>
+      <circle r="9" fill="white" />
+      <line x1="5" y1="5" stroke="#191847" strokeWidth="2" strokeLinecap="round" />
+    </g>
+    <circle cx="226" cy="284px" r="15" fill="white"/>
     <path d="M182.748 130.8C176.414 123.959 165.253 118.175 163.393 108.352C161.491 98.308 169.138 85.218 164.542 75.9167C161.878 70.5259 151.75 77.3695 151.373 70.5257C151.028 64.2481 156.876 55.8804 160.476 51.1709C164.238 46.2503 169.133 42.5067 175.125 40.7643C180.262 39.2707 187.809 38.5101 192.16 42.6424C195.816 46.1152 193.303 50.6635 190.216 53.1594C180.094 61.3418 146.007 70.4073 140.061 52.4965C134.588 36.0088 147.117 14.1311 159.637 4.1095" stroke="#191847" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 )

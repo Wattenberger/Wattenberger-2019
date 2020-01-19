@@ -3,6 +3,8 @@ import { kebabCase } from "lodash"
 
 import CreatingSVGElements from "./CreatingSVGElements"
 import CreatingManySVGElements from "./CreatingManySVGElements"
+import Sizing from "./Sizing"
+import Maps from "./Maps"
 import Axes from "./Axes"
 
 import Code from "components/_ui/Code/Code"
@@ -38,6 +40,7 @@ const sectionLabels = [
   [
     "Sizing & Responsivity",
     () => <></>,
+    // Sizing,
   ],
   [
     "Animations",
@@ -46,6 +49,7 @@ const sectionLabels = [
   [
     "Maps",
     () => <></>,
+    // Maps,
   ],
   [
     "Complex visualization layouts",

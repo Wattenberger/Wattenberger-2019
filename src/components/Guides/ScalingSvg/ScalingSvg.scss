@@ -1,0 +1,241 @@
+@import "src/styles/lib";
+
+.ScalingSvg {
+  position: relative;
+  padding: 3em 0 0;
+  background: #0b0a27;
+  background: linear-gradient(
+    to bottom,
+    #0b0a27,
+    #31304c 50%,
+  );
+  color: white;
+
+  &__background {
+    position: absolute;
+    top: -100px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.8;
+
+    &__svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h1 {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 1.3em;
+    color: $a3;
+    line-height: 1.3em;
+    margin-bottom: 2em;
+    margin-top: -0.1em;
+    margin-left: 6em;
+    font-weight: 500;
+
+    @media (min-width: 1450px) {
+      font-size: 1.5em;
+      margin-left: 5em;
+    }
+    @media (max-width: 1250px) {
+      margin-top: 0.4em;
+      margin-left: 0;
+    }
+    @media (max-width: 950px) {
+      font-size: 1em;
+    }
+  }
+
+  &__content {
+    position: relative;
+    max-width: 44em;
+    margin: 0 auto;
+    padding: 0 1em;
+    text-align: center;
+    z-index: 2;
+
+    i {
+      font-style: italic;
+    }
+
+    .List {
+      text-align: left;
+      max-width: 40em;
+      margin: 0 auto;
+    }
+
+    .Blockquote {
+      color: white;
+    }
+  }
+
+  .TelescopeExplorable {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // max-width: 50em;
+    width: 100%;
+    margin: 3em 0 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 60%,
+      $grey1 60%,
+      $grey1 80%,
+      #f8f9fa 100%,
+    );
+    z-index: 100;
+
+
+    &__main {
+      display: flex;
+      // align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10em;
+      transform-origin: top left;
+
+      @media (max-width: 950px) {
+        transform: scale(0.9);
+        max-width: 40em;
+        margin-bottom: -3em;
+      }
+      @media (max-width: 700px) {
+        transform: scale(0.8);
+        margin-bottom: -7em;
+      }
+      @media (max-width: 640px) {
+        transform: scale(0.7);
+        margin-bottom: -12em;
+      }
+      @media (max-width: 600px) {
+        transform: scale(0.6);
+        margin-bottom: -17em;
+      }
+      @media (max-width: 505px) {
+        transform: scale(0.5);
+        margin-bottom: -20em;
+      }
+      @media (max-width: 400px) {
+        transform: scale(0.4);
+        margin-bottom: -20em;
+      }
+    }
+
+    &__controls {
+      display: flex;
+      flex-direction: column;
+      padding: 2em;
+      background: #0B0A27;
+      color: white;
+      border-radius: 1em;
+      // margin-right: auto;
+
+      @media (min-width: 700px) {
+        transform: rotate(-6deg);
+        margin-left: -20em;
+        margin-bottom: -1em;
+      }
+      @media (max-width: 700px) {
+        margin: 0 1em 6em;
+      }
+      @media (max-width: 420px) {
+        font-size: 0.9em;
+      }
+
+      &__item {
+        display: flex;
+        align-items: center;
+
+        label {
+          width: 2.5em;
+          text-align: right;
+        }
+
+        .rc-slider {
+          width: 10em;
+          margin: 0 1em;
+        }
+
+        &__value {
+          font-feature-settings: 'tnum' 1;
+          width: 2.5em;
+          text-align: right;
+        }
+      }
+
+      &__summary {
+        width: 100%;
+        margin: 1em 0 -0.6em;
+        text-align: center;
+        font-feature-settings: 'tnum' 1;
+      }
+    }
+
+    &__person {
+      svg {
+        width: 20em;
+      }
+
+      @media (max-width: 700px) {
+        .swoosh {
+          display: none;
+        }
+      }
+    }
+
+    &__svg {
+      position: relative;
+      flex: 0 0 20em;
+      height: 20em;
+      margin-bottom: auto;
+      margin-top: -6em;
+      background: #0b0a27;
+      // border: 1px solid pink;
+      transform: perspective(30em) rotateY(-20deg);
+
+      svg {
+        height: 100%;
+        width: 100%;
+      }
+
+      &__corner {
+        position: absolute;
+        color: white;
+        font-feature-settings: 'tnum' 1;
+
+        &--nw {
+          top: -1.9em;
+          left: -2em;
+        }
+        &--ne {
+          top: -1.9em;
+          right: -2em;
+        }
+        &--sw {
+          bottom: -1.9em;
+          left: -2em;
+        }
+        &--se {
+          bottom: -1.9em;
+          right: -2em;
+        }
+
+        @media (max-width: 650px) {
+          &--se,
+          &--sw {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+}

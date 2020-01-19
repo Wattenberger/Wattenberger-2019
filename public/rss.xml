@@ -27,6 +27,29 @@
   </image>
 
 	<item>
+		<title>Scaling SVG Elements</title>
+		<link>https://wattenberger.com/guide/scaling-svg</link>
+		<pubDate>Mon, 9 Dec 2019 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+				<category><![CDATA[SVG]]></category>
+		<category><![CDATA[Scalable Vector Graphics]]></category>
+		<category><![CDATA[scaling images]]></category>
+		<category><![CDATA[interactive]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/scaling-svg.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/guide/scaling-svg</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/guide/scaling-svg"><img width="750" height="665" src="http://wattenberger.com/scaling-svg.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>Scaling svgs can be a daunting task, since they act very differently than normal images. Instead of thinking of svgs as images, let's get an understanding of viewBox and change our mindset.</p>]]></description>
+				<content:encoded><![CDATA[<p>Scaling svgs can be a daunting task, since they act very differently than normal images. Instead of thinking of svgs as images, let's get an understanding of viewBox and change our mindset.</p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>Thinking in React Hooks</title>
 		<link>https://wattenberger.com/blog/react-hooks</link>
 		<pubDate>Fri, 20 Sep 2019 08:00:00 EST</pubDate>

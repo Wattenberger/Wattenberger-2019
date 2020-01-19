@@ -1,0 +1,12 @@
+@import "src/styles/lib";
+
+.P {
+  display: inline-block;
+  margin: 0 0;
+  padding: 0 0.6em;
+  color: $a1;
+  background: rgba($a1, 0.1);
+  border-radius: 2px;
+  font-feature-settings: 'tnum' 1;
+  font-family: monospace;
+}

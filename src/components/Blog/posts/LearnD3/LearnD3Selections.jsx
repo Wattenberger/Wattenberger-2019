@@ -258,10 +258,10 @@ paragraph.selectAll("div")
             </Aside>
 
 
-            <p>For example, this code:</p>
+            <p id="this-last-paragraph">For example, this code:</p>
 
-            <Code hasLineNumbers={false} fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>}>
-{`d3.select("#this-other-paragraph")
+            <Code hasLineNumbers={false} fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>} canEval>
+{`d3.select("#this-last-paragraph")
   .style("color", "cornflowerblue")
   .style("font-style", "italic")
   .style("font-weight", "bold")`}
@@ -270,7 +270,7 @@ paragraph.selectAll("div")
             <p>can be written like so:</p>
 
             <Code hasLineNumbers={false} fileName={<>In your browser’s Dev Tools <b>Console</b> tab</>}>
-{`d3.select("#this-other-paragraph")
+{`d3.select("#this-last-paragraph")
   .styles({
     "color":       "cornflowerblue",
     "font-style":  "italic",

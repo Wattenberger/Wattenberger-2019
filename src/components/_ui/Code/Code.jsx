@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useMemo, useState } from 'react'
 import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
+import Prism from "./prism.js"
+
 import "./prism-dark.scss"
 import "./prism-light.scss"
 
@@ -70,7 +72,7 @@ const Code = ({
 
     // highlight code
     useEffect(() => {
-        if (window.Prism) window.Prism.highlightAll()
+        Prism.highlightAll()
     }, [parsedCode, iteration])
 
     const scrollToHighlightedCode = (lines=[]) => {
@@ -244,7 +246,7 @@ const Code = ({
     }
 
     return (
-        <div className="Code__wrapper">
+        <div {...props} className="Code__wrapper">
             {!!fileName && (
                 <div className="Code__file">
                     <Icon name="file" size="s" />

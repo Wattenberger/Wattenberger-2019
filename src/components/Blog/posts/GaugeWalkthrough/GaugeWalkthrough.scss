@@ -27,6 +27,7 @@
 
   &__metrics {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
     max-width: 50em;
@@ -53,10 +54,19 @@
     &__left {
       max-width: 30em;
     }
+    &__right {
+      max-width: 15em;
+      // flex: 0 0 15em;
+    }
 
     .Code__wrapper {
       flex: 1;
     }
+  }
+
+  &__mobile-code .Code {
+    max-height: 15em;
+    overflow: auto;
   }
 
   &__main {
@@ -67,11 +77,37 @@
       flex: 1;
       padding: 2em 3em 0 5em;
       overflow: hidden;
+
+      @media (max-width: 1100px) {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+      }
+
     }
 
     .ScrollEvent__indicator {
       left: -2.6em;
     }
+
+
+    @media (max-width: 1100px){
+      .ScrollEvent__indicator {
+          display: none;
+      }
+      .Interactions {
+          &__trigger {
+              display: none;
+          }
+      }
+    }
+
+    .Code {
+        @media (max-width: 1100px) {
+            font-size: 0.7em;
+            line-height: 1.2em;
+        }
+    }
+
   }
 
   &__sticky {
@@ -80,9 +116,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 38em;
+    width: 36em;
     height: 100vh;
     order: 2;
+
+    @media (max-width: 1400px) {
+      width: 30em;
+    }
+    @media (max-width: 1300px) {
+      width: 21.6em;
+
+      &__code {
+        font-size: 0.8em;
+      }
+    }
+    @media (max-width: 1100px) {
+      display: none;
+    }
+
 
     &__code {
       flex: 1;
@@ -100,9 +151,9 @@
     }
 
     &__example {
-      flex: 0 0 17em;
+      flex: 0 0 15em;
       display: flex;
-      height: 17em;
+      height: 15em;
       padding: 1em;
     }
   }
@@ -261,6 +312,7 @@
     position: relative;
     margin: 2.6em auto 3.6em;
     width: 20em;
+    max-width: 90%;
 
     &__corner {
       position: absolute;
@@ -301,7 +353,29 @@
     display: flex;
     flex-direction: column;
     max-width: 35em;
-    margin: 1em auto;
+    margin: 3em auto;
+    transform-origin: top left;
+
+    @media (max-width: 750px) {
+      transform: scale(0.9);
+      margin-bottom: -3em;
+    }
+    @media (max-width: 650px) {
+      transform: scale(0.8);
+      margin-bottom: -7em;
+    }
+    @media (max-width: 570px) {
+      transform: scale(0.7);
+      margin-bottom: -12em;
+    }
+    @media (max-width: 530px) {
+      transform: scale(0.6);
+      margin-bottom: -17em;
+    }
+    @media (max-width: 455px) {
+      transform: scale(0.5);
+      margin-bottom: -20em;
+    }
 
     &__main {
       display: flex;

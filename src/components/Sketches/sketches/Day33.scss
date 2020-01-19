@@ -1,0 +1,19 @@
+@import "src/styles/lib";
+
+.Day33 {
+    width: 100%;
+    height: 500px;
+
+    svg {
+        // filter: blur(6px) contrast(9) saturate(3.5) brightness(1.5) hue-rotate(45deg);
+    }
+
+    path {
+        // fill: none;
+        stroke: $a1;
+        stroke: white;
+        // stroke-width: 3;
+        // mix-blend-mode: multiply;
+        transition: 1s ease-out;
+    }
+}

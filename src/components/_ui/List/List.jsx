@@ -6,7 +6,7 @@ import './List.scss';
 const List = ({ items=[], icon, hasNumbers=false, className, ...props }) => {
     return (
         <ul className={`List ${className}`} {...props}>
-            { items.map((item, i) => (
+            { items.map((item, i) => !!item && (
                 <li className="List__item" key={i}>
                     {hasNumbers ? (
                         <div className="List__item__number">

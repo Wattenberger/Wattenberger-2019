@@ -37,7 +37,9 @@ const Gauge = ({
 }) => {
   return (
     <div>
-      <svg style={{border: "1px solid pink"}}>
+      <svg style={{
+        border: "1px solid pink"
+      }}>
       </svg>
     </div>
   )
@@ -47,12 +49,14 @@ export default Gauge`,
 ({ value }) => {
   return (
     <div>
-      <svg style={{border: "1px solid pink"}}>
+      <svg style={{
+        border: "1px solid pink"
+      }}>
       </svg>
     </div>
   )
 },
-[12, 13]
+d3.range(12, 16)
 ],[
 `import React from "react"
 
@@ -67,7 +71,9 @@ const Gauge = ({
     <div>
       <svg
         width="9em"
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+        }}>
       </svg>
     </div>
   )
@@ -79,12 +85,14 @@ export default Gauge`,
     <div>
       <svg
         width="9em"
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+          }}>
       </svg>
     </div>
   )
 },
-d3.range(13, 15)
+[13]
 ],[
 `import React from "react"
 
@@ -103,7 +111,9 @@ const Gauge = ({
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+        }}>
       </svg>
     </div>
   )
@@ -119,12 +129,14 @@ export default Gauge`,
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+          }}>
       </svg>
     </div>
   )
 },
-d3.range(15, 19)
+d3.range(14, 18)
 ],[
 `import React from "react"
 
@@ -151,7 +163,9 @@ const Gauge = ({
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+        }}>
       </svg>
     </div>
   )
@@ -175,7 +189,9 @@ export default Gauge`,
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+          }}>
       </svg>
     </div>
   )
@@ -207,7 +223,9 @@ const Gauge = ({
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+        }}>
         <path
           d={backgroundArc}
           fill="#dbdbe7"
@@ -235,7 +253,9 @@ export default Gauge`,
           -1, -1,
           2, 1,
         ].join(" ")}
-        style={{border: "1px solid pink"}}>
+        style={{
+          border: "1px solid pink"
+          }}>
         <path
           d={backgroundArc}
           fill="#dbdbe7"
@@ -244,5 +264,5 @@ export default Gauge`,
     </div>
   )
 },
-d3.range(27, 31)
+d3.range(29, 33)
 ]]

@@ -47,9 +47,11 @@
 
     <div id="app-tooltip-portal"></div>
 
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="https://d3js.org/d3-array.v2.min.js"></script>
-
-    <script src="%PUBLIC_URL%/prism.js"></script>
+    <script>
+      window.PARSELY = window.PARSELY || {
+          use_localstorage: true
+      };
+    </script>
+    <script id="parsely-cfg" src="//cdn.parsely.com/keys/wattenberger.com/p.js"></script>
   </body>
 </html>

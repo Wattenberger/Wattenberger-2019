@@ -24,5 +24,6 @@ http://wattenberger.com/blog/i3
 http://wattenberger.com/blog/d3
 http://wattenberger.com/blog/react-hooks
 http://wattenberger.com/blog
+http://wattenberger.com/guide/scaling-svg
 http://wattenberger.com/thanks-for-signing-up
 http://wattenberger.com/keep-in-touch

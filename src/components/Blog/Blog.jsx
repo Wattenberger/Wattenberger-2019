@@ -11,9 +11,9 @@ const Blog = () => (
     <h1>
       Thoughts
     </h1>
-    {_.map(posts, ({ id, title, description, image }) => (
+    {_.map(posts, ({ id, url, title, description, image }) => (
       <div className="Blog__post" key={id}>
-        <Link to={`/blog/${id}`}>
+        <Link to={url || `/blog/${id}`}>
           <h3 className="Blog__title">
             { title }
           </h3>

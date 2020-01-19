@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react"
-import Slider from "rc-slider"
+import Slider from 'rc-slider/lib/Slider';
 import "rc-slider/assets/index.css"
 import { useInterval } from "utils/utils.js"
 import { format, area, arc, curveBasis, curveMonotoneY, scaleLinear } from "d3"
@@ -53,7 +53,7 @@ const GaugeWalkthrough = () => {
             </p>
           </div>
 
-          <div className="GaugeWalkthrough__section__right" style={{width: "22em", flex: "0 0 22em"}}>
+          <div className="GaugeWalkthrough__section__right">
             <ReadingGauge />
           </div>
         </div>
@@ -84,6 +84,8 @@ const GaugeWalkthrough = () => {
               <p>
                 Here we are, at the beginning of our journey. We've created a <P>Gauge.jsx</P> file, containing a blank functional React component.
               </p>
+
+              <MobileCode index={0} {...{units, label, value, min, max}} />
 
               <p>
                 Whenever we create a new <P>{`<Gauge>`}</P>, we'll be able to customize it with five <b>props</b>:
@@ -116,6 +118,8 @@ const GaugeWalkthrough = () => {
                 Let's start by adding an <P>{`<svg>`}</P> component, which a nice pink border so we can see its dimensions.
               </p>
 
+              <MobileCode index={1} {...{units, label, value, min, max}} />
+
             <p>
               As we can see, the default size of a <P>{`<svg>`}</P> component is 300 pixels wide by 150 pixels tall.
             </p>
@@ -129,6 +133,8 @@ const GaugeWalkthrough = () => {
                 We want our gauge to be <b>9em</b> wide. This will let our gauge scale with our text, so it will never look disproportionate with the labels that we'll add later.
               </p>
 
+              <MobileCode index={2} {...{units, label, value, min, max}} />
+
               <Aside>
                 Unfamiliar with the unit <b>em</b>?
                 <br />
@@ -138,12 +144,6 @@ const GaugeWalkthrough = () => {
               <p>
                 We can think about the <P>{`<svg>`}</P> element as a <i>telescope into another world</i>. Our telescope defaults to a normal zoom level: one unit is the same as one pixel.
               </p>
-            </ScrollEvent>
-
-            <ScrollEvent isInViewChange={status => {
-              if (status != 0) return
-              setCodeIndex(3)
-            }}>
               <p>
                 But we can zoom our telescope in or out. To set the zoom on our telescope, we'll use the <P>viewBox</P> property.
               </p>
@@ -163,11 +163,19 @@ const GaugeWalkthrough = () => {
 
               <TelescopeExplorable />
 
+            </ScrollEvent>
+
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(3)
+            }}>
               <p>
                 For our gauge, let's simplify our math and focus our telescope on a simple 2 by 1 grid:
               </p>
 
               <Grid />
+
+              <MobileCode index={3} {...{units, label, value, min, max}} />
 
               <p>
                 If this doesn't make much sense yet, stay tuned and you'll start seeing the benefits very soon.
@@ -207,6 +215,8 @@ const GaugeWalkthrough = () => {
                 Let's see what that looks like for our gauge. To start, we'll create a grey background arc, to show the full range of our gauge.
               </p>
 
+              <MobileCode index={4} {...{units, label, value, min, max}} />
+
               <p>
                 This arc will:
               </p>
@@ -237,6 +247,8 @@ const GaugeWalkthrough = () => {
               <p>
                 In our render method, let's create a new <Link to="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path"><P>{`<path>`}</P></Link> element and pass these magic words to the <P>d</P> attribute.
               </p>
+
+              <MobileCode index={5} {...{units, label, value, min, max}} />
 
               <p>
                 Perfect!
@@ -773,3 +785,20 @@ const Grid = () => (
     </svg>
   </div>
 )
+
+
+const MobileCode = ({ index, units, label, value, min, max }) => {
+  const [code, Example, highlightedLines=[]] = codeExamples[index]
+
+  return (
+    <div className="mobile GaugeWalkthrough__mobile-code">
+      <Code size="s"
+        fileName="Gauge.jsx"
+        highlightedLines={highlightedLines}>
+        { code }
+      </Code>
+
+      <Example {...{units, label, value, min, max}} />
+    </div>
+  )
+}

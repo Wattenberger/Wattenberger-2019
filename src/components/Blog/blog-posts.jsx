@@ -5,6 +5,7 @@ import LocalExample from "components/_ui/LocalExample/LocalExample";
 import hooksImage from "./posts/react-hooks.png"
 import d3Image from "./posts/d3.png"
 import d3InteractiveImage from "./posts/d3-interactive.png"
+import scalingSvgImage from "./posts/scaling-svg.png"
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -19,6 +20,14 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "Scaling SVG Elements",
+  id: "scaling-svg",
+  url: `/guide/scaling-svg`,
+  image: scalingSvgImage,
+  description: <>
+    Scaling svgs can be a daunting task, since they act very differently than normal images. Instead of thinking of svgs as images, let's get an understanding of viewBox and change our mindset.
+  </>
+},{
   title: "Thinking in React Hooks",
   id: "react-hooks",
   image: hooksImage,

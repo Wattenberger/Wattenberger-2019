@@ -104,11 +104,11 @@ class ScrollEvent extends Component {
   }
 
   render() {
-    const { hasIndicator, className, children } = this.props
+    const { hasIndicator, className, children, ...props } = this.props
     const { viewStatus } = this.state
 
     return (
-      <div className={`ScrollEvent ${className}`}>
+      <div {...props} className={`ScrollEvent ${className}`}>
         {hasIndicator && (
           <Tooltip contents={viewStatus !== 0 ? "Activate this step" : "This step is active"} position="top-right" className={`ScrollEvent__indicator ScrollEvent__indicator--state-${viewStatus} ScrollEvent__indicator--is-${viewStatus === 0 ? "active" : "inactive"}`} onClick={this.setStatusLocal(0)}>
             <Icon name="code" size="l" />

@@ -10,23 +10,25 @@
   max-width: 60em;
   text-align: center;
 
-  &:before {
-    content: "“";
-    position: absolute;
-    font-family: "Bodoni", "Georgia", serif;
-    font-size: 3em;
-    top: 50%;
-    left: -0.2em;
-    margin-top: -.3em;
-  }
-  &:after {
-    content: "”";
-    position: absolute;
-    font-family: "Georgia", serif;
-    font-size: 3em;
-    top: 50%;
-    right: -0.2em;
-    margin-top: -.3em;
+  &--is-quote {
+    &:before {
+      content: "“";
+      position: absolute;
+      font-family: "Bodoni", "Georgia", serif;
+      font-size: 3em;
+      top: 50%;
+      left: -0.2em;
+      margin-top: -.3em;
+    }
+    &:after {
+      content: "”";
+      position: absolute;
+      font-family: "Georgia", serif;
+      font-size: 3em;
+      top: 50%;
+      right: -0.2em;
+      margin-top: -.3em;
+    }
   }
 
   p + & {
