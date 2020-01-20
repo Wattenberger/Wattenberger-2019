@@ -369,12 +369,12 @@ const CssCascade = () => {
 
           <RuleFight
             rule1={
-`.paragraph {
+`p.paragraph {
   color: sandybrown;
 }`
             }
             rule2={
-`p.paragraph {
+`.paragraph {
   color: orchid;
 }`
             }
@@ -394,12 +394,12 @@ const CssCascade = () => {
 
           <RuleFight
             rule1={
-`.paragraph:first-of-type {
+`.paragraph {
   color: sandybrown;
 }`
             }
             rule2={
-`.paragraph {
+`.paragraph:first-of-type {
   color: orchid;
 }`
             }
@@ -507,7 +507,7 @@ const fight3Answer = (
 )
 const fight4Answer = (
   <div>
-    Remember that rules with a <b>class</b> selector fall on the third level, while rules with an <b>id</b> selector fall on the third level.
+    Remember that rules with a <b>class</b> selector fall on the third level, while rules with an <b>id</b> selector fall on the second level.
   </div>
 )
 const fight5Answer = (
