@@ -389,22 +389,22 @@ const CssCascade = () => {
           <br />
           <br />
           <p>
-            Additionally, on this tier of the Cascade, <b>ties can be broken within this tier</b>. This means that, if two rules have the same number of hits on the <b>third level</b>, one can win by having a hit on the <b>fourth level</b>.
+            Additionally, on this tier of the Cascade, <b>ties can be broken within this tier</b>. This means that, if two rules have the same number of hits on their highest level, one can win by having a hit on the next level down.
           </p>
 
           <RuleFight
             rule1={
-`.paragraph {
+`p#paragraph {
   color: sandybrown;
 }`
             }
             rule2={
-`.paragraph:first-of-type {
+`#paragraph.paragraph {
   color: orchid;
 }`
             }
-            rule1ActiveLevel={2}
-            rule2ActiveLevel={2}
+            rule1ActiveLevel={1}
+            rule2ActiveLevel={1}
             activeTier={2}
             {...{setActiveLevel}}
             winningRule={2}
@@ -517,7 +517,7 @@ const fight5Answer = (
 )
 const fight6Answer = (
   <div>
-    <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>class</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>tag</b>).
+    <b>Rules A and B</b> both have 1 hit on the <b>second level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>third level</b> (1 <b>class</b>), which beats <b>Rule A</b>'s hit on the <b>fourth level</b> (1 <b>tag</b>).
   </div>
 )
 
