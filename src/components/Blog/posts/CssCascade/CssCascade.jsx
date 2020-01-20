@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react"
-import { flatten, times, uniqueId } from "lodash"
+import { flatten, isFinite, times, uniqueId } from "lodash"
 import { area, curveStepAfter, curveCatmullRom } from "d3"
 import Icon from "components/_ui/Icon/Icon"
 import Aside from "components/_ui/Aside/Aside"
@@ -15,6 +15,18 @@ import fishImage from "./images/fish.png"
 import cloud1Image from "./images/cloud1.png"
 import cloud2Image from "./images/cloud2.png"
 import birdsImage from "./images/birds.png"
+import raftImage from "./images/raft.png"
+import flower1Image from "./images/flower1.png"
+import flower2Image from "./images/flower2.png"
+import flower3Image from "./images/flower3.png"
+import leaf1Image from "./images/leaf1.png"
+import leaf2Image from "./images/leaf2.png"
+import leaf3Image from "./images/leaf3.png"
+import leaf4Image from "./images/leaf4.png"
+import leaf5Image from "./images/leaf5.png"
+import leaf6Image from "./images/leaf6.png"
+import leaf7Image from "./images/leaf7.png"
+import leaf8Image from "./images/leaf8.png"
 
 import "./CssCascade.scss"
 import { svg } from "d3"
@@ -59,6 +71,8 @@ const CssCascade = () => {
           // hasIndicator={false}
         >
           <h1>The CSS Cascade</h1>
+
+          <h3>Or, How browsers resolve competing CSS styles</h3>
 
           <p>We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>.
           <br />
@@ -286,7 +300,7 @@ const CssCascade = () => {
                 <br />
                 This level also includes <b>pseudo-selectors</b>, like <P>:hover</P> and <P>:first-of-type</P>
               </div>,
-              <div onMouseEnter={() => setActiveLevel([2, 2])} onMouseLeave={() => setActiveLevel([2])}>
+              <div onMouseEnter={() => setActiveLevel([2, 3])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>type | pseudo-element</b>
                 <br />
                 We can target elements based on their <b>tag type</b>, using the syntax <P>type</P>
@@ -324,6 +338,8 @@ const CssCascade = () => {
             }
           />
 
+          <br />
+          <br />
           <p>
             What about these two rules?
           </p>
@@ -351,6 +367,7 @@ const CssCascade = () => {
             }
           />
 
+          <br />
           <br />
 
           <p>
@@ -380,6 +397,7 @@ const CssCascade = () => {
             }
           />
 
+          <br />
           <br />
           <p>
             Additionally, on this tier of the Cascade, <b>ties can be broken within this tier</b>. This means that, if two rules have the same number of hits on the <b>third level</b>, one can win by having a hit on the <b>fourth level</b>.
@@ -459,8 +477,8 @@ const CssCascade = () => {
         <ScrollEvent
           hasIndicator={false}
           isInViewChange={d => {
-            if (d != 0) return
-            setActiveLevel(null)
+            if (d < 0) return
+            setActiveLevel([4])
           }}
         >
           <h2>That's it!</h2>
@@ -482,29 +500,40 @@ const CssCascade = () => {
 
 export default CssCascade
 
-
 const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
 
   return (
-    <div className="CssCascadeSteps">
-
+    <div id="waterfall" className="CssCascadeSteps">
       <h6 className="CssCascadeSteps__name">
         The Css Cascade
       </h6>
       {/* <CssCascadeWaterfall /> */}
 
+      <CssCascadeRaft {...{ activeLevel }} />
       <CssCascadeStreamStraight />
-      <img src={plantsImage} className="CssCascadeSteps__image CssCascadeSteps__image--plants" />
+
+      {/* <img src={plantsImage} className="CssCascadeSteps__image CssCascadeSteps__image--plants" /> */}
       <img src={fishImage} className="CssCascadeSteps__image CssCascadeSteps__image--fish" />
       <img src={cloud1Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud1" />
       <img src={cloud2Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud2" />
       <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks" />
       <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks2" />
       <img src={birdsImage} className="CssCascadeSteps__image CssCascadeSteps__image--birds" />
+      <img src={leaf1Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf1" />
+      <img src={leaf2Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf2" />
+      <img src={leaf3Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf3" />
+      <img src={leaf4Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf4" />
+      <img src={leaf5Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf5" />
+      <img src={leaf6Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf6" />
+      <img src={leaf7Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf7" />
+      <img src={leaf8Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf8" />
+      <img src={flower1Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower1" />
+      <img src={flower2Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower2" />
+      <img src={flower3Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower3" />
 
       <div className="CssCascadeSteps__steps">
         {steps.map(({ name, substeps=[] }, stepI) => (
-          <div className={[
+          <div id={`CssCascadeSteps__step--${stepI}`} className={[
             `CssCascadeSteps__item`,
             `CssCascadeSteps__item--is-${
               !activeLevel ? "normal" :
@@ -519,7 +548,7 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
             </div>
             <div className="CssCascadeSteps__item__steps">
               {substeps.map(({ name }, i) => (
-                <div className={[
+                <div id={`CssCascadeSteps__step--${stepI}-${i}`} className={[
                   `CssCascadeSteps__item__step`,
                   `CssCascadeSteps__item__step--is-${
                     !activeLevel ? "normal" :
@@ -535,6 +564,47 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
         ))}
       </div>
       <CssCascadeCrash />
+
+      <div className="CssCascadeSteps__rocks"></div>
+    </div>
+  )
+}
+
+const defaultLevel = [0]
+const CssCascadeRaft = ({ activeLevel }) => {
+  const [iteration, setIteration] = useState(0)
+
+  const raftPosition = useMemo(() => {
+    const raftTier = activeLevel || defaultLevel
+
+    const id = raftTier[0] == 4
+      ? "CssCascadeSteps__step--3-2"
+      : `CssCascadeSteps__step--${raftTier.join("-")}`
+    const sectionElement = document.querySelector(`#${id}`)
+    const waterfallElem = document.querySelector(`#waterfall`)
+    if (!sectionElement) return [23, 0]
+
+    const elementPosition = sectionElement.getBoundingClientRect()
+    const waterfallPosition = waterfallElem.getBoundingClientRect()
+
+    setIteration(iteration + 1)
+
+    return [
+      elementPosition.left,
+      elementPosition.top
+        - (isFinite(raftTier[1]) ? 25 : 0)
+        + (raftTier[0] == 4 ? 50 : 0)
+        - waterfallPosition.top
+    ]
+  }, [activeLevel])
+
+  return (
+    <div
+      className={`CssCascadeRaft CssCascadeRaft--iteration-${iteration % 2}`}
+      style={{
+        transform: `translate(${ raftPosition[0] }px, ${ raftPosition[1] }px)`
+      }}>
+      <img className="CssCascadeRaft__img" src={raftImage} />
     </div>
   )
 }
@@ -592,11 +662,11 @@ const CssCascadeStreamStraight = () => {
 }
 
 
-// const levelXBuffer = 6
-// const levelYBuffer = 60
-// const stepHeight = 20
-// const stepWidth = 10
-// const flowWidth = 160
+const levelXBuffer = 6
+const levelYBuffer = 60
+const stepHeight = 20
+const stepWidth = 10
+const flowWidth = 160
 // const stepLevelIndices = flatten(
 //   steps.map(({ substeps=[] }, i) => (
 //     times(substeps.length, () => i)
@@ -665,7 +735,6 @@ const RuleFight = ({ rule1, rule2, rule1FileName, rule2FileName, rule1Language="
   const onVote = ruleNumber => () => {
     setVotedAnswer(ruleNumber)
   }
-  console.log(isCorrect, votedAnswer)
 
   return (
     <div className="RuleFight">
