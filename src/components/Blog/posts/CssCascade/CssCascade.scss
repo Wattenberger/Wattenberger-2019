@@ -380,9 +380,12 @@
         left: -66px;
         bottom: -66px;
         transform-origin: bottom left;
-        animation: 23s plantsMovement linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 23s plantsMovement linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
       }
       &--fish {
         width: 60px;
@@ -397,18 +400,22 @@
         width: 200px;
         top: -200px;
         left: 100px;
-        animation: 12s cloudMovement linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 12s cloudMovement linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
       }
       &--cloud2 {
         width: 100px;
         top: -100px;
         left: 10px;
-        animation: 17s cloudMovement linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-        animation-delay: -4s;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 17s cloudMovement linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+          animation-delay: -4s;
+        }
       }
       @keyframes birdsMovement {
         0% { transform: translateY(-3px); }
@@ -418,9 +425,11 @@
         width: 160px;
         top: -123px;
         left: 160px;
-        animation: 5s birdsMovement linear;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 5s birdsMovement linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+        }
       }
       &--rocks {
         width: 50px;
@@ -524,12 +533,16 @@
 
     &--iteration-0 {
       .CssCascadeRaft__img {
-        animation: 0.3s raftMovement1 linear;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 0.3s raftMovement1 linear;
+        }
       }
     }
     &--iteration-1 {
       .CssCascadeRaft__img {
-        animation: 0.3s raftMovement2 linear;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 0.3s raftMovement2 linear;
+        }
       }
     }
   }
@@ -570,8 +583,10 @@
       border-radius: 100%;
       opacity: 0.9;
       // mix-blend-mode: screen;
-      animation-name: bubbleMovement;
-      animation-iteration-count: infinite;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        animation-name: bubbleMovement;
+        animation-iteration-count: infinite;
+      }
 
       @keyframes bubbleMovement {
         0% { transform: scale(0.6); }
@@ -619,8 +634,10 @@
       stroke-width: 0.2px;
       stroke-linecap: round;
       stroke-dasharray: 8 9;
-      animation: 9s streamMovement linear;
-      animation-iteration-count: infinite;
+      @media screen and (prefers-reduced-motion: no-preference) {
+        animation: 9s streamMovement linear;
+        animation-iteration-count: infinite;
+      }
 
       @for $i from 0 through 6 {
         &:nth-of-type(#{$i}) {
@@ -773,8 +790,10 @@
         transform: translate(-50%, -50%) scale(0);
         transform-origin: center center;
 
-        animation: 0.3s popInStatus ease-out;
-        animation-fill-mode: forwards;
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation: 0.3s popInStatus ease-out;
+          animation-fill-mode: forwards;
+        }
 
         &--is {
           &-correct {
