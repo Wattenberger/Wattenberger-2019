@@ -549,16 +549,35 @@
 
   &Crash {
     position: absolute;
-    bottom: -110px;
-    right: -100px;
+    bottom: -134px;
+    left: 200px;
     width: 376px;
     z-index: 100;
     height: 300px;
     overflow: hidden;
     pointer-events: none;
 
+    &--size-l {
+      .CssCascadeCrash__bubble {
+
+        @keyframes bubbleMovement {
+            0% { transform: scale(0.6); }
+          20% { transform: scale(1.5); }
+          50% { transform: scale(2.5); }
+          80% { transform: scale(2); }
+          90% { transform: scale(1); }
+        }
+
+        @media screen and (prefers-reduced-motion: no-preference) {
+          animation-name: bubbleMovement;
+          animation-iteration-count: infinite;
+        }
+
+      }
+    }
     &--size-s {
       top: -235px;
+      left: -30px;
       width: 330px;
 
       .CssCascadeCrash__bubble {
@@ -566,9 +585,19 @@
         width: 26px;
         bottom: -13px;
 
-        @for $i from 0 through 6 {
-          &:nth-of-type(#{$i}) {
-            margin-left: #{($i - 0) * 35px};
+        // @for $i from 0 through 6 {
+        //   &:nth-of-type(#{$i}) {
+        //     margin-left: #{($i - 0) * 35px};
+        //     transform: scale(random(3));
+        //   }
+        // }
+      }
+      @for $i from 0 through 6 {
+        &.CssCascadeCrash--index-#{$i} {
+          @for $j from 0 through 6 {
+            .CssCascadeCrash__bubble:nth-of-type(#{$j}) {
+              transform: scale(random(3));
+            }
           }
         }
       }
@@ -583,18 +612,6 @@
       border-radius: 100%;
       opacity: 0.9;
       // mix-blend-mode: screen;
-      @media screen and (prefers-reduced-motion: no-preference) {
-        animation-name: bubbleMovement;
-        animation-iteration-count: infinite;
-      }
-
-      @keyframes bubbleMovement {
-        0% { transform: scale(0.6); }
-        20% { transform: scale(1.5); }
-        50% { transform: scale(2.5); }
-        80% { transform: scale(2); }
-        90% { transform: scale(1); }
-      }
 
       @for $i from 0 through 6 {
         &:nth-of-type(#{$i}) {

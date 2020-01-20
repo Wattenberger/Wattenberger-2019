@@ -533,7 +533,38 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
       <CssCascadeRaft {...{ activeLevel }} />
       <CssCascadeStreamStraight />
 
-      {/* <img src={plantsImage} className="CssCascadeSteps__image CssCascadeSteps__image--plants" /> */}
+      <CssCascadeImages />
+
+      <div className="CssCascadeSteps__steps">
+        {steps.map(({ name, substeps=[] }, stepI) => (
+          <div id={`CssCascadeSteps__step--${stepI}`} className={`CssCascadeSteps__item CssCascadeSteps__item--is-${ activeLevel && activeLevel[0] == stepI ? "active" : "normal"}`} key={name}>
+            <CssCascadeCrash size="s" index={stepI} />
+            <CssCascadeStream />
+            <div className="CssCascadeSteps__item__name" onClick={setHeaderHashLocal(name.toLowerCase())}>
+              { name }
+            </div>
+            <div className="CssCascadeSteps__item__steps">
+              {substeps.map(({ name }, i) => (
+                <CssCascadeStepsLevel
+                  key={name}
+                  {...{ stepI, i, name }}
+                  isActive={activeLevel && activeLevel[0] == stepI && activeLevel[1] == i}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <CssCascadeCrash />
+
+      <div className="CssCascadeSteps__rocks"></div>
+    </div>
+  )
+}
+
+
+const CssCascadeImages = memo(() => (
+  <>
       <img src={fishImage} className="CssCascadeSteps__image CssCascadeSteps__image--fish" />
       <img src={cloud1Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud1" />
       <img src={cloud2Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud2" />
@@ -551,45 +582,16 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
       <img src={flower1Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower1" />
       <img src={flower2Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower2" />
       <img src={flower3Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower3" />
+  </>
+))
 
-      <div className="CssCascadeSteps__steps">
-        {steps.map(({ name, substeps=[] }, stepI) => (
-          <div id={`CssCascadeSteps__step--${stepI}`} className={[
-            `CssCascadeSteps__item`,
-            `CssCascadeSteps__item--is-${
-              !activeLevel ? "normal" :
-              activeLevel[0] == stepI ? "active" :
-              "inactive"
-            }`,
-          ].join(" ")} key={name}>
-            <CssCascadeCrash size="s" />
-            <CssCascadeStream />
-            <div className="CssCascadeSteps__item__name" onClick={setHeaderHashLocal(name.toLowerCase())}>
-              { name }
-            </div>
-            <div className="CssCascadeSteps__item__steps">
-              {substeps.map(({ name }, i) => (
-                <div id={`CssCascadeSteps__step--${stepI}-${i}`} className={[
-                  `CssCascadeSteps__item__step`,
-                  `CssCascadeSteps__item__step--is-${
-                    !activeLevel ? "normal" :
-                    (activeLevel[0] == stepI && activeLevel[1] == i) ? "active" :
-                    "inactive"
-                  }`,
-                ].join(" ")} key={name}>
-                  { name }
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <CssCascadeCrash />
 
-      <div className="CssCascadeSteps__rocks"></div>
-    </div>
-  )
-}
+const CssCascadeStepsLevel = memo(({ stepI, i, name, isActive })=> (
+  <div id={`CssCascadeSteps__step--${stepI}-${i}`} className={`CssCascadeSteps__item__step CssCascadeSteps__item__step--is-${ isActive ? "active" : "normal" }`}>
+    { name }
+  </div>
+))
+
 
 const defaultLevel = [0]
 const CssCascadeRaft = ({ activeLevel }) => {
@@ -632,15 +634,13 @@ const CssCascadeRaft = ({ activeLevel }) => {
 
 
 const bubbles = times(6)
-const CssCascadeCrash = ({ size="l" }) => {
-  return (
-    <div className={`CssCascadeCrash CssCascadeCrash--size-${size}`}>
-      {bubbles.map(i => (
-        <div className="CssCascadeCrash__bubble" key={i} />
-      ))}
-    </div>
-  )
-}
+const CssCascadeCrash = memo(({ size="l", index=0 }) => (
+  <div className={`CssCascadeCrash CssCascadeCrash--size-${size} CssCascadeCrash--index-${index}`}>
+    {bubbles.map(i => (
+      <div className="CssCascadeCrash__bubble" key={i} />
+    ))}
+  </div>
+))
 
 
 const CssCascadeStreamD = [
@@ -650,37 +650,33 @@ const CssCascadeStreamD = [
 ].join(" ")
 const numberOfStreams = 8
 const streams = times(numberOfStreams)
-const CssCascadeStream = () => {
-  return (
-    <svg
-      className="CssCascadeStream"
-      viewBox={`0 0 ${numberOfStreams * 3} 10`}
-      preserveAspectRatio="none">
+const CssCascadeStream = memo(() => (
+  <svg
+    className="CssCascadeStream"
+    viewBox={`0 0 ${numberOfStreams * 3} 10`}
+    preserveAspectRatio="none">
 
-      {streams.map(i => (
-        <path key={i} d={CssCascadeStreamD} transform={`translate(${i * 3}, 0)`} />
-      ))}
-    </svg>
-  )
-}
+    {streams.map(i => (
+      <path key={i} d={CssCascadeStreamD} transform={`translate(${i * 3}, 0)`} />
+    ))}
+  </svg>
+))
 
 const CssCascadeStreamStraightD = [
   "M 0 0",
   "L 0 10",
 ].join(" ")
-const CssCascadeStreamStraight = () => {
-  return (
-    <svg
-      className="CssCascadeStream CssCascadeStreamStraight"
-      viewBox={`0 0 ${numberOfStreams * 3} 10`}
-      preserveAspectRatio="none">
+const CssCascadeStreamStraight = memo(() => (
+  <svg
+    className="CssCascadeStream CssCascadeStreamStraight"
+    viewBox={`0 0 ${numberOfStreams * 3} 10`}
+    preserveAspectRatio="none">
 
-      {streams.map(i => (
-        <path key={i} d={CssCascadeStreamStraightD} transform={`translate(${i * 3}, 0)`} />
-      ))}
-    </svg>
-  )
-}
+    {streams.map(i => (
+      <path key={i} d={CssCascadeStreamStraightD} transform={`translate(${i * 3}, 0)`} />
+    ))}
+  </svg>
+))
 
 
 const levelXBuffer = 6
