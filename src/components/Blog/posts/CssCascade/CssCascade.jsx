@@ -62,7 +62,7 @@ const CssCascade = () => {
           <title>The CSS Cascade</title>
           <link rel="canonical" href="https://wattenberger.com/blog/css-cascade" />
           <meta property="og:type" content="website" />
-          <meta name="description" content="<p>We style our websites using CSS, which stands for Cascading Style Sheets, but what does Cascading really mean? To save ourselves from future angst, let's take a step back and learn this thing for real." />
+          <meta name="description" content="<p>We style our websites using CSS, which stands for Cascading Style Sheets, but what does Cascading really mean? To save ourselves from future angst, let’s take a step back and learn this thing for real." />
           <meta name="image" content={metaImage} />
       </Helmet>
 
@@ -87,13 +87,13 @@ const CssCascade = () => {
           <br />
           But what does <b>Cascading</b> really mean?</p>
 
-          <p>The CSS Cascade is one of the most powerful parts of CSS. But it can also be very frustrating, if not well understood. Anyone who's worked on a large enough website has complained <b>"Why won't this CSS property work?!"</b> And we've all been tempted to throw an <P>!important</P> to strong-arm things into place.</p>
+          <p>The CSS Cascade is one of the most powerful parts of CSS. But it can also be very frustrating, if not well understood. Anyone who’s worked on a large enough website has complained <b>"Why won’t this CSS property work?!"</b> And we’ve all been tempted to throw an <P>!important</P> to strong-arm things into place.</p>
 
-          {/* <Blockquote source="All of us, probably">Why won't this CSS property work?!</Blockquote> */}
+          {/* <Blockquote source="All of us, probably">Why won’t this CSS property work?!</Blockquote> */}
 
-          {/* <p>And we've all been tempted to throw an <P>!important</P> to strong-arm things into place.</p> */}
+          {/* <p>And we’ve all been tempted to throw an <P>!important</P> to strong-arm things into place.</p> */}
 
-          <p>To save ourselves from future angst, let's take a step back and learn this thing for real.</p>
+          <p>To save ourselves from future angst, let’s take a step back and learn this thing for real.</p>
 
           <Highlight>
             The <b>CSS Cascade</b> is the way our browsers resolve competing CSS declarations.
@@ -104,7 +104,7 @@ const CssCascade = () => {
           </p>
 
           <p>
-            Let's take a look at the different tiers of the Cascade.
+            Let’s take a look at the different tiers of the Cascade.
           </p>
         </ScrollEvent>
 
@@ -122,7 +122,7 @@ const CssCascade = () => {
           </h2>
 
           <p>
-            The first tier of the Cascade looks at the <i>type</i> of rule we're looking at.
+            The first tier of the Cascade looks at the <i>type</i> of rule we’re looking at.
           </p>
           <p>
             There are four basic <i>types</i> of rules:
@@ -156,7 +156,7 @@ const CssCascade = () => {
           </p>
 
           <p>
-            Let's look at how this rule plays out:
+            Let’s look at how this rule plays out:
             <br />
             Which of these two rules would win?
           </p>
@@ -219,7 +219,7 @@ const CssCascade = () => {
                 <br />
                 Each browser has its own set of styles, which is why things like <P>{`<button>`}</P>s have default styles.
                 <br />
-                <button style={{all: "revert"}}>This is your browser's default button</button>
+                <button style={{all: "revert"}}>This is your browser’s default button</button>
               </div>,
             ]} hasNumbers />
           </p>
@@ -369,12 +369,12 @@ const CssCascade = () => {
 
           <RuleFight
             rule1={
-`p.paragraph {
+`.paragraph:first-of-type {
   color: sandybrown;
 }`
             }
             rule2={
-`.paragraph {
+`p.paragraph {
   color: orchid;
 }`
             }
@@ -462,7 +462,7 @@ const CssCascade = () => {
             setActiveLevel([4])
           }}
         >
-          <h2>That's it!</h2>
+          <h2>That’s it!</h2>
 
           <p>
             Hopefully, this helps clear up some confusion about styles are prioritized!
@@ -512,7 +512,7 @@ const fight4Answer = (
 )
 const fight5Answer = (
   <div>
-    <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>).
+    <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>), whereas <b>Rule B</b> has only one "hit" on the <b>third level</b> - its "hit" on a lower (fourth) level doesn’t come into play.
   </div>
 )
 const fight6Answer = (
