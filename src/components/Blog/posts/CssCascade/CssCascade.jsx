@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useMemo, useState } from "react"
-import { flatten, isFinite, times, uniqueId } from "lodash"
-import { area, curveStepAfter, curveCatmullRom } from "d3"
+import { Helmet } from "react-helmet"
+import { isFinite, times } from "lodash"
 import Icon from "components/_ui/Icon/Icon"
 import Aside from "components/_ui/Aside/Aside"
 import List from "components/_ui/List/List"
@@ -9,7 +9,8 @@ import Code from "components/_ui/Code/Code"
 import { steps } from "./constants"
 import { scrollTo } from "utils";
 
-import plantsImage from "./images/plants.png"
+import metaImage from "./../css-cascade.png"
+// import plantsImage from "./images/plants.png"
 import rocksImage from "./images/rocks.png"
 import fishImage from "./images/fish.png"
 import cloud1Image from "./images/cloud1.png"
@@ -29,15 +30,6 @@ import leaf7Image from "./images/leaf7.png"
 import leaf8Image from "./images/leaf8.png"
 
 import "./CssCascade.scss"
-import { svg } from "d3"
-
-
-const P = ({ children })=> (
-  <code className="P">{ children }</code>
-)
-const Highlight = ({ children })=> (
-  <div className="Highlight">{ children }</div>
-)
 
 const CssCascade = () => {
   const [activeLevel, setActiveLevel] = useState(null)
@@ -65,6 +57,15 @@ const CssCascade = () => {
 
   return (
     <div className="CssCascade">
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>The CSS Cascade</title>
+          <link rel="canonical" href="https://wattenberger.com/blog/css-cascade" />
+          <meta property="og:type" content="website" />
+          <meta name="description" content="<p>We style our websites using CSS, which stands for Cascading Style Sheets, but what does Cascading really mean? To save ourselves from future angst, let's take a step back and learn this thing for real." />
+          <meta name="image" content={metaImage} />
+      </Helmet>
+
 
       <CssCascadeSteps {...{ activeLevel, setHeaderHashLocal }} />
 
@@ -479,6 +480,15 @@ const CssCascade = () => {
 }
 
 export default CssCascade
+
+
+const P = ({ children })=> (
+  <code className="P">{ children }</code>
+)
+const Highlight = ({ children })=> (
+  <div className="Highlight">{ children }</div>
+)
+
 
 const fight1Answer = (
   <div>

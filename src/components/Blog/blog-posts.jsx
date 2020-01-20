@@ -6,6 +6,7 @@ import hooksImage from "./posts/react-hooks.png"
 import d3Image from "./posts/d3.png"
 import d3InteractiveImage from "./posts/d3-interactive.png"
 import scalingSvgImage from "./posts/scaling-svg.png"
+import cssCascadeImage from "./posts/css-cascade.png"
 
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
@@ -20,6 +21,13 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "The CSS Cascade",
+  id: "css-cascade",
+  image: cssCascadeImage,
+  description: <>
+    We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>, but what does <b>Cascading</b> really mean? To save ourselves from future angst, let's take a step back and learn this thing for real.
+  </>
+},{
   title: "Scaling SVG Elements",
   id: "scaling-svg",
   url: `/guide/scaling-svg`,

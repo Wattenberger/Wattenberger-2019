@@ -27,6 +27,29 @@
   </image>
 
 	<item>
+		<title>The CSS Cascade</title>
+		<link>https://wattenberger.com/blog/css-cascade</link>
+		<pubDate>Mon, 20 Jan 2020 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[CSS Cascade]]></category>
+		<category><![CDATA[Styling]]></category>
+		<category><![CDATA[Competing styles]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/css-cascade.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/guide/css-cascade</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/guide/css-cascade"><img width="750" height="665" src="http://wattenberger.com/css-cascade.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>, but what does <b>Cascading</b> really mean? To save ourselves from future angst, let's take a step back and learn this thing for real.</p>]]></description>
+				<content:encoded><![CDATA[<p>We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>, but what does <b>Cascading</b> really mean? To save ourselves from future angst, let's take a step back and learn this thing for real.</p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>Scaling SVG Elements</title>
 		<link>https://wattenberger.com/guide/scaling-svg</link>
 		<pubDate>Mon, 9 Dec 2019 08:00:00 EST</pubDate>
