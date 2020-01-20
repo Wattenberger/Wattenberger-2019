@@ -14,8 +14,6 @@ export const steps = [{
   substeps: [{
     name: "website",
   },{
-    name: "* third-party *",
-  },{
     name: "user",
   },{
     name: "browser",
