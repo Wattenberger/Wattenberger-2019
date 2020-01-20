@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { memo, useEffect, useMemo, useState } from "react"
 import { flatten, isFinite, times, uniqueId } from "lodash"
 import { area, curveStepAfter, curveCatmullRom } from "d3"
 import Icon from "components/_ui/Icon/Icon"
@@ -30,6 +30,14 @@ import leaf8Image from "./images/leaf8.png"
 
 import "./CssCascade.scss"
 import { svg } from "d3"
+
+
+const P = ({ children })=> (
+  <code className="P">{ children }</code>
+)
+const Highlight = ({ children })=> (
+  <div className="Highlight">{ children }</div>
+)
 
 const CssCascade = () => {
   const [activeLevel, setActiveLevel] = useState(null)
@@ -165,14 +173,10 @@ const CssCascade = () => {
             }
             rule1ActiveLevel={3}
             rule2ActiveLevel={1}
-            activeTier={[0]}
-            {...{setActiveLevel}}
+            activeTier={0}
             winningRule={2}
-            answer={
-              <div>
-                Remember that <P>!important</P> declarations fall on the second level, while normal declarations fall on the fourth level.
-              </div>
-            }
+            answer={fight1Answer}
+            {...{setActiveLevel}}
           />
 
           <p>
@@ -245,11 +249,7 @@ const CssCascade = () => {
             activeTier={1}
             {...{setActiveLevel}}
             winningRule={1}
-            answer={
-              <div>
-                Remember that <b>website</b>-specific declarations fall on the first level, while browser defaults fall on the third level.
-              </div>
-            }
+            answer={fight2Answer}
           />
         </ScrollEvent>
 
@@ -331,11 +331,7 @@ const CssCascade = () => {
             activeTier={2}
             {...{setActiveLevel}}
             winningRule={1}
-            answer={
-              <div>
-                Remember that <b>website</b>-specific declarations fall on the first level, while browser defaults fall on the third level.
-              </div>
-            }
+            answer={fight3Answer}
           />
 
           <br />
@@ -360,11 +356,7 @@ const CssCascade = () => {
             activeTier={2}
             {...{setActiveLevel}}
             winningRule={2}
-            answer={
-              <div>
-                Remember that <b>website</b>-specific declarations fall on the first level, while browser defaults fall on the third level.
-              </div>
-            }
+            answer={fight4Answer}
           />
 
           <br />
@@ -390,11 +382,7 @@ const CssCascade = () => {
             activeTier={2}
             {...{setActiveLevel}}
             winningRule={1}
-            answer={
-              <div>
-                <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>).
-              </div>
-            }
+            answer={fight5Answer}
           />
 
           <br />
@@ -419,11 +407,7 @@ const CssCascade = () => {
             activeTier={2}
             {...{setActiveLevel}}
             winningRule={2}
-            answer={
-              <div>
-                <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>class</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>tag</b>).
-              </div>
-            }
+            answer={fight6Answer}
           />
         </ScrollEvent>
 
@@ -467,10 +451,6 @@ const CssCascade = () => {
             activeTier={3}
             {...{setActiveLevel}}
             winningRule={2}
-            answer={
-              <div>
-              </div>
-            }
           />
         </ScrollEvent>
 
@@ -499,6 +479,37 @@ const CssCascade = () => {
 }
 
 export default CssCascade
+
+const fight1Answer = (
+  <div>
+    Remember that <P>!important</P> declarations fall on the second level, while normal declarations fall on the fourth level.
+  </div>
+)
+const fight2Answer = (
+  <div>
+    Remember that <b>website</b>-specific declarations fall on the first level, while browser defaults fall on the third level.
+  </div>
+)
+const fight3Answer = (
+  <div>
+    Remember that <b>inline</b> styles fall on the first level, while <b>type</b> rules fall on the fourth level.
+  </div>
+)
+const fight4Answer = (
+  <div>
+    Remember that rules with a <b>class</b> selector fall on the third level, while rules with an <b>id</b> selector fall on the third level.
+  </div>
+)
+const fight5Answer = (
+  <div>
+    <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>).
+  </div>
+)
+const fight6Answer = (
+  <div>
+    <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>class</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>tag</b>).
+  </div>
+)
 
 const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
 
@@ -592,7 +603,7 @@ const CssCascadeRaft = ({ activeLevel }) => {
     return [
       elementPosition.left,
       elementPosition.top
-        - (isFinite(raftTier[1]) ? 25 : 0)
+        - (isFinite(raftTier[1]) ? 33 : 0)
         + (raftTier[0] == 4 ? 50 : 0)
         - waterfallPosition.top
     ]
@@ -718,15 +729,8 @@ const flowWidth = 160
 // }
 
 
-const P = ({ children })=> (
-  <code className="P">{ children }</code>
-)
-const Highlight = ({ children })=> (
-  <div className="Highlight">{ children }</div>
-)
 
-
-const RuleFight = ({ rule1, rule2, rule1FileName, rule2FileName, rule1Language="css", rule2Language="css", rule1HighlightedLines, rule2HighlightedLines, rule1ActiveLevel, rule2ActiveLevel, activeTier, setActiveLevel, answer, winningRule }) => {
+const RuleFight = memo(({ rule1, rule2, rule1FileName, rule2FileName, rule1Language="css", rule2Language="css", rule1HighlightedLines, rule2HighlightedLines, rule1ActiveLevel, rule2ActiveLevel, activeTier, setActiveLevel, answer, winningRule }) => {
   const [votedAnswer, setVotedAnswer] = useState()
 
   const hasGuessed = !!votedAnswer
@@ -809,4 +813,4 @@ const RuleFight = ({ rule1, rule2, rule1FileName, rule2FileName, rule1Language="
       </div>
     </div>
   )
-}
+})

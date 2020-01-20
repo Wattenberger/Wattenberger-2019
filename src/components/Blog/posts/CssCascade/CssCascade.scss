@@ -382,7 +382,7 @@
         transform-origin: bottom left;
 
         @media screen and (prefers-reduced-motion: no-preference) {
-          animation: 23s plantsMovement linear;
+          // animation: 23s plantsMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
         }
@@ -401,7 +401,7 @@
         top: -200px;
         left: 100px;
         @media screen and (prefers-reduced-motion: no-preference) {
-          animation: 12s cloudMovement linear;
+          // animation: 12s cloudMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
         }
@@ -411,7 +411,7 @@
         top: -100px;
         left: 10px;
         @media screen and (prefers-reduced-motion: no-preference) {
-          animation: 17s cloudMovement linear;
+          // animation: 17s cloudMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
           animation-delay: -4s;
@@ -426,7 +426,7 @@
         top: -123px;
         left: 160px;
         @media screen and (prefers-reduced-motion: no-preference) {
-          animation: 5s birdsMovement linear;
+          // animation: 5s birdsMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
         }
