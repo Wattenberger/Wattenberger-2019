@@ -400,7 +400,7 @@
         width: 200px;
         top: -200px;
         left: 100px;
-        @media screen and (prefers-reduced-motion: no-preference) {
+        @media screen and (prefers-reduced-motion) {
           // animation: 12s cloudMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
@@ -410,7 +410,7 @@
         width: 100px;
         top: -100px;
         left: 10px;
-        @media screen and (prefers-reduced-motion: no-preference) {
+        @media screen and (prefers-reduced-motion) {
           // animation: 17s cloudMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
@@ -425,7 +425,7 @@
         width: 160px;
         top: -123px;
         left: 160px;
-        @media screen and (prefers-reduced-motion: no-preference) {
+        @media screen and (prefers-reduced-motion) {
           // animation: 5s birdsMovement linear;
           animation-iteration-count: infinite;
           animation-direction: alternate;
@@ -549,7 +549,7 @@
 
   &Crash {
     position: absolute;
-    bottom: -134px;
+    bottom: -124px;
     left: 200px;
     width: 376px;
     z-index: 100;
@@ -560,18 +560,18 @@
     &--size-l {
       .CssCascadeCrash__bubble {
 
-        @keyframes bubbleMovement {
-            0% { transform: scale(0.6); }
-          20% { transform: scale(1.5); }
-          50% { transform: scale(2.5); }
-          80% { transform: scale(2); }
-          90% { transform: scale(1); }
-        }
+        // @keyframes bubbleMovement {
+        //     0% { transform: scale(0.6); }
+        //   20% { transform: scale(1.5); }
+        //   50% { transform: scale(2.5); }
+        //   80% { transform: scale(2); }
+        //   90% { transform: scale(1); }
+        // }
 
-        @media screen and (prefers-reduced-motion: no-preference) {
-          animation-name: bubbleMovement;
-          animation-iteration-count: infinite;
-        }
+        // @media screen and (prefers-reduced-motion: no-preference) {
+        //   // animation-name: bubbleMovement;
+        //   // animation-iteration-count: infinite;
+        // }
 
       }
     }
@@ -618,6 +618,7 @@
           margin-left: #{($i - 0) * 42px};
           animation-duration: random(21) + 5 * 1s;
           animation-delay: random(21) + 5 * -1s;
+          transform: scale(random(3));
         }
       }
     }
