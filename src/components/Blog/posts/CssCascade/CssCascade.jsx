@@ -271,7 +271,7 @@ const CssCascade = () => {
           </p>
 
           <p>
-            Below are some levels of specificity, starting with 1, which is the "highest":
+            Below are some levels of specificity, starting with the first level, which is the "highest":
 
             <List className="CssCascade__hover-list" items={[
               <div onMouseEnter={() => setActiveLevel([2, 0])} onMouseLeave={() => setActiveLevel([2])}>
