@@ -27,7 +27,7 @@ export const customHooks = [{
 },{
   name: `useIsInView`,
   description: <>
-    For triggering animations that start when a user scrolls to an element. I used this a lot for the <Link to="https://parse.ly">parse.ly</Link> marketing site.
+    For triggering animations that start when a user scrolls to an element. I used this a lot for the <Link to="https://www.parse.ly">parse.ly</Link> marketing site.
   </>,
   code:
 `const useIsInView = (margin="0px") => {
