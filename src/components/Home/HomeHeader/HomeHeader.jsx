@@ -19,7 +19,7 @@ class HomeHeader extends Component {
             <h1 className="HomeHeader__content__text__title">Amelia Wattenberger</h1>
 
             <div className="HomeHeader__content__text__description">
-              I write code, think about data, and create digital experiences. Currently front-end development & UX at <a href="http://parsely.com" target="_blank">Parse.ly</a>.
+              I write code, think about data, and create digital experiences. Currently front-end development & UX at <a href="https://www.parse.ly/" target="_blank" rel="noopener noreferrer">Parse.ly</a>.
             </div>
           </div>
         </div>
