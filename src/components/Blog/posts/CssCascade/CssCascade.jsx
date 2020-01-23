@@ -267,7 +267,7 @@ const CssCascade = () => {
           </h2>
 
           <p>
-            The third tier of the Cascade looks at the <i>Specificity</i> of a rule. Specificity is calculated by determining which levels match a rule how many times.
+            The third tier of the Cascade looks at the <i>Specificity</i> of a rule. Specificity is calculated by counting how often a rule matches which levels and how many times.
           </p>
 
           <p>
