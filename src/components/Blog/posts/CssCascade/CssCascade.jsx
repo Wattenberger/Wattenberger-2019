@@ -283,7 +283,7 @@ const CssCascade = () => {
               hasNumbers
             />
             <p>
-              When we create a CSS declaration, we can target specific elements using <b>selectors</b>. Selectors have three levels of specificity ranking, the highest below being 2. and decreasing to 3. and finally, the lowest being 4.
+              When we create a CSS declaration, we can target specific elements using <b>selectors</b>. Selectors have three levels of specificity ranking, the highest below being the second level and the lowest being the fourth level.
             </p>
             <List className="CssCascade__hover-list" items={[
               null,
