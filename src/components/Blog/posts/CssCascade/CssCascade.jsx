@@ -152,7 +152,7 @@ const CssCascade = () => {
           </p>
 
           <p>
-            As you can see, this top tier is mostly reserved to ensure our elements animate properly, and to help out desparate developers (<P>!important</P>).
+            As you can see, this top tier is mostly reserved to ensure our elements animate properly, and to help out desperate developers (<P>!important</P>).
           </p>
 
           <p>
