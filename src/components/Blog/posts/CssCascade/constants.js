@@ -42,7 +42,7 @@ export const steps = [{
 
 
 export const resources = [{
-  url: "https://drafts.csswg.org/css-cascade-3/",
+  url: "https://drafts.csswg.org/css-cascade/",
   name: "CSS 3 Cascade Spec",
-  description: "A fairly easy read, as specs go."
+  description: "I'd highly recommend a browser through the official spec. It's a great resource, and a fairly easy read, as specs go."
 }]

@@ -3,10 +3,11 @@ import { Helmet } from "react-helmet"
 import { isFinite, times } from "lodash"
 import Icon from "components/_ui/Icon/Icon"
 import Aside from "components/_ui/Aside/Aside"
+import Link from "components/_ui/Link/Link"
 import List from "components/_ui/List/List"
 import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent"
 import Code from "components/_ui/Code/Code"
-import { steps } from "./constants"
+import { steps, resources } from "./constants"
 import { scrollTo } from "utils";
 
 import metaImage from "./../css-cascade.png"
@@ -471,6 +472,22 @@ const CssCascade = () => {
           <p>
             Next time you find yourself reaching for the big, red <P>!important</P> button, take a step back and look at where competing styles fall on the Cascading waterfall.
           </p>
+
+          <h2>Resources</h2>
+
+          <List items={
+            resources.map(({ url, name, description}, i) => (
+              <>
+                <Link
+                  to={url}
+                  >
+                  { name }
+                </Link>
+                <br />
+                { description }
+              </>
+            ))
+          } />
         </ScrollEvent>
 
       </div>
