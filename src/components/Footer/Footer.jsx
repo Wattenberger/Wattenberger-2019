@@ -35,7 +35,7 @@ class Footer extends Component {
                                 <img src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" className="Footer__link__emoji" alt="book" />
                                 Learn Data Viz
                             </Link>
-                            <Link className="Footer__link" href="http://fullstack.io/fullstack-d3">
+                            <Link className="Footer__link" to="/rss">
                                 <Icon name="rss" className="Footer__link__icon" alt="book" />
                                 RSS
                             </Link>
