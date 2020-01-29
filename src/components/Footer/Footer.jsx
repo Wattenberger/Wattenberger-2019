@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import Link from "components/_ui/Link/Link";
+import Icon from "components/_ui/Icon/Icon";
 import {withRouter} from 'react-router-dom';
 import meImg from "./me.png"
 
@@ -16,7 +17,7 @@ class Footer extends Component {
                 <img src={meImg} alt="Amelia" className="Footer__image" />
                 <div className="Footer__text">
                     <div className="Footer__name">
-                        Amelia Wattenberger © 2019
+                        Amelia Wattenberger © 2020
                     </div>
                     <div className="Footer__siblings">
                         <div className="Footer__links">
@@ -32,7 +33,11 @@ class Footer extends Component {
                             </Link>
                             <Link className="Footer__link" href="http://fullstack.io/fullstack-d3">
                                 <img src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" className="Footer__link__emoji" alt="book" />
-                                Learn Data Viz with the book
+                                Learn Data Viz
+                            </Link>
+                            <Link className="Footer__link" href="http://fullstack.io/fullstack-d3">
+                                <Icon name="rss" className="Footer__link__icon" alt="book" />
+                                RSS
                             </Link>
 
                         </div>

@@ -66,8 +66,14 @@
         white-space: nowrap;
 
         &__emoji {
+            margin-top: -2px;
             margin-right: 0.3em;
             width: 1em;
+        }
+
+        &__icon {
+            margin-right: 0.3em;
+            margin-bottom: -3px;
         }
     }
 
