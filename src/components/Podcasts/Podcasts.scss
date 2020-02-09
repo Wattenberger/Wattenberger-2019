@@ -145,7 +145,7 @@
       opacity: 0;
     }
     &--is-in-view {
-      .Leaf__clip {
+      .Leaf__clip--do-animate {
 
         @keyframes unClip {
             0% { r: 0; }
@@ -174,7 +174,7 @@
       mix-blend-mode: multiply;
     }
 
-    &__clip circle {
+    &__clip--do-animate circle {
       r: 0;
     }
 

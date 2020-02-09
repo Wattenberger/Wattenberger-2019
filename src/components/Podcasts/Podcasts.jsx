@@ -153,6 +153,9 @@ const Leaf = ({ colors=["#12CBC4", "#9980FA"] }) => {
       leafDs, lengths, angles
     }
   }, [])
+
+  const isChrome = useMemo(() => navigator.appVersion.indexOf("Chrome/") != -1, [])
+
   return (
     <ScrollEvent
       className={`Leaf Leaf--is-${isInView ? "" : "not-"}in-view`}
@@ -164,8 +167,8 @@ const Leaf = ({ colors=["#12CBC4", "#9980FA"] }) => {
       <svg className="Leaf__svg" {...{width, height}} viewBox={[0, 0, width, height].join(" ")}>
         <defs>
           {lengths.map((_, i) => (
-            <clipPath id={`${circleId}--${i}`} className="Leaf__clip" key={i}>
-              <circle cx={-width / 4} cy={height} r={width / 2} />
+            <clipPath id={`${circleId}--${i}`} className={`Leaf__clip Leaf__clip--${isChrome ? "do" : "do-not"}-animate`} key={i} userSpaceOnUse="objectBoundingBox">
+              <circle cx={-width / 4} cy={height} r={width * 2} />
             </clipPath>
           ))}
         </defs>
