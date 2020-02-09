@@ -7,7 +7,9 @@ import d3Image from "./posts/d3.png"
 import d3InteractiveImage from "./posts/d3-interactive.png"
 import scalingSvgImage from "./posts/scaling-svg.png"
 import cssCascadeImage from "./posts/css-cascade.png"
+import reactAndD3Image from "./posts/react-and-d3.png"
 
+import constructionGif from "components/_shared/construction.gif";
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 const dataCsv = require("!!raw-loader!examples/interactions/data.csv").default
@@ -21,6 +23,16 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "React and D3",
+  id: "react-and-d3",
+  image: reactAndD3Image,
+  description: <>
+    When I visualize data on the web, my current favorite environment is using <b>D3.js</b> inside of a <b>React.js</b> application. These two technologies are notoriously tricky to combine. Here's my opinionated guide to living with both, in harmony.
+    <br />
+    <br />
+    <img alt="under construction" src={constructionGif} />
+  </>
+},{
   title: "The CSS Cascade",
   id: "css-cascade",
   image: cssCascadeImage,

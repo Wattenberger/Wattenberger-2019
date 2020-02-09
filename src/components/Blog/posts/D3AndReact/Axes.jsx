@@ -384,7 +384,7 @@ const ChartAxisReactCode =
   )
 }`
 
-const ChartAxisReactComponent = ({
+export const ChartAxisReactComponent = ({
   domain=[0, 100],
   range=[10, 290],
 }) => {

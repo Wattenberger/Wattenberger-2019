@@ -113,8 +113,18 @@
       font-size: 0.8em;
     }
 
+    &__item {
+      display: flex;
+      align-items: center;
+      flex: 1 1 50%;
+      width: 13em;
+      padding-right: 2em;
+      // margin: 0 1em 0 0;
+    }
+
     &__row {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       min-width: 15em;
       margin: 0 1em;
@@ -122,6 +132,15 @@
       &__label {
         font-weight: 700;
         margin-right: 1em;
+      }
+
+      &__value {
+        width: 2em;
+        flex: 0 0 2em;
+        font-size: 0.9em;
+        padding-left: 0.3em;
+        text-align: right;
+        font-feature-settings: "tnum";
       }
     }
 
