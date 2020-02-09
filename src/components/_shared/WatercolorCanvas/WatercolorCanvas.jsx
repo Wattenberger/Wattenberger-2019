@@ -30,7 +30,7 @@ class WatercolorCanvas extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      selectedColors: 0
+      selectedColors: 3
     }
   }
 
