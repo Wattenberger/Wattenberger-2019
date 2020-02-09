@@ -32,6 +32,18 @@
     color: $bgc;
   }
 
+  &--style {
+    &-secondary {
+      background: #838399;
+
+      &:focus,
+      &:active,
+      &:hover {
+        background: $tc;
+      }
+    }
+  }
+
   &:disabled {
       background: $grey3;
   }

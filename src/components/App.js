@@ -14,6 +14,7 @@ import './App.scss'
 
 const Home = React.lazy(() => import("components/Home/Home"));
 const Sketches = React.lazy(() => import("components/Sketches/Sketches"));
+const Podcasts = React.lazy(() => import("components/Podcasts/Podcasts"));
 const News = React.lazy(() => import("components/News/News"));
 
 const DogNames = React.lazy(() => import("components/Articles/DogNames/DogNames"));
@@ -82,6 +83,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/sketches" component={Sketches} />
+              <Route path="/podcasts" component={Podcasts} />
               <Route path="/loading" component={Loader} />
               {/* <Route path="/rochester-real-estate" component={RochesterRealEstate} /> */}
               {/* <Route path="/healthcare" component={HealthCare} /> */}

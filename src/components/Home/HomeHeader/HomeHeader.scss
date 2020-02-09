@@ -10,13 +10,13 @@
 
 .HomeHeader__content {
   @include abs(0, 0, 0, 0);
-  margin: 40vh $horizontal-padding;
+  margin: 30vh $horizontal-padding;
   opacity: 0.9;
   z-index: 1;
 }
 
 .HomeHeader__content__text__top {
-    padding-left: 1.3em;
+  padding-left: 1.3em;
 }
 
 .HomeHeader__content__text {
@@ -26,7 +26,14 @@
 
 .HomeHeader__content__text__description {
   margin-top: 30px;
-  opacity: 0.6;
+  font-size: 1.2em;
+  line-height: 1.6em;
+  // opacity: 0.6;
+
+  .Link {
+    font-weight: 600;
+    color: $a1;
+  }
 }
 
 .HomeHeader__watercolor-canvas {

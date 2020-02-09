@@ -1,0 +1,191 @@
+@import "src/styles/lib";
+
+.Podcasts {
+  padding: 5em 3em;
+
+  h3 {
+    margin-left: 1em;
+    font-weight: 300;
+    color: darken($grey3, 9%);
+
+    b {
+      font-weight: 900;
+      color: $tc;
+    }
+  }
+
+  &__episodes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &Episode {
+    position: relative;
+    display: flex;
+    // align-items: center;
+    margin: 1em;
+    padding: 1em;
+    flex: 1 1 45%;
+    min-width: 25em;
+    max-width: 40em;
+    background: white;
+
+    &:hover {
+      // box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 15px -5px;
+    }
+
+    &__text {
+      flex: 1;
+      padding: 1em;
+    }
+
+    &__image {
+      width: 160px;
+      flex: 0 1 160px;
+      margin: 1em;
+      max-height: 160px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &__podcast {
+    }
+
+    &__name {
+      display: inline-block;
+      font-size: 1.6em;
+      font-weight: 800;
+      line-height: 1.46em;
+      color: $tc;
+
+      &:focus,
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &__date {
+      margin-top: 0.2em;
+      font-size: 0.9em;
+      color: $grey4;
+    }
+
+    &__buttons {
+      display: flex;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      margin-right: 1em;
+
+      .Icon {
+        margin-right: 0.6em;
+      }
+    }
+
+    &__description {
+      margin: 1em 0 1.6em;
+      font-size: 0.9em;
+      line-height: 1.5em;
+    }
+
+    .Leaf {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      &__svg {
+        width: 230px;
+        height: 230px;
+      }
+    }
+  }
+
+  sup {
+    font-feature-settings: "sups";
+    opacity: 0.5;
+  }
+
+  @media (max-width: 750px) {
+    padding: 3em 1em;
+
+    h3 {
+      font-size: 2em;
+    }
+
+    &Episode {
+      flex-direction: column;
+      margin: 1em -1em;
+      min-width: 90%;
+    }
+  }
+
+  @media (max-width: 750px) {
+    &Episode {
+      &__image {
+        width: 90px;
+        height: 90px;
+        flex: auto;
+      }
+
+      .Leaf__svg {
+        display: none;
+      }
+    }
+  }
+
+  .Leaf {
+    transition: all 0.3s ease-out;
+
+    &--is-not-in-view {
+      opacity: 0;
+    }
+    &--is-in-view {
+      .Leaf__clip {
+
+        @keyframes unClip {
+            0% { r: 0; }
+          100% { r: 200; }
+        }
+
+        circle {
+          animation: unClip 2s ease-out;
+          animation-fill-mode: forwards;
+        }
+
+        @for $i from 0 through 5 {
+          &:nth-of-type(#{$i}) circle {
+            animation-delay: #{($i - 1) * 0.5}s;
+          }
+        }
+      }
+    }
+
+    &__svg {
+      overflow: visible;
+    }
+
+    g,
+    path {
+      mix-blend-mode: multiply;
+    }
+
+    &__clip circle {
+      r: 0;
+    }
+
+    &__stem {
+      fill: $grey5;
+      // stroke: $grey5;
+      // stroke-linejoin: round;
+    }
+
+    &__leaf {
+      fill: $a2;
+    }
+  }
+}
