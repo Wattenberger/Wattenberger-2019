@@ -4,6 +4,9 @@
   .Terminology {
     &-wrapper {
       display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
     }
 
     position: relative;
@@ -16,6 +19,13 @@
     background: darken($grey1, 3%);
     color: $grey5;
     // border: 1px solid $grey2;
+
+    @media (max-width: 500px) {
+      font-size: 0.8em;
+    }
+    @media (max-width: 400px) {
+      font-size: 0.6em;
+    }
 
     &:before {
       content: "wrapper";

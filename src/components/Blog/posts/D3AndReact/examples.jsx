@@ -106,7 +106,8 @@ export const CodeAndExample = ({ code, markers, example, fileName, theme, size, 
           {...{markers, highlightedMarker, fileName, theme, size, highlightedLines, hasLineNumbers}}
           className={`Code--highlighted-marker-${hoveredMarker}`}
           doWrap={false}
-          doScrollWrapper={false}>
+          doScrollWrapper={false}
+          size={window.innerWidth < 600 && "s"}>
           { code }
         </Code>
       </div>

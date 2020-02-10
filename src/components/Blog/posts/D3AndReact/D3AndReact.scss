@@ -13,6 +13,11 @@
   // font-size: 16px;
   // line-height: 1.3em;
 
+  @media (max-width: 600px) {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
   h1 {
     position: relative;
     max-width: 60em;
@@ -21,6 +26,10 @@
     font-size: 5em;
     pointer-events: none;
     z-index: 100;
+
+    @media (max-width: 500px) {
+      font-size: 3em;
+    }
   }
 
   &__centered {
@@ -48,6 +57,10 @@
     h2 {
       margin-bottom: 0.9em;
       text-align: center;
+
+      @media (max-width: 500px) {
+        font-size: 2em;
+      }
     }
   }
 
@@ -287,6 +300,9 @@
       @media (min-width: 900px) {
         position: sticky;
         top: 100px;
+      }
+      @media (max-width: 500px) {
+        min-width: 80%;
       }
     }
 

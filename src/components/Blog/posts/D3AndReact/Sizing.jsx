@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react"
+import ResizeObserver from '@juggle/resize-observer';
 import {useSpring, animated} from 'react-spring'
 import * as d3 from "d3"
 import { format, range } from "d3"
@@ -43,7 +44,7 @@ const Sizing = () => {
 
       <div className="Terminology-wrapper">
         <Terminology />
-        <div style={{flex: 1, paddingTop: "0.8em"}}>
+        <div style={{flex: "1 1 30em", paddingTop: "0.8em"}}>
           <List items={[
             <>
               <Term name="wrapper" />
@@ -147,11 +148,11 @@ const Sizing = () => {
       <CodeAndExample
         code={useChartDimensionsCode}
         markers={[
-          [3, 4, 5],
-          [7, 8, 11, 12],
-          [15, 28, 30],
-          range(22, 26),
-          range(33, 38),
+          [5, 6, 7],
+          [9, 10, 13, 14],
+          [17, 30, 32],
+          range(24, 28),
+          range(35, 40),
         ]}
         fileName="useChartDimensions.js"
         example={getHighlightedMarkerProps => (
@@ -173,6 +174,10 @@ const Sizing = () => {
               </div>,
               <div {...getHighlightedMarkerProps(2)}>
                 use a <Link href="https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver"><P>ResizeObserver</P></Link> to re-calculate the dimensions when the passed element changes size
+
+                <Aside>
+                  <P>ResizeObserver</P> is <Link href="https://caniuse.com/#feat=resizeobserver">currently not supported in all browsers</Link>, so we're using <Link href="https://www.npmjs.com/package/@juggle/resize-observer">this resize-observer</Link> polyfill to make sure this works in all browsers.
+                </Aside>
               </div>,
               <div {...getHighlightedMarkerProps(3)}>
                 grab the <b>height</b> and <b>width</b> of a containing <P>{`<div>`}</P> for our <Term name="wrapper" /> dimensions
@@ -294,7 +299,9 @@ const combineChartDimensions = dimensions => {
 }
 
 const useChartDimensionsCode =
-`const useChartDimensions = passedSettings => {
+`import ResizeObserver from '@juggle/resize-observer'
+
+const useChartDimensions = passedSettings => {
   const ref = useRef()
   const dimensions = combineChartDimensions(
     passedSettings
