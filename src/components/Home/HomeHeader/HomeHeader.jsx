@@ -22,7 +22,7 @@ class HomeHeader extends Component {
             <div className="HomeHeader__content__text__description">
               I write code, think about data, and create digital experiences.
               <br />
-              Currently front-end development & UX at <Link href="http://parsely.com" target="_blank">Parse.ly</Link>.
+              Currently Journalist-Engineer at <Link href="http://pudding.cool" target="_blank">The Pudding</Link>.
               <br />
               <br />
               Listen to <Link to="/podcasts">podcasts I've been on</Link>, or read <Link to="/blog">articles I've written</Link>.

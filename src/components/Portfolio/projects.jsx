@@ -111,7 +111,7 @@ export const projects = [
         </div>,
         tools: ["D3.js", "SVG", "Words"],
         images: [book],
-        imageContentStyle: {backgroundPosition: "top"},
+        imageContentStyle: {backgroundPosition: "bottom"},
         link: "http://fullstack.io/fullstack-d3",
       },
       {
