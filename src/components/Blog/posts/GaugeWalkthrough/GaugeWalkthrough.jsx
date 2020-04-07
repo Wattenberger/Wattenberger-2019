@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import Slider from 'rc-slider/lib/Slider';
 import "rc-slider/assets/index.css"
 import { useInterval } from "utils/utils.js"
@@ -20,12 +20,32 @@ import "./GaugeWalkthrough.scss"
 
 const GaugeWalkthrough = () => {
   const [codeIndex, setCodeIndex] = useState(0)
-  const [code, Example, highlightedLines=[]] = codeExamples[codeIndex]
+
+  useEffect(() => {
+    window.scaleLinear = scaleLinear
+}, [])
+
+  console.log(codeExamples[codeIndex])
+  const {code, Example, highlightedLines=[], removedLines=[], insertedLines=[], markers=[]} = codeExamples[codeIndex] || {}
   const [units, setUnits] = useState("units")
   const [label, setLabel] = useState("label")
   const [value, setValue] = useState(50)
   const [min, setMin] = useState(0)
   const [max, setMax] = useState(100)
+  const [highlightedMarker, setHighlightedMarker] = useState(null)
+
+  const getHighlightedMarkerProps = index => ({
+    onMouseEnter: () => setHighlightedMarker(index),
+    onMouseLeave: () => {
+      setHighlightedMarker(null)
+      // setHighlightedMarker(null)
+    },
+    // onClick: () => setHighlightedMarker(index),
+    style: {
+      cursor: "zoom-in",
+    }
+  })
+
 
   return (
     <div className="GaugeWalkthrough">
@@ -42,7 +62,13 @@ const GaugeWalkthrough = () => {
               Let's embark on a journey.
               <br />
               <br />
-              At the end of this journey, we'll have created a gauge component in React.js. However, as our good friend Ursula Le Guin puts it,
+              At the end of this journey, we'll have created a gauge component in React.js.
+              <br />
+              <br />
+              A gauge is a simple diagram that visualizes a simple number. The shape and design is based on physical gauges, used in control panels to show the measurement of a specific metric.
+              <br />
+              <br />
+              I like to use them in digital interfaces to show context around a number -- a user can quickly see whether a value is lower or higher than expected. However, while our goal is to create a gauge React.js component, we'll learn concepts and tricks along the way that can help to create many other things. As our good friend Ursula Le Guin puts it,
             </p>
 
             <Blockquote source="Ursula K. Le Guin, The Left Hand of Darkness">
@@ -65,7 +91,7 @@ const GaugeWalkthrough = () => {
         <div className="GaugeWalkthrough__main">
           <div className="GaugeWalkthrough__sticky">
             <div className="GaugeWalkthrough__sticky__code">
-              <Code fileName="Guage.jsx" highlightedLines={highlightedLines}>
+              <Code fileName="Gauge.jsx" {...{highlightedLines, removedLines, insertedLines, markers, highlightedMarker}} doWrap={false}>
                 { code }
               </Code>
             </div>
@@ -73,6 +99,45 @@ const GaugeWalkthrough = () => {
               <Example
                 {...{units, label, value, min, max}}
               />
+              <div className="GaugeWalkthrough__sticky__metrics">
+                <div className="GaugeWalkthrough__sticky__metric">
+                  <div className="GaugeWalkthrough__sticky__metric__label">
+                    <h6>value</h6>
+                    <h6>{value}</h6>
+                  </div>
+                  <Slider
+                    className="GaugeWalkthrough__slider"
+                    {...{value, min, max}}
+                    onChange={setValue}
+                  />
+                </div>
+                <div className="GaugeWalkthrough__sticky__metric">
+                  <div className="GaugeWalkthrough__sticky__metric__label">
+                    <h6>min</h6>
+                    <h6>{min}</h6>
+                  </div>
+                  <Slider
+                    className="GaugeWalkthrough__slider"
+                    value={min}
+                    min={0}
+                    max={200}
+                    onChange={setMin}
+                  />
+                </div>
+                <div className="GaugeWalkthrough__sticky__metric">
+                  <div className="GaugeWalkthrough__sticky__metric__label">
+                    <h6>max</h6>
+                    <h6>{max}</h6>
+                  </div>
+                  <Slider
+                    className="GaugeWalkthrough__slider"
+                    value={max}
+                    min={0}
+                    max={200}
+                    onChange={setMax}
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -82,7 +147,7 @@ const GaugeWalkthrough = () => {
               setCodeIndex(0)
             }}>
               <p>
-                Here we are, at the beginning of our journey. We've created a <P>Gauge.jsx</P> file, containing a blank functional React component.
+                The beginning of our journey finds us in a <P>Gauge.jsx</P> file, with a simple functional React component.
               </p>
 
               <MobileCode index={0} {...{units, label, value, min, max}} />
@@ -91,18 +156,18 @@ const GaugeWalkthrough = () => {
                 Whenever we create a new <P>{`<Gauge>`}</P>, we'll be able to customize it with five <b>props</b>:
               </p>
 
-              <List items={[
-                <>
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
                   <b>value</b> is the current value. This defaults to <P>50</P>,
-                </>,<>
+                </div>,<div {...getHighlightedMarkerProps(1)}>
                   <b>min</b> is the minimum value for our metric. This defaults to <P>0</P>,
-                </>,<>
+                </div>,<div {...getHighlightedMarkerProps(2)}>
                   <b>max</b> is the maximum value for our metric. This defaults to <P>100</P>,
-                </>,<>
+                </div>,<div {...getHighlightedMarkerProps(3)}>
                   <b>label</b>,
-                </>,<>
+                </div>,<div {...getHighlightedMarkerProps(4)}>
                   <b>units</b>,
-                </>
+                </div>
               ]} />
 
               <p>
@@ -184,48 +249,61 @@ const GaugeWalkthrough = () => {
               <p>
                 Alright, let's begin the next phase of our journey:
               </p>
+            </ScrollEvent>
 
               <h2>Drawing!</h2>
 
-              <p>
-                Drawing arcs in SVG is a complex feat, but we can lean on our trusty <Link to="https://github.com/d3/d3-shape#arcs"><P>d3.arc()</P></Link> method.
-              </p>
-
-              <p>
-                <P>d3.arc()</P> will create an <i>arc generator</i>. We can configure our <i>arc generator</i> by calling different methods on it.
-              </p>
-
-              <p>
-                For example, to set the inner radius of our arc generator, we would use its <P>.innerRadius()</P> method and pass the value we want.
-              </p>
-
-              <ArcExample />
-
-              <p>
-                To use our <i>arc generator</i>, we simply need to call it.
-              </p>
-
-            </ScrollEvent>
 
             <ScrollEvent isInViewChange={status => {
               if (status != 0) return
               setCodeIndex(4)
             }}>
               <p>
+                Drawing arcs in SVG is a complex feat, but we can use our trusty weapon <Link to="https://github.com/d3/d3-shape#arcs"><P>d3.arc()</P></Link>, from the <Link to="https://github.com/d3/d3-shape"><b>d3-shape</b></Link> libary.
+              </p>
+
+              <p>
+                <P>d3.arc()</P> will create an <i>arc generator</i>. We can configure our <i>arc generator</i> by calling different methods on it.
+              </p>
+
+              <ArcExample />
+
+              <p>
+                Let's look at the parameters we want to use for our arc:
+              </p>
+
+
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
+                  our arc's radius will start at <P>0.65</P> and end at <P>1</P>, ending up <P>0.35</P> units wide
+                  <Aside>
+                    Remember, these aren't pixels, but <i>units</i> in our <P>{`<svg>`}</P>'s unit system
+                  </Aside>
+                </div>,
+                <div {...getHighlightedMarkerProps(1)}>
+                  our arc will start at <P>-Math.PI / 2</P> (one quarter turn counterclockwise), and extend to <P>Math.PI / 2</P> (one quarter turn clockwise)
+                </div>,
+                <div {...getHighlightedMarkerProps(2)}>
+                  let's make our arc a bit friendlier, with a <b>cornerRadius</b> of <P>1</P>,
+                </div>,
+              ]} />
+
+            </ScrollEvent>
+
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(5)
+            }}>
+
+              <p>
+                To use our <i>arc generator</i>, we simply need to call it.
+              </p>
+
+              <p>
                 Let's see what that looks like for our gauge. To start, we'll create a grey background arc, to show the full range of our gauge.
               </p>
 
               <MobileCode index={4} {...{units, label, value, min, max}} />
-
-              <p>
-                This arc will:
-              </p>
-
-              <List items={[
-                <>be <P>0.35</P> units wide, with an inner circle <P>0.65</P> units from the center, and an outer circle <P>1</P> uni from the center</>,
-                <>extend from -90 degrees (<P>-Math.PI / 2</P> radians) to +90 degrees (<P>Math.PI / 2</P> radians)</>,
-                <>have rounded corners, to match our aesthetic</>,
-              ]} />
 
               <p>
                 Great! Calling an <i>arc generator</i>, with these settings spits out a string:
@@ -242,7 +320,7 @@ const GaugeWalkthrough = () => {
 
             <ScrollEvent isInViewChange={status => {
               if (status != 0) return
-              setCodeIndex(5)
+              setCodeIndex(6)
             }}>
               <p>
                 In our render method, let's create a new <Link to="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path"><P>{`<path>`}</P></Link> element and pass these magic words to the <P>d</P> attribute.
@@ -258,11 +336,192 @@ const GaugeWalkthrough = () => {
                   Note how our arc is perfectly centered in our <P>{`<svg>`}</P>. This is because <P>{`d3.arc()`}</P>, by default, centers the arc around <P>[0, 0]</P>.
                 </p>
 
-                <Grid />
+                <Grid hasArc />
 
                 <p>
                   If we revisit our grid figure, we can see that the <P>[0, 0]</P> point is at the <i>bottom, center</i> of the <P>viewBox</P>. This perfectly frames the top half of our arc, which is the only part that we're interested in.
                 </p>
+            </ScrollEvent>
+
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(7)
+            }}>
+              <p>
+                Now that we've drawn the <i>background</i> arc which represents the range of possible values, we'll want to draw the <i>filled</i> arc that shows the current value.
+              </p>
+
+
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
+                  First, we need to know what percent of the possible values lie <i>below</i> our current value. For example, if our range was from <P>0 - 100</P>, a value of <P>50</P> would be <P>50%</P> through our possible range.
+                  <br />
+                  <br />
+                  We'll create a <P>percentScale</P> which transforms <P>value</P>s into a <P>percent</P> (between <P>0</P> and <P>1</P>).
+
+                  <Aside>
+                    Unfamiliar with <b>scales</b>? Read up a bit more <Link to="/blog/d3#converting-data-to-the-physical-domain">in here</Link>.
+                  </Aside>
+
+                  Our <P>percentScale</P> will use a <Link to="https://github.com/d3/d3-scale#scaleLinear"><P>scaleLinear</P></Link> from <Link to="https://github.com/d3/d3-scale">d3-scale</Link>.
+                </div>,
+                <div {...getHighlightedMarkerProps(1)}>
+                  Next, we need to know what <i>angle</i> our filled arc needs to fill until. Let's create an <P>angleScale</P> that maps a <P>percent</P> into our <i>possible angles</i> (remember these values from our <P>backgroundArc</P>'s <P>innerRadius</P> and <P>outerRadius</P>?)
+                  <Aside>
+                    Note that we're using <P>.clamp(true)</P> to ensure that our <P>angleScale</P> will never return values outside of our specified <i>range</i>.
+                  </Aside>
+                </div>,
+                <div {...getHighlightedMarkerProps(2)}>
+                  Wonderful! Now that we know the end <i>angle</i>, we can create the incantation for our <i>filled</i> arc's <P>d</P> attribute.
+                </div>,
+                <div {...getHighlightedMarkerProps(3)}>
+                  And lastly, let's summit that hill and draw our filled arc!
+                </div>,
+              ]} />
+
+              <MobileCode index={5} {...{units, label, value, min, max}} />
+
+              <p>
+                Perfect! Play around with the slider to see how our <i>filled arc</i>looks with different <P>value</P>s.
+              </p>
+
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(8)
+            }}>
+              <h3>Adding a gradient</h3>
+              <p>
+                One thing you might notice when playing with our gauge's <P>value</P> is that most states feel kind of... the same.
+              </p>
+              <p>
+                Let's reinforce <i>how far the current value is to the left of right</i> by filling our <i>filled arc</i> with a light-to-dark gradient.
+              </p>
+
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
+                  First, we'll need a color scale from our lightest to our darkest color.
+                  <Aside>
+                    We've already seen that <Link to="https://github.com/d3/d3-scale#scaleLinear"><P>scaleLinear</P></Link> is happy to convert between numeric ranges, but it will also convert <b>colors</b> and <b>datetimes</b>!
+                  </Aside>
+                </div>,
+                <div {...getHighlightedMarkerProps(1)}>
+                  Next, we need an array of color values that we want our gradient to interpolate through. To create this, we can use our <P>colorScale</P>'s <P>.ticks()</P> method to output an array of equally-spaced values across the output <i>range</i>.
+                  <br />
+                  <br />
+                  Let's see a toy example for a simple scale that maps <P>0 - 1</P> to the <i>range</i> <P>0 - 100</P>:
+
+            <Code canEval highlightedLines={[5]} fileName=".ticks() example">
+{`const scale = scaleLinear()
+  .domain([0, 1])
+  .range([0, 100])
+
+const ticks = scale.ticks()
+alert(ticks)`}
+            </Code>
+                </div>,
+              ]} />
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(9)
+            }}>
+              <p>
+                Now that we have our gradient's colors, we can apply them!
+              </p>
+              <p>
+                On the web, we might be used to using a simple background CSS gradient, but those won't work in SVG land. Let's see what we need to do instead.
+              </p>
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
+                  First, we'll want to create a <P>{`<defs>`}</P> (ie. definitions) element. Everything inside of a <P>{`<defs>`}</P> element <i>will not be rendered</i>, but we can reference them elsewhere. This is great for elements that need to be defined before being used.
+                </div>,
+                <div {...getHighlightedMarkerProps(1)}>
+                  Next, we'll create a <Link to="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient"><P>{`<linearGradient>`}</P></Link> element.
+                </div>,
+                <div {...getHighlightedMarkerProps(2)}>
+                  Our <P>{`<linearGradient>`}</P> won't render anything by itself, but we'll give it an <P>id</P> attribute to use as a <i>handle</i> to reference later.
+                </div>,
+                <div {...getHighlightedMarkerProps(3)}>
+                  To correctly position our gradient, we want to set its <Link to="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/gradientUnits"><P>gradientUnits</P></Link> attribute. This attribute has two options:
+                  <List items={[
+                    <><P>userSpaceOnUse</P> (the default), which uses the parent <P>{`<svg>`}</P> element's coordinate system (set in its <P>viewBox</P>)</>,
+                    <><P>objectBoundingBox</P>, which uses the coordinate system from the element the gradient is applied to</>,
+                  ]} />
+                  We'll set <P>gradientUnits</P> to <P>userSpaceOnUse</P>, which is the default, but it's nice to be explicit.
+                </div>,
+                <div {...getHighlightedMarkerProps(4)}>
+                  Now that we know that we're working in our usual coordinate space, let's look at our grid diagram:
+                  <Grid hasArc size="s" />
+                  We want our gradient to stretch all the way across our arc, so we'll start at <P>[0, -1]</P> and end at <P>[0, 1]</P>.
+                </div>,
+              ]} />
+
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(10)
+            }}>
+
+              <p>
+                Next, we'll need to create gradient <i>stops</i>, which tell the gradient where each color should fall. The gradient itself will do the hard work of blending between each of these colors.
+              </p>
+
+              <List className="GaugeWalkthrough__marked-list" hasNumbers items={[
+                <div {...getHighlightedMarkerProps(0)}>
+                  To do this, we'll map over our <P>gradientSteps</P> array, grabbing each <i>color</i> and its <i>index</i>in the array
+                </div>,
+                <div {...getHighlightedMarkerProps(1)}>
+                  For each <i>color</i>, we'll create a <Link to="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/stop"><P>{`<stop>`}</P></Link> element
+                </div>,
+                <div {...getHighlightedMarkerProps(2)}>
+                  React requires a <P>key</P> for the outmost elements in a loop, to distinguish between them and help with re-render decisions
+                </div>,
+                <div {...getHighlightedMarkerProps(3)}>
+                  We'll set each <P>stopColor</P> attribute as our color, and
+                </div>,
+                <div {...getHighlightedMarkerProps(4)}>
+                  set each <P>offset</P> attribute as the <i>percent <P>(0 - 100}</P> through the gradient</i>. We <i>could</i> create a scale to convert the <P>index</P> into a <i>percent</i>, but it's easier here to just divide the <P>index</P> by the <i>maximum index</i> (or, one less than the number of <P>gradientSteps</P>).
+                </div>,
+                <div {...getHighlightedMarkerProps(5)}>
+                  And at last, we can use our <i>handle</i> and set the <P>fill</P> attribute of our <i>filled arc</i>.
+                </div>,
+              ]} />
+              <br />
+              <br />
+              <br />
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(11)
+            }}>
+              <h3>Helpful bits & bobs</h3>
+              <p style={{padding: "15em 0"}}>midline</p>
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(12)
+            }}>
+              <p style={{padding: "15em 0"}}>marker</p>
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(13)
+            }}>
+              <p style={{padding: "15em 0"}}>arrow</p>
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(14)
+            }}>
+              <p style={{padding: "15em 0"}}>fixed arrow</p>
+            </ScrollEvent>
+            <ScrollEvent isInViewChange={status => {
+              if (status != 0) return
+              setCodeIndex(15)
+            }}>
+              <h3>Adding context</h3>
+              <p style={{padding: "15em 0"}}>numbers</p>
             </ScrollEvent>
 
             <br />
@@ -755,7 +1014,7 @@ const arcPath = arcPathGenerator()
     )
 }
 
-const Grid = () => (
+const Grid = ({ hasArc=false }) => (
   <div className="GaugeWalkthrough__grid">
     <div className="GaugeWalkthrough__grid__corner GaugeWalkthrough__grid__corner--nw">
       [-1, -1]
@@ -776,25 +1035,37 @@ const Grid = () => (
       [0, 0]
     </div>
     <svg viewBox="-1 -1 2 1" style={{
-      border: "1px solid pink"
+      border: "1px solid pink",
+      overflow: "visible",
     }}>
-      <rect x="-1" y="-1" width="1" height="1" stroke="turquoise"  strokeWidth="0.05" fill="none" />
-      <rect x="-1" y="0" width="1" height="1" stroke="turquoise"  strokeWidth="0.05" fill="none" />
-      <rect x="0" y="-1" width="1" height="1" stroke="turquoise"  strokeWidth="0.05" fill="none" />
-      <rect x="0" y="0" width="1" height="1" stroke="turquoise"  strokeWidth="0.05" fill="none" />
+      {hasArc && (
+        <path fill="#DBDBE7" d="M-0.8062257748298549,-8.326672684688674e-17A0.175,0.175,0,0,1,-0.9772433634301272,-0.2121212121212122A1,1,0,0,1,0.9772433634301272,-0.21212121212121218A0.175,0.175,0,0,1,0.8062257748298549,-2.7755575615628914e-17L0.8062257748298549,-2.7755575615628914e-17A0.175,0.175,0,0,1,0.6352081862295826,-0.13787878787878788A0.65,0.65,0,0,0,-0.6352081862295826,-0.13787878787878793A0.175,0.175,0,0,1,-0.8062257748298549,-8.326672684688674e-17Z" />
+      )}
+      <rect x="-1" y="-1" width="1" height="1" stroke="turquoise"  strokeWidth="0.026" fill="none" />
+      {/* <rect x="-1" y="0" width="1" height="1" stroke="turquoise"  strokeWidth="0.026" fill="none" /> */}
+      <rect x="0" y="-1" width="1" height="1" stroke="turquoise"  strokeWidth="0.026" fill="none" />
+      {/* <rect x="0" y="0" width="1" height="1" stroke="turquoise"  strokeWidth="0.026" fill="none" /> */}
+      {hasArc && (
+        <circle
+          fill="#FFC312"
+          r="0.1"
+        />
+      )}
     </svg>
   </div>
 )
 
 
 const MobileCode = ({ index, units, label, value, min, max }) => {
-  const [code, Example, highlightedLines=[]] = codeExamples[index]
+  const {code, Example, highlightedLines=[], removedLines=[], insertedLines=[], markers} = codeExamples[index]
 
   return (
     <div className="mobile GaugeWalkthrough__mobile-code">
       <Code size="s"
         fileName="Gauge.jsx"
-        highlightedLines={highlightedLines}>
+        highlightedLines={highlightedLines}
+        removedLines={removedLines}
+        insertedLines={insertedLines}>
         { code }
       </Code>
 

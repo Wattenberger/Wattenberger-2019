@@ -132,6 +132,7 @@
     &-2 .CodeLine__marker-2 { background: rgba($a3, 0.27); }
     &-3 .CodeLine__marker-3 { background: rgba($a4, 0.27); }
     &-4 .CodeLine__marker-4 { background: rgba($grey4, 0.27); }
+    &-5 .CodeLine__marker-5 { background: rgba($a5, 0.27); }
   }
 
   &Line {
@@ -182,6 +183,7 @@
       &-2 { border-color: $a3; background: rgba($a3, 0); }
       &-3 { border-color: $a4; background: rgba($a4, 0); }
       &-4 { border-color: $grey4; background: rgba($grey4, 0); }
+      &-5 { border-color: $a5; background: rgba($a5, 0); }
       // &-0 { &:before {background: $a1 }}
       // &-1 { &:before {background: $a2 }}
       // &-2 { &:before {background: $a3 }}

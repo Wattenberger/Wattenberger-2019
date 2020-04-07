@@ -8,7 +8,6 @@ import Maps from "./Maps"
 import Axes from "./Axes"
 
 import Code from "components/_ui/Code/Code"
-console.log(Sizing);
 
 // sharing state across charts
 // maps

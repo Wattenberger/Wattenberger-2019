@@ -23,6 +23,11 @@
     flex-direction: column;
     align-items: center;
     z-index: 10;
+
+    i {
+      font-style: italic;
+      font-weight: 600;
+    }
   }
 
   &__metrics {
@@ -155,6 +160,20 @@
       display: flex;
       height: 15em;
       padding: 1em;
+    }
+
+    &__metrics {
+      padding-left: 2em;
+    }
+    &__metric {
+      margin: 0.6em;
+      font-size: 0.8em;
+
+      &__label {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 
@@ -517,6 +536,38 @@
   & + .Header {
     .Header__link + .Header__link  {
         display: none;
+    }
+  }
+
+  &__marked-list {
+    .List__item {
+      transition: background 0.2s ease-out;
+
+      &:nth-child(1) .List__item__number { background: rgba($a1, 0.9); }
+      &:nth-child(2) .List__item__number { background: rgba($a2, 0.9); }
+      &:nth-child(3) .List__item__number { background: rgba($a3, 0.9); }
+      &:nth-child(4) .List__item__number { background: rgba($a4, 0.9); }
+      &:nth-child(5) .List__item__number { background: rgba($grey4, 0.9); }
+      &:nth-child(6) .List__item__number { background: rgba($a5, 0.9); }
+      &:nth-child(1):hover { background: rgba($a1, 0.2); }
+      &:nth-child(2):hover { background: rgba($a2, 0.2); }
+      &:nth-child(3):hover { background: rgba($a3, 0.2); }
+      &:nth-child(4):hover { background: rgba($a4, 0.2); }
+      &:nth-child(5):hover { background: rgba($grey4, 0.2); }
+      &:nth-child(6):hover { background: rgba($a5, 0.2); }
+
+      &__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 2em;
+        width: 2em;
+        padding-left: 0.2em;
+        color: $tc;
+        font-weight: 600;
+        border-radius: 100%;
+      }
     }
   }
 }
