@@ -10,19 +10,19 @@ const lines = {
   angleScale: d3.range(26, 31),
   angle: d3.range(31, 33),
   filledArc: d3.range(33, 41),
-  markerLocation: d3.range(41, 46),
-  colorScale: d3.range(46, 50),
-  gradientSteps: d3.range(50, 53),
-  divStart: d3.range(54, 61),
-  defs: d3.range(67, 86),
-  filledArcPath: d3.range(90, 94),
-  midline: d3.range(94, 100),
-  marker: d3.range(100, 108),
-  pin: d3.range(108, 117),
-  number: d3.range(118, 127),
-  label: d3.range(127, 139),
-  units: d3.range(139, 149),
-  getPositionFromPoint : d3.range(153, 159),
+  colorScale: d3.range(41, 45),
+  gradientSteps: d3.range(45, 48),
+  markerLocation: d3.range(48, 53),
+  divStart: d3.range(54, 58),
+  defs: d3.range(64, 83),
+  filledArcPath: d3.range(87, 91),
+  midline: d3.range(91, 97),
+  marker: d3.range(97, 105),
+  pin: d3.range(105, 112),
+  number: d3.range(113, 123),
+  label: d3.range(123, 135),
+  units: d3.range(135, 145),
+  getCoordsOnArc : d3.range(149, 155),
 }
 const completedCode = (
 `import React from "react"
@@ -65,11 +65,6 @@ const Gauge = ({
     .cornerRadius(1)
     ()
 
-  const markerLocation = getPositionFromPoint(
-    angle,
-    0.825,
-  )
-
   const colorScale = scaleLinear()
     .domain([0, 1])
     .range(["#dbdbe7", "#4834d4"])
@@ -77,12 +72,14 @@ const Gauge = ({
   const gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
 
+  const markerLocation = getCoordsOnArc(
+    angle,
+    1 - ((1 - 0.65) / 2),
+  )
+
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
         textAlign: "center",
       }}>
       <svg style={{overflow: "visible"}}
@@ -119,31 +116,30 @@ const Gauge = ({
           fill="url(#Gauge__gradient)"
         />
         <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
+          y1="-1"
+          y2="-0.65"
+          stroke="white"
           strokeWidth="0.027"
         />
         <circle
           cx={markerLocation[0]}
           cy={markerLocation[1]}
           r="0.2"
-          fill={colorScale(percent)}
           stroke="#2c3e50"
-          stroke-width="0.01"
+          strokeWidth="0.01"
+          fill={colorScale(percent)}
         />
         <path
           d="M0.136364 0.0290102C0.158279 -0.0096701 0.219156 -0.00967009 0.241071 0.0290102C0.297078 0.120023 0.375 0.263367 0.375 0.324801C0.375 0.422639 0.292208 0.5 0.1875 0.5C0.0852272 0.5 -1.8346e-08 0.422639 -9.79274e-09 0.324801C0.00243506 0.263367 0.0803571 0.120023 0.136364 0.0290102ZM0.1875 0.381684C0.221591 0.381684 0.248377 0.356655 0.248377 0.324801C0.248377 0.292947 0.221591 0.267918 0.1875 0.267918C0.153409 0.267918 0.126623 0.292947 0.126623 0.324801C0.126623 0.356655 0.155844 0.381684 0.1875 0.381684Z"
-          transform={\`rotate(\${angle * (180 / Math.PI)} -1 -1) translate(-0.2, -0.33)\`}
+          transform={\`rotate(\${
+            angle * (180 / Math.PI)
+          }) translate(-0.2, -0.33)\`}
           fill="#6a6a85"
-          style={{
-            transformOrigin: "50% 100%",
-            transition: "all 0.1s ease-out",
-          }}
         />
       </svg>
 
       <div style={{
+        marginTop: "0.4em",
         fontSize: "3em",
         lineHeight: "1em",
         fontWeight: "900",
@@ -177,7 +173,7 @@ const Gauge = ({
   )
 }
 
-const getPositionFromPoint = (angle, offset=10) => [
+const getCoordsOnArc = (angle, offset=10) => [
   Math.cos(angle - (Math.PI / 2)) * offset,
   Math.sin(angle - (Math.PI / 2)) * offset,
 ]
@@ -460,7 +456,7 @@ highlightedLines: [17],
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
     start: 19,
@@ -514,7 +510,7 @@ highlightedLines: d3.range(27, 31),
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
     start: 40,
@@ -601,7 +597,7 @@ markers: [
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
     start: 47,
@@ -688,7 +684,7 @@ markers: [
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
     start: 47,
@@ -783,7 +779,7 @@ markers: [
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
     start: 47,
@@ -880,7 +876,7 @@ markers: [
   code: completedCode,
   removedLines: [
     4,
-    // ...lines.markerLocation,
+    ...lines.markerLocation,
     ...lines.divStart,
     // ...lines.midline,
     ...lines.marker,
@@ -888,10 +884,10 @@ markers: [
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    ...lines.getPositionFromPoint,
+    ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
-    start: 48,
+    start: 47,
     code: `    <div>`,
   }],
 Example: ({ value, min, max }) => {
@@ -930,11 +926,6 @@ Example: ({ value, min, max }) => {
   const gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
 
-  const markerLocation = getPositionFromPoint(
-    angle,
-    0.825,
-  )
-
   return (
     <div>
       <svg style={{overflow: "visible"}}
@@ -971,9 +962,9 @@ Example: ({ value, min, max }) => {
           fill="url(#Gauge__gradient)"
         />
         <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
+          y1="-1"
+          y2="-0.65"
+          stroke="white"
           strokeWidth="0.027"
         />
       </svg>
@@ -981,7 +972,7 @@ Example: ({ value, min, max }) => {
   )
 },
 highlightedLines: [
-  ...d3.range(55, 74),
+  ...d3.range(82, 88),
 ],
 markers: [
 ]
@@ -996,10 +987,10 @@ markers: [
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    // ...lines.getPositionFromPoint,
+    // ...lines.getCoordsOnArc,
   ],
   insertedLines: [{
-    start: 48,
+    start: 52,
     code: `    <div>`,
   }],
 Example: ({ value, min, max }) => {
@@ -1038,9 +1029,9 @@ Example: ({ value, min, max }) => {
   const gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
 
-  const markerLocation = getPositionFromPoint(
+  const markerLocation = getCoordsOnArc(
     angle,
-    0.825,
+    1 - ((1 - 0.65) / 2),
   )
 
   return (
@@ -1079,164 +1070,45 @@ Example: ({ value, min, max }) => {
           fill="url(#Gauge__gradient)"
         />
         <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
+          y1="-1"
+          y2="-0.65"
+          stroke="white"
           strokeWidth="0.027"
         />
         <circle
           cx={markerLocation[0]}
           cy={markerLocation[1]}
           r="0.2"
-          fill={colorScale(percent)}
           stroke="#2c3e50"
-          stroke-width="0.01"
+          strokeWidth="0.01"
+          fill={colorScale(percent)}
         />
       </svg>
     </div>
   )
 },
 highlightedLines: [
-  ...d3.range(55, 74),
+  ...d3.range(47, 51),
+  ...d3.range(93, 101),
+  ...d3.range(106, 110),
 ],
 markers: [
+  d3.range(47, 51),
+  d3.range(106, 110),
+  d3.range(93, 101),
 ]
 },{
   code: completedCode,
   removedLines: [
     4,
-    // ...lines.markerLocation,
     ...lines.divStart,
-    ...lines.pin.slice(-4, -1),
-    ...lines.number,
-    ...lines.label,
-    ...lines.units,
-    // ...lines.getPositionFromPoint,
-  ],
-  insertedLines: [{
-    start: 48,
-    code: `    <div>`,
-  }],
-Example: ({ value, min, max }) => {
-  const backgroundArc = arc()
-    .innerRadius(0.65)
-    .outerRadius(1)
-    .startAngle(-Math.PI / 2)
-    .endAngle(Math.PI / 2)
-    .cornerRadius(1)
-    ()
-
-  const percentScale = scaleLinear()
-    .domain([min, max])
-    .range([0, 1])
-  const percent = percentScale(value)
-
-  const angleScale = scaleLinear()
-    .domain([0, 1])
-    .range([-Math.PI / 2, Math.PI / 2])
-    .clamp(true)
-
-  const angle = angleScale(percent)
-
-  const filledArc = arc()
-    .innerRadius(0.65)
-    .outerRadius(1)
-    .startAngle(-Math.PI / 2)
-    .endAngle(angle)
-    .cornerRadius(1)
-    ()
-
-  const colorScale = scaleLinear()
-    .domain([0, 1])
-    .range(["#dbdbe7", "#4834d4"])
-
-  const gradientSteps = colorScale.ticks(10)
-    .map(value => colorScale(value))
-
-  const markerLocation = getPositionFromPoint(
-    angle,
-    0.825,
-  )
-
-  return (
-    <div>
-      <svg style={{overflow: "visible"}}
-        width="9em"
-        viewBox={[
-          -1, -1,
-          2, 1,
-        ].join(" ")}>
-        <defs>
-          <linearGradient
-            id="Gauge__gradient"
-            gradientUnits="userSpaceOnUse"
-            x1="-1"
-            x2="1"
-            y2="0">
-            {gradientSteps.map((color, index) => (
-              <stop
-                key={color}
-                stopColor={color}
-                offset={`${
-                  index
-                  / (gradientSteps.length - 1)
-                }`}
-              />
-            ))}
-          </linearGradient>
-        </defs>
-        <path
-          d={backgroundArc}
-          fill="#dbdbe7"
-        />
-        <path
-          d={filledArc}
-          fill="url(#Gauge__gradient)"
-        />
-        <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
-          strokeWidth="0.027"
-        />
-        <circle
-          cx={markerLocation[0]}
-          cy={markerLocation[1]}
-          r="0.2"
-          fill={colorScale(percent)}
-          stroke="#2c3e50"
-          stroke-width="0.01"
-        />
-        <path
-          d="M0.136364 0.0290102C0.158279 -0.0096701 0.219156 -0.00967009 0.241071 0.0290102C0.297078 0.120023 0.375 0.263367 0.375 0.324801C0.375 0.422639 0.292208 0.5 0.1875 0.5C0.0852272 0.5 -1.8346e-08 0.422639 -9.79274e-09 0.324801C0.00243506 0.263367 0.0803571 0.120023 0.136364 0.0290102ZM0.1875 0.381684C0.221591 0.381684 0.248377 0.356655 0.248377 0.324801C0.248377 0.292947 0.221591 0.267918 0.1875 0.267918C0.153409 0.267918 0.126623 0.292947 0.126623 0.324801C0.126623 0.356655 0.155844 0.381684 0.1875 0.381684Z"
-          transform={`rotate(${angle * (180 / Math.PI)} -1 -1) translate(-0.2, -0.33)`}
-          fill="#6a6a85"
-        />
-      </svg>
-    </div>
-  )
-},
-highlightedLines: [
-  ...d3.range(55, 74),
-],
-markers: [
-]
-},{
-  code: completedCode,
-  removedLines: [
-    4,
-    // ...lines.markerLocation,
-    ...lines.divStart,
-    // ...lines.midline,
-    // ...lines.marker,
     // ...lines.pin,
     ...lines.number,
     ...lines.label,
     ...lines.units,
-    // ...lines.getPositionFromPoint,
   ],
   insertedLines: [{
-    start: 48,
+    start: 53,
     code: `    <div>`,
   }],
 Example: ({ value, min, max }) => {
@@ -1275,9 +1147,9 @@ Example: ({ value, min, max }) => {
   const gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
 
-  const markerLocation = getPositionFromPoint(
+  const markerLocation = getCoordsOnArc(
     angle,
-    0.825,
+    1 - ((1 - 0.65) / 2),
   )
 
   return (
@@ -1316,36 +1188,37 @@ Example: ({ value, min, max }) => {
           fill="url(#Gauge__gradient)"
         />
         <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
+          y1="-1"
+          y2="-0.65"
+          stroke="white"
           strokeWidth="0.027"
         />
         <circle
           cx={markerLocation[0]}
           cy={markerLocation[1]}
           r="0.2"
-          fill={colorScale(percent)}
           stroke="#2c3e50"
-          stroke-width="0.01"
+          strokeWidth="0.01"
+          fill={colorScale(percent)}
         />
         <path
           d="M0.136364 0.0290102C0.158279 -0.0096701 0.219156 -0.00967009 0.241071 0.0290102C0.297078 0.120023 0.375 0.263367 0.375 0.324801C0.375 0.422639 0.292208 0.5 0.1875 0.5C0.0852272 0.5 -1.8346e-08 0.422639 -9.79274e-09 0.324801C0.00243506 0.263367 0.0803571 0.120023 0.136364 0.0290102ZM0.1875 0.381684C0.221591 0.381684 0.248377 0.356655 0.248377 0.324801C0.248377 0.292947 0.221591 0.267918 0.1875 0.267918C0.153409 0.267918 0.126623 0.292947 0.126623 0.324801C0.126623 0.356655 0.155844 0.381684 0.1875 0.381684Z"
-          transform={`rotate(${angle * (180 / Math.PI)} -1 -1) translate(-0.2, -0.33)`}
+          transform={`rotate(${
+            angle * (180 / Math.PI)
+          }) translate(-0.2, -0.33)`}
           fill="#6a6a85"
-          style={{
-            transformOrigin: "50% 100%",
-            transition: "all 0.1s ease-out",
-          }}
         />
       </svg>
     </div>
   )
 },
 highlightedLines: [
-  ...d3.range(55, 74),
+  ...d3.range(101, 108),
 ],
 markers: [
+  [101, 107],
+  [102],
+  [103, 104, 105],
 ]
 },{
   code: completedCode,
@@ -1384,9 +1257,9 @@ Example: ({
     .cornerRadius(1)
     ()
 
-  const markerLocation = getPositionFromPoint(
+  const markerLocation = getCoordsOnArc(
     angle,
-    0.825,
+    1 - ((1 - 0.65) / 2),
   )
 
   const colorScale = scaleLinear()
@@ -1399,9 +1272,6 @@ Example: ({
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
         textAlign: "center",
       }}>
       <svg style={{overflow: "visible"}}
@@ -1438,31 +1308,30 @@ Example: ({
           fill="url(#Gauge__gradient)"
         />
         <line
-          y1={-1}
-          y2={-0.5}
-          stroke="#fff"
+          y1="-1"
+          y2="-0.65"
+          stroke="white"
           strokeWidth="0.027"
         />
         <circle
           cx={markerLocation[0]}
           cy={markerLocation[1]}
           r="0.2"
-          fill={colorScale(percent)}
           stroke="#2c3e50"
-          stroke-width="0.01"
+          strokeWidth="0.01"
+          fill={colorScale(percent)}
         />
         <path
           d="M0.136364 0.0290102C0.158279 -0.0096701 0.219156 -0.00967009 0.241071 0.0290102C0.297078 0.120023 0.375 0.263367 0.375 0.324801C0.375 0.422639 0.292208 0.5 0.1875 0.5C0.0852272 0.5 -1.8346e-08 0.422639 -9.79274e-09 0.324801C0.00243506 0.263367 0.0803571 0.120023 0.136364 0.0290102ZM0.1875 0.381684C0.221591 0.381684 0.248377 0.356655 0.248377 0.324801C0.248377 0.292947 0.221591 0.267918 0.1875 0.267918C0.153409 0.267918 0.126623 0.292947 0.126623 0.324801C0.126623 0.356655 0.155844 0.381684 0.1875 0.381684Z"
-          transform={`rotate(${angle * (180 / Math.PI)} -1 -1) translate(-0.2, -0.33)`}
+          transform={`rotate(${
+            angle * (180 / Math.PI)
+          }) translate(-0.2, -0.33)`}
           fill="#6a6a85"
-          style={{
-            transformOrigin: "50% 100%",
-            transition: "all 0.1s ease-out",
-          }}
         />
       </svg>
 
       <div style={{
+        marginTop: "0.4em",
         fontSize: "3em",
         lineHeight: "1em",
         fontWeight: "900",
@@ -1496,13 +1365,21 @@ Example: ({
   )
 },
 highlightedLines: [
-  ...d3.range(55, 74),
+  4,
+  ...lines.divStart.slice(1),
+  ...lines.number,
+  ...lines.label,
+  ...lines.units,
 ],
 markers: [
+  [119],
+  [121],
+  [124, 136],
+  [126, 138],
 ]
 }]
 
-const getPositionFromPoint = (angle, offset=10) => [
+const getCoordsOnArc = (angle, offset=10) => [
   Math.cos(angle - (Math.PI / 2)) * offset,
   Math.sin(angle - (Math.PI / 2)) * offset,
 ]
