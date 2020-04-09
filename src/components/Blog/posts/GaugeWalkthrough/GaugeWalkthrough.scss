@@ -2,15 +2,21 @@
 
 .GaugeWalkthrough {
   position: relative;
+  z-index: 100;
 
   h1 {
     position: absolute;
     top: 1.6em;
+    margin-top: -56rem;
     left: 0;
     right: 0;
     text-align: center;
     pointer-events: none;
     z-index: 10;
+
+    @media (max-width: 1000px) {
+      margin-top: -50rem;
+    }
   }
 
   &__content {
@@ -81,9 +87,11 @@
     &__text {
       flex: 1;
       padding: 2em 3em 0 5em;
-      overflow: hidden;
+      // overflow: hidden;
+      width: calc(100% - 36em);
 
       @media (max-width: 1100px) {
+        width: auto;
         padding-right: 1.5rem;
         padding-left: 1.5rem;
       }
@@ -124,6 +132,7 @@
     width: 36em;
     height: 100vh;
     order: 2;
+    z-index: 100;
 
     @media (max-width: 1400px) {
       width: 30em;
@@ -163,10 +172,16 @@
     }
 
     &__metrics {
+      width: 100%;
       padding-left: 2em;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: 100%;
     }
     &__metric {
-      margin: 0.6em;
+      width: 45%;
+      margin: 0.6em 1.6em 0.6em 0;
       font-size: 0.8em;
 
       &__label {
@@ -174,7 +189,17 @@
         display: flex;
         justify-content: space-between;
       }
+
+      .GaugeWalkthrough__slider {
+        width: 100%;
+      }
     }
+  }
+
+  &__input {
+    width: 100%;
+    max-width: 8em;
+    padding: 0.5em 1em;
   }
 
   &Metric {
@@ -188,11 +213,13 @@
     }
   }
 
-  .JourneyBackground {
+  &Intro {
     position: relative;
     // position: absolute;
     // top: -6em;
     width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
     padding-top: 13em;
     background: rgb(209, 226, 228);
     background: linear-gradient(
@@ -373,6 +400,7 @@
     flex-direction: column;
     max-width: 35em;
     margin: 3em auto;
+    max-width: 80vw;
     transform-origin: top left;
 
     @media (max-width: 750px) {
@@ -534,14 +562,26 @@
   }
 
   & + .Header {
-    .Header__link + .Header__link  {
-        display: none;
-    }
+    z-index: 50;
+
+    // .Header__link + .Header__link  {
+    //     z-index: 0;
+    // }
   }
 
   &__marked-list {
-    .List__item {
+    & > .List__item {
+      max-width: 90vw;
+      margin-left: -1em;
+      padding: 0;
       transition: background 0.2s ease-out;
+
+      @media (max-width: 1100px) {
+        margin-left: 2em;
+      }
+      @media (max-width: 900px) {
+        max-width: 80vw;
+      }
 
       &:nth-child(1) .List__item__number { background: rgba($a1, 0.9); }
       &:nth-child(2) .List__item__number { background: rgba($a2, 0.9); }
@@ -556,17 +596,32 @@
       &:nth-child(5):hover { background: rgba($grey4, 0.2); }
       &:nth-child(6):hover { background: rgba($a5, 0.2); }
 
-      &__number {
+      .List__item__number {
+        position: absolute;
+        left: -3em;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         height: 2em;
         width: 2em;
+        margin-top: 0.9em;
         padding-left: 0.2em;
         color: $tc;
         font-weight: 600;
         border-radius: 100%;
+
+        @media (max-width: 1100px) {
+          left: 0;
+        }
+      }
+
+      .List__item__text {
+        padding: 0;
+
+        & > div {
+          padding: 0.9em 1em 2em;
+        }
       }
     }
   }
@@ -576,6 +631,8 @@
     // position: absolute;
     // top: -6em;
     width: 100%;
+    max-width: 100vw;
+    // overflow: hidden;
     margin-bottom: 13em;
     padding-top: 13em;
     background: rgb(209, 226, 228);
@@ -598,6 +655,13 @@
       height: 36em;
       overflow: visible;
       pointer-events: all;
+    }
+
+    &__svg2 {
+      position: absolute;
+      top: 13em;
+      left: 0;
+      right: 0;
     }
 
     &__ground {
@@ -675,5 +739,19 @@
     svg {
       overflow: visible;
     }
+  }
+
+  .Code__wrapper {
+    max-width: 93vw;
+
+    @media (max-width: 900px) {
+      max-width: 85vw;
+    }
+  }
+}
+
+.is-scrolling:not(.is-scrolling-to-code) .GaugeWalkthrough {
+  .GaugeWalkthrough__marked-list {
+    pointer-events: none;
   }
 }

@@ -67,7 +67,7 @@ const D3AndReact = () => {
             window.removeEventListener("scroll", onScroll)
 
         }
-    })
+    }, [])
 
     return (
         <div className="D3AndReact" ref={ref}>

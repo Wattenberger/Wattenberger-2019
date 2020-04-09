@@ -27,6 +27,29 @@
   </image>
 
 	<item>
+		<title>How to create a Gauge component in React.js</title>
+		<link>https://wattenberger.com/blog/gauge</link>
+		<pubDate>Mon, 9 Apr 2020 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[SVG]]></category>
+		<category><![CDATA[React.js]]></category>
+		<category><![CDATA[React]]></category>
+		<category><![CDATA[Gauge]]></category>
+		<category><![CDATA[Data visualization]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/gauge.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/guide/gauge</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/guide/gauge"><img width="750" height="665" src="http://wattenberger.com/gauge.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>Let's create a Gauge in React! Gauges are great at showing context around a single value. Is it high or low? Is it larger or smaller than this other value? But what we'll learn here isn't really about creating a gauge, it's about learning the concepts we could use to create one.</p>]]></description>
+				<content:encoded><![CDATA[<p>Let's create a Gauge in React! Gauges are great at showing context around a single value. Is it high or low? Is it larger or smaller than this other value? But what we'll learn here isn't really about creating a gauge, it's about learning the concepts we could use to create one.</p>]]></content:encoded>
+			</item>
+	<item>
 		<title>The CSS Cascade</title>
 		<link>https://wattenberger.com/blog/css-cascade</link>
 		<pubDate>Mon, 20 Jan 2020 08:00:00 EST</pubDate>

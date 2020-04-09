@@ -4,6 +4,7 @@ import List from "components/_ui/List/List"
 import LocalExample from "components/_ui/LocalExample/LocalExample";
 import hooksImage from "./posts/react-hooks.png"
 import d3Image from "./posts/d3.png"
+import gaugeImage from "./posts/gauge.png"
 import d3InteractiveImage from "./posts/d3-interactive.png"
 import scalingSvgImage from "./posts/scaling-svg.png"
 import cssCascadeImage from "./posts/css-cascade.png"
@@ -23,6 +24,13 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "How to create a Gauge component in React.js",
+  id: "gauge",
+  image: gaugeImage,
+  description: <>
+    Let's create a Gauge in React! Gauges are great at showing context around a single value. Is it high or low? Is it larger or smaller than this other value? But what we'll learn here isn't really about creating a gauge, it's about learning the concepts we could use to create one.
+  </>
+},{
   title: "React and D3",
   id: "react-and-d3",
   image: reactAndD3Image,

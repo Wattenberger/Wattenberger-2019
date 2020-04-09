@@ -48,6 +48,7 @@ const Code = ({
     const [isEditing, setIsEditing] = useState(false)
     const needsToScroll = useRef()
     const currentHighlightedLines = useRef()
+    const scrollCancelFunction = useRef()
     currentHighlightedLines.current = highlightedLines
     const debouncedOnChange = useRef()
     const removedLinesString = removedLines.join(" ")
@@ -107,12 +108,15 @@ const Code = ({
                 - 35
 
 
+        if (typeof scrollCancelFunction.current == "function") scrollCancelFunction.current()
+
         const documentScrollingElem = document.scrollingElement || document.documentElement
         documentScrollingElem.classList.add("is-scrolling-to-code")
-        scrollTo(y, 600, scrollElem, false, () => {
+        scrollCancelFunction.current = scrollTo(y, 600, scrollElem, false, () => {
             setTimeout(() => {
                 documentScrollingElem.classList.remove("is-scrolling-to-code")
             }, 400)
+            scrollCancelFunction.current = null
         })
     }
     const onChange = () => {
@@ -339,7 +343,7 @@ const languages = {
 
 const getLanguageString = lang => `language-${languages[lang] || lang}`
 
-const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, markers, isExpanded, isEditable, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
+const CodeStep = React.memo(({ number, name, code, startLineIndex, highlightedLines, markers, isExpanded, isEditable, hasLineNumbers, doOnlyShowHighlightedLines, onToggle }) => (
     <div className={`CodeStep CodeStep--number-${number} CodeStep--is-${isExpanded ? "expanded" : "collapsed"}`} onClick={isExpanded ? () => {} : onToggle}>
         <div className="CodeStep__copyable-text">
             {`  // ${number}. ${name}`}
@@ -372,9 +376,9 @@ const CodeStep = ({ number, name, code, startLineIndex, highlightedLines, marker
         </div>
 
     </div>
-)
+))
 
-const CodeLines = ({ code, startLineIndex, highlightedLines, markers, isEditable, doOnlyShowHighlightedLines, ...props }) => {
+const CodeLines = React.memo(({ code, startLineIndex, highlightedLines, markers, isEditable, doOnlyShowHighlightedLines, ...props }) => {
     if (!code) return null
 
     return (
@@ -396,9 +400,9 @@ const CodeLines = ({ code, startLineIndex, highlightedLines, markers, isEditable
             )
         })
     )
-}
+})
 
-const CodeLine = ({ code, index, isHighlighted, markerIndex, isEditable, hasLineNumbers }) => {
+const CodeLine = React.memo(({ code, index, isHighlighted, markerIndex, isEditable, hasLineNumbers }) => {
     const [isHovering, setIsHovering] = useState(false)
 
     return (
@@ -436,4 +440,4 @@ const CodeLine = ({ code, index, isHighlighted, markerIndex, isEditable, hasLine
             )}
         </div>
     )
-}
+})

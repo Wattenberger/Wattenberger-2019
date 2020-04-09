@@ -7,9 +7,14 @@ export function scrollTo(to = 0, duration = 200, element, isHorizontal=false, on
         currentTime = 0,
         increment = 20;
 
+    let doCancelScroll = false
     var animateScroll = function() {
-        var val = easeInOutQuad(currentTime, start, change, duration);
-        if (currentTime <= duration) {
+        if (currentTime <= duration && !doCancelScroll) {
+            if (!currentTime) {
+                start = scrollElement[isHorizontal ? "scrollLeft" : "scrollTop"]
+                change = to - start
+            }
+            var val = easeInOutQuad(currentTime, start, change, duration);
             scrollElement[isHorizontal ? "scrollLeft" : "scrollTop"] = val;
             currentTime += increment;
             setTimeout(animateScroll, increment);
@@ -18,6 +23,9 @@ export function scrollTo(to = 0, duration = 200, element, isHorizontal=false, on
         }
     };
     animateScroll();
+    return () => {
+        doCancelScroll = true
+    }
 }
 
 
