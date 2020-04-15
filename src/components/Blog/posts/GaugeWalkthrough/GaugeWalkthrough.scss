@@ -85,7 +85,7 @@
     width: 100%;
 
     &__text {
-      flex: 1;
+      flex: 1 1 auto;
       padding: 2em 3em 0 5em;
       // overflow: hidden;
       width: calc(100% - 36em);
@@ -95,7 +95,6 @@
         padding-right: 1.5rem;
         padding-left: 1.5rem;
       }
-
     }
 
     .ScrollEvent__indicator {

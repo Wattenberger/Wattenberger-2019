@@ -158,7 +158,7 @@ const GaugeWalkthrough = () => {
               updateCodeIndex(1)
             }}>
               <p>
-                Let's start by adding an <P>{`<svg>`}</P> component, which a nice pink border so we can see its dimensions.
+                Let's start by adding an <P>{`<svg>`}</P> component, with a nice pink border so we can see its dimensions.
               </p>
 
               <MobileCode index={1} />
