@@ -7,8 +7,20 @@ import policyVizImage from "./images/policy-viz.png"
 import dataStoriesImage from "./images/data-stories.jfif"
 import eggheadImage from "./images/egghead.png"
 import devModeImage from "./images/devmode.png"
+import soloCoderImage from "./images/solo-coder.png"
 
 export default [{
+  name: "Data Visualization & Journalism",
+  podcast: "solo.coder",
+  googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9zb2xvY29kZXIubGlic3luLmNvbS9yc3M/episode/MGY1ODkxNmEtMDk2YS00YmMzLWEzNGUtZGVlYTU5ZDYzMjQ5?ved=0CAsQzsICahcKEwjA0vvUwZHpAhUAAAAAHQAAAAAQDA",
+  url: "https://solocoder.com/podcast/amelia-wattenberger-data-visualization-journalism",
+  date: "2/7/2020",
+  description: <>
+    A chat with <Link href="https://twitter.com/EmmaBostian">Aderson Oliveira</Link> about my experience writing <Link to="https://www.newline.co/fullstack-d3">Fullstach D3 and Data Visualization</Link>, and the balance of coding versus journalism work.
+  </>,
+  image: soloCoderImage,
+  colors: ["#FF161F", "#1A1F27", "#E0E0Ed"],
+},{
   name: "Fullstack D3",
   podcast: "JS Party",
   googleUrl: "https://podcasts.google.com/?feed=aHR0cHM6Ly9jaGFuZ2Vsb2cuY29tL2pzcGFydHkvZmVlZA&episode=Y2hhbmdlbG9nLmNvbS82Lzg3MA&hl=en&ved=2ahUKEwjA-tDd_MTnAhWFdt8KHXhVBAMQjrkEegQIARAG&ep=6",
