@@ -9,8 +9,6 @@ import * as serviceWorker from './serviceWorker';
 import { render } from 'react-snapshot';
 import { BrowserRouter as Router, Route, Switch, withRouter } from 'react-router-dom';
 
-
-
 const AppWrapper = () => (
     <Router>
         <App />
@@ -22,3 +20,7 @@ render(<AppWrapper />, document.getElementById('root'));
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+if (module.hot) {
+    module.hot.accept();
+}

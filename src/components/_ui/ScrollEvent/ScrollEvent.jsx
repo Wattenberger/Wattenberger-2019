@@ -104,7 +104,7 @@ class ScrollEvent extends Component {
   }
 
   render() {
-    const { hasIndicator, className, children, ...props } = this.props
+    const { isInViewChange, hasIndicator, className, children, ...props } = this.props
     const { viewStatus } = this.state
 
     return (

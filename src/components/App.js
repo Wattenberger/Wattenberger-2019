@@ -45,6 +45,7 @@ const ReactRepo = React.lazy(() => import("components/Articles/ReactRepo/ReactRe
 const WebGLDemo = React.lazy(() => import("components/Articles/WebGLDemo/WebGLDemo"));
 const I3 = React.lazy(() => import("components/Blog/posts/I3"));
 const LearnD3 = React.lazy(() => import("components/Blog/posts/LearnD3/LearnD3"));
+const Spirals = React.lazy(() => import("components/Blog/posts/Spirals/Spirals"));
 const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
 const D3AndReact = React.lazy(() => import("components/Blog/posts/D3AndReact/D3AndReact"));
@@ -120,6 +121,7 @@ class App extends Component {
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />
               <Route path="/blog/d3" component={LearnD3} />
+              <Route path="/blog/spirals" component={Spirals} />
               <Route path="/blog/svg" component={SVG} />
               <Route path="/blog/react-hooks" component={Hooks} />
               <Route path="/blog/react-and-d3" component={D3AndReact} />

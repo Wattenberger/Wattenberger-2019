@@ -5,6 +5,7 @@ import LocalExample from "components/_ui/LocalExample/LocalExample";
 import hooksImage from "./posts/react-hooks.png"
 import d3Image from "./posts/d3.png"
 import gaugeImage from "./posts/gauge.png"
+import spiralsImage from "./posts/spirals.png"
 import d3InteractiveImage from "./posts/d3-interactive.png"
 import scalingSvgImage from "./posts/scaling-svg.png"
 import cssCascadeImage from "./posts/css-cascade.png"
@@ -24,6 +25,13 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "Speeding up force simulations with spirals",
+  id: "spirals",
+  image: spiralsImage,
+  description: <>
+    D3.js force simulations are great for implementing basic physical rules, but they can be expensive to run. Here's a trick I've used in the past to speed up those simulations.
+  </>
+},{
   title: "How to create a Gauge component in React.js",
   id: "gauge",
   image: gaugeImage,

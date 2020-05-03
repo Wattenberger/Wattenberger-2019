@@ -27,6 +27,29 @@
   </image>
 
 	<item>
+		<title>Speeding up force simulations with spirals</title>
+		<link>https://wattenberger.com/blog/spirals</link>
+		<pubDate>Tue, 5 May 2020 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[SVG]]></category>
+		<category><![CDATA[D3.js]]></category>
+		<category><![CDATA[Data visualization]]></category>
+		<category><![CDATA[Spirals]]></category>
+		<category><![CDATA[Performance]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/spirals.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/guide/spirals</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/guide/spirals"><img width="750" height="665" src="http://wattenberger.com/spirals.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>D3.js force simulations are great for implementing basic physical rules, but they can be expensive to run. Here's a trick I've used in the past to speed up those simulations.</p>]]></description>
+				<content:encoded><![CDATA[<p>D3.js force simulations are great for implementing basic physical rules, but they can be expensive to run. Here's a trick I've used in the past to speed up those simulations.</p>]]></content:encoded>
+			</item>
+	<item>
 		<title>How to create a Gauge component in React.js</title>
 		<link>https://wattenberger.com/blog/gauge</link>
 		<pubDate>Mon, 9 Apr 2020 08:00:00 EST</pubDate>

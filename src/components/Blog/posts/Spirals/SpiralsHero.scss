@@ -1,0 +1,81 @@
+@import "src/styles/lib";
+
+.SpiralsHero {
+  position: relative;
+  height: 90vh;
+  min-height: 30em;
+  width: 100%;
+  background: #fff;
+
+  canvas {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  &__text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // text-align: center;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 10;
+  }
+
+  h1 {
+    display: block;
+    // flex: 1 0 5em;
+    padding: 3rem 9rem;
+    font-size: 8em;
+    line-height: 1.3em;
+    font-weight: 900;
+    background: #000;
+    margin-bottom: 0;
+    color: white;
+  }
+
+  h3 {
+    // flex: 2;
+    padding: 3rem;
+    font-size: 3em;
+    font-weight: 500;
+    line-height: 1.3em;
+    color: #000;
+    // color: $grey4;
+    margin-top: -0.3em;
+  }
+
+  @media (max-width: 1200px) {
+    h1 {
+      margin: 0;
+      padding: 0.3em 1em;
+      font-size: 5em;
+      line-height: 1.3em;
+    }
+    h3 {
+      font-size: 2em;
+      line-height: 1.3em;
+    }
+  }
+
+  @media (max-width: 900px) {
+    h1 {
+      margin: 0;
+      padding: 0.3em 1em;
+      font-size: 3em;
+      line-height: 1.3em;
+    }
+    h3 {
+      font-size: 1.3em;
+      line-height: 1.3em;
+    }
+  }
+}
