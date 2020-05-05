@@ -186,7 +186,7 @@ const Spirals = () => {
             The astute reader might notice that we could just create a spiral with zero overlap, and we wouldn't need a simulation to space out our dots.
           </p>
           <p>
-            In fact, this behavior is built right into d3.js! Examining <Link to="https://github.com/d3/d3-force/blob/aa410cf32eda02bdf17c84e43d9cb3d14fb102aa/src/simulation.js#L64-L71">the code</Link> will show that d3 will initialize points in a <Link to="https://en.wikipedia.org/wiki/Phyllotaxis">Phyllotaxis arrangement</Link> when no initial <b>x</b> and <b>y</b> value are specified.
+            In fact, this behavior is built right into d3.js! Examining <Link to="https://github.com/d3/d3-force/blob/aa410cf32eda02bdf17c84e43d9cb3d14fb102aa/src/simulation.js#L64-L71">the code</Link> will show that d3 will initialize points in a <Link to="https://observablehq.com/@mbostock/phyllotaxis">Phyllotaxis arrangement</Link> when no initial <b>x</b> or <b>y</b> value is specified.
           </p>
 
           <div className="Spirals__free-demo">
@@ -199,7 +199,7 @@ const Spirals = () => {
           </div>
 
           <p>
-            The default Phyllotaxis arrangement is a great option if your dots are around 3-5 pixels in radius.
+            The default Phyllotaxis arrangement is a great option if your dots are around 3-5 pixels in radius and you want them to start around [0, 0].
           </p>
 
           <p>
