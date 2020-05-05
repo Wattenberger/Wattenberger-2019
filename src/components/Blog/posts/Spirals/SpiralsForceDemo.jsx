@@ -12,11 +12,11 @@ import { getSpiralPositions, getDistance, sum, useChartDimensions, useIsOnScreen
 
 import "./SpiralsForceDemo.scss"
 
-const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseForce=false, doUseSpiral=false, isMobile=false, onDurationUpdate=() => {} }) => {
-  const [localR, setLocalR] = useState(5)
-  const [localNum, setLocalNum] = useState(600)
-  const [localAngleDiff, setLocalAngleDiff] = useState(2)
-  const [localDistance, setLocalDistance] = useState(1.5)
+const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseNans=false, doUseForce=false, doUseSpiral=false, doStopWhenOffScreen=false, hasMovementTicks=false, onDurationUpdate=() => {} }) => {
+  const [localR, setLocalR] = useState(r || 5)
+  const [localNum, setLocalNum] = useState(num || 600)
+  const [localAngleDiff, setLocalAngleDiff] = useState(angleDiff || 2)
+  const [localDistance, setLocalDistance] = useState(distance || 1.5)
 
   const [duration, setDuration] = useState(null)
   const [iteration, setIteration] = useState(null)
@@ -48,7 +48,7 @@ const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseForce=
   useEffect(() => {
     setIteration(iteration + 1)
     currentIteration.current = iteration + 1
-  }, [num, doUseForce, doUseSpiral, localR, localNum, localAngleDiff, localDistance, (isMobile && isOnScreen)])
+  }, [num, doUseForce, doUseSpiral, localR, localNum, localAngleDiff, localDistance, (doStopWhenOffScreen && isOnScreen)])
   useEffect(() => {
     currentIteration.current = iteration
   }, [iteration])
@@ -86,7 +86,7 @@ const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseForce=
         localAngleDiff,
         localDistance,
       )
-      : new Array(localNum).fill(0).map(() => ({x: 0, y: 0}))
+      : new Array(localNum).fill(0).map(() => (doUseNans ? {} : {x: 0, y: 0}))
 
     positions.current = initialPositions
 
@@ -132,7 +132,7 @@ const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseForce=
       if (
         avgDotDiffs < 0.03
         && tickIterations > 12
-        || (isMobile && !isOnScreenCurrent.current)
+        || (doStopWhenOffScreen && !isOnScreenCurrent.current)
       ) {
         const duration = (new Date() - startTime) / 1000
         setDuration(duration)
@@ -177,20 +177,22 @@ const SpiralsForceDemo = ({ r=5, num=600, angleDiff=2, distance=1.5, doUseForce=
           </Button>
         </>
       )}
-      <div className="SpiralsForceDemo__ticks">
-        <div className="SpiralsForceDemo__ticks__label">
-          More movement <Icon name="arrow" direction="e" size="s" />
+      {hasMovementTicks && (
+        <div className="SpiralsForceDemo__ticks">
+          <div className="SpiralsForceDemo__ticks__label">
+            More movement <Icon name="arrow" direction="e" size="s" />
+          </div>
+          {movementColorScaleTicks.map(([value, color]) => (
+            <div
+              key={value}
+              className="SpiralsForceDemo__ticks__item"
+              style={{
+                background: color,
+              }}
+            />
+          ))}
         </div>
-        {movementColorScaleTicks.map(([value, color]) => (
-          <div
-            key={value}
-            className="SpiralsForceDemo__ticks__item"
-            style={{
-              background: color,
-            }}
-          />
-        ))}
-      </div>
+      )}
       {doUseSpiral && (
         <div className="SpiralsForceDemo__sliders">
           <div className="SpiralsForceDemo__slider-group">

@@ -74,6 +74,7 @@ const Spirals = () => {
               if (d != 0) return
               setDemoProps({
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: false,
                 num: 100,
               })
@@ -83,6 +84,7 @@ const Spirals = () => {
               </p>
               <MobileDemo {...{
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: false,
                 num: 100,
               }} />
@@ -95,6 +97,7 @@ const Spirals = () => {
               if (d != 0) return
               setDemoProps({
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: false,
                 num: 600,
                 onDurationUpdate: d => setLargeExampleDuration(d),
@@ -105,6 +108,7 @@ const Spirals = () => {
               </p>
               <MobileDemo {...{
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: false,
                 num: 600,
                 onDurationUpdate: d => setLargeExampleDuration(d),
@@ -157,6 +161,7 @@ const Spirals = () => {
               if (d != 0) return
               setDemoProps({
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: true,
               })
             }}>
@@ -166,6 +171,7 @@ const Spirals = () => {
 
               <MobileDemo {...{
                 doUseForce: true,
+                hasMovementTicks: true,
                 doUseSpiral: true,
               }} />
             </ScrollEvent>
@@ -180,8 +186,26 @@ const Spirals = () => {
             The astute reader might notice that we could just create a spiral with zero overlap, and we wouldn't need a simulation to space out our dots.
           </p>
           <p>
+            In fact, this behavior is built right into d3.js! Examining <Link to="https://github.com/d3/d3-force/blob/aa410cf32eda02bdf17c84e43d9cb3d14fb102aa/src/simulation.js#L64-L71">the code</Link> will show that d3 will initialize points in a <Link to="https://en.wikipedia.org/wiki/Phyllotaxis">Phyllotaxis arrangement</Link> when no initial <b>x</b> and <b>y</b> value are specified.
+          </p>
+
+          <div className="Spirals__free-demo">
+            <SpiralsForceDemo
+              doUseNans
+              doUseForce
+              r={4.3}
+              doStopWhenOffScreen
+            />
+          </div>
+
+          <p>
+            The default Phyllotaxis arrangement is a great option if your dots are around 3-5 pixels in radius.
+          </p>
+
+          <p>
             While this makes sense for our simple demo, the real world is often more complex. I needed both in a recent project where I was displaying a dynamic number of dots over different countries. But some countries' spirals were overlapping!
           </p>
+
           <p>
             This method could also be useful for dynamically sized dots. I hope you find this technique useful, and I can't wait to see how you use it!
           </p>
@@ -198,7 +222,7 @@ const MobileDemo = props => {
   if (window.innerWidth > 800) return null
   return (
     <div className="Spirals__mobile-demo">
-      <SpiralsForceDemo {...props} isMobile />
+      <SpiralsForceDemo {...props} doStopWhenOffScreen />
     </div>
   )
 }

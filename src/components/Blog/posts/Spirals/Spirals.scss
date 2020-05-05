@@ -111,6 +111,15 @@
     }
   }
 
+  &__free-demo {
+    height: 90vw;
+    max-height: 700px;
+    width: 100%;
+    max-width: 700px;
+    margin: auto;
+    background: white;
+  }
+
   @media (max-width: 1200px) {
     &__left {
       padding-left: 1em;
