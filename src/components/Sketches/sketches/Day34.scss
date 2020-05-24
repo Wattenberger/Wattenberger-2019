@@ -1,0 +1,36 @@
+@import "src/styles/lib";
+
+.Day34 {
+    width: 100%;
+    // height: 500px;
+    // margin-bottom: 6em;
+
+    svg {
+        // filter: blur(6px) contrast(9) saturate(3.5) brightness(1.5) hue-rotate(45deg);
+        width: 100%;
+        // overflow: visible;
+    }
+
+    @keyframes popUp {
+          0% { transform: translateY(20px); opacity: 0; };
+        100% { transform: translateY(0); opacity: 1; };
+    }
+    &__house {
+        transform: translateY(20px);
+        opacity: 0;
+        animation: popUp 1s ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    g,
+    rect,
+    circle,
+    path {
+        // fill: none;
+        // stroke: $a1;
+        // stroke: white;
+        // stroke-width: 3;
+        // mix-blend-mode: multiply;
+        transition: 1s ease-out;
+    }
+}

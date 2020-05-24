@@ -3,6 +3,7 @@ import classNames from "classnames"
 import _ from "lodash"
 import Keypress, {KEYS} from 'components/_ui/Keypress/Keypress'
 import Button from 'components/_ui/Button/Button'
+import Link from 'components/_ui/Link/Link'
 import {list} from "./list"
 
 require('./Sketches.scss')
@@ -112,6 +113,12 @@ class Sketches extends Component {
         </div>
         {this.renderItem()}
         {list[active].notes && this.renderNotes()}
+
+        <div className="Sketches__code">
+          <Link to={`https://github.com/Wattenberger/Wattenberger-2019/tree/master/src/components/Sketches/sketches/Day${active + 1}.jsx`}>
+            👀 Show me the code
+          </Link>
+        </div>
       </div>
     )
   }
