@@ -16,7 +16,7 @@ export default [{
   url: "https://solocoder.com/podcast/amelia-wattenberger-data-visualization-journalism",
   date: "2/7/2020",
   description: <>
-    A chat with <Link href="https://twitter.com/EmmaBostian">Aderson Oliveira</Link> about my experience writing <Link to="https://www.newline.co/fullstack-d3">Fullstach D3 and Data Visualization</Link>, and the balance of coding versus journalism work.
+    A chat with <Link href="https://twitter.com/AdersonOliveira">Aderson Oliveira</Link> about my experience writing <Link to="https://www.newline.co/fullstack-d3">Fullstack D3 and Data Visualization</Link> and the balance of coding versus journalism work.
   </>,
   image: soloCoderImage,
   colors: ["#FF161F", "#1A1F27", "#E0E0Ed"],
