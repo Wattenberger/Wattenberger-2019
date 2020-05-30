@@ -314,7 +314,7 @@ const ArcExample = () => {
                 ))}
             </div>
             <Expandy trigger="Show me the code" doHideIfCollapsed>
-                <Code language="js">{`const arcGenerator = d3.arc()
+                <Code language="js">{`const arcPathGenerator = d3.arc()
   .innerRadius(${params.innerRadius})
   .outerRadius(${params.outerRadius})
   .startAngle(${params.startAngle})

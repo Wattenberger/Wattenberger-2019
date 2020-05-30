@@ -138,7 +138,7 @@ const today = d3.timeFormat("%A, %B %-d, %Y")(today)
               </>,
             ]} />
             <p>
-              For example, if I wanted to create a date time that was exactly <i>one week</i> after today, I could use <DocsLink repo="time" id="weekTime" />.
+              For example, if I wanted to create a date time that was exactly <i>one week</i> after today, I could use <DocsLink repo="time" id="timeWeek" />.
             </p>
 
             <Code size="s">{`d3.timeWeek.offset(new Date(), 1)
