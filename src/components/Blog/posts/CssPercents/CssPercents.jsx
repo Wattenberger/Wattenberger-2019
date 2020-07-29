@@ -75,7 +75,8 @@ const CssPercents = () => {
 
         <a href="#gist" className="skip">Just give me the gist!</a>
 
-        <section>
+        <section id="width,height">
+          <a className="section-link" href="#width,height">#</a>
           <h2>The basics: width & height</h2>
 
           <p>In these examples, the purple box is our lovely <Self>self</Self> element — this is the element we’re trying to position using CSS properties. The surrounding blue box is the <Parent>parent</Parent> element.</p>
@@ -84,74 +85,79 @@ const CssPercents = () => {
 
           <p>Let’s start with our most basic, and most straightforward, example: <P>width</P> and <P>height</P>. Move the sliders around to get a feel for how the width and height of our <Self>self</Self> element changes with different percentage values.</p>
 
-        <Example properties="width,height" />
+        <Example properties="height,width" />
 
         <p>We can see that our <Self>element’s</Self> <P>width</P> and <P>height</P> are based on our <Parent>parent’s</Parent> <P>width</P> and <P>height</P> (respectively).</p>
 
       </section>
 
-      <section>
+      <section id="top,left">
+        <a className="section-link" href="#top,left">#</a>
         <h2>top & left</h2>
 
         <p>Great! Seems pretty straightforward — let’s move on to <P>left</P> and <P>top</P>:</p>
 
-        <Example properties="width,height,top,left" />
+        <Example properties="height,width,top,left" />
 
         <p>These values are also based on our <Parent>parent’s</Parent> <P>width</P> and <P>height</P>. If an element has a <P>left</P> value of <P>50%</P>, its left side will sit halfway across its parent component.</p>
 
       </section>
 
-      <section>
+      <section id="margins">
+        <a className="section-link" href="#margins">#</a>
         <h2>margins</h2>
 
         <p>What about <P>margin</P>s?</p>
 
-        <Example properties="width,height,marginTop,marginLeft" />
+        <Example properties="height,width,marginTop,marginLeft" />
 
         <p><P>margin</P>s are exactly the same as <P>left</P> and <P>top</P> — they are based on the <P>width</P> and <P>height</P>of their <Parent>parent</Parent>.</p>
 
         <p>There is one weird thing here that is important to note: <b><P>margin-left</P> is based on our <Parent>parent’s</Parent> <em>width</em>, not height</b> (and the same goes for <P>margin-right</P>).</p>
       </section>
 
-      <section>
+      <section id="padding">
+        <a className="section-link" href="#padding">#</a>
         <h2>padding</h2>
 
         <p>And what about <P>padding</P>? Should be the same as <P>margin</P>, right?</p>
 
-        <Example properties="width,height,paddingTop,paddingLeft" />
+        <Example properties="height,width,paddingTop,paddingLeft" />
 
         <p>And it is! For the most part.</p>
         <p>Something interesting you might notice here is that <P>padding-left</P> (for example) won’t change the <P>width</P> of our <Self>self element</Self>, unless the <P>padding-left</P> value is <em>greater</em> than our <Self>self element’s</Self> <P>width</P>. This is because I use the <P>border-box</P> <P>box-sizing</P> model. Unfamiliar, or need a recap? <Link to="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">Read more on MDN.</Link></p>
       </section>
 
-      <section>
+      <section id="transform-translate">
+        <a className="section-link" href="#transform-translate">#</a>
         <h2>transform: translate</h2>
 
         <p>Okay! Here is where things get a bit... weird.</p>
 
         <p>Let’s take a look at <P>transform: translate</P>:</p>
 
-        <Example properties="width,height,translateTop,translateLeft" />
+        <Example properties="height,width,translateTop,translateLeft" />
 
         <p>The box moves a lot more slowly this time, right? That’s because <b><P>transform: translate</P> percentage values are based on our <P>self element’s</P> <P>width</P> and <P>height</P></b>.</p>
       </section>
 
       <section id="gist">
+        <a className="section-link" href="#gist">#</a>
         <h2>TLDR</h2>
         <p>Let’s recap what we’ve learned:</p>
 
         <div className="CssPercents__recap">
           {[
-            ["width", "parent’s width"],
             ["height", "parent’s height"],
-            ["top", "parent’s width"],
+            ["width", "parent’s width"],
+            ["top", "parent’s height"],
             ["left", "parent’s width"],
             ["margin-top", "parent’s width"],
             ["margin-left", "parent’s width"],
             ["padding-top", "parent’s width"],
             ["padding-left", "parent’s width"],
-            ["translate-top", "self’s width"],
-            ["translate-left", "self’s height"],
+            ["translate-top", "self’s height"],
+            ["translate-left", "self’s width"],
           ].map(([label, value]) => (
           <div className="CssPercents__recap__row" key={label}>
             <div className="CssPercents__recap__label">{ label }</div>
@@ -165,14 +171,15 @@ const CssPercents = () => {
         <p>Now let’s put what we’ve learned to the test!</p>
       </section>
 
-      <section>
+      <section id="exercise">
+        <a className="section-link" href="#exercise">#</a>
         <h2>Centering elements</h2>
 
         <p>How could we center an element inside its parent, no matter its own dimensions?
         </p>
         <p>Try centering our <Self>self element</Self> inside of the <Parent>parent</Parent>. Make sure it doesn’t move around when you tweak its <P>width</P> and <P>height</P>.</p>
 
-        <Example properties="width,height,top,left,translateTop,translateLeft" forcedValues={doForceCenterExampleParams ? centerExampleForcedParams : null} />
+        <Example properties="height,width,top,left,translateTop,translateLeft" forcedValues={doForceCenterExampleParams ? centerExampleForcedParams : null} />
 
         <Button style={{margin: "-1em 0 1em"}} onClick={onForceCenterExampleParams}>Show me!</Button>
 
@@ -252,18 +259,18 @@ const propDefaults = {
 const containerWidth = 600
 const containerHeight = 200
 const getPropMultiple = (prop, width, height) => ({
-  width: containerWidth * 0.01,
   height: containerHeight * 0.01,
+  width: containerWidth * 0.01,
   marginTop: containerWidth * 0.01,
   marginLeft: containerWidth * 0.01,
   paddingTop: containerWidth * 0.01,
   paddingLeft: containerWidth * 0.01,
-  top: containerWidth * 0.01,
+  top: containerHeight * 0.01,
   left: containerWidth * 0.01,
-  translateTop: width * 0.01,
-  translateLeft: height * 0.01,
+  translateTop: height * 0.01,
+  translateLeft: width * 0.01,
 }[prop])
-const Example = ({ properties="width,height", forcedValues }) => {
+const Example = ({ properties="height,width", forcedValues }) => {
   const [propValues, setPropValues] = useState({})
 
   const setPropValue = prop => value => {
@@ -304,7 +311,13 @@ const Example = ({ properties="width,height", forcedValues }) => {
               style={{minWidth: "40%", whiteSpace: "nowrap", fontSize: "0.9em"}}
               label={lowerCase(prop)}
               value={getValueFromString(propValues[prop])}
-              valueSuffix={`% (${Math.round(getPropMultiple(prop, getValueFromString(propValues["width"]), getValueFromString(propValues["height"])) * getValueFromString(propValues[prop]))}px)`}
+              valueSuffix={`% (${Math.round(
+                getPropMultiple(
+                  prop,
+                  getPropMultiple("width") * getValueFromString(propValues["width"]),
+                  getPropMultiple("height") * getValueFromString(propValues["height"]),
+                ) * getValueFromString(propValues[prop])
+              )}px)`}
               min={-50}
               max={150}
               step={10}

@@ -66,6 +66,12 @@
     margin-bottom: 3em;
   }
 
+  .section-link {
+    position: absolute;
+    margin: 1em -1.7em;
+    font-size: 1.5em;
+  }
+
   &__content {
     // margin-left: 360px;
     margin-left: 6em;
@@ -266,6 +272,11 @@
       font-size: 1em;
       line-height: 1.4em;
       margin-top: 0;
+    }
+  }
+  @media (max-width: 900px) {
+    .section-link {
+      margin: 0.6em -1.7em;
     }
   }
   @media (max-width: 550px) {
