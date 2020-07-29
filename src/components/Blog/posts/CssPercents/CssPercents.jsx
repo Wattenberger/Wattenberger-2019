@@ -71,6 +71,8 @@ const CssPercents = () => {
         <p>Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is:</p>
         <Blockquote>Percent of <i>what</i>?</Blockquote>
 
+        <a href="#gist" className="skip">Just give me the gist!</a>
+
         <p>Hopefully this guide can help clear things up.</p>
 
         <section>
@@ -134,7 +136,7 @@ const CssPercents = () => {
         <p>The box moves a lot more slowly this time, right? That’s because <b><P>transform: translate</P> percentage values are based on our <P>self element’s</P> <P>width</P> and <P>height</P></b>.</p>
       </section>
 
-      <section>
+      <section id="gist">
         <h2>TLDR</h2>
         <p>Let’s recap what we’ve learned:</p>
 

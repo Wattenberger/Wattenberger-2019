@@ -16,6 +16,27 @@
   --parent: #{$a2};
   --self: #{$a1};
 
+  #gist {
+    padding-top: 2em;
+    margin-top: -2em;
+  }
+
+  .skip {
+    display: block;
+    position: absolute;
+    top: 30vh;
+    right: 4em;
+    background: $a1;
+    color: white;
+    padding: 1em 2em;
+    transform: rotate(12deg);
+    transition: transform 0.3s ease-out;
+
+    &:hover {
+      transform: rotate(15deg);
+    }
+  }
+
   h1 {
     margin: 0.266em auto 0.13em;
     font-size: 4.5em;
