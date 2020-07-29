@@ -186,13 +186,13 @@ const CssPercents = () => {
             marginRight: "0.6em",
             width: "0.8em",
             marginBottom: "-0.15em",
-          }} /><em>down</em> by 50% of our <Parent>parent’s</Parent> height using <P>margin-top: 50%</P></>,
+          }} /><em>down</em> by 50% of our <Parent>parent’s</Parent> height using <P>top: 50%</P></>,
           <><Icon name="arrow" direction="e" style={{
             color: "var(--parent)",
             marginRight: "0.6em",
             width: "0.8em",
             marginBottom: "-0.15em",
-          }} /><em>right</em> by 50% of our <Parent>parent’s</Parent> width using <P>margin-left: 50%</P></>,
+          }} /><em>right</em> by 50% of our <Parent>parent’s</Parent> width using <P>left: 50%</P></>,
           <><Icon name="arrow" direction="n" style={{
             color: "var(--self)",
             marginRight: "0.6em",
