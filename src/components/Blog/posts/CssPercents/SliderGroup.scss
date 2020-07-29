@@ -1,0 +1,55 @@
+@import "src/styles/lib";
+
+.SliderGroup {
+  min-width: 9em;
+  margin-right: 1.6em;
+  margin-bottom: 1em;
+
+  &__labels {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div {
+      flex: 1;
+      margin-bottom: 0.1em;
+      margin-right: 1em;
+      color: $grey5;
+      font-weight: 800;
+    }
+    div + div {
+      margin-right: 0;
+      font-weight: 400;
+      font-size: 0.9em;
+      text-align: right;
+    }
+  }
+
+  .rc-slider {
+    .rc-slider-rail {
+      height: 0.4em;
+      background: darken($grey1, 3%);
+    }
+    .rc-slider-step {
+      height: 0.4em;
+    }
+    .rc-slider-track {
+      background: $a1;
+      height: 0.4em;
+    }
+    .rc-slider-handle {
+      top: 50%;
+      margin-top: -0.4em;
+      border-color: $a1;
+      height: 1em;
+      width: 1em;
+
+      &:active {
+        box-shadow: 0 0 5px $a1;
+      }
+      &:focus {
+        box-shadow: 0 0 0 5px rgba($a1, 0.3);
+      }
+    }
+  }
+}

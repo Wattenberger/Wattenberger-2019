@@ -50,6 +50,7 @@ const SVG = React.lazy(() => import("components/Blog/posts/SVG/SVG"));
 const Hooks = React.lazy(() => import("components/Blog/posts/Hooks/Hooks"));
 const D3AndReact = React.lazy(() => import("components/Blog/posts/D3AndReact/D3AndReact"));
 const CssCascade = React.lazy(() => import("components/Blog/posts/CssCascade/CssCascade"));
+const CssPercents = React.lazy(() => import("components/Blog/posts/CssPercents/CssPercents"));
 const GaugeWalkthrough = React.lazy(() => import("components/Blog/posts/GaugeWalkthrough/GaugeWalkthrough"));
 const NewsletterThankYou = React.lazy(() => import("components/NewsletterThankYou/NewsletterThankYou"));
 const NewsletterSignupPage = React.lazy(() => import("components/NewsletterSignupPage/NewsletterSignupPage"));
@@ -126,6 +127,7 @@ class App extends Component {
               <Route path="/blog/react-hooks" component={Hooks} />
               <Route path="/blog/react-and-d3" component={D3AndReact} />
               <Route path="/blog/css-cascade" component={CssCascade} />
+              <Route path="/blog/css-percents" component={CssPercents} />
               <Route path="/blog/gauge" component={GaugeWalkthrough} />
               <Route path="/blog" component={Blog} />
               <Route path="/guide/scaling-svg" component={ScalingSvg} />

@@ -1,0 +1,245 @@
+@import "src/styles/lib";
+
+.CssPercents {
+  position: relative;
+  display: flex;
+  width: 100%;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  padding: 6em 0;
+  // max-width: 82em;
+  // max-width: 73em;
+  margin: 0 auto;
+  margin-bottom: 3em;
+
+  --parent: #{$a2};
+  --self: #{$a1};
+
+  h1 {
+    margin: 0.266em auto 0.13em;
+    font-size: 4.5em;
+  }
+  h3 {
+    margin: 1em auto 1.3em;
+    font-size: 2em;
+    font-weight: 400;
+    color: $a1;
+    color: $grey4;
+    margin-bottom: 3em;
+  }
+
+  &__content {
+    // margin-left: 360px;
+    margin-left: 6em;
+    padding-right: 2em;
+    padding-bottom: 100px;
+
+    p {
+      max-width: 56em;
+      padding-bottom: 0;
+    }
+
+    i {
+      font-style: italic;
+    }
+
+    .P {
+      display: inline-block;
+      margin: 0 0;
+      padding: 0 0.6em;
+      color: $a1;
+      background: rgba($a1, 0.1);
+      border-radius: 2px;
+      font-feature-settings: 'tnum' 1;
+      font-family: monospace;
+      font-weight: 600;
+    }
+
+    .Blockquote {
+      margin: 0.5em 0;
+      // display: table;
+    }
+
+    .Highlight {
+      display: inline-block;
+      color: #4a6f75;
+      background: #e3f0f3;
+      padding: 1em;
+      margin-left: -1em;
+      margin-top: 0.2em;
+      margin-bottom: 0.3em;
+    }
+
+    .Parent {
+      font-weight: 800;
+      color: var(--parent);
+    }
+    .Self {
+      font-weight: 800;
+      color: var(--self);
+    }
+
+    em {
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    section {
+      margin: 8em 0;
+    }
+  }
+
+  &__header-number {
+    position: absolute;
+    width: 100%;
+    margin-top: 0.35em;
+    margin-left: -1em;
+    color: $a3;
+    font-size: 0.5em;
+    font-weight: 300;
+    cursor: pointer;
+  }
+
+  &__example {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    margin: 3em 0 4em;
+    width: 100%;
+
+    &__main {
+      flex: none;
+      width: 600px;
+      max-width: 40em;
+    }
+
+    &__wrapper {
+      position: relative;
+    }
+    &__wrapper:before {
+      content: "";
+      position: absolute;
+      top: -1.5px;
+      right: -1.5px;
+      bottom: -3px;
+      left: -1.5px;
+      background-image: radial-gradient(circle at 1.5px 1.5px, $grey5 1.5px, transparent 0);
+      background-size: 49.7px 49.3px;
+      // background-position: -1px -1px;
+      z-index: 20;
+      // opacity: 0.8;
+    }
+
+    &__code {
+      flex: 1;
+      margin-left: 1em;
+      min-width: 16em;
+
+      .Code__wrapper {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__dimension {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8em;
+    color: $grey5;
+
+    &--left {
+      top: 0;
+      bottom: 0;
+      left: -2em;
+    }
+
+    &--bottom {
+      left: 0;
+      right: 0;
+      bottom: -2em;
+    }
+  }
+
+  &__recap {
+    margin: 1em -2em;
+    padding: 1.3em 2em;
+    background: $grey1;
+    // background: #f3f0ff;
+    width: 26em;
+
+    &__row {
+      display: flex;
+      padding: 0.2em 0;
+    }
+    &__label {
+      flex: 0 0 10em;
+      font-weight: 800;
+    }
+    &__value {
+      flex: 1;
+      font-weight: 800;
+
+      &:before {
+        content: "is a % of ";
+        color: $grey4;
+        color: $tc;
+        font-size: 0.8em;
+        font-weight: 400;
+      }
+    }
+  }
+
+
+  @media (max-width: 1050px) {
+    &__example {
+      &__code {
+        margin: 2.6em 0 0;
+        min-width: 0;
+        flex: none;
+        width: 100%;
+      }
+    }
+  }
+  @media (max-width: 750px) {
+    &__example {
+      &__main {
+        width: 100%;
+      }
+
+      &__wrapper {
+        transform: scale(0.8);
+        transform-origin: center left;
+      }
+    }
+    &__content {
+      margin-left: 2em;
+      max-width: 90%;
+    }
+  }
+  @media (max-width: 700px) {
+    h1 {
+      font-size: 3em;
+      line-height: 1em;
+      margin-bottom: 0.3em;
+    }
+    h3 {
+      font-size: 1em;
+      line-height: 1.4em;
+      margin-top: 0;
+    }
+  }
+  @media (max-width: 550px) {
+    &__example {
+      .SliderGroup {
+        width: 30vw;
+      }
+      &__wrapper {
+        transform: scale(0.6);
+        margin: -1.5em 0;
+      }
+    }
+  }
+}

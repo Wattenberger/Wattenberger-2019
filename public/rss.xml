@@ -27,6 +27,28 @@
   </image>
 
 	<item>
+		<title>What does 100% mean in CSS?</title>
+		<link>https://wattenberger.com/blog/css-percents</link>
+		<pubDate>Wed, 29 July 2020 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[CSS]]></category>
+		<category><![CDATA[Percent]]></category>
+		<category><![CDATA[Centering elements]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/css-percents.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/guide/css-percents</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/guide/css-percents"><img width="750" height="665" src="http://wattenberger.com/css-percents.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>One of the CSS units I use most is the wonderful <b>%</b> — so handy for positioning elements on the page. Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is: <em>Percent of what?</em></p>]]></description>
+				<content:encoded><![CDATA[<p>One of the CSS units I use most is the wonderful <b>%</b> — so handy for positioning elements on the page. Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is: <em>Percent of what?</em></p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>Speeding up force simulations with spirals</title>
 		<link>https://wattenberger.com/blog/spirals</link>
 		<pubDate>Tue, 5 May 2020 08:00:00 EST</pubDate>
