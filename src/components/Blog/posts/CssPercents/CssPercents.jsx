@@ -71,9 +71,9 @@ const CssPercents = () => {
         <p>Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is:</p>
         <Blockquote>Percent of <i>what</i>?</Blockquote>
 
-        <a href="#gist" className="skip">Just give me the gist!</a>
-
         <p>Hopefully this guide can help clear things up.</p>
+
+        <a href="#gist" className="skip">Just give me the gist!</a>
 
         <section>
           <h2>The basics: width & height</h2>

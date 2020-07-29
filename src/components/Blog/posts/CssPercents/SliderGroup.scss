@@ -52,4 +52,34 @@
       }
     }
   }
+
+  @media (max-width: 700px) {
+    .rc-slider {
+      .rc-slider-rail {
+        height: 1em;
+        background: darken($grey1, 3%);
+      }
+      .rc-slider-step {
+        height: 1em;
+      }
+      .rc-slider-track {
+        background: $a1;
+        height: 1em;
+      }
+      .rc-slider-handle {
+        top: 50%;
+        margin-top: -0.2em;
+        border-color: $a1;
+        height: 1em;
+        width: 1em;
+
+        &:active {
+          box-shadow: 0 0 5px $a1;
+        }
+        &:focus {
+          box-shadow: 0 0 0 5px rgba($a1, 0.3);
+        }
+      }
+    }
+  }
 }

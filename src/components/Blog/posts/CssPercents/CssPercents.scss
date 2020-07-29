@@ -25,6 +25,7 @@
     display: block;
     position: absolute;
     top: 30vh;
+    top: 22em;
     right: 4em;
     background: $a1;
     color: white;
@@ -34,6 +35,21 @@
 
     &:hover {
       transform: rotate(15deg);
+    }
+  }
+
+  @media (min-width: 800px) {
+    .skip {
+      top: 18em;
+    }
+  }
+  @media (max-width: 600px) {
+    .skip {
+      position: relative;
+      top: 0;
+      right: auto;
+      display: inline-block;
+      margin-top: 2em;
     }
   }
 
@@ -259,6 +275,34 @@
       }
       &__wrapper {
         transform: scale(0.6);
+        margin: -1.5em 0;
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    &__content {
+      margin-left: 1em;
+      padding-right: 1em;
+    }
+    &__recap {
+      width: 100%;
+      margin-left: 0;
+
+      &__row {
+        flex-direction: column;
+        margin-bottom: 1em;
+      }
+      &__label {
+        flex: none;
+        margin-bottom: -0.3em;
+      }
+    }
+    &__example {
+      .SliderGroup {
+        width: 100%;
+      }
+      &__wrapper {
+        transform: scale(0.5);
         margin: -1.5em 0;
       }
     }
