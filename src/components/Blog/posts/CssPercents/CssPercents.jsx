@@ -111,9 +111,9 @@ const CssPercents = () => {
 
         <Example properties="height,width,marginTop,marginLeft" />
 
-        <p><P>margin</P>s are exactly the same as <P>left</P> and <P>top</P> — they are based on the <P>width</P> and <P>height</P>of their <Parent>parent</Parent>.</p>
+        <p><P>margin</P>s work similarly to our last example — they are based on the size of their <Parent>parent</Parent>. However, there is one weird thing here that is important to note:</p>
 
-        <p>There is one weird thing here that is important to note: <b><P>margin-top</P> is based on our <Parent>parent’s</Parent> <em>width</em>, not height</b> (and the same goes for <P>margin-bottom</P>).</p>
+        <p><b><P>margin-top</P> is based on our <Parent>parent’s</Parent> <em>width</em>, not height</b> (and the same goes for <P>margin-bottom</P>). In other words, all <P>margin</P>s are a percent of their <Parent>parent's width</Parent>.</p>
       </section>
 
       <section id="padding">
