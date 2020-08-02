@@ -353,7 +353,7 @@ const Example = ({ properties="height,width", forcedValues }) => {
   ...propValues["translateLeft"] ? {transform: `translate(${propValues["translateLeft"]}, ${propValues["translateTop"]})`} : {},
 }, null, 2)
 .replace(/\"/g, "")
-.replace(/\,/g, ";")
+.replace(/\,\n/g, ";\n")
 .replace(/\n}/g, ";\n}")
 .replace(/(Top)/g, "-top")
 .replace(/(Left)/g, "-left")
