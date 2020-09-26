@@ -142,7 +142,7 @@ const CssPercents = () => {
       </section>
 
       <section id="gist">
-        <a className="section-link" href="#gist">#</a>
+        <a className="section-link" href="#gist" style="margin-top: 3.4em">#</a>
         <h2>TLDR</h2>
         <p>Let’s recap what we’ve learned:</p>
 
