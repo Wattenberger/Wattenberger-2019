@@ -43,6 +43,20 @@ $main-color: #30336b;
     font-size: 0.8em;
     z-index: 10;
 
+    &__toggle {
+      outline: none;
+      appearance: none;
+      border: none;
+      background: none;
+      color: $grey3;
+      margin-left: -1em;
+      margin-right: 1em;
+
+      &:focus {
+          outline: -webkit-focus-ring-color auto 1px;
+      }
+    }
+
     &__item {
       position: relative;
       flex: 1;
@@ -57,7 +71,14 @@ $main-color: #30336b;
       height: 0.3em;
       border-radius: 1em;
       cursor: pointer;
+      appearance: none;
+      outline: none;
+      border: none;
       transition: opacity 0.3s ease-out;
+
+      &:focus {
+        outline: -webkit-focus-ring-color auto 1px;
+      }
 
       &:hover {
         background: $a1;

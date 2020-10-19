@@ -1,8 +1,8 @@
 import { forwardRef, useState, useMemo, useEffect, useRef, memo } from 'react';
 import React from "react"
 // import { Extrude } from '@react-three/drei/Extrude'
-import {useSpring, a} from 'react-spring/three'
-import { extend, Canvas, useRender, useThree, useFrame } from 'react-three-fiber'
+import { useSpring, a } from 'react-spring/three'
+import { extend, Canvas, useThree, useFrame } from 'react-three-fiber'
 import { useInterval } from "utils/utils"
 import FlipMove from 'react-flip-move';
 
@@ -12,11 +12,10 @@ import numeral from "numeral"
 import {range, csv, scaleLinear } from "d3"
 import {countBy, fromPairs, kebabCase} from "lodash"
 import dataUrl from "./data.csv"
+import Icon from "components/_ui/Icon/Icon"
+
 import './HypeCycle.scss';
 
-const formatSalary = d => numeral(d).format("$0,0")
-const formatNumber = d => numeral(d).format("0,0a")
-const formatNumberWithDecimal = d => numeral(d).format("0,0.0a")
 const ordinalColors = [
   "#1289A7", "#778beb", "#22a6b3", "#5758BB", "#cf6a87", "#e77f67", "#786fa6", "#FDA7DF", "#4b7bec", "#778ca3","#12CBC4",
 ];
@@ -59,8 +58,11 @@ const HypeCycle = () => {
 
   const incrementYear = () => {
     let newYearIndex = yearIndex + 1
-    if (!years[newYearIndex]) newYearIndex = 0
-    setYearIndex(newYearIndex)
+    if (!years[newYearIndex]) {
+      setIsPlaying(false)
+    } else {
+      setYearIndex(newYearIndex)
+    }
   }
   useInterval(incrementYear, isPlaying ? 1500 : null)
   const year = years[yearIndex]
@@ -103,7 +105,7 @@ const HypeCycle = () => {
 
   return (
     <div className={`HypeCycle`}>
-      <Timeline {...{yearIndex, setYearIndex, setIsPlaying}} />
+      <Timeline {...{yearIndex, setYearIndex, isPlaying, setIsPlaying}} />
       <List data={filteredDots} {...{yearIndex, hoveredDot, setHoveredDot}} />
       <Categories data={filteredDots} {...{yearIndex, showingCategories, setShowingCategories}} />
 
@@ -328,18 +330,21 @@ const ListItem = forwardRef(({ name, color, value, category, isHovered, onHover 
   </div>
 ))
 
-const Timeline = memo(({ yearIndex, setYearIndex, setIsPlaying}) => {
+const Timeline = memo(({ yearIndex, setYearIndex, isPlaying, setIsPlaying}) => {
   return (
     <div className="HypeCycle__years">
+      <button className="HypeCycle__years__toggle" onClick={() => setIsPlaying(!isPlaying)}>
+        <Icon name={isPlaying ? "pause" : "play"} />
+      </button>
       {years.map((year, i) => (
-        <div className={`HypeCycle__years__item HypeCycle__years__item--is-${i == yearIndex ? "selected" : "unselected"}`} key={year} onClick={() => {
+        <button className={`HypeCycle__years__item HypeCycle__years__item--is-${i == yearIndex ? "selected" : "unselected"}`} key={year} onClick={() => {
           setYearIndex(i)
           setIsPlaying(false)
         }}>
           <div className="HypeCycle__years__item__text">
             { year }
           </div>
-        </div>
+        </button>
       ))}
     </div>
   )
