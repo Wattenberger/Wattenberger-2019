@@ -8,7 +8,6 @@ import FlipMove from 'react-flip-move';
 
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
-import numeral from "numeral"
 import {range, csv, scaleLinear } from "d3"
 import {countBy, fromPairs, kebabCase} from "lodash"
 import dataUrl from "./data.csv"
@@ -103,11 +102,26 @@ const HypeCycle = () => {
     data.filter(d => showingCategories.includes(d["category"]))
   ), [data, showingCategories])
 
+  useEffect(() => {
+    if (!hoveredDot) return
+    if (!filteredDots.filter(d => (
+      d["pointIndex"][yearIndex] > 0 && d["pointIndex"][yearIndex] < 100
+    )).find(d => d["name"] == hoveredDot)) {
+      setHoveredDot(false)
+    }
+  }, [filteredDots, yearIndex])
+
   return (
     <div className={`HypeCycle`}>
       <Timeline {...{yearIndex, setYearIndex, isPlaying, setIsPlaying}} />
       <List data={filteredDots} {...{yearIndex, hoveredDot, setHoveredDot}} />
       <Categories data={filteredDots} {...{yearIndex, showingCategories, setShowingCategories}} />
+
+      {!!hoveredDot && (
+        <div className="HypeCycle__tooltip">
+          {hoveredDot}
+        </div>
+      )}
 
       <div className="HypeCycle__contents">
         <Wrapper data={filteredDots} {...{year, yearIndex, showingCategories, hoveredDot, setHoveredDot}} />
@@ -127,6 +141,26 @@ const camera = {
   fov: 75, near: 0.1, far: 1000,
   "position.z": 2,
 }
+const HoveredDot = ({ hoveredDot, data, yearIndex, setHoveredDotPosition }) => {
+  const { camera, size } = useThree()
+
+  useFrame(() => {
+    if (!hoveredDot) return
+    const point = data.find(d => d["name"] == hoveredDot)
+    if (!point) return
+    const [x, y] = curvePoints[Math.round(point["pointIndex"][yearIndex])] || []
+    if (!x || !y) return
+    let p = new THREE.Vector3(x, y, point["z"]);
+    let vector = p.project(camera);
+
+    vector.x = (vector.x + 1) / 2 * size.width;
+    vector.y = -(vector.y - 1) / 2 * size.height;
+    vector.z = 0
+
+    setHoveredDotPosition([vector.x, vector.y]);
+  })
+  return null
+}
 const Controls = () => {
   const { camera, gl, invalidate } = useThree()
   const ref = useRef()
@@ -144,12 +178,15 @@ const Controls = () => {
 extend({ OrbitControls })
 
 function Wrapper({ vertices, color, year, yearIndex, data, showingCategories, hoveredDot, setHoveredDot, ...props }) {
-
   const onHoverDot = (d) => {
     setHoveredDot(d["name"])
   }
+
+  const [hoveredDotPosition, setHoveredDotPosition] = useState([])
+
   return (
     <Canvas camera={camera} {...props}>
+      {/* <HoveredDot {...{hoveredDot, data, yearIndex, setHoveredDotPosition}} /> */}
       <Controls />
       <group>
 

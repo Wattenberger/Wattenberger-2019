@@ -20,8 +20,10 @@ $main-color: #30336b;
     }
     &__tooltip {
         position: absolute;
-        top: 4em;
-        left: 1em;
+        bottom: 3em;
+        left: 50vw;
+        transform: translateX(-50%);
+        z-index: 10;
     }
 
     & ~ footer {
