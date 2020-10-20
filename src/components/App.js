@@ -27,6 +27,7 @@ const StephenKingCharacters = React.lazy(() => import("components/Articles/Steph
 const StephenKing3d = React.lazy(() => import("components/Articles/StephenKing3d/StephenKing3d"));
 const StephenKingUniverse = React.lazy(() => import("components/Articles/StephenKingUniverse/StephenKingUniverse"));
 const HypeCycle = React.lazy(() => import("components/Articles/HypeCycle/HypeCycle"));
+const HypeCycle2 = React.lazy(() => import("components/Articles/HypeCycle2/HypeCycle"));
 const GameOfThrones = React.lazy(() => import("components/Articles/GameOfThrones/GameOfThrones"));
 const Chaconne = React.lazy(() => import("components/Articles/Chaconne/Chaconne"));
 const Playground = React.lazy(() => import("components/Articles/Playground/Playground"));
@@ -111,6 +112,7 @@ class App extends Component {
               <Route path="/movies" component={Movies} />
               <Route path="/music" component={Music} />
               <Route path="/hype-cycle" component={HypeCycle} />
+              <Route path="/hype-cycle-2" component={HypeCycle2} />
               {/* <Route path="/approval" component={Approval} /> */}
               <Route path="/react-repo" component={ReactRepo} />
               <Route path="/diet" component={Diet} />
