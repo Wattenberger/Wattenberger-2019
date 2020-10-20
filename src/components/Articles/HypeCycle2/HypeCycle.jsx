@@ -88,7 +88,7 @@ const HypeCycle = () => {
       const path = new THREE.CatmullRomCurve3(points)
 
       return {
-        name: years.map(year => d[`name${year}`]).filter(d => d)[0] || "",
+        name: d["Unified Technology Name"],
         pointIndex,
         // z: zScale(i),
         names: years.map(year => d[`name${year}`]),
@@ -101,6 +101,7 @@ const HypeCycle = () => {
       }
     })
     setData(data)
+    setHoveredDot(data[0]["name"])
   }
   useEffect(() => {loadData()}, [])
 
