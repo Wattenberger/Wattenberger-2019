@@ -1,0 +1,145 @@
+@import "src/styles/lib";
+
+.D3Force {
+  $a1: #3AA4C8;
+  $bg: #1a1d36;
+  $bg: #1C1A1D;
+
+  position: relative;
+  display: flex;
+  width: 100%;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  padding: 6em 0;
+  // max-width: 82em;
+  // max-width: 73em;
+  margin: 0 auto;
+  margin-bottom: 3em;
+  color: white;
+  background: $bg;
+  z-index: 10;
+
+  @keyframes drawIn {
+    0% {
+      stroke-dasharray: 1000 1000;
+    }
+    100% {
+      stroke-dasharray: 0 1000;
+    }
+  }
+
+  .Title {
+    width: 25em;
+    margin-bottom: 2em;
+    stroke: #0091c2;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    overflow: visible;
+    stroke-dasharray: 0 1000;
+    animation: drawIn 3s ease-out;
+    transition: all 3s ease-out;
+
+    &:hover {
+      stroke-dasharray: 1000 1000 !important;
+    }
+  }
+
+  h1 {
+    white-space: nowrap;
+  }
+
+  &__content {
+    position: relative;
+    width: Min(40em, 90vw);
+    padding: 0 3em;
+    z-index: 10;
+  }
+
+  &__controls {
+    position: sticky;
+    top: 4em;
+    height: calc(100vh - 5em);
+    width: 13em;
+    margin-left: 1em;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+    z-index: 10;
+
+    &--is-hidden {
+      opacity: 0;
+      transform: translateY(2em);
+    }
+  }
+
+  &__example {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 40em;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  section {
+    min-height: 80vh;
+    margin-top: 6em;
+  }
+
+  .Button {
+    background: $bg;
+    color: $a1;
+    border: 1px solid;
+
+    &:hover {
+      background: #000;
+    }
+
+    &:focus,
+    &:active {
+      background: #000;
+      box-shadow: 0 0 9px 1.3px $a1;
+      border-color: $a1;
+      outline: $a1 auto 5px;
+    }
+  }
+
+  strong {
+    font-weight: 800;
+  }
+
+  .P {
+    display: inline-block;
+    margin: 0 0;
+    padding: 0 0.6em;
+    color: $a1;
+    background: rgba($a1, 0.1);
+    border-radius: 2px;
+    font-feature-settings: 'tnum' 1;
+    font-family: monospace;
+  }
+
+  .Code--theme-dark {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .Code--theme-dark .CodeLine:hover, .Code--theme-dark .CodeLine:hover > code[class*="language-"] {
+    background: #000;
+  }
+
+  & + .Header {
+    pointer-events: none;
+
+    .Header__link {
+      pointer-events: all;
+    }
+
+    .Header__link + .Header__link {
+        display: none;
+    }
+  }
+  & ~ .Footer {
+    z-index: 100;
+  }
+}

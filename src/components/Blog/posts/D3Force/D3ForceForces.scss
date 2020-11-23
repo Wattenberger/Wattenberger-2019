@@ -1,0 +1,251 @@
+@import "src/styles/lib";
+
+.D3ForceForces {
+  $a1: #3AA4C8;
+
+  color: white;
+  // background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  // height: calc(100vh - 2em);
+  border: 1px solid $a1;
+  border-radius: 0.2em;
+  width: 13em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  pointer-events: all;
+  overflow: hidden;
+
+  &__controls {
+    flex: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: -0.2em;
+    margin-left: -0.2em;
+    padding: 1em 1em 0.2em;
+
+    div {
+      flex: 1;
+      font-size: 0.7em;
+      line-height: 1.3em;
+      padding-left: 0.6em;
+    }
+
+    .Button {
+      margin-bottom: 0.3em;
+      margin: 0.2em;
+
+      & + .Button {
+        margin: 0.2em;
+      }
+    }
+  }
+
+  h6 {
+    margin-left: 1rem;
+    margin-top: 1em;
+  }
+
+  &__options {
+    flex: none;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    min-height: 6em;
+    margin-top: -0.2em;
+    margin-left: -0.2em;
+    padding: 0.2em 1em;
+  }
+
+  @keyframes pulseIn {
+    0% { opacity: 0; }
+    30% { opacity: 0.6; }
+    40% { opacity: 0.3; }
+    50% { opacity: 0.8; box-shadow: 0 0 16px 1.3px $a1; background: $a1; color: white; }
+    55% { opacity: 0.4; }
+    60% { opacity: 1; box-shadow: 0 0 16px 1.3px $a1; background: $a1; color: white; }
+    100% { opacity: 1; }
+  }
+
+  &__option {
+    margin-bottom: 0.3em;
+    opacity: 0;
+    animation: pulseIn 2s ease-out;
+    animation-fill-mode: forwards;
+    margin: 0.2em;
+
+    & + .Button {
+      margin: 0.2em;
+    }
+
+    .Icon {
+      margin-right: 0.5em;
+    }
+  }
+
+  &__forces {
+    flex: 1;
+    padding: 0 1em;
+    overflow: auto;
+  }
+
+  @keyframes slideIn {
+    0% { transform: translateX(-2em); opacity: 0; }
+    100% { transform: none; opacity: 1; }
+  }
+
+  &__force {
+    width: 100%;
+    padding: 1em 0;
+    transform: translateX(-2em); opacity: 0;
+    animation: slideIn 0.4s ease-out;
+    animation-fill-mode: forwards;
+
+    &__title {
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__attribute {
+      &__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      &__options {
+        margin-top: 0.6em;
+        margin-bottom: 0.6em;
+      }
+
+      &__option {
+        display: block;
+        width: 100%;
+
+        & + .Button {
+          margin-left: 0;
+          margin-top: 0.3em;
+        }
+      }
+
+      button.Button--selected {
+        background: $a1;
+        color: white;
+        border-color: $a1;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background: $a1;
+          color: white;
+          border-color: $a1;
+          pointer-events: none;
+        }
+      }
+
+      &__slider {
+        transition: opacity 0.3s ease-out;
+
+        &--is-disabled {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
+  .rc-slider {
+    .rc-slider-rail {
+      height: 0.25em;
+      background: #000;
+    }
+    .rc-slider-step {
+      height: 0.25em;
+    }
+    .rc-slider-track {
+      background: $a1;
+      height: 0.25em;
+    }
+    .rc-slider-handle {
+      top: 50%;
+      margin-top: -0.5em;
+      border-color: $a1;
+      height: 1em;
+      width: 1em;
+
+      &:active {
+        box-shadow: 0 0 14px 1.3px $a1;
+        // box-shadow: 0 0 5px $a1;
+      }
+      &:focus {
+        box-shadow: 0 0 14px 1.3px $a1;
+        // box-shadow: 0 0 0 5px rgba($a1, 0.3);
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .rc-slider {
+      .rc-slider-rail {
+        height: 1em;
+        background: #000;
+      }
+      .rc-slider-step {
+        height: 1em;
+      }
+      .rc-slider-track {
+        background: $a1;
+        height: 1em;
+      }
+      .rc-slider-handle {
+        top: 50%;
+        margin-top: -0.2em;
+        border-color: $a1;
+        height: 1em;
+        width: 1em;
+
+        &:active {
+          box-shadow: 0 0 5px $a1;
+        }
+        &:focus {
+          box-shadow: 0 0 0 5px rgba($a1, 0.3);
+        }
+      }
+    }
+  }
+
+  ::-moz-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar {
+      width: 9px;
+  }
+
+  ::-moz-scrollbar-track {
+      box-shadow: none;
+      border-radius: 10px;
+      background: #000;
+  }
+  ::-webkit-scrollbar-track {
+      box-shadow: none;
+      border-radius: 10px;
+      background: #000;
+  }
+  ::scrollbar-thumb {
+      border-radius: 10px;
+      background: $a1;
+      box-shadow: none;
+  }
+  ::-moz-scrollbar-thumb {
+      background: $a1;
+      border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+      background: $a1;
+      border-radius: 6px;
+  }
+}

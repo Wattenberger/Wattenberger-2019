@@ -113,3 +113,12 @@ export const useHash = (initialValue = null) => {
 
     return [storedValue, setValue]
 }
+
+export const useIsMounted = () => {
+  const isMounted = useRef(false)
+  useEffect(() => {
+      isMounted.current = true
+      return () => isMounted.current = false
+  }, [])
+  return isMounted
+}
