@@ -19,6 +19,10 @@
   pointer-events: all;
   overflow: hidden;
 
+  &__section:last-of-type {
+    min-height: 0;
+  }
+
   &__section + &__section {
     border-bottom: 1px solid $a1;
   }
@@ -96,6 +100,7 @@
     flex: 1;
     // padding: 0 1em;
     overflow: auto;
+    max-height: 100%;
   }
 
   @keyframes slideIn {
