@@ -2,6 +2,7 @@
 
 .D3ForceForces {
   $a1: #3AA4C8;
+  $bg: #1C1A1D;
 
   color: white;
   // background: #f4f4f4;
@@ -18,6 +19,10 @@
   pointer-events: all;
   overflow: hidden;
 
+  &__section + &__section {
+    border-bottom: 1px solid $a1;
+  }
+
   &__controls {
     flex: none;
     display: flex;
@@ -25,7 +30,7 @@
     flex-wrap: wrap;
     margin-top: -0.2em;
     margin-left: -0.2em;
-    padding: 1em 1em 0.2em;
+    padding: 0.3em 1em 0.6em;
 
     div {
       flex: 1;
@@ -54,10 +59,10 @@
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
-    min-height: 6em;
+    // min-height: 6em;
     margin-top: -0.2em;
     margin-left: -0.2em;
-    padding: 0.2em 1em;
+    padding: 0.2em 1em 0.9em;
   }
 
   @keyframes pulseIn {
@@ -75,10 +80,11 @@
     opacity: 0;
     animation: pulseIn 2s ease-out;
     animation-fill-mode: forwards;
-    margin: 0.2em;
+    margin: 0.1em;
+    padding: 0.5em 0.9em;
 
     & + .Button {
-      margin: 0.2em;
+      margin: 0.1em;
     }
 
     .Icon {
@@ -88,7 +94,7 @@
 
   &__forces {
     flex: 1;
-    padding: 0 1em;
+    // padding: 0 1em;
     overflow: auto;
   }
 
@@ -98,8 +104,11 @@
   }
 
   &__force {
-    width: 100%;
-    padding: 1em 0;
+    // width: 100%;
+    padding: 0.7em 0.9em 0.9em;
+    // border-top: 1px solid $a1;
+    background: #000;
+    margin: 0.5em;
     transform: translateX(-2em); opacity: 0;
     animation: slideIn 0.4s ease-out;
     animation-fill-mode: forwards;
@@ -109,9 +118,20 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      padding: 0 0 0.8em;
+      color: $a1;
+
+      button.Button {
+        padding: 0.3em;
+        color: white;
+        background: #000;
+        border: 1px solid #000;
+      }
     }
 
     &__attribute {
+      font-size: 0.9em;
+
       &__top {
         display: flex;
         align-items: center;
@@ -161,7 +181,7 @@
   .rc-slider {
     .rc-slider-rail {
       height: 0.25em;
-      background: #000;
+      background: $bg;
     }
     .rc-slider-step {
       height: 0.25em;
@@ -192,7 +212,7 @@
     .rc-slider {
       .rc-slider-rail {
         height: 1em;
-        background: #000;
+        background: $bg;
       }
       .rc-slider-step {
         height: 1em;
@@ -218,34 +238,69 @@
     }
   }
 
-  ::-moz-scrollbar {
-    width: 9px;
-  }
-  ::-webkit-scrollbar {
-      width: 9px;
+  @media (min-width: 900px) and (max-width: 1300px) {
+    width: calc(100vw - 3em);
+    height: 10em;
+    transform: translate(100%, 0);
+    z-index: 100;
+    background: $bg;
+    flex-direction: row;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: -1.5em;
+      left: 0;
+      right: 0;
+      height: calc(1.5em - 1px);
+      background: linear-gradient(
+        to bottom,
+        rgba($bg, 0),
+        rgba($bg, 1)
+      );
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    &__section:last-of-type {
+      flex: 1;
+    }
+
+    &__section + &__section {
+      padding-left: 2em;
+    }
+
+    &__options {
+      width: 13em;
+    }
+
+    &__forces {
+      display: flex;
+      flex-wrap: wrap;
+      max-height: 100%;
+      padding-bottom: 4em;
+      overflow: auto;
+    }
+
+    &__force {
+      min-width: 10em;
+    }
   }
 
-  ::-moz-scrollbar-track {
-      box-shadow: none;
-      border-radius: 10px;
-      background: #000;
-  }
-  ::-webkit-scrollbar-track {
-      box-shadow: none;
-      border-radius: 10px;
-      background: #000;
-  }
-  ::scrollbar-thumb {
-      border-radius: 10px;
-      background: $a1;
-      box-shadow: none;
-  }
-  ::-moz-scrollbar-thumb {
-      background: $a1;
-      border-radius: 6px;
-  }
-  ::-webkit-scrollbar-thumb {
-      background: $a1;
-      border-radius: 6px;
+  @media (max-width: 900px) {
+    position: relative;
+    right: auto;
+    height: 100%;
+    background: $bg;
+    overflow: auto;
+    transition: transform 0.3s ease-out;
+
+    &__section:last-of-type {
+      flex: 1;
+    }
+
+    &__forces {
+      padding-bottom: 3em;
+    }
   }
 }

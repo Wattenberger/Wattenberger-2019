@@ -1,14 +1,16 @@
 import React, { memo, useEffect, useMemo, useRef, useState } from "react"
-import { forceSimulation, forceCollide } from "d3-force"
+import { forceSimulation } from "d3-force"
+import { flatten } from "lodash"
 
 import Button from "components/_ui/Button/Button"
 import Icon from "components/_ui/Icon/Icon"
 import { useInterval } from "utils/utils"
+import { getRandomInteger } from "./force-types"
 import { useChartDimensions } from "components/_ui/Chart/utils/utils"
 
 import "./D3ForceExample.scss"
 
-const D3ForceExample = ({ forces=[], numberOfNodes = 100, isRunning, tickIteration = 0 }) => {
+const D3ForceExample = ({ forces=[], numberOfNodes = 100, forceAttributes, forceShape, isRunning, tickIteration = 0 }) => {
   const canvasElement = useRef()
   const [wrapperElement, dms] = useChartDimensions({
     marginTop: 0,
@@ -20,13 +22,20 @@ const D3ForceExample = ({ forces=[], numberOfNodes = 100, isRunning, tickIterati
   const r = 6
   const nodes = useRef([])
 
-
   useEffect(() => {
     nodes.current = new Array(numberOfNodes).fill(0).map(d => ({
-      x: 100,
-      y: 100,
+      width: getRandomInteger(6, 60),
+      height: getRandomInteger(6, 50),
+      // x: 100,
+      // y: 100,
     }))
   }, [numberOfNodes])
+
+  const linkForceIds = useMemo(() => (
+    forces
+      .filter(([name, func, id]) => name == "link")
+      .map(([name, func, id]) => id)
+  ), [forces])
 
   const simulation = useForce(nodes.current, forces)
 
@@ -38,13 +47,37 @@ const D3ForceExample = ({ forces=[], numberOfNodes = 100, isRunning, tickIterati
     // context.fillStyle = "#9980FA"
     context.fillStyle = "#DB5C6E"
 
-    nodes.current.forEach(({x, y, movement}) => {
+    nodes.current.forEach(({x, y, width, height}) => {
+      const movedX = x + dms.width / 2
+      const movedY = y + dms.height / 2
+
       context.beginPath()
-      context.arc(
-        x + dms.width / 2, y + dms.height / 2, r,
-        0, 2 * Math.PI, false
-      )
-      context.fill()
+      if (forceShape == "circle") {
+        context.arc(
+          movedX, movedY, r,
+          0, 2 * Math.PI, false
+        )
+        context.fill()
+      } else if (forceShape == "rect") {
+        context.fillRect(
+          movedX, movedY,
+          width, height
+        )
+      }
+    })
+
+    const links = flatten(
+      linkForceIds.map(id => (
+        forceAttributes[id] ? forceAttributes[id]["links"]["value"] : []
+      ))
+    )
+    context.strokeStyle = "#8b8ba7"
+
+    links.forEach(({source, target}) => {
+      context.beginPath()
+      context.moveTo(source["x"] + dms.width / 2, source["y"] + dms.height / 2)
+      context.lineTo(target["x"] + dms.width / 2, target["y"] + dms.height / 2)
+      context.stroke()
     })
 
     if (isRunning) {
@@ -97,14 +130,7 @@ export const useForce = (nodes=[], forces=[]) => {
       simulation.current.force(id, force)
     })
   //   simulation.current.alpha(1).restart()
-  // console.log(forces);
   }, [forces])
-
-  // useInterval(() => {
-  //   if (!forces.length) return
-  //   if (!simulation.current) return
-  //   simulation.current.tick()
-  // }, 100)
 
   return simulation.current
 }
