@@ -12,17 +12,15 @@ import D3ForceForces from "./D3ForceForces"
 import yodaImage1 from "./yoda1.png"
 import yodaImage2 from "./yoda2.png"
 import scmpImage from "./scmp.png"
+import metaImage from "./meta.png"
 import { scrollTo } from "utils";
 import { forceTypesMap } from "./force-types"
 
 import "./D3Force.scss"
 
-const metaImage = ""
-
 // todo
 // - custom force: rectangular collisions
 // - custom force: particles on text
-// - make it responsive
 
 const D3Force = () => {
   const [areControlsVisible, setAreControlsVisible] = useState(false)
@@ -57,11 +55,6 @@ const D3Force = () => {
     if (hash) scrollToId(hash)
   }, [])
 
-  const setHeaderHashLocal = id => () => {
-    window.location.hash = `#${id}`
-    scrollToId(id)
-  }
-
   const getForceAttribute = (name, attribute) => {
     const matchingForce = forces.find(([ forceName ]) => forceName == name)
     if (!matchingForce) return ""
@@ -73,7 +66,6 @@ const D3Force = () => {
 
   const onAddForce = force => {
     const forceName = force[0]
-    // const newForceFunction = force[1](force[3] || 100)
     const newForceFunction = force[1]()
 
     const newForces = [...forces, [forceName, newForceFunction, uniqueId()]]
@@ -95,10 +87,10 @@ const D3Force = () => {
     <div className="D3Force">
       <Helmet>
           <meta charSet="utf-8" />
-          <title>The CSS Cascade</title>
-          <link rel="canonical" href="https://wattenberger.com/blog/css-cascade" />
+          <title>Use the d3 force</title>
+          <link rel="canonical" href="https://wattenberger.com/blog/d3-force" />
           <meta property="og:type" content="website" />
-          <meta name="description" content="<p>We style our websites using CSS, which stands for Cascading Style Sheets, but what does Cascading really mean? To save ourselves from future angst, let’s take a step back and learn this thing for real." />
+          <meta name="description" content="<p>Usually, we position elements on our web pages in static, explicit places. But what if we want to make them feel more alive, or move them based on loose rules? Let's learn how to move particles with forces using d3-force.</p>" />
           <meta name="image" content={metaImage} />
       </Helmet>
 

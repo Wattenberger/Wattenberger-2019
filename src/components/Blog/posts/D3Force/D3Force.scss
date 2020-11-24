@@ -176,9 +176,9 @@
       pointer-events: all;
     }
 
-    .Header__link + .Header__link {
-        display: none;
-    }
+    // .Header__link + .Header__link {
+    //     display: none;
+    // }
   }
   & ~ .Footer {
     z-index: 100;
@@ -296,13 +296,16 @@
     &__content {
       width: calc(100vw - 2em);
     }
+
     h2 {
       font-size: 2em;
     }
+
     .section__heading__image {
       left: auto;
       right: -1em;
     }
+
     .Code {
       font-size: 0.8em;
     }

@@ -11,6 +11,7 @@ import scalingSvgImage from "./posts/scaling-svg.png"
 import cssCascadeImage from "./posts/css-cascade.png"
 import reactAndD3Image from "./posts/react-and-d3.png"
 import CssPercentsImage from "./posts/css-percents.png"
+import D3ForceImage from "./posts/d3-force.png"
 
 import constructionGif from "components/_shared/construction.gif";
 
@@ -26,6 +27,13 @@ const exampleBarsFullCss = require("!!raw-loader!examples/interactions/bars-full
 // import VisualDesign from "./posts/VisualDesign"
 
 const posts = [{
+  title: "Use the d3 force",
+  id: "d3-force",
+  image: D3ForceImage,
+  description: <>
+    Usually, we position elements on our web pages in static, explicit places. But what if we want to make them feel more alive, or move them based on loose rules? Let's learn how to move particles with forces using d3-force.
+  </>
+},{
   title: "What does 100% mean in CSS?",
   id: "css-percents",
   image: CssPercentsImage,

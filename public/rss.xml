@@ -27,6 +27,28 @@
   </image>
 
 	<item>
+		<title>Use the d3 force</title>
+		<link>https://wattenberger.com/blog/d3-force</link>
+		<pubDate>Tue, 24 November 2020 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[d3]]></category>
+		<category><![CDATA[d3-force]]></category>
+		<category><![CDATA[particles]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/d3-force.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/blog/d3-force</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/d3-force"><img width="750" height="665" src="http://wattenberger.com/d3-force.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>Usually, we position elements on our web pages in static, explicit places. But what if we want to make them feel more alive, or move them based on loose rules? Let's learn how to move particles with forces using d3-force.</p>]]></description>
+				<content:encoded><![CDATA[<p>Usually, we position elements on our web pages in static, explicit places. But what if we want to make them feel more alive, or move them based on loose rules? Let's learn how to move particles with forces using d3-force.</p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>What does 100% mean in CSS?</title>
 		<link>https://wattenberger.com/blog/css-percents</link>
 		<pubDate>Wed, 29 July 2020 08:00:00 EST</pubDate>
@@ -42,8 +64,8 @@
         width="150"
         height="150" />
 
-		<guid isPermaLink="false">https://wattenberger.com/guide/css-percents</guid>
-		<description><![CDATA[<a href="https://wattenberger.com/guide/css-percents"><img width="750" height="665" src="http://wattenberger.com/css-percents.png" class="attachment-medium size-medium wp-post-image" /></a>
+		<guid isPermaLink="false">https://wattenberger.com/blog/css-percents</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/css-percents"><img width="750" height="665" src="http://wattenberger.com/css-percents.png" class="attachment-medium size-medium wp-post-image" /></a>
     <p>One of the CSS units I use most is the wonderful <b>%</b> — so handy for positioning elements on the page. Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is: <em>Percent of what?</em></p>]]></description>
 				<content:encoded><![CDATA[<p>One of the CSS units I use most is the wonderful <b>%</b> — so handy for positioning elements on the page. Unfortunately, the rules aren’t exactly straightforward. One question I’m always asking myself is: <em>Percent of what?</em></p>]]></content:encoded>
 			</item>
@@ -66,8 +88,8 @@
         width="150"
         height="150" />
 
-		<guid isPermaLink="false">https://wattenberger.com/guide/spirals</guid>
-		<description><![CDATA[<a href="https://wattenberger.com/guide/spirals"><img width="750" height="665" src="http://wattenberger.com/spirals.png" class="attachment-medium size-medium wp-post-image" /></a>
+		<guid isPermaLink="false">https://wattenberger.com/blog/spirals</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/spirals"><img width="750" height="665" src="http://wattenberger.com/spirals.png" class="attachment-medium size-medium wp-post-image" /></a>
     <p>D3.js force simulations are great for implementing basic physical rules, but they can be expensive to run. Here's a trick I've used in the past to speed up those simulations.</p>]]></description>
 				<content:encoded><![CDATA[<p>D3.js force simulations are great for implementing basic physical rules, but they can be expensive to run. Here's a trick I've used in the past to speed up those simulations.</p>]]></content:encoded>
 			</item>
@@ -89,8 +111,8 @@
         width="150"
         height="150" />
 
-		<guid isPermaLink="false">https://wattenberger.com/guide/gauge</guid>
-		<description><![CDATA[<a href="https://wattenberger.com/guide/gauge"><img width="750" height="665" src="http://wattenberger.com/gauge.png" class="attachment-medium size-medium wp-post-image" /></a>
+		<guid isPermaLink="false">https://wattenberger.com/blog/gauge</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/gauge"><img width="750" height="665" src="http://wattenberger.com/gauge.png" class="attachment-medium size-medium wp-post-image" /></a>
     <p>Let's create a Gauge in React! Gauges are great at showing context around a single value. Is it high or low? Is it larger or smaller than this other value? But what we'll learn here isn't really about creating a gauge, it's about learning the concepts we could use to create one.</p>]]></description>
 				<content:encoded><![CDATA[<p>Let's create a Gauge in React! Gauges are great at showing context around a single value. Is it high or low? Is it larger or smaller than this other value? But what we'll learn here isn't really about creating a gauge, it's about learning the concepts we could use to create one.</p>]]></content:encoded>
 			</item>
@@ -111,8 +133,8 @@
         width="150"
         height="150" />
 
-		<guid isPermaLink="false">https://wattenberger.com/guide/css-cascade</guid>
-		<description><![CDATA[<a href="https://wattenberger.com/guide/css-cascade"><img width="750" height="665" src="http://wattenberger.com/css-cascade.png" class="attachment-medium size-medium wp-post-image" /></a>
+		<guid isPermaLink="false">https://wattenberger.com/blog/css-cascade</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/css-cascade"><img width="750" height="665" src="http://wattenberger.com/css-cascade.png" class="attachment-medium size-medium wp-post-image" /></a>
     <p>We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>, but what does <b>Cascading</b> really mean? To save ourselves from future angst, let's take a step back and learn this thing for real.</p>]]></description>
 				<content:encoded><![CDATA[<p>We style our websites using CSS, which stands for <b>Cascading Style Sheets</b>, but what does <b>Cascading</b> really mean? To save ourselves from future angst, let's take a step back and learn this thing for real.</p>]]></content:encoded>
 			</item>
