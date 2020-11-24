@@ -11,6 +11,7 @@ import D3ForceExample from "./D3ForceExample"
 import D3ForceForces from "./D3ForceForces"
 import yodaImage1 from "./yoda1.png"
 import yodaImage2 from "./yoda2.png"
+import yodaImage3 from "./yoda3.png"
 import scmpImage from "./scmp.png"
 import metaImage from "./meta.png"
 import { scrollTo } from "utils";
@@ -187,7 +188,7 @@ d3.forceSimulation(particles)`}
 
             <p>The <strong>x force</strong> urges our particles to move towards a specific x (horizontal) position.</p>
 
-            <p>Add new <strong>x forces</strong> (on the left) to our active forces, and move the sliders to change the targeted x position.</p>
+            <p>Add new <strong>x forces</strong> (in the <strong>Simulation Control Panel</strong>) to our active forces, and move the sliders to change the targeted x position.</p>
 
             <Code size="m" hasLineNumbers={false}>
 {`d3.forceSimulation()
@@ -195,12 +196,12 @@ d3.forceSimulation(particles)`}
             </Code>
 
             <Aside>
-              When adding a new force, we call the simulation's <P>.force()</P> method, passing two parameters: a name (for cancelling the force, later) and the force itself.
+              When adding a new force, we call the simulation's <P>.force()</P> method, passing two parameters: a name (for later cancelling the force) and the force function itself.
             </Aside>
 
             <p>We can also specify a function, using the provided parameters (the particle, and the index of the particle). Try this by clicking <strong>buckets</strong> or <strong>in a line</strong>.</p>
 
-            <p>Much to learn you still have, my young padawan.</p>
+            <p>But this <strong>x force</strong> isn't very powerful on its own. Let's learn some other ones! Much to learn you still have, my young padawan.</p>
           </Section>
         </InView>
 
@@ -449,6 +450,10 @@ d3.forceSimulation(particles)`}
             <Aside>Check out <Link to="https://github.com/Wattenberger/Wattenberger-2019/blob/master/src/components/Blog/posts/D3Force/bounds.js">the code for our <strong>bounding force</strong></Link>.</Aside>
 
             <p>This force could be really helpful for making sure our particles stay on screen.</p>
+
+            <p>
+              Go and make your own custom forces! If you make your own force, ping me on <Link to="http://twitter.com/wattenberger">Twitter</Link> and I'll start a list here!
+            </p>
           </Section>
         </InView>
 
@@ -501,7 +506,7 @@ const SectionForceHeading = memo(({ id }) => {
         { id }
       </h2>
       {isForce && (
-        <img className="section__heading__image" src={Math.random() < 0.5 ? yodaImage1 : yodaImage2} />
+        <img className="section__heading__image" src={Math.random() < 0.3 ? yodaImage1 : Math.random() < 0.5 ? yodaImage2 : yodaImage3} />
       )}
     </div>
   )
