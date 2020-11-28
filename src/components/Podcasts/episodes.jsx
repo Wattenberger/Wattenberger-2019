@@ -8,8 +8,20 @@ import dataStoriesImage from "./images/data-stories.jfif"
 import eggheadImage from "./images/egghead.png"
 import devModeImage from "./images/devmode.png"
 import soloCoderImage from "./images/solo-coder.png"
+import svelteRadioImage from "./images/svelte-radio.png"
 
 export default [{
+  name: "Amelia Wattenberger, Svelte, D3 and other fun stuff!",
+  podcast: "Svelte Radio",
+  googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL3N2ZWx0ZS1yYWRpbw/episode/NjYzZDg1NGQtNjU3Yy00MDRhLWE4NWUtMWE3NzU5Y2Q5NzZh?sa=X&ved=0CAUQkfYCahcKEwjQqOPYv6jtAhUAAAAAHQAAAAAQHQ&hl=en",
+  url: "https://www.svelteradio.com/episodes/amelia-wattenberger-svelte",
+  date: "8/4/2020",
+  description: <>
+    I've been using Svelte.js more and more for projects and got the chance to chat with the Svelte Radio team about using it for projects, how to use it with d3.js, and how it compares with React.js.
+  </>,
+  image: svelteRadioImage,
+  colors: ["#15102E", "#D72147", "#E0E0ED"],
+},{
   name: "Data Visualization & Journalism",
   podcast: "solo.coder",
   googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9zb2xvY29kZXIubGlic3luLmNvbS9yc3M/episode/MGY1ODkxNmEtMDk2YS00YmMzLWEzNGUtZGVlYTU5ZDYzMjQ5?ved=0CAsQzsICahcKEwjA0vvUwZHpAhUAAAAAHQAAAAAQDA",
