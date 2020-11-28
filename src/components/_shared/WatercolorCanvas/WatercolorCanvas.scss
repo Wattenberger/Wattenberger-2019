@@ -47,4 +47,10 @@
           }
       }
   }
+
+  @media (max-width: 600px) {
+      &__colors {
+          display: none;
+      }
+  }
 }

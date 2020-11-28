@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import Link from "components/_ui/Link/Link";
 import Icon from "components/_ui/Icon/Icon";
 import {withRouter} from 'react-router-dom';
-import meImg from "./me.png"
+import image from "./book.png"
 
 import "./Footer.scss"
 import NewsletterSignup from "components/_shared/NewsletterSignup/NewsletterSignup";
@@ -14,7 +14,7 @@ class Footer extends Component {
 
         return (
             <footer className="Footer">
-                <img src={meImg} alt="Amelia" className="Footer__image" />
+                <img src={image} alt="Amelia" className="Footer__image" />
                 <div className="Footer__text">
                     <div className="Footer__name">
                         Amelia Wattenberger © 2020
@@ -33,7 +33,7 @@ class Footer extends Component {
                             </Link>
                             <Link className="Footer__link" href="http://fullstack.io/fullstack-d3">
                                 <img src="https://twemoji.maxcdn.com/2/svg/1f4d6.svg" className="Footer__link__emoji" alt="book" />
-                                Learn Data Viz
+                                Learn how to make amazing data visualizations
                             </Link>
                             <Link className="Footer__link" to="/rss">
                                 <Icon name="rss" className="Footer__link__icon" alt="book" />

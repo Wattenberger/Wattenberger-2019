@@ -44,7 +44,7 @@
 
 @media (max-width: 900px) {
   .HomeHeader {
-    max-height: 30em;
+    max-height: 34em;
   }
   .HomeHeader__content {
     margin: 6em $horizontal-padding-skinny;
@@ -54,5 +54,23 @@
   }
   .HomeHeader__content__text__title {
     font-size: $font-size-large;
+  }
+}
+
+@media (max-width: 600px) {
+  .HomeHeader {
+    &__content {
+      margin: 6em 1em;
+
+      &__text {
+        &__top {
+          padding-left: 0;
+        }
+
+        &__title {
+          font-size: 1.5em;
+        }
+      }
+    }
   }
 }

@@ -57,9 +57,9 @@ const formatDate = date => {
 }
 const defaultSiteOptions = _.map(sites, site => ({
   label: site.label,
-  active: true,
+  isActive: true,
 }))
-const defaultActiveSites = _.map(_.filter(defaultSiteOptions, "active"), "label")
+const defaultActiveSites = _.map(_.filter(defaultSiteOptions, "isActive"), "label")
 const defaultSentimentRange = [-100, 100]
 const localStorageActiveSitesKey = "active-sites"
 const localStorageSentimentRangeKey = "sentiment-range"
@@ -138,7 +138,7 @@ class News extends Component {
 
     const siteOptions = _.map(sites, site => ({
       label: site.label,
-      active: _.includes(activeSites, site.label),
+      isActive: _.includes(activeSites, site.label),
     }))
     let titleFilters = urlArgs[localStorageTitleFiltersKey] || this.getFromStorage(localStorageTitleFiltersKey) || []
     if (!_.isArray(titleFilters)) titleFilters = []
@@ -219,12 +219,12 @@ class News extends Component {
     const isSelectingAll = this.state.activeSites.length == 1 && _.includes(this.state.activeSites, toggledSite.label);
     const siteOptions = _.map(this.state.siteOptions, site => ({
       ...site,
-      active: isSelectingAll ? true :
+      isActive: isSelectingAll ? true :
         isSelectingOne ?
           site.label == toggledSite.label ? true : false :
-          site.label == toggledSite.label ? !site.active : site.active,
+          site.label == toggledSite.label ? !site.isActive : site.isActive,
     }))
-    const activeSites = _.map(_.filter(siteOptions, "active"), "label")
+    const activeSites = _.map(_.filter(siteOptions, "isActive"), "label")
     this.setInStorage(localStorageActiveSitesKey, activeSites)
     this.setUrlArg(localStorageActiveSitesKey, activeSites)
     this.setState({ siteOptions, activeSites })

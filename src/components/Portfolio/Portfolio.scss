@@ -138,3 +138,14 @@ $aspect-ratio: 58vw;
     margin: 0 (-$horizontal-padding-skinny);
   }
 }
+
+@media (max-width: 600px) {
+  .Portfolio {
+    padding: 2em 1em;
+
+    h2 {
+      font-size: 1.5em;
+    }
+  }
+
+}

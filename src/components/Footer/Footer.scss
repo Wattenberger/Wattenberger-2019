@@ -10,30 +10,11 @@
     background: rgba($a1, 0.1);
     padding-right: 1em;
 
-    @media (max-width: 750px) {
-        flex-direction: column;
-        padding-bottom: 2em;
-
-        .Footer__image {
-            position: absolute;
-            bottom: 0;
-            right: -1.5em;
-        }
-    }
-    @media (max-width: 500px) {
-        padding-bottom: 1em;
-
-        .Footer__image {
-            position: absolute;
-            height: 6em;
-            right: -1em;
-        }
-    }
-
     &__image {
         flex: none;
         height: 10em;
         margin-top: -6em;
+        margin-left: -2em;
         // margin-bottom: -3em;
         // margin-left: -1em;
         // position: absolute;
@@ -78,5 +59,37 @@
     }
 
     &__signup {
+    }
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+        padding-bottom: 2em;
+
+        &__links {
+            margin-bottom: 1em;
+        }
+
+        &__link {
+            margin: 0.2em 0.5em;
+            white-space: pre-wrap;
+        }
+
+        &__image {
+            position: absolute;
+            bottom: 0;
+            right: -1.5em;
+            height: 8em;
+            margin-left: 0;
+        }
+    }
+
+    @media (max-width: 500px) {
+        padding-bottom: 1em;
+
+        &__image {
+            position: absolute;
+            height: 6em;
+            right: -1em;
+        }
     }
 }

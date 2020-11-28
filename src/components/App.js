@@ -122,7 +122,7 @@ class App extends Component {
               <Route path="/game-of-thrones" component={GameOfThrones} />
               <Route path="/traffic-sources" component={TrafficSources} />
               <Route path="/react-zdog" component={ReactZdog} />
-              <Route path="/webgl-demo" component={WebGLDemo} />
+              {/* <Route path="/webgl-demo" component={WebGLDemo} /> */}
               <Route path="/photoronoi" component={Photoronoi} />
               <Route path="/blog/d3-interactive-charts" component={Interactions} />
               <Route path="/blog/i3" component={I3} />

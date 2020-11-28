@@ -9,7 +9,7 @@
     align-items: center;
 
     &__about-toggle {
-      font-size: 0.6em;
+      font-size: 0.8em;
       margin-right: auto;
       margin-bottom: 0.8em;
       margin-left: 0.8em;
@@ -72,7 +72,7 @@
       right: 0;
       display: flex;
       justify-content: space-between;
-      font-size: 0.6em;
+      font-size: 0.8em;
     }
 
     .rc-slider-handle {
@@ -86,7 +86,7 @@
   &__toggle {
     margin-left: 1.3em;
     margin-bottom: 1em;
-    font-size: 0.6em;
+    font-size: 0.8em;
 
     .Button {
       position: relative;
@@ -173,18 +173,17 @@
   }
 
   &__note {
-    font-size: 0.77em;
-    padding: 1em 1.8em;
+    font-size: 0.7em;
+    padding: 0.7em 1.8em 2em 0.9rem;
     line-height: 1.3em;
     color: $tc;
-    font-size: 0.5em;
     opacity: 0.5;
   }
 
   &__title-filter {
     position: relative;
     width: 100%;
-    margin-top: 1em;
+    margin-top: 1.6em;
 
     @media (max-width: 500px) {
       margin-top: 2em;
@@ -192,8 +191,8 @@
 
     &__title {
       position: absolute;
-      top: -1.4rem;
-      font-size: 0.5em;
+      top: -2rem;
+      font-size: 0.7em;
       opacity: 0.5;
       left: 1rem;
     }
@@ -201,15 +200,15 @@
     .News__title-filter__input {
       &__control {
         min-height: 1em;
-        font-size: 0.6em;
+        font-size: 0.8em;
       }
 
       &__menu {
-        font-size: 0.6em;
+        font-size: 0.8em;
       }
 
       &__value-container {
-        height: 2.4em;
+        // height: 2.4em;
       }
 
       &__indicators {
@@ -218,6 +217,7 @@
 
       &__multi-value {
         background: $gray;
+        line-height: 1em;
 
         &__label {
           padding: 0.6em 1em;
@@ -229,7 +229,7 @@
   &Article {
     position: relative;
     display: block;
-    font-size: 0.8em;
+    // font-size: 0.9em;
     line-height: 1.3em;
     padding: 1em 1em 1.2em;
     transition: all 0.3s ease-out;
@@ -274,7 +274,7 @@
         flex: 1;
         // font-family: $font-family-serif;;
         // font-size: 1.2em;
-        font-weight: 800;
+        font-weight: 700;
       }
     }
 
@@ -291,17 +291,18 @@
 
     &__site {
       font-size: 0.8em;
-      font-weight: 800;
+      font-weight: 600;
       opacity: 0.5;
       // padding: 0 0 0.4em 0;
     }
 
     &__sentiment,
     &__snippet {
-      font-size: 0.77em;
-      line-height: 1.3em;
+      font-size: 0.8em;
+      line-height: 1.6em;
       color: $tc;
-      opacity: 0.5;
+      opacity: 0.77;
+      max-width: 60em;
     }
 
     &__sentiment {
