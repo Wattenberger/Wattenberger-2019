@@ -4,13 +4,24 @@ import Link from "components/_ui/Link/Link"
 
 import jsPartyImage from "./images/js-party.png"
 import policyVizImage from "./images/policy-viz.png"
-import dataStoriesImage from "./images/data-stories.jfif"
+import dataStoriesImage from "./images/data-stories.jpeg"
 import eggheadImage from "./images/egghead.png"
 import devModeImage from "./images/devmode.png"
 import soloCoderImage from "./images/solo-coder.png"
 import svelteRadioImage from "./images/svelte-radio.png"
 
 export default [{
+  name: "svelte.js for web-based dataviz with Amelia Wattenberger",
+  podcast: "Data Stories",
+  googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9kYXRhc3RvcmkuZXMvZmVlZC9tcDMv/episode/cG9kbG92ZS0yMDIwLTEyLTA4dDE0OjU5OjAxKzAwOjAwLWI3N2VkYTAwNThmYWQwZg?sa=X&ved=0CAUQkfYCahcKEwiwuOHt1M7tAhUAAAAAHQAAAAAQHQ",
+  url: "https://datastori.es/163-svelte-js-for-web-based-dataviz-with-amelia-wattenberger/",
+  date: "12/14/2020",
+  description: <>
+    A really fun chat with Moritz & Enrico - we talk through a brief history of javascript frameworks, how I structure data visualizations in Svelte, and how to get started with Svelte!
+  </>,
+  image: dataStoriesImage,
+  colors: ["#552DAA", "#4B28A0", "#E0E0Ed"],
+},{
   name: "Amelia Wattenberger, Svelte, D3 and other fun stuff!",
   podcast: "Svelte Radio",
   googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL3N2ZWx0ZS1yYWRpbw/episode/NjYzZDg1NGQtNjU3Yy00MDRhLWE4NWUtMWE3NzU5Y2Q5NzZh?sa=X&ved=0CAUQkfYCahcKEwjQqOPYv6jtAhUAAAAAHQAAAAAQHQ&hl=en",
@@ -26,7 +37,7 @@ export default [{
   podcast: "solo.coder",
   googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9zb2xvY29kZXIubGlic3luLmNvbS9yc3M/episode/MGY1ODkxNmEtMDk2YS00YmMzLWEzNGUtZGVlYTU5ZDYzMjQ5?ved=0CAsQzsICahcKEwjA0vvUwZHpAhUAAAAAHQAAAAAQDA",
   url: "https://solocoder.com/podcast/amelia-wattenberger-data-visualization-journalism",
-  date: "2/7/2020",
+  date: "4/29/2020",
   description: <>
     A chat with <Link href="https://twitter.com/AdersonOliveira">Aderson Oliveira</Link> about my experience writing <Link to="https://www.newline.co/fullstack-d3">Fullstack D3 and Data Visualization</Link> and the balance of coding versus journalism work.
   </>,
@@ -59,7 +70,7 @@ export default [{
   image: policyVizImage,
   colors: ["#002548", "#F58720", "#E0E0Ed"],
 },{
-  name: "152  |  Year in Review 2019",
+  name: "Year in Review 2019",
   podcast: "Data Stories",
   googleUrl: "https://podcasts.google.com/?feed=aHR0cHM6Ly9kYXRhc3RvcmkuZXMvZmVlZC9tcDMv&episode=cG9kbG92ZS0yMDE5LTEyLTExdDIwOjIwOjI2KzAwOjAwLWFhMTBkZDg3MjQ1M2E1Mw&ved=0CAYQkfYCahcKEwi445j4_sTnAhUAAAAAHQAAAAAQBg",
   url: "https://datastori.es/152-year-in-review-2019/#t=13:40.240",
