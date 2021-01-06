@@ -9,8 +9,20 @@ import eggheadImage from "./images/egghead.png"
 import devModeImage from "./images/devmode.png"
 import soloCoderImage from "./images/solo-coder.png"
 import svelteRadioImage from "./images/svelte-radio.png"
+import juniorToSeniorImage from "./images/juniortosenior.jpg"
 
 export default [{
+  name: "Amelia Wattenberger - Senior Journalist-Engineer at Polygraph/The Pudding",
+  podcast: "Junior to Senior with David Guttman",
+  googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL2p1bmlvci10by1zZW5pb3I/episode/MWNlNjM0N2ItNzQwZi00MDcwLTgxNGEtZjg0NDQzZGY2NTU0?sa=X&ved=0CAUQkfYCahcKEwjooOyXiobuAhUAAAAAHQAAAAAQCA&hl=en",
+  url: "https://juniortosenior.io/25",
+  date: "01/05/2021",
+  description: <>
+    I reached out to David to tell him how much I was enjoying listening to his podcast, and he was kind enough to invite me on. We had a great chat about ways to make yourself stand out and finding a career that you find exciting.
+  </>,
+  image: juniorToSeniorImage,
+  colors: ["#050409", "#AB5EA3", "#0D7B81"],
+},{
   name: "svelte.js for web-based dataviz with Amelia Wattenberger",
   podcast: "Data Stories",
   googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9kYXRhc3RvcmkuZXMvZmVlZC9tcDMv/episode/cG9kbG92ZS0yMDIwLTEyLTA4dDE0OjU5OjAxKzAwOjAwLWI3N2VkYTAwNThmYWQwZg?sa=X&ved=0CAUQkfYCahcKEwiwuOHt1M7tAhUAAAAAHQAAAAAQHQ",
