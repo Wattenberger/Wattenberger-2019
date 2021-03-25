@@ -361,6 +361,8 @@
   }
 
   .Blockquote {
+    display: block;
+    width: fit-content;
     margin: 0 auto;
     text-align: center;
 

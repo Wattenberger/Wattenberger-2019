@@ -9,7 +9,7 @@ import Code from "components/_ui/Code/Code"
 import Expandy from "components/_ui/Expandy/Expandy"
 import Link from "components/_ui/Link/Link"
 import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent"
-import metaImage from "./../d3.png"
+import metaImage from "./../react-and-d3.png"
 
 import "./D3AndReact.scss"
 import { sections } from "./examples"
