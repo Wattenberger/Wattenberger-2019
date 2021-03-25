@@ -1,173 +1,210 @@
-import React, { useEffect, useMemo, useRef, useState } from "react"
-import { Helmet } from "react-helmet"
-import {useSpring, animated} from 'react-spring'
-import { area, curveBasis, randomNormal } from "d3"
-import { debounce, times, uniqueId } from "lodash"
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { Helmet } from "react-helmet";
+import { useSpring, animated } from "react-spring";
+import { area, curveBasis, randomNormal } from "d3";
+import { debounce, times, uniqueId } from "lodash";
 
-import Code from "components/_ui/Code/Code"
-import Expandy from "components/_ui/Expandy/Expandy"
-import Aside from "components/_ui/Aside/Aside"
-import Icon from "components/_ui/Icon/Icon"
-import List from "components/_ui/List/List"
-import Link from "components/_ui/Link/Link"
-import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent"
-import D3Modules from "components/Blog/posts/LearnD3/D3Modules"
-import { P, SvgCode, CircleWithD3Code, CircleCode } from "./examples"
+import Code from "components/_ui/Code/Code";
+import Expandy from "components/_ui/Expandy/Expandy";
+import Aside from "components/_ui/Aside/Aside";
+import Icon from "components/_ui/Icon/Icon";
+import List from "components/_ui/List/List";
+import Link from "components/_ui/Link/Link";
+import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent";
+import D3Modules from "components/Blog/posts/LearnD3/D3Modules";
+import { P, SvgCode, CircleWithD3Code, CircleCode } from "./examples";
 import metaImage from "./../d3.png";
 import D3AndReactExample from "./D3AndReactExample";
 import constructionGif from "./construction.gif";
 
-import "./D3AndReact.scss"
-import { sections } from "./examples"
-import { useInterval, useHash } from "utils/utils"
-import { scrollTo } from "utils"
+import "./D3AndReact.scss";
+import { sections } from "./examples";
+import { useInterval, useHash } from "utils/utils";
+import { scrollTo } from "utils";
 
 const D3AndReact = () => {
-    const [highlightedLines, setHighlightedLines] = useState([])
-    const [initialExpandedSteps, setInitialExpandedSteps] = useState()
-    const [code, setCode] = useState(null)
-    const [hash, setHash] = useHash(null)
-    const [fileName, setFileName] = useState(null)
-    const [removedLines, setRemovedLines] = useState([])
-    const [insertedLines, setInsertedLines] = useState([])
-    const ref = useRef()
-    const [isScrolling, setIsScrolling] = useState([])
+  const [highlightedLines, setHighlightedLines] = useState([]);
+  const [initialExpandedSteps, setInitialExpandedSteps] = useState();
+  const [code, setCode] = useState(null);
+  const [hash, setHash] = useHash(null);
+  const [fileName, setFileName] = useState(null);
+  const [removedLines, setRemovedLines] = useState([]);
+  const [insertedLines, setInsertedLines] = useState([]);
+  const ref = useRef();
+  const [isScrolling, setIsScrolling] = useState([]);
 
-    const onSetHash = (newHash, e) => {
-        if (e) e.preventDefault()
-        if (!newHash) return
-        // if (newHash == hash) return
-        const elem = document.getElementById(newHash)
-        if (!elem) return
-        const y = elem.getBoundingClientRect().top
-            + document.documentElement.scrollTop
-            - 150
-        scrollTo(y, 300)
-        setHash(newHash)
-    }
+  const onSetHash = (newHash, e) => {
+    if (e) e.preventDefault();
+    if (!newHash) return;
+    // if (newHash == hash) return
+    const elem = document.getElementById(newHash);
+    if (!elem) return;
+    const y =
+      elem.getBoundingClientRect().top +
+      document.documentElement.scrollTop -
+      150;
+    scrollTo(y, 300);
+    setHash(newHash);
+  };
 
-    useEffect(() => {
-        if (hash) onSetHash(hash)
-    }, [])
+  useEffect(() => {
+    if (hash) onSetHash(hash);
+  }, []);
 
-    useEffect(() => {
-        const scrollingElem = document.scrollingElement || document.documentElement
-        const onStopScrolling = () => {
-            scrollingElem.classList.remove("is-scrolling")
-        }
-        const debouncedOnStopScrolling = debounce(onStopScrolling, 300)
-        const onScroll = () => {
-            const wasScrolling = scrollingElem.classList.contains("is-scrolling")
-            if (!wasScrolling) scrollingElem.classList.add("is-scrolling")
-            debouncedOnStopScrolling()
-        }
-        window.addEventListener("scroll", onScroll)
+  useEffect(() => {
+    const scrollingElem = document.scrollingElement || document.documentElement;
+    const onStopScrolling = () => {
+      scrollingElem.classList.remove("is-scrolling");
+    };
+    const debouncedOnStopScrolling = debounce(onStopScrolling, 300);
+    const onScroll = () => {
+      const wasScrolling = scrollingElem.classList.contains("is-scrolling");
+      if (!wasScrolling) scrollingElem.classList.add("is-scrolling");
+      debouncedOnStopScrolling();
+    };
+    window.addEventListener("scroll", onScroll);
 
-        return () => {
-            window.removeEventListener("scroll", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
 
-        }
-    }, [])
+  return (
+    <div className="D3AndReact" ref={ref}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Using React with D3.js</title>
+        <link
+          rel="canonical"
+          href="https://wattenberger.com/blog/react-and-d3"
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          name="description"
+          content="React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks."
+        />
+        <meta name="image" content={metaImage} />
+      </Helmet>
 
-    return (
-        <div className="D3AndReact" ref={ref}>
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>Using React with D3.js</title>
-                <link rel="canonical" href="https://wattenberger.com/blog/react-and-d3" />
-                <meta property="og:type" content="website" />
-                <meta name="description" content="React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks." />
-                <meta name="image" content={metaImage} />
-            </Helmet>
+      <div className="D3AndReact__fixed-code__wrapper">
+        <div className="D3AndReact__fixed-code">
+          {!!code && (
+            <Code
+              className="D3AndReact__code"
+              fileName={fileName}
+              {...{
+                highlightedLines,
+                removedLines,
+                insertedLines,
+                initialExpandedSteps,
+              }}
+            >
+              {code}
+            </Code>
+          )}
+        </div>
+      </div>
 
-            <div className="D3AndReact__fixed-code__wrapper">
-                <div className="D3AndReact__fixed-code">
-                {!!code && (
-                    <Code
-                        className="D3AndReact__code"
-                        fileName={fileName}
-                        {...{highlightedLines, removedLines, insertedLines, initialExpandedSteps}}>
-                        { code }
-                    </Code>
-                )}
-                </div>
+      <div className="D3AndReact__content">
+        <div className="D3AndReact__centered">
+          <HeaderBackground />
+          <h1>React + D3.js</h1>
+
+          <p>
+            When I visualize data on the web, my current favorite environment is
+            using <b>D3.js</b> inside of a <b>React.js</b> application.
+          </p>
+          <div className="D3AndReact__side-by-side D3AndReact__side-by-side--constrained">
+            <div className="D3AndReact__side-by-side__section">
+              <Expandy trigger="What is React.js?">
+                <p>
+                  <Link to="https://reactjs.org/">React.js</Link> is a
+                  JavaScript library that helps with building complex user
+                  interfaces. This website is written using React!
+                </p>
+                <p>
+                  I would recommend being familiar with React for this article.
+                  It might be worth running through{" "}
+                  <Link to="https://reactjs.org/tutorial/tutorial.html">
+                    the official tutorial
+                  </Link>{" "}
+                  or running through a book (
+                  <Link to="https://www.fullstackreact.com/">
+                    I've heard good things about this one
+                  </Link>
+                  ) to make sure you don't stumble on anything in here!
+                </p>
+              </Expandy>
             </div>
+            <div className="D3AndReact__side-by-side__section">
+              <Expandy trigger="What is D3.js?">
+                <p>
+                  <Link to="https://d3js.org">D3.js</Link> is the{" "}
+                  <i>de facto</i> library for visualizing data in the browser.
+                  It's basically just a collection of utility methods, but the
+                  API is enormous! To get a birds-eye view of the API, check out
+                  my post on <Link to="/blog/d3">How to Learn D3.js</Link>.
+                </p>
 
-            <div className="D3AndReact__content">
-                <div className="D3AndReact__centered">
-                    <HeaderBackground />
-                    <h1>
-                        React + D3.js
-                    </h1>
+                <p>
+                  D3.js is notorious for being hard to learn. If you're
+                  interested in learning or solidifying your knowledge, I tried
+                  to distill my knowledge into{" "}
+                  <Link to="https://newline.co/fullstack-d3">
+                    Fullstack Data Visualization and D3.js
+                  </Link>
+                  . Plus, the first chapter is free!
+                </p>
+              </Expandy>
+            </div>
+          </div>
 
-                    <p>
-                        When I visualize data on the web, my current favorite environment is using <b>D3.js</b> inside of a <b>React.js</b> application.
-                    </p>
-                    <div className="D3AndReact__side-by-side D3AndReact__side-by-side--constrained">
-                        <div className="D3AndReact__side-by-side__section">
-                            <Expandy trigger="What is React.js?">
-                                <p>
-                                    <Link to="https://reactjs.org/">React.js</Link> is a JavaScript library that helps with building complex user interfaces. This website is written using React!
-                                </p>
-                                <p>
-                                    I would recommend being familiar with React for this article. It might be worth running through <Link to="https://reactjs.org/tutorial/tutorial.html">the official tutorial</Link> or running through a book (<Link to="https://www.fullstackreact.com/">I've heard good things about this one</Link>) to make sure you don't stumble on anything in here!
-                                </p>
-                            </Expandy>
-                        </div>
-                        <div className="D3AndReact__side-by-side__section">
-                            <Expandy trigger="What is D3.js?">
-                                <p>
-                                    <Link to="https://d3js.org">D3.js</Link> is the <i>de facto</i> library for visualizing data in the browser. It's basically just a collection of utility methods, but the API is enormous! To get a birds-eye view of the API, check out my post on <Link to="/blog/d3">How to Learn D3.js</Link>.
-                                </p>
+          <ScrollEvent
+            isInViewChange={(d) => {
+              if (d > 0) return;
 
-                                <p>
-                                    D3.js is notorious for being hard to learn. If you're interested in learning or solidifying your knowledge, I tried to distill my knowledge into <Link to="https://newline.co/fullstack-d3">Fullstack Data Visualization and D3.js</Link>. Plus, the first chapter is free!
-                                </p>
-                            </Expandy>
-                        </div>
-                    </div>
+              setCode(null);
+              setInitialExpandedSteps(null);
+              setHighlightedLines([0]);
+              setRemovedLines([]);
+            }}
+            hasIndicator={false}
+          >
+            <p>
+              These two technologies are notoriously tricky to combine. The crux
+              of the issue is that <b>they both want to handle the DOM</b>.
+            </p>
+          </ScrollEvent>
 
-                    <ScrollEvent isInViewChange={d => {
-                        if (d > 0) return
+          <p>Let's start at the beginning, shall we?</p>
 
-                        setCode(null)
-                        setInitialExpandedSteps(null)
-                        setHighlightedLines([0])
-                        setRemovedLines([])
-                    }} hasIndicator={false}>
-                        <p>
-                            These two technologies are notoriously tricky to combine. The crux of the issue is that <b>they both want to handle the DOM</b>.
-                        </p>
-                    </ScrollEvent>
+          {sections.map(({ slug, label, Component }) => (
+            <div className="D3AndReact__section" key={slug} id={slug}>
+              <h2 className="D3AndReact__section__header">
+                <Link
+                  className="D3AndReact__section__header__anchor"
+                  to={`#${slug}`}
+                  onClick={(e) => onSetHash(slug, e)}
+                >
+                  #
+                </Link>
+                {label}
+              </h2>
+              <Component />
+            </div>
+          ))}
 
-                    <p>
-                        Let's start at the beginning, shall we?
-                    </p>
+          <div className="note">
+            <img alt="under construction" src={constructionGif} />
+            <p>
+              Please excuse our dust! This blog post is under construction.
+              <br />
+              We'll be finishing up here in the next few weeks.
+            </p>
+          </div>
+        </div>
 
-                    {sections.map(({ slug, label, Component }) => (
-                        <div className="D3AndReact__section" key={slug} id={slug}>
-                            <h2 className="D3AndReact__section__header">
-                                <Link className="D3AndReact__section__header__anchor" to={`#${slug}`} onClick={e => onSetHash(slug, e)}>
-                                    #
-                                </Link>
-                                { label }
-                            </h2>
-                            <Component />
-                        </div>
-                    ))}
-
-                    <div className="note">
-                        <img alt="under construction" src={constructionGif} />
-                        <p>
-                            Please excuse our dust! This blog post is under construction.
-                            <br />
-                            We'll be finishing up here in the next few weeks.
-                        </p>
-                    </div>
-
-                </div>
-
-                {/* <div className="D3AndReact__left">
+        {/* <div className="D3AndReact__left">
 
                     <p>
                         In this post, we'll be iterating on a scatterplot of estimated hours vs actual hours from a dataset of task estimation.
@@ -284,25 +321,20 @@ const D3AndReact = () => {
                         This approach definitely works! And it's a great first stab at porting an existing chart into a React app.
                     </p> */}
 
-                    {/* <D3AndReactExample /> */}
+        {/* <D3AndReactExample /> */}
 
-
-                    {/* <D3Modules /> */}
-                {/* </div> */}
-            </div>
-        </div>
-    )
-}
+        {/* <D3Modules /> */}
+        {/* </div> */}
+      </div>
+    </div>
+  );
+};
 
 export default D3AndReact;
 
-const resources = [{
-}]
+const resources = [{}];
 
-
-
-export const d3Example =
-`const width = 500
+export const d3Example = `const width = 500
 const height = 500
 const HoursScatterplot = () => {
   const ref = useRef()
@@ -379,114 +411,105 @@ const HoursScatterplot = () => {
       }}
     />
   )
-}`
+}`;
 
-
-const colors = [
-    "#2c3e50",
-    "#9980FA",
-    "#f2f2f7",
-]
+const colors = ["#2c3e50", "#9980FA", "#f2f2f7"];
 const gradients = [
-    ["#f2f2f7", "#9980FA", "#f2f2f7",],
-    ["#f2f2f7", "#12CBC4", "#f2f2f7",],
-    ["#f2f2f7", "#FFC312", "#f2f2f7",],
-]
-const numberOfWiggles = 20
-const heightOfBackground = 30
-const getPath = () => (
-    area()
-        .x(([x, y]) => x)
-        .y0(([x, y]) => -y)
-        .y1(([x, y, y1]) => y1)
-        .curve(curveBasis)
-    (
-        times(numberOfWiggles, i => (
-            [
-                // i + randomNormal(0, 0.5)(), // x
-                i, // x
-                Math.max(0,
-                    heightOfBackground / 2
-                    * (1 / ((Math.abs(i - numberOfWiggles / 2) || 1)))
-                    + randomNormal(0, 8)()
-                    + 3
-                ), // y0
-                Math.min(0,
-                    -heightOfBackground / 2
-                    * (1 / ((Math.abs(i - numberOfWiggles / 2) || 1)))
-                    + randomNormal(0, 8)()
-                    - 3
-                ), // y1
-            ]
-        ))
-    )
-)
+  ["#f2f2f7", "#9980FA", "#f2f2f7"],
+  ["#f2f2f7", "#12CBC4", "#f2f2f7"],
+  ["#f2f2f7", "#FFC312", "#f2f2f7"],
+];
+const numberOfWiggles = 20;
+const heightOfBackground = 30;
+const getPath = () =>
+  area()
+    .x(([x, y]) => x)
+    .y0(([x, y]) => -y)
+    .y1(([x, y, y1]) => y1)
+    .curve(curveBasis)(
+    times(numberOfWiggles, (i) => [
+      // i + randomNormal(0, 0.5)(), // x
+      i, // x
+      Math.max(
+        0,
+        (heightOfBackground / 2) *
+          (1 / (Math.abs(i - numberOfWiggles / 2) || 1)) +
+          randomNormal(0, 8)() +
+          3
+      ), // y0
+      Math.min(
+        0,
+        (-heightOfBackground / 2) *
+          (1 / (Math.abs(i - numberOfWiggles / 2) || 1)) +
+          randomNormal(0, 8)() -
+          3
+      ), // y1
+    ])
+  );
 const springConfig = {
-    duration: 3000,
-}
+  duration: 3000,
+};
 const HeaderBackground = () => {
-    const gradientIds = useMemo(() => (
-        times(3, () => (
-            `HeaderBackground__gradient--id-${uniqueId()}`
-        ))
-    ), [])
+  const gradientIds = useMemo(
+    () => times(3, () => `HeaderBackground__gradient--id-${uniqueId()}`),
+    []
+  );
 
-    const [path1, setPath1] = useState(getPath)
-    const [path2, setPath2] = useState(getPath)
-    const [path3, setPath3] = useState(getPath)
+  const [path1, setPath1] = useState(getPath);
+  const [path2, setPath2] = useState(getPath);
+  const [path3, setPath3] = useState(getPath);
 
-    useInterval(() => {
-        setPath1(getPath())
-        setPath2(getPath())
-        setPath3(getPath())
-    }, 3000)
+  useInterval(() => {
+    setPath1(getPath());
+    setPath2(getPath());
+    setPath3(getPath());
+  }, 3000);
 
-    const spring1 = useSpring({ config: springConfig, d: path1 })
-    const spring2 = useSpring({ config: springConfig, d: path2 })
-    const spring3 = useSpring({ config: springConfig, d: path3 })
+  const spring1 = useSpring({ config: springConfig, d: path1 });
+  const spring2 = useSpring({ config: springConfig, d: path2 });
+  const spring3 = useSpring({ config: springConfig, d: path3 });
 
-    return (
-        <div className="HeaderBackground">
-            <svg
-                className="HeaderBackground__svg"
-                viewBox={[
-                    0,
-                    -heightOfBackground / 2,
-                    numberOfWiggles - 1,
-                    heightOfBackground
-                ].join(" ")}
-                preserveAspectRatio="none">
-                <defs>
-                    {gradients.map((colors, gradientIndex) => (
-                        <linearGradient id={gradientIds[gradientIndex]}>
-                            {colors.map((color, colorIndex) => (
-                                <stop
-                                    key={[gradientIndex, colorIndex].join("-")}
-                                    stopColor={color}
-                                    offset={`${
-                                        colorIndex / (colors.length - 1) * 100
-                                    }%`}
-                                />
-                            ))}
-                        </linearGradient>
-                    ))}
-                </defs>
-                <animated.path
-                    className="HeaderBackground__path"
-                    {...spring1}
-                    fill={`url(#${gradientIds[0]})`}
+  return (
+    <div className="HeaderBackground">
+      <svg
+        className="HeaderBackground__svg"
+        viewBox={[
+          0,
+          -heightOfBackground / 2,
+          numberOfWiggles - 1,
+          heightOfBackground,
+        ].join(" ")}
+        preserveAspectRatio="none"
+      >
+        <defs>
+          {gradients.map((colors, gradientIndex) => (
+            <linearGradient id={gradientIds[gradientIndex]}>
+              {colors.map((color, colorIndex) => (
+                <stop
+                  key={[gradientIndex, colorIndex].join("-")}
+                  stopColor={color}
+                  offset={`${(colorIndex / (colors.length - 1)) * 100}%`}
                 />
-                <animated.path
-                    className="HeaderBackground__path"
-                    {...spring2}
-                    fill={`url(#${gradientIds[1]})`}
-                />
-                <animated.path
-                    className="HeaderBackground__path"
-                    {...spring3}
-                    fill={`url(#${gradientIds[2]})`}
-                />
-            </svg>
-        </div>
-    )
-}
+              ))}
+            </linearGradient>
+          ))}
+        </defs>
+        <animated.path
+          className="HeaderBackground__path"
+          {...spring1}
+          fill={`url(#${gradientIds[0]})`}
+        />
+        <animated.path
+          className="HeaderBackground__path"
+          {...spring2}
+          fill={`url(#${gradientIds[1]})`}
+        />
+        <animated.path
+          className="HeaderBackground__path"
+          {...spring3}
+          fill={`url(#${gradientIds[2]})`}
+        />
+      </svg>
+    </div>
+  );
+};
