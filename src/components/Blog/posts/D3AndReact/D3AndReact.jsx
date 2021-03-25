@@ -1,73 +1,66 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Helmet } from "react-helmet";
-import { useSpring, animated } from "react-spring";
-import { area, curveBasis, randomNormal } from "d3";
-import { debounce, times, uniqueId } from "lodash";
+import React, { useEffect, useMemo, useRef, useState } from "react"
+import { Helmet } from "react-helmet"
+import { useSpring, animated } from "react-spring"
+import { area, curveBasis, randomNormal } from "d3"
+import { debounce, times, uniqueId } from "lodash"
+import "rc-slider/assets/index.css"
 
-import Code from "components/_ui/Code/Code";
-import Expandy from "components/_ui/Expandy/Expandy";
-import Aside from "components/_ui/Aside/Aside";
-import Icon from "components/_ui/Icon/Icon";
-import List from "components/_ui/List/List";
-import Link from "components/_ui/Link/Link";
-import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent";
-import D3Modules from "components/Blog/posts/LearnD3/D3Modules";
-import { P, SvgCode, CircleWithD3Code, CircleCode } from "./examples";
-import metaImage from "./../d3.png";
-import D3AndReactExample from "./D3AndReactExample";
-import constructionGif from "./construction.gif";
+import Code from "components/_ui/Code/Code"
+import Expandy from "components/_ui/Expandy/Expandy"
+import Link from "components/_ui/Link/Link"
+import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent"
+import metaImage from "./../d3.png"
 
-import "./D3AndReact.scss";
-import { sections } from "./examples";
-import { useInterval, useHash } from "utils/utils";
-import { scrollTo } from "utils";
+import "./D3AndReact.scss"
+import { sections } from "./examples"
+import { useInterval, useHash } from "utils/utils"
+import { scrollTo } from "utils"
 
 const D3AndReact = () => {
-  const [highlightedLines, setHighlightedLines] = useState([]);
-  const [initialExpandedSteps, setInitialExpandedSteps] = useState();
-  const [code, setCode] = useState(null);
-  const [hash, setHash] = useHash(null);
-  const [fileName, setFileName] = useState(null);
-  const [removedLines, setRemovedLines] = useState([]);
-  const [insertedLines, setInsertedLines] = useState([]);
-  const ref = useRef();
-  const [isScrolling, setIsScrolling] = useState([]);
+  const [highlightedLines, setHighlightedLines] = useState([])
+  const [initialExpandedSteps, setInitialExpandedSteps] = useState()
+  const [code, setCode] = useState(null)
+  const [hash, setHash] = useHash(null)
+  const [fileName, setFileName] = useState(null)
+  const [removedLines, setRemovedLines] = useState([])
+  const [insertedLines, setInsertedLines] = useState([])
+  const ref = useRef()
 
   const onSetHash = (newHash, e) => {
-    if (e) e.preventDefault();
-    if (!newHash) return;
+    if (e) e.preventDefault()
+    if (!newHash) return
     // if (newHash == hash) return
-    const elem = document.getElementById(newHash);
-    if (!elem) return;
+    const elem = document.getElementById(newHash)
+    if (!elem) return
     const y =
       elem.getBoundingClientRect().top +
       document.documentElement.scrollTop -
-      150;
-    scrollTo(y, 300);
-    setHash(newHash);
-  };
+      150
+    scrollTo(y, 300)
+    setHash(newHash)
+  }
 
   useEffect(() => {
-    if (hash) onSetHash(hash);
-  }, []);
+    if (hash) onSetHash(hash)
+  }, [])
 
   useEffect(() => {
-    const scrollingElem = document.scrollingElement || document.documentElement;
+    const scrollingElem = document.scrollingElement || document.documentElement
     const onStopScrolling = () => {
-      scrollingElem.classList.remove("is-scrolling");
-    };
-    const debouncedOnStopScrolling = debounce(onStopScrolling, 300);
+      scrollingElem.classList.remove("is-scrolling")
+    }
+    const debouncedOnStopScrolling = debounce(onStopScrolling, 300)
     const onScroll = () => {
-      const wasScrolling = scrollingElem.classList.contains("is-scrolling");
-      if (!wasScrolling) scrollingElem.classList.add("is-scrolling");
-      debouncedOnStopScrolling();
-    };
-    window.addEventListener("scroll", onScroll);
+      const wasScrolling = scrollingElem.classList.contains("is-scrolling")
+      if (!wasScrolling) scrollingElem.classList.add("is-scrolling")
+      debouncedOnStopScrolling()
+    }
+    window.addEventListener("scroll", onScroll)
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, []);
+      window.removeEventListener("scroll", onScroll)
+    }
+  }, [])
 
   return (
     <div className="D3AndReact" ref={ref}>
@@ -81,7 +74,9 @@ const D3AndReact = () => {
         <meta property="og:type" content="website" />
         <meta
           name="description"
-          content="React introduced hooks one year ago, and they've been a game-changer for a lot of developers. There are tons of how-to introduction resources out there, but I want to talk about the fundamental mindset change when switching from React class components to function components + hooks."
+          content="When I visualize data on the web, my current favorite environment is
+          using D3.js inside of a React.js application. These two technologies are notoriously tricky to combine. The crux
+          of the issue is that they both want to handle the DOM."
         />
         <meta name="image" content={metaImage} />
       </Helmet>
@@ -161,12 +156,12 @@ const D3AndReact = () => {
 
           <ScrollEvent
             isInViewChange={(d) => {
-              if (d > 0) return;
+              if (d > 0) return
 
-              setCode(null);
-              setInitialExpandedSteps(null);
-              setHighlightedLines([0]);
-              setRemovedLines([]);
+              setCode(null)
+              setInitialExpandedSteps(null)
+              setHighlightedLines([0])
+              setRemovedLines([])
             }}
             hasIndicator={false}
           >
@@ -193,15 +188,6 @@ const D3AndReact = () => {
               <Component />
             </div>
           ))}
-
-          <div className="note">
-            <img alt="under construction" src={constructionGif} />
-            <p>
-              Please excuse our dust! This blog post is under construction.
-              <br />
-              We'll be finishing up here in the next few weeks.
-            </p>
-          </div>
         </div>
 
         {/* <div className="D3AndReact__left">
@@ -327,12 +313,12 @@ const D3AndReact = () => {
         {/* </div> */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default D3AndReact;
+export default D3AndReact
 
-const resources = [{}];
+const resources = [{}]
 
 export const d3Example = `const width = 500
 const height = 500
@@ -411,16 +397,16 @@ const HoursScatterplot = () => {
       }}
     />
   )
-}`;
+}`
 
-const colors = ["#2c3e50", "#9980FA", "#f2f2f7"];
+const colors = ["#2c3e50", "#9980FA", "#f2f2f7"]
 const gradients = [
   ["#f2f2f7", "#9980FA", "#f2f2f7"],
   ["#f2f2f7", "#12CBC4", "#f2f2f7"],
   ["#f2f2f7", "#FFC312", "#f2f2f7"],
-];
-const numberOfWiggles = 20;
-const heightOfBackground = 30;
+]
+const numberOfWiggles = 20
+const heightOfBackground = 30
 const getPath = () =>
   area()
     .x(([x, y]) => x)
@@ -445,29 +431,29 @@ const getPath = () =>
           3
       ), // y1
     ])
-  );
+  )
 const springConfig = {
   duration: 3000,
-};
+}
 const HeaderBackground = () => {
   const gradientIds = useMemo(
     () => times(3, () => `HeaderBackground__gradient--id-${uniqueId()}`),
     []
-  );
+  )
 
-  const [path1, setPath1] = useState(getPath);
-  const [path2, setPath2] = useState(getPath);
-  const [path3, setPath3] = useState(getPath);
+  const [path1, setPath1] = useState(getPath)
+  const [path2, setPath2] = useState(getPath)
+  const [path3, setPath3] = useState(getPath)
 
   useInterval(() => {
-    setPath1(getPath());
-    setPath2(getPath());
-    setPath3(getPath());
-  }, 3000);
+    setPath1(getPath())
+    setPath2(getPath())
+    setPath3(getPath())
+  }, 3000)
 
-  const spring1 = useSpring({ config: springConfig, d: path1 });
-  const spring2 = useSpring({ config: springConfig, d: path2 });
-  const spring3 = useSpring({ config: springConfig, d: path3 });
+  const spring1 = useSpring({ config: springConfig, d: path1 })
+  const spring2 = useSpring({ config: springConfig, d: path2 })
+  const spring3 = useSpring({ config: springConfig, d: path3 })
 
   return (
     <div className="HeaderBackground">
@@ -511,5 +497,5 @@ const HeaderBackground = () => {
         />
       </svg>
     </div>
-  );
-};
+  )
+}

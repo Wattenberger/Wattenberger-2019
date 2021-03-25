@@ -27,6 +27,28 @@
   </image>
 
 	<item>
+		<title>Combining React and D3</title>
+		<link>https://wattenberger.com/blog/react-and-d3</link>
+		<pubDate>Tue, 24 March 2021 08:00:00 EST</pubDate>
+		<dc:creator><![CDATA[Amelia Wattenberger]]></dc:creator>
+		<category><![CDATA[d3]]></category>
+		<category><![CDATA[react-js]]></category>
+		<category><![CDATA[react]]></category>
+    <media:content
+        xmlns:media="http://search.yahoo.com/mrss/"
+        url="http://wattenberger.com/react-and-d3.png"
+        medium="image"
+        type="image/jpeg"
+        width="150"
+        height="150" />
+
+		<guid isPermaLink="false">https://wattenberger.com/blog/react-and-d3</guid>
+		<description><![CDATA[<a href="https://wattenberger.com/blog/react-and-d3"><img width="750" height="665" src="http://wattenberger.com/react-and-d3.png" class="attachment-medium size-medium wp-post-image" /></a>
+    <p>When I visualize data on the web, my current favorite environment is using D3.js inside of a React.js application. These two technologies are notoriously tricky to combine. The crux of the issue is that they both want to handle the DOM. Let's talk about the best way to superspeed your visualization development by combining them.</p>]]></description>
+				<content:encoded><![CDATA[<p>When I visualize data on the web, my current favorite environment is using D3.js inside of a React.js application. These two technologies are notoriously tricky to combine. The crux of the issue is that they both want to handle the DOM. Let's talk about the best way to superspeed your visualization development by combining them.</p>]]></content:encoded>
+			</item>
+
+	<item>
 		<title>Use the d3 force</title>
 		<link>https://wattenberger.com/blog/d3-force</link>
 		<pubDate>Tue, 24 November 2020 08:00:00 EST</pubDate>

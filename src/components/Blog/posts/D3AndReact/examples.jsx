@@ -4,8 +4,9 @@ import { kebabCase } from "lodash"
 import CreatingSVGElements from "./CreatingSVGElements"
 import CreatingManySVGElements from "./CreatingManySVGElements"
 import Sizing from "./Sizing"
-import Maps from "./Maps"
 import Axes from "./Axes"
+import Maps from "./Maps"
+import Complex from "./Complex"
 
 import Code from "components/_ui/Code/Code"
 
@@ -25,68 +26,50 @@ import Code from "components/_ui/Code/Code"
 // ? d4 https://github.com/joelburget/d4
 
 const sectionLabels = [
-  [
-    "Creating SVG elements",
-    CreatingSVGElements,
-  ],
-  [
-    "Creating many SVG elements",
-    CreatingManySVGElements,
-  ],
-  [
-    "Axes",
-    Axes,
-  ],
-  [
-    "Sizing & Responsivity",
-    Sizing,
-  ],
-  [
-    "Animations",
-    () => <></>,
-  ],
+  ["Creating SVG elements", CreatingSVGElements],
+  ["Creating many SVG elements", CreatingManySVGElements],
+  ["Axes", Axes],
+  ["Sizing & Responsivity", Sizing],
+  // [
+  //   "Animations",
+  //   () => <></>,
+  // ],
   [
     "Maps",
-    () => <></>,
-    // Maps,
+    // () => <></>,
+    Maps,
   ],
-  [
-    "Complex visualization layouts",
-    () => <></>,
-  ],
-  [
-    "Linking multiple charts",
-    () => <></>,
-  ],
+  ["Complex visualization layouts", Complex],
+  // ["Linking multiple charts", () => <></>],
 ]
-export const sections = sectionLabels.map(([label, Component=() => <></>]) => ({
-  label,
-  Component,
-  slug: kebabCase(label),
-}))
+export const sections = sectionLabels.map(
+  ([label, Component = () => <></>]) => ({
+    label,
+    Component,
+    slug: kebabCase(label),
+  })
+)
 
 export const P = ({ children, ...props }) => (
-  <code className="P" {...props}>{ children }</code>
+  <code className="P" {...props}>
+    {children}
+  </code>
 )
 
-export const Blockquote = ({ source, children, ...props }) => (
-  <div className="Blockquote">
-    <blockquote {...props}>
-      { children }
-      {source && (
-        <div className="Blockquote__source">
-          { source }
-        </div>
-      )}
-    </blockquote>
-  </div>
-)
-
-export const CodeAndExample = ({ code, markers, example, fileName, theme, size, highlightedLines, hasLineNumbers=true }) => {
+export const CodeAndExample = ({
+  code,
+  markers,
+  example,
+  fileName,
+  theme,
+  size,
+  highlightedLines,
+  hasLineNumbers = true,
+}) => {
   const [highlightedMarker, setHighlightedMarker] = useState(null)
   const [hoveredMarker, setHoveredMarker] = useState(null)
 
-  const getHighlightedMarkerProps = index => ({
+  const getHighlightedMarkerProps = (index) => ({
     onMouseEnter: () => setHoveredMarker(index),
     onMouseLeave: () => {
       setHoveredMarker(null)
@@ -95,25 +78,35 @@ export const CodeAndExample = ({ code, markers, example, fileName, theme, size, 
     onClick: () => setHighlightedMarker(index),
     style: {
       cursor: "zoom-in",
-    }
+    },
   })
 
   return (
     <div className="CodeAndExample D3AndReact__side-by-side">
-      <div className={`D3AndReact__side-by-side__section CodeAndExample__code--marker-${highlightedMarker}`}>
+      <div
+        className={`D3AndReact__side-by-side__section CodeAndExample__code--marker-${highlightedMarker}`}
+      >
         <Code
-          {...{markers, highlightedMarker, fileName, theme, size, highlightedLines, hasLineNumbers}}
+          {...{
+            markers,
+            highlightedMarker,
+            fileName,
+            theme,
+            size,
+            highlightedLines,
+            hasLineNumbers,
+          }}
           className={`Code--highlighted-marker-${hoveredMarker}`}
           doWrap={false}
           doScrollWrapper={false}
-          size={window.innerWidth < 600 && "s"}>
-          { code }
+          size={window.innerWidth < 600 && "s"}
+        >
+          {code}
         </Code>
       </div>
       <div className="D3AndReact__side-by-side__section">
-        { example(getHighlightedMarkerProps) }
+        {example(getHighlightedMarkerProps)}
       </div>
     </div>
   )
 }
-

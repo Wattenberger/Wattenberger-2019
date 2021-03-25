@@ -1,0 +1,25 @@
+@mixin abs($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.p-2 {
+  padding: 0.5em;
+}
+.mb-2 {
+  margin-bottom: 0.5em;
+}

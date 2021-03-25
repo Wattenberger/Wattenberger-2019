@@ -1,20 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSpring, animated } from "react-spring";
-import * as d3 from "d3";
-import { format, range } from "d3";
-import { times } from "lodash";
+import React, { useEffect, useRef, useState } from "react"
+import { useSpring, animated } from "react-spring"
+import * as d3 from "d3"
+import { format, range } from "d3"
+import { times } from "lodash"
 
-import { useInterval } from "utils/utils.js";
-import Aside from "components/_ui/Aside/Aside";
-import Button from "components/_ui/Button/Button";
-import Code from "components/_ui/Code/Code";
-import Expandy from "components/_ui/Expandy/Expandy";
-import Link from "components/_ui/Link/Link";
-import List from "components/_ui/List/List";
-import { P, Blockquote, CodeAndExample } from "./examples";
+import { useInterval } from "utils/utils.js"
+import Aside from "components/_ui/Aside/Aside"
+import Button from "components/_ui/Button/Button"
+import Code from "components/_ui/Code/Code"
+import Expandy from "components/_ui/Expandy/Expandy"
+import Link from "components/_ui/Link/Link"
+import List from "components/_ui/List/List"
+import Blockquote from "components/_ui/Blockquote/Blockquote"
+import { P, CodeAndExample } from "./examples"
 
 const CreatingManySVGElements = () => {
-  const [dataset, setDataset] = useState(generateDataset());
+  const [dataset, setDataset] = useState(generateDataset())
 
   return (
     <div className="CreatingManySVGElements">
@@ -352,46 +353,46 @@ const CreatingManySVGElements = () => {
         it is a lot easier to read.
       </p>
     </div>
-  );
-};
+  )
+}
 
-export default CreatingManySVGElements;
+export default CreatingManySVGElements
 
 const generateDataset = () =>
   Array(10)
     .fill(0)
-    .map(() => [Math.random() * 80 + 10, Math.random() * 35 + 10]);
+    .map(() => [Math.random() * 80 + 10, Math.random() * 35 + 10])
 const generateDatasetCode = `const generateDataset = () => (
   Array(10).fill(0).map(() => ([
     Math.random() * 80 + 10,
     Math.random() * 35 + 10,
   ]))
-)`;
+)`
 
 const CirclesWithD3 = () => {
-  const [ref, isInView] = useIsInView();
-  const [dataset, setDataset] = useState(generateDataset());
+  const [ref, isInView] = useIsInView()
+  const [dataset, setDataset] = useState(generateDataset())
 
   useInterval(
     () => {
-      setDataset(generateDataset());
+      setDataset(generateDataset())
     },
     isInView ? 2000 : null
-  );
+  )
 
   useEffect(() => {
-    const svgElement = d3.select(ref.current);
+    const svgElement = d3.select(ref.current)
     svgElement
       .selectAll("circle")
       .data(dataset)
       .join("circle")
       .attr("cx", (d) => d[0])
       .attr("cy", (d) => d[1])
-      .attr("r", 3);
-  }, [dataset]);
+      .attr("r", 3)
+  }, [dataset])
 
-  return <svg viewBox="0 0 100 50" width="100%" ref={ref} />;
-};
+  return <svg viewBox="0 0 100 50" width="100%" ref={ref} />
+}
 const CirclesWithD3Code = `const Circles = () => {
   const [dataset, setDataset] = useState(
     generateDataset()
@@ -419,36 +420,36 @@ const CirclesWithD3Code = `const Circles = () => {
       ref={ref}
     />
   )
-}`;
+}`
 
 const useIsInView = (margin = "0px") => {
-  const [isIntersecting, setIntersecting] = useState(false);
-  const ref = useRef();
+  const [isIntersecting, setIntersecting] = useState(false)
+  const ref = useRef()
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIntersecting(entry.isIntersecting);
+        setIntersecting(entry.isIntersecting)
       },
       { rootMargin: margin }
-    );
-    if (ref.current) observer.observe(ref.current);
+    )
+    if (ref.current) observer.observe(ref.current)
     return () => {
-      observer.unobserve(ref.current);
-    };
-  }, []);
-  return [ref, isIntersecting];
-};
+      observer.unobserve(ref.current)
+    }
+  }, [])
+  return [ref, isIntersecting]
+}
 
 const CirclesWithReact = () => {
-  const [ref, isInView] = useIsInView();
-  const [dataset, setDataset] = useState(generateDataset());
+  const [ref, isInView] = useIsInView()
+  const [dataset, setDataset] = useState(generateDataset())
 
   useInterval(
     () => {
-      setDataset(generateDataset());
+      setDataset(generateDataset())
     },
     isInView ? 2000 : null
-  );
+  )
 
   return (
     <svg viewBox="0 0 100 50" width="100%" ref={ref}>
@@ -456,8 +457,8 @@ const CirclesWithReact = () => {
         <circle cx={x} cy={y} r="3" />
       ))}
     </svg>
-  );
-};
+  )
+}
 const CirclesWithReactCode = `const Circles = () => {
   const [dataset, setDataset] = useState(
     generateDataset()
@@ -479,23 +480,23 @@ const CirclesWithReactCode = `const Circles = () => {
       ))}
     </svg>
   )
-}`;
+}`
 
-const allCircles = range(0, 6);
-const generateCircles = () => allCircles.filter(() => Math.random() < 0.5);
+const allCircles = range(0, 6)
+const generateCircles = () => allCircles.filter(() => Math.random() < 0.5)
 const TransitionsWithD3 = () => {
-  const [ref, isInView] = useIsInView();
-  const [dataset, setDataset] = useState(generateCircles());
+  const [ref, isInView] = useIsInView()
+  const [dataset, setDataset] = useState(generateCircles())
 
   useInterval(
     () => {
-      setDataset(generateCircles());
+      setDataset(generateCircles())
     },
     isInView ? 2000 : null
-  );
+  )
 
   useEffect(() => {
-    const svgElement = d3.select(ref.current);
+    const svgElement = d3.select(ref.current)
     svgElement
       .selectAll("circle")
       .data(dataset, (d) => d)
@@ -527,11 +528,11 @@ const TransitionsWithD3 = () => {
                 .style("opacity", 0)
                 .remove()
             )
-      );
-  }, [dataset]);
+      )
+  }, [dataset])
 
-  return <svg viewBox="0 0 100 20" width="100%" ref={ref} />;
-};
+  return <svg viewBox="0 0 100 20" width="100%" ref={ref} />
+}
 const TransitionsWithD3Code = `const AnimatedCircles = () => {
   const [visibleCircles, setVisibleCircles] = useState(
     generateCircles()
@@ -581,18 +582,18 @@ const TransitionsWithD3Code = `const AnimatedCircles = () => {
       ref={ref}
     />
   )
-}`;
+}`
 
 const TransitionsWithReact = () => {
-  const [ref, isInView] = useIsInView();
-  const [dataset, setDataset] = useState(generateCircles());
+  const [ref, isInView] = useIsInView()
+  const [dataset, setDataset] = useState(generateCircles())
 
   useInterval(
     () => {
-      setDataset(generateCircles());
+      setDataset(generateCircles())
     },
     isInView ? 2000 : null
-  );
+  )
 
   return (
     <svg viewBox="0 0 100 20" width="100%" ref={ref}>
@@ -604,15 +605,15 @@ const TransitionsWithReact = () => {
         />
       ))}
     </svg>
-  );
-};
+  )
+}
 
 const TransitionsWithReactCircle = ({ index, isShowing }) => {
-  const wasShowing = useRef(false);
+  const wasShowing = useRef(false)
 
   useEffect(() => {
-    wasShowing.current = isShowing;
-  }, [isShowing]);
+    wasShowing.current = isShowing
+  }, [isShowing])
 
   const style = useSpring({
     config: {
@@ -620,7 +621,7 @@ const TransitionsWithReactCircle = ({ index, isShowing }) => {
     },
     r: isShowing ? 6 : 0,
     opacity: isShowing ? 1 : 0,
-  });
+  })
 
   return (
     <animated.circle
@@ -635,8 +636,8 @@ const TransitionsWithReactCircle = ({ index, isShowing }) => {
       }
       {...style}
     />
-  );
-};
+  )
+}
 
 const TransitionsWithReactCode = `const AnimatedCircles = () => {
   const [visibleCircles, setVisibleCircles] = useState(
@@ -686,4 +687,4 @@ const AnimatedCircle = ({ index, isShowing }) => {
       }
     />
   )
-}`;
+}`

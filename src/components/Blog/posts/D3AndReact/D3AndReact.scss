@@ -32,6 +32,11 @@
     }
   }
 
+  em {
+    font-style: italic;
+    font-weight: 700;
+  }
+
   &__centered {
     // text-align: center;
 
@@ -41,6 +46,7 @@
     }
 
     & > div > div > .List,
+    & > div > div > .Aside,
     & > div > .Aside {
       margin: 1.2em auto 0.8em;
       max-width: 60em;
@@ -88,22 +94,49 @@
     .List__item {
       transition: background 0.2s ease-out;
 
-      &:nth-child(1) .List__item__number { background: rgba($a1, 0.9); }
-      &:nth-child(2) .List__item__number { background: rgba($a2, 0.9); }
-      &:nth-child(3) .List__item__number { background: rgba($a3, 0.9); }
-      &:nth-child(4) .List__item__number { background: rgba($a4, 0.9); }
-      &:nth-child(5) .List__item__number { background: rgba($grey4, 0.9); }
-      &:nth-child(1):hover { background: rgba($a1, 0.2); }
-      &:nth-child(2):hover { background: rgba($a2, 0.2); }
-      &:nth-child(3):hover { background: rgba($a3, 0.2); }
-      &:nth-child(4):hover { background: rgba($a4, 0.2); }
-      &:nth-child(5):hover { background: rgba($grey4, 0.2); }
+      &:nth-child(1) .List__item__number {
+        background: rgba($a1, 0.9);
+      }
+      &:nth-child(2) .List__item__number {
+        background: rgba($a2, 0.9);
+      }
+      &:nth-child(3) .List__item__number {
+        background: rgba($a3, 0.9);
+      }
+      &:nth-child(4) .List__item__number {
+        background: rgba($a4, 0.9);
+      }
+      &:nth-child(5) .List__item__number {
+        background: rgba($grey4, 0.9);
+      }
+      &:nth-child(6) .List__item__number {
+        background: rgba($a5, 0.9);
+      }
+      &:nth-child(1):hover {
+        background: rgba($a1, 0.2);
+      }
+      &:nth-child(2):hover {
+        background: rgba($a2, 0.2);
+      }
+      &:nth-child(3):hover {
+        background: rgba($a3, 0.2);
+      }
+      &:nth-child(4):hover {
+        background: rgba($a4, 0.2);
+      }
+      &:nth-child(5):hover {
+        background: rgba($grey4, 0.2);
+      }
+      &:nth-child(6):hover {
+        background: rgba($a5, 0.2);
+      }
 
       &__number {
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+        flex: none;
         height: 2em;
         width: 2em;
         padding-left: 0.2em;
@@ -177,23 +210,23 @@
     transition: all 0.5s ease-out;
 
     @media (max-width: 1300px) {
-        width: calc(100% - 33rem - 1rem);
-    // padding-right: 33rem + 3rem;
+      width: calc(100% - 33rem - 1rem);
+      // padding-right: 33rem + 3rem;
     }
 
     @media (max-width: 1100px) {
-        width: auto;
-    // padding-right: 3rem;
+      width: auto;
+      // padding-right: 3rem;
     }
 
     @media (max-width: 800px) {
-        padding-right: 1.5rem;
-        padding-left: 1.5rem;
-        width: auto;
+      padding-right: 1.5rem;
+      padding-left: 1.5rem;
+      width: auto;
     }
 
     img {
-        max-width: 100%;
+      max-width: 100%;
     }
   }
 
@@ -208,27 +241,27 @@
     pointer-events: none;
 
     @media (max-width: 1300px) {
-        width: 33rem;
-        font-size: 0.8em;
+      width: 33rem;
+      font-size: 0.8em;
     }
     @media (max-width: 1100px) {
-        width: 0;
+      width: 0;
     }
 
     .Code__wrapper {
-        min-height: 100%;
-        margin-bottom: 0;
-        pointer-events: all;
-        overflow: auto;
+      min-height: 100%;
+      margin-bottom: 0;
+      pointer-events: all;
+      overflow: auto;
     }
 
     .Code {
-        padding-bottom: 2em;
+      padding-bottom: 2em;
 
-        &__file {
-            font-size: 0.8em;
-            padding: 0.6em 2.38em;
-        }
+      &__file {
+        font-size: 0.8em;
+        padding: 0.6em 2.38em;
+      }
     }
   }
 
@@ -240,37 +273,37 @@
   }
 
   &__trigger {
-      position: sticky;
-      top: 48.3vh;
-      margin-top: -18vh;
-      margin-bottom: -9vh;
-      height: 27vh;
-      left: 0.5em;
-      width: 1.6em;
-      background: rgba($a3, 0.3);
-      margin-left: -2em;
-      transform: translateY(-50%);
-      z-index: 50;
+    position: sticky;
+    top: 48.3vh;
+    margin-top: -18vh;
+    margin-bottom: -9vh;
+    height: 27vh;
+    left: 0.5em;
+    width: 1.6em;
+    background: rgba($a3, 0.3);
+    margin-left: -2em;
+    transform: translateY(-50%);
+    z-index: 50;
 
-      &:before {
-          content: "Code change zone";
-          position: absolute;
-          top: -0.3em;
-          left: 50%;
-          font-size: 0.6em;
-          text-align: center;
-          color: darken($a3, 13%);
-          font-weight: 500;
-          line-height: 1.15em;
-          transform: translate(-50%, -100%);
-          opacity: 0;
-          pointer-events: none;
-          transition: all 0.3s ease-out;
-      }
+    &:before {
+      content: "Code change zone";
+      position: absolute;
+      top: -0.3em;
+      left: 50%;
+      font-size: 0.6em;
+      text-align: center;
+      color: darken($a3, 13%);
+      font-weight: 500;
+      line-height: 1.15em;
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease-out;
+    }
 
-      &:hover:before {
-          opacity: 1;
-      }
+    &:hover:before {
+      opacity: 1;
+    }
   }
 
   .D3Modules {
@@ -319,40 +352,11 @@
     color: $a1;
     background: rgba($a1, 0.1);
     border-radius: 2px;
-    font-feature-settings: 'tnum' 1;
+    font-feature-settings: "tnum" 1;
     font-family: monospace;
   }
 
-  blockquote {
-    position: relative;
-    display: inline-block;
-    // text-align: center;
-    background: rgba($a1, 0.1);
-    margin: 1em auto;
-    padding: 2em 3em;
-    color: desaturate(darken($a1, 20%), 40%);
-    max-width: 60em;
-
-    &:before {
-      content: "“";
-      position: absolute;
-      font-family: "Bodoni", "Georgia", serif;
-      font-size: 3em;
-      top: 50%;
-      left: -0.2em;
-      margin-top: -.3em;
-    }
-    &:after {
-      content: "”";
-      position: absolute;
-      font-family: "Georgia", serif;
-      font-size: 3em;
-      top: 50%;
-      right: -0.2em;
-      margin-top: -.3em;
-    }
-  }
-  p + blockquote {
+  p + .Blockquote {
     margin-top: -1em;
   }
 
@@ -410,6 +414,46 @@
     &__path {
       mix-blend-mode: multiply;
       // transition: all 3s ease-out;
+    }
+  }
+
+  &__slides {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  &__slide {
+    display: block;
+    width: 100%;
+    max-width: 60em;
+    margin: 1em;
+
+    &--wide {
+      max-width: 90em;
+    }
+
+    &:nth-of-type(2) {
+      margin-right: auto;
+    }
+    &:nth-of-type(3) {
+      margin-left: auto;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    &__text {
+      color: $text-color;
+      font-style: italic;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .Code {
+      font-size: 0.8em;
+      line-height: 1.2em;
     }
   }
 }
