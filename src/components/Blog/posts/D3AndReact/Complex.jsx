@@ -53,7 +53,7 @@ const Complex = () => {
 
       <div className="D3AndReact__slides">
         <Link
-          to="/portfolio/fishing"
+          to="/fishing"
           className="D3AndReact__slide D3AndReact__slide--wide"
         >
           <img src={fishingImg} />
