@@ -24,7 +24,7 @@
     "case-sensitive-paths-webpack-plugin": "2.2.0",
     "create-react-class": "^15.6.3",
     "css-loader": "2.1.1",
-    "d3": "^5.15.0",
+    "d3": "^6.7.0",
     "d3-color": "^1.4.0",
     "d3-delaunay": "^4.1.5",
     "d3-force": "^2.1.1",

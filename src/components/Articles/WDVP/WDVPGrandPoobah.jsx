@@ -380,7 +380,7 @@ class WDVPGrandPoobahSlidersItem extends PureComponent {
 
   onMouseMove = e => {
     const element = d3.select(this.elem.current).node()
-    const mousePosition = d3.mouse(element)
+    const mousePosition = d3.pointer(e)
     const width = element.getBoundingClientRect().width
     const weight = mousePosition[0] * 3 / width
     this.props.onChangeNeedsDragging(weight)

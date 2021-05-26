@@ -48,7 +48,7 @@
         <script>
             d3.select("#svg")
                 .on("mousemove", function(e) {
-                    const mousePosition = d3.mouse(this)
+                    const mousePosition = d3.pointer(e)
                     d3.select("circle")
                     .attr("cx", mousePosition[0])
                     .attr("cy", mousePosition[1])

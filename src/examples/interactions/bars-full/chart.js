@@ -73,7 +73,7 @@ async function drawBars() {
     .range([0, dimensions.boundedWidth])
     .nice()
 
-  const binsGenerator = d3.histogram()
+  const binsGenerator = d3.bin()
     .domain(xScale.domain())
     .value(diffAccessor)
     .thresholds(30)
@@ -105,7 +105,7 @@ async function drawBars() {
   binGroups = newBinGroups.merge(binGroups)
 
   const barRects = binGroups.select("rect")
-      .attr("key", (d, i) => i)
+      .attr("key", d => d.x0)
       .attr("x", d => xScale(d.x0) + barPadding)
       .attr("y", d => yScale(yAccessor(d)))
       .attr("height", d => dimensions.boundedHeight - yScale(yAccessor(d)))
@@ -183,7 +183,7 @@ async function drawBars() {
       .on("mouseleave", onMouseLeave)
 
   const tooltip = d3.select("#tooltip")
-  function onMouseEnter(datum, index) {
+  function onMouseEnter(e, datum) {
     tooltip.select("#range")
         .text([
             datum.x0 < 0 ? `Under-estimated by` : `Over-estimated by`,
@@ -226,7 +226,7 @@ async function drawBars() {
 
     tooltip.style("opacity", 1)
 
-    const hoveredBar = binGroups.select(`rect[key='${index}']`)
+    const hoveredBar = binGroups.select(`rect[key='${datum.x0}']`)
     hoveredBar.classed("hovered", true)
   }
 

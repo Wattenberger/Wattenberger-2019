@@ -202,7 +202,7 @@ paragraph.selectAll("div")
                     <p>
                         listening to (and dispatching) mouse & touch events.
                     </p>
-                    D3 also provides <P>d3.mouse()</P> and <P>d3.touch()</P> methods that return the cursor position
+                    D3 also provides <P>d3.pointer()</P> and <P>d3.touch()</P> methods that return the cursor position when passed a js Event object
                 </>,
                 <>
                     <P>{`.attr()`}</P> & <P>{`.style()`}</P> & <P>{`.property()`}</P>

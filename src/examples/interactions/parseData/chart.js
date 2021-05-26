@@ -8,7 +8,7 @@ async function drawBars() {
 
     console.log(values)
 
-    const bins = d3.histogram()
+    const bins = d3.bin()
       // .domain(x.domain())
       // .thresholds(x.ticks(40))
       (values)

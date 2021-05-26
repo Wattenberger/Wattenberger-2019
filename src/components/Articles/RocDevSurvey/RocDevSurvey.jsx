@@ -86,7 +86,7 @@ const parsedDatasets =_.map(datasets, (dataset, key) => {
   const keyColors = _.zipObject(options, colors)
   const extent = d3.extent(_.map(data, "salary"))
   const xScale = d3.scaleLinear().domain(extent);
-  const buckets = d3.histogram()
+  const buckets = d3.bin()
     .domain(extent)
     .thresholds(xScale.ticks(10))
   const bins = buckets(data);

@@ -83,7 +83,7 @@ async function drawBars() {
     .range([0, dimensions.boundedWidth])
     .nice()
 
-  const binsGenerator = d3.histogram()
+  const binsGenerator = d3.bin()
     .domain(xScale.domain())
     .value(diffAccessor)
     .thresholds(30)
@@ -184,7 +184,7 @@ async function drawBars() {
       .on("mouseleave", onMouseLeave)
 
   const tooltip = d3.select("#tooltip")
-  function onMouseEnter(datum) {
+  function onMouseEnter(e, datum) {
 
     tooltip.style("opacity", 1)
 

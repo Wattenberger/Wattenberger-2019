@@ -75,7 +75,7 @@ async function drawScatter() {
     const newDots = dots.enter().append("circle")
 
     const allDots = newDots.merge(dots)
-        .attr("key", (d, i) => i)
+        .attr("key", d => d.x0)
         .attr("class", "dot")
         .attr("cx", d => xScale(xAccessor(d)))
         .attr("cy", d => yScale(yAccessor(d)))
@@ -145,7 +145,7 @@ async function drawScatter() {
       .attr("class", "tooltip-dot-inside")
       .attr("r", 3)
 
-  function onMouseEnter(datum, index) {
+  function onMouseEnter(e, datum) {
     const formatHours = d3.format(",.0f")
     tooltip.select("#actual")
         .text(formatHours(xAccessor(datum)))
@@ -200,7 +200,7 @@ async function drawScatter() {
         "px)",
       ].join(""))
 
-    const hoveredDot = bounds.select(`.dot[key='${index}']`)
+    const hoveredDot = bounds.select(`.dot[key='${datum.x0}']`)
     hoveredDot.classed("hovered", true)
   }
 

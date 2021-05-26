@@ -55,8 +55,6 @@ d3.csv(booksFile).then(books => {
 })
 const Authors = () => {
   // const [sortedAuthors, setSortedAuthors] = useState([])
-  useEffect(() => {
-  })
 
   return (
     <div className="Authors">
@@ -124,23 +122,27 @@ const AuthorsDots = ({ name, books, annotations }) => {
 
     useEffect(function() {
         // const maxViews = _.maxBy(enhancedBooks, metric)[metric]
-        var simulation = d3.forceSimulation(enhancedBooks)
-            .force("x", d3.forceX(d => xScale(yearToDate(d.original_publication_year))).strength(1))
-            //   .force("y", d3.forceY(d => radiusScale))
-            .force("y", d3.forceY(dimensions.height / 2))
-            .force("collide", d3.forceCollide(d => radiusScale(+d[radiusMetric]) + 2))
-            .stop();
+        if (!dimensions.boundedWidth) return
+        // var simulation = d3.forceSimulation(enhancedBooks)
+        //     .force("x", d3.forceX(d => xScale(yearToDate(d.original_publication_year))).strength(1))
+        //     //   .force("y", d3.forceY(d => radiusScale))
+        //     .force("y", d3.forceY(dimensions.height / 2))
+        //     .force("collide", d3.forceCollide(d => radiusScale(+d[radiusMetric]) + 2))
+        //     .stop();
 
-        _.times(100, () => simulation.tick())
+        // simulation.tick(100)
 
-        const newVoronoi = d3.voronoi()
-            .extent([[0, 0], [dimensions.width, dimensions.height]])
-            .x(d => d.x)
-            .y(d => d.y)
-            .polygons(enhancedBooks)
-            .filter(d => !!d)
-        setVoronoi(newVoronoi)
-    }, [dimensions])
+        // const delaunay = d3.Delaunay.from(
+        //   enhancedBooks
+        //   .filter(d => !!d),
+        //   d => d.x,
+        //   d => d.y,
+        // )
+        // const newVoronoi = delaunay.voronoi()
+        // newVoronoi.xmax =dimensions.width
+        // newVoronoi.ymax = dimensions.height
+        setVoronoi(enhancedBooks.map(d => ({data: d})))
+    }, [dimensions.boundedWidth])
 
     return (
         <div className="AuthorsDots" ref={ref}>

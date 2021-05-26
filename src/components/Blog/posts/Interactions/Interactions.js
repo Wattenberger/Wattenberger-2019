@@ -1037,6 +1037,10 @@ const Interactions = () => {
 
         <p>Perfect! Now our tooltip is correctly positioned above any bar that we hover.</p>
 
+        <Aside>
+          Read more about this transformation in <a href="/blog/css-percents">What does 100% mean in CSS?</a>
+        </Aside>
+
         <Heading id="finishing-tweaks">Finishing tweaks</Heading>
 
         <ScrollEvent isInViewChange={d => {
@@ -1197,7 +1201,7 @@ const Interactions = () => {
           setInsertedLines([])
         }}>
           <p>
-            When we draw our <P>.bins</P> in our <b>Draw data</b> step, let’s give them a <P>key</P> attribute that we can target.
+            When we draw our <P>.bin</P>s in our <b>Draw data</b> step, let’s give them a <P>key</P> attribute that we can target.
           </p>
         </ScrollEvent>
 

@@ -4,7 +4,7 @@ import * as d3 from "d3"
 import "./LocalExample.scss"
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
-const d3js = require(`!!raw-loader!examples/d3.v5.js`).default
+const d3js = require(`!!raw-loader!examples/d3.v6.js`).default
 
 const getBlobURL = (code, type) => {
   const blob = new Blob([code], { type })
