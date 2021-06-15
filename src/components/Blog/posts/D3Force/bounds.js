@@ -36,6 +36,10 @@ export default function(radius) {
     return arguments.length ? (minY = +_, force) : minY;
   };
 
+  force.maxY = function(_) {
+    return arguments.length ? (maxY = +_, force) : maxY;
+  };
+
   force.strength = function(_) {
     return arguments.length ? (strength = +_, force) : strength;
   };
