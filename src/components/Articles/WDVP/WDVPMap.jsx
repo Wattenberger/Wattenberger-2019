@@ -2,12 +2,10 @@ import React, {Component, PureComponent} from "react"
 import Select from 'react-select';
 import selectStyles from "./selectStyles"
 import * as d3 from "d3"
-import { interpolateRdBu } from "d3-scale-chromatic"
 import classNames from "classnames"
 import _ from "lodash"
 import { createScale } from 'components/_ui/Chart/utils/scale';
-import RadioGroup from 'components/_ui/RadioGroup/RadioGroup';
-import Tooltip from 'components/_ui/Tooltip/Tooltip';
+import Icon from 'components/_ui/Icon/Icon';
 
 import rawData from "./Wdvp_gov_score.json"
 import countryPaths from "./country-paths.json"
@@ -224,9 +222,9 @@ class WDVPMap extends Component {
                 {!!index && ","}
                 <span className="WDVPMap__header__metrics__item">
                   { metric[0] }
-                <span className={`WDVPMap__header__metrics__item__arrow WDVPMap__header__metrics__item__arrow--${metric[2] > 50 ? "up" : "down"}`}>
-                  🠙
-                </span>
+                  <span className={`WDVPMap__header__metrics__item__arrow WDVPMap__header__metrics__item__arrow--${metric[2] > 50 ? "up" : "down"}`}>
+                    <Icon name="arrow" size="s" direction="n" />
+                  </span>
                 </span>
               </React.Fragment>
             ))}

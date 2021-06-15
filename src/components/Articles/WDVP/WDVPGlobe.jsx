@@ -1,12 +1,8 @@
 import React, {Component} from "react"
-import PropTypes from "prop-types"
 import * as d3 from "d3"
 import * as topojson from "topojson-client"
-import numeral from "numeral"
-import { interpolatePRGn } from "d3-scale-chromatic"
 import classNames from "classnames"
 import _ from "lodash"
-import { createScale } from 'components/_ui/Chart/utils/scale';
 
 import worldData from "./world.json"
 
@@ -44,7 +40,7 @@ class WDVPGlobe extends Component {
   componentDidMount() {
     this.initGlobe()
   }
-  
+
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize)
     window.removeEventListener('scroll', this.onScroll)
@@ -62,7 +58,7 @@ class WDVPGlobe extends Component {
       this.scale()
     })
   }
-  
+
   projection = d3.geoOrthographic().precision(0.1)
 
   setAngles = () => {
@@ -72,11 +68,11 @@ class WDVPGlobe extends Component {
     rotation[2] = angles.z
     this.projection.rotate(rotation)
   }
-  
+
   scale = () => {
     const { width, height } = this.state
     console.log( width, height)
-    
+
     // const bounds  = this.path.bounds(this.projection)
     // console.log(bounds)
     // const hScale  = 150 * width  / (bounds[1][0] - bounds[0][0])
@@ -94,21 +90,21 @@ class WDVPGlobe extends Component {
       // .translate([width, height])
     this.path = this.path.projection(this.projection)
   }
-  
+
   fill = (obj, color) => {
     this.context.beginPath()
     this.path(obj)
     this.context.fillStyle = color
     this.context.fill()
   }
-  
+
   stroke = (obj, color) => {
     this.context.beginPath()
     this.path(obj)
     this.context.strokeStyle = color
     this.context.stroke()
   }
-  
+
   rotate = yPosition => {
     const rotation = this.projection.rotate()
     rotation[0] += yPosition * degPerPx
@@ -131,7 +127,6 @@ class WDVPGlobe extends Component {
   }
 
   drawGlobe = () => {
-    console.log("drawGlobe", this.context)
     if (_.isEmpty(this.context)) this.context = this.container.current.getContext('2d')
     const { width, height } = this.state
     this.context.clearRect(0, 0, width, height)
@@ -139,7 +134,7 @@ class WDVPGlobe extends Component {
     this.stroke(graticule, colorGraticule)
     this.fill(land, colorLand)
   }
-  
+
   render() {
     const { height, width } = this.state
 
