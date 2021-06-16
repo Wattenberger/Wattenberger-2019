@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useMemo } from "react"
-import { Illustration, Anchor, Ellipse, Shape, RoundedRect, useRender } from 'react-zdog'
+import { Illustration, Anchor, Ellipse, Shape, useRender } from 'react-zdog'
 import { a, useSpring } from 'react-spring'
 import _ from "lodash"
 import * as d3 from "d3"

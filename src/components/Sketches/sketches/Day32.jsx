@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
-import { extend, Canvas, useFrame, useRender, useThree, useUpdate } from 'react-three-fiber'
+import { extend, Canvas, useThree } from 'react-three-fiber'
 import { useSpring, a } from 'react-spring/three'
 import OrbitControls from "utils/OrbitControls"
 import * as THREE from 'three'
@@ -63,7 +63,7 @@ extend({ OrbitControls })
 function Controls(props) {
     const ref = useRef()
     const { camera, scene } = useThree()
-    // useRender(() => ref.current.obj.update())
+    // useFrame(() => ref.current.obj.update())
     scene.fog = new THREE.Fog(new THREE.Color("#f1f2f6"), 60, 230)
 
     return <orbitControls ref={ref} args={[camera]} {...props} />

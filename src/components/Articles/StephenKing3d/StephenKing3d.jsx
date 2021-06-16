@@ -1,10 +1,9 @@
-import { useState, usePrevious, useEffect, useRef } from 'react';
-import React, {Component} from "react"
-import { extend, Canvas, useRender, useThree } from 'react-three-fiber'
+import { useState, useEffect, useRef } from 'react';
+import React from "react"
+import { extend, Canvas, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
 import numeral from "numeral"
-import domToImage from "dom-to-image"
 import * as d3 from "d3"
 import _ from "lodash"
 import stephenKingBooks from "./kingBooks"
@@ -120,7 +119,7 @@ export default StephenKing3d
 function Controls(props) {
   const ref = useRef()
   const { camera } = useThree()
-  // useRender(() => ref.current.obj.update())
+  // useFrame(() => ref.current.obj.update())
   return <orbitControls ref={ref} args={[camera]} {...props} />
 }
 

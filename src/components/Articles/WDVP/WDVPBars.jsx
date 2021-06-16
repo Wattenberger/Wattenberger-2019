@@ -397,21 +397,21 @@ class WDVPBarsChart extends PureComponent {
       color: 0x666666
     });
 
-    var xGeometry = new THREE.Geometry();
-    xGeometry.vertices.push(
-      new THREE.Vector3( -xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4 ),
-      new THREE.Vector3( xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4 ),
-    );
-
+    var xGeometry = new THREE.BufferGeometry();
+    const xVertices = new Float32Array([
+      -xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4,
+      xAxisLength / 2, 0, -zAxisLength / 2 - barDimension * 4,
+    ]);
+    xGeometry.setAttribute( 'position', new THREE.BufferAttribute( xVertices, 3 ) );
     const xAxis = new THREE.Line( xGeometry, material );
     this.scene.add( xAxis );
 
-    var zGeometry = new THREE.Geometry();
-    zGeometry.vertices.push(
-      new THREE.Vector3( xAxisLength / 2 + barDimension * 4, 0, -zAxisLength / 2 ),
-      new THREE.Vector3( xAxisLength / 2 + barDimension * 4, 0, zAxisLength / 2 ),
-    );
-
+    var zGeometry = new THREE.BufferGeometry();
+    const zVertices = new Float32Array([
+      xAxisLength / 2 + barDimension * 4, 0, -zAxisLength / 2,
+      xAxisLength / 2 + barDimension * 4, 0, zAxisLength / 2,
+    ]);
+    zGeometry.setAttribute( 'position', new THREE.BufferAttribute( zVertices, 3 ) );
     const zAxis = new THREE.Line( zGeometry, material );
     this.scene.add( zAxis );
   }

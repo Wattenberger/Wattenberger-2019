@@ -171,7 +171,7 @@ const Controls = () => {
 // function Controls(props) {
 //   const ref = useRef()
 //   const { camera } = useThree()
-//   // useRender(() => ref.current.obj.update())
+//   // useFrame(() => ref.current.obj.update())
 //   return <orbitControls ref={ref} args={[camera]} {...props} />
 // }
 

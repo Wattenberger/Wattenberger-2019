@@ -1,6 +1,5 @@
-import React, { Component, useState, usePrevious, useEffect, useRef, useMemo } from "react"
-import { extend, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
-import { useSpring, animated } from 'react-spring/three'
+import React, { useState, useRef, useMemo } from "react"
+import { extend, Canvas, useFrame, useThree } from 'react-three-fiber'
 import * as THREE from 'three'
 import OrbitControls from "utils/OrbitControls"
 import { getPointFromAngleAndDistance } from "utils/utils"
@@ -85,7 +84,7 @@ function Controls(props) {
   const { camera, scene } = useThree()
   scene.fog = new THREE.Fog(new THREE.Color("#2c3e50"), 0, 300)
 
-  // useRender(() => ref.current.obj.update())
+  // useFrame(() => ref.current.obj.update())
   return <orbitControls ref={ref} args={[camera]} {...props} />
 }
 
@@ -228,7 +227,7 @@ const Character = ({ index, popularity, house, dateOfBirth, killed, killedBy, is
   const orbit = useRef()
   const areAnyFocusedRef = useRef()
   areAnyFocusedRef.current = areAnyFocused
-  useRender(() => {
+  useFrame(() => {
     if (areAnyFocusedRef.current) return
     theta++
     group.current.rotation.set(

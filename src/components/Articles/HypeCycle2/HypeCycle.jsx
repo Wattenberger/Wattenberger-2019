@@ -1,11 +1,10 @@
 import { forwardRef, useState, useMemo, useEffect, useRef, memo } from 'react';
 import React from "react"
 // import { Extrude } from '@react-three/drei/Extrude'
-import { Text } from '@react-three/drei/Text'
-import { useSpring, a } from 'react-spring/three'
+// import { Text } from '@react-three/drei/Text'
+import { a } from 'react-spring/three'
 import { extend, Canvas, useThree, useFrame } from 'react-three-fiber'
-import { useInterval } from "utils/utils"
-// import { Text } from "troika-three-text";
+import { Text } from "troika-three-text";
 import FlipMove from 'react-flip-move';
 
 import * as THREE from 'three'
@@ -164,7 +163,7 @@ const Controls = () => {
 // function Controls(props) {
 //   const ref = useRef()
 //   const { camera } = useThree()
-//   // useRender(() => ref.current.obj.update())
+//   // useFrame(() => ref.current.obj.update())
 //   return <orbitControls ref={ref} args={[camera]} {...props} />
 // }
 

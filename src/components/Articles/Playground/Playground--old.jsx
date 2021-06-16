@@ -1,10 +1,8 @@
-import React, { Component, useState, usePrevious, useEffect, useRef, useMemo } from "react"
-import { extend, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
+import React, { useState, useEffect, useRef, useMemo } from "react"
+import { extend, Canvas, useFrame, useThree } from 'react-three-fiber'
 import { useSpring, animated } from 'react-spring/three'
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
-import numeral from "numeral"
-import domToImage from "dom-to-image"
 import * as d3 from "d3"
 import _ from "lodash"
 
@@ -32,7 +30,7 @@ export default Playground
 function Controls(props) {
   const ref = useRef()
   const { camera } = useThree()
-  // useRender(() => ref.current.obj.update())
+  // useFrame(() => ref.current.obj.update())
   return <orbitControls ref={ref} args={[camera]} {...props} />
 }
 
@@ -132,7 +130,7 @@ const Dogs = () => {
     ]
   }))
   let theta = 0
-  useRender(() => {
+  useFrame(() => {
     const r = 4 * Math.sin(THREE.Math.degToRad((theta += 0.1)))
     group.current.rotation.set(0, 0, r)
     dogs.forEach((dog, i) => {
@@ -170,9 +168,6 @@ const Dogs = () => {
 
 const Dog = ({ position }) => {
 
-  useUpdate(e => {
-    // console.log(e)
-  })
   const { rotation } = useSpring({
     from: {
       rotation: [THREE.Math.degToRad(180), 0, THREE.Math.degToRad(45)],

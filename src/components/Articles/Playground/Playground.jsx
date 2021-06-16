@@ -1,10 +1,8 @@
-import React, { Component, useState, usePrevious, useEffect, useRef, useMemo } from "react"
-import { extend, Canvas, useRender, useThree, useUpdate } from 'react-three-fiber'
+import React, { useState, useEffect, useRef, useMemo } from "react"
+import { extend, Canvas, useFrame, useThree } from 'react-three-fiber'
 import { useSpring, animated } from 'react-spring/three'
 import * as THREE from 'three'
 import OrbitControls from "./OrbitControls"
-import numeral from "numeral"
-import domToImage from "dom-to-image"
 import * as d3 from "d3"
 import _ from "lodash"
 
@@ -34,7 +32,7 @@ function Controls(props) {
   const { camera, scene } = useThree()
   scene.fog = new THREE.Fog(new THREE.Color("#e1eeed"), 0, 20)
 
-  // useRender(() => ref.current.obj.update())
+  // useFrame(() => ref.current.obj.update())
   return <orbitControls ref={ref} args={[camera]} {...props} />
 }
 
@@ -151,10 +149,6 @@ let dogs = _.times(rows * columns, {})
 const Dogs = () => {
   const [rotation, setRotation] = useState(0)
 
-  // useUpdate(() => {
-  //   setRotation(rotation + 1)
-  // })
-
   let group = useRef()
   dogs = _.map(dogs, (dog, i) => ({
     ...dog,
@@ -171,7 +165,7 @@ const Dogs = () => {
     y: -2,
   }))
   let theta = 0
-  useRender(() => {
+  useFrame(() => {
     theta++
     // const y = 4 * Math.sin(THREE.Math.degToRad((theta += 0.1)))
     // group.current.rotation.set(0, 0, r)
@@ -222,9 +216,6 @@ const Dogs = () => {
 const flowerColorScale = d3.interpolateHcl("#FDA7DF", "#FFC312")
 const Dog = ({ position }) => {
 
-  useUpdate(e => {
-    // console.log(e)
-  })
   const { rotation } = useSpring({
     from: {
       rotation: [THREE.Math.degToRad(180), 0, THREE.Math.degToRad(45)],
