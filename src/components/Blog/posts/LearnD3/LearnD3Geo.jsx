@@ -4,6 +4,7 @@ import * as d3 from "d3"
 import * as d3GeoProjection from "d3-geo-projection"
 import * as d3GeoPolygon from "d3-geo-polygon"
 import { uniqueId } from "lodash"
+import Select from 'react-select';
 
 import Aside from "components/_ui/Aside/Aside"
 import Button from "components/_ui/Button/Button"
@@ -119,38 +120,51 @@ const sphere = ({type: "Sphere"})
 const GeoExample = ({ projectionName="geoMercator" }) => {
   const id = uniqueId()
   const clipPathId = `GeoExample__clip-${id}`
+  const [height, setHeight] = useState(maxHeight)
+  const [countryPaths, setCountryPaths] = useState([])
+  const [earthPath, setEarthPath] = useState("")
+  const [graticulePath, setGraticulePath] = useState("")
+  const [isPending, startTransition] = React.useTransition()
 
-  const {
-    height, pathGenerator, earthPath, graticulePath
-  } = useMemo(() => {
+  useEffect(() => {
     try {
-      const parsedProjectionName = projectionName.split(" (")[0]
-      const currentProjection = d3[parsedProjectionName]
-        || d3GeoProjection[parsedProjectionName]
-        || d3GeoPolygon[parsedProjectionName]
-      if (!currentProjection) return {}
+      startTransition(() => {
+        const parsedProjectionName = projectionName.split(" (")[0]
+        const currentProjection = d3[parsedProjectionName]
+          || d3GeoProjection[parsedProjectionName]
+          || d3GeoPolygon[parsedProjectionName]
+        if (!currentProjection) return {}
 
-      const projection = currentProjection()
-        .fitSize([width, maxHeight], sphere)
+        const projection = currentProjection()
+          .fitSize([width, maxHeight], sphere)
 
-      const pathGenerator = d3.geoPath(projection)
-      const earthPath = pathGenerator(sphere)
-      const graticulePath = pathGenerator(d3.geoGraticule10())
-      const [[x0, y0], [x1, y1]] = pathGenerator.bounds(sphere)
-      const height = y1
+        const pathGenerator = d3.geoPath(projection)
+        const earthPath = pathGenerator(sphere)
+        const graticulePath = pathGenerator(d3.geoGraticule10())
+        const [[x0, y0], [x1, y1]] = pathGenerator.bounds(sphere)
+        const height = y1
+        const countryPaths = countryShapes.features.map(country => ({
+          key: country.properties.su_a3,
+          name: country.properties.name_long,
+          path: pathGenerator(country),
+        }))
 
-      return {
-        height, pathGenerator, earthPath, graticulePath
-      }
+        setHeight(height)
+        setCountryPaths(countryPaths)
+        setEarthPath(earthPath)
+        setGraticulePath(graticulePath)
+      })
     } catch (e) {
       console.log(e)
-      return {}
     }
-  }, [projectionName])
+  }, [startTransition, projectionName])
 
   return (
     <div className="GeoExample">
-      <svg viewBox={`0 0 ${width} ${maxHeight}`}>
+      <svg viewBox={`0 0 ${width} ${maxHeight}`} style={{
+        transition: "opacity 0.3s ease-out",
+        opacity: isPending ? 0.5 : 1,
+      }}>
         <g transform={`translate(0, ${(maxHeight - height) / 2})`}>
           <clipPath id={clipPathId}>
             <path d={earthPath} />
@@ -159,14 +173,14 @@ const GeoExample = ({ projectionName="geoMercator" }) => {
           <path className="GeoExample__graticules" d={graticulePath} clipPath={`url(#${clipPathId})`} />
 
           <g className="GeoExample__countries">
-            {pathGenerator && countryShapes.features.map(country => (
+            {countryPaths.map(({key, name, path}) => (
               <path
-                key={country.properties.su_a3}
+                key={key}
                 className="GeoExample__country"
-                d={pathGenerator(country)}
+                d={path}
                 clipPath={`url(#${clipPathId})`}
               >
-                <title>{ country.properties.name_long }</title>
+                <title>{ name }</title>
               </path>
             ))}
           </g>
@@ -177,28 +191,45 @@ const GeoExample = ({ projectionName="geoMercator" }) => {
 }
 
 
+const projectionOptions = [
+  ...builtInProjections.map(d => ({ value: d, label: `${d}`})),
+  ...geoProjectionProjections.map(d => ({ value: d, label: `${d} (d3-geo-projection)`})),
+  ...geoPolygonProjections.map(d => ({ value: d, label: `${d} (d3-geo-polygon)`})),
+]
 const GeoExampleSelect = () => {
   const [projectionName, setProjectionName] = useState("geoMercator")
+
+  const onSetProjectionName = newProjectionName => {
+    React.startTransition(() => {
+      setProjectionName(newProjectionName.value)
+    })
+  }
+
+  const onProjectionNameDiff = (diff = 1) => {
+    const projectionNameIndex = projectionOptions.findIndex(({value}) => value === projectionName)
+    const newIndex = (projectionNameIndex + diff) % projectionOptions.length
+    setProjectionName(projectionOptions[newIndex].value)
+  }
 
   return (
     <div className="GeoExampleSelect">
       <div className="GeoExampleSelect__controls">
-        <select
-            className="GeoExampleSelect__select"
-            defaultValue={projectionName}
-            onChange={e => setProjectionName(e.target.value)}
-        >
-          {builtInProjections.map(d => (
-              <option key={d}>{ d }</option>
-          ))}
-          {geoProjectionProjections.map(d => (
-              <option key={d}>{ d } (d3-geo-projection)</option>
-          ))}
-          {geoPolygonProjections.map(d => (
-              <option key={d}>{ d } (d3-geo-polygon)</option>
-          ))}
-        </select>
+        <Button onClick={() => onProjectionNameDiff(-1)}>
+          <Icon name="arrow" direction="w" />
+        </Button>
+        <div className="GeoExampleSelect__select">
+          <Select
+            name="countries"
+            options={projectionOptions}
+            value={projectionOptions.find(d => d.value === projectionName)}
+            onChange={onSetProjectionName}
+            />
+        </div>
+        <Button onClick={() => onProjectionNameDiff(1)}>
+          <Icon name="arrow" direction="e" />
+        </Button>
       </div>
+
       <GeoExample {...{projectionName}} />
     </div>
   )
