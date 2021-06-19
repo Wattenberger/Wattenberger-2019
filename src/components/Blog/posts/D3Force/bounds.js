@@ -1,4 +1,4 @@
-export default function(radius) {
+export default function() {
   let nodes = []
   let strength = 1
   let padding = 0
