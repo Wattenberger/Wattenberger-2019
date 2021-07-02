@@ -966,13 +966,13 @@ const Interactions = () => {
           <>
             <b><P>top</P> and <P>bottom</P></b>
             <div className="Interactions__step__description">
-              percentage of the parent element’s width
+              percentage of the parent element’s height
             </div>
           </>,
           <>
             <b><P>left</P> and <P>right</P></b>
             <div className="Interactions__step__description">
-              percentage of the parent element’s height
+              percentage of the parent element’s width
             </div>
           </>,
           <>
@@ -988,6 +988,10 @@ const Interactions = () => {
             </div>
           </>,
         ]} />
+
+        <Aside>
+          Read more about what <Link href="https://wattenberger.com/blog/css-percents">100% means in CSS</Link>.
+        </Aside>
 
         <p>
           Since we want to shift our tooltip by <i>its own height and width</i>, we’ll need to use the <P>transform: translate()</P> CSS property. But we’re already using it to set the overall position.
