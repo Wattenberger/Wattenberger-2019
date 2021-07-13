@@ -312,6 +312,10 @@ const CssCascade = () => {
             ]} hasNumbers />
           </p>
 
+          <Aside icon="tooltip">
+            Fun fact alert! The universal selector (<P>*</P>) and combinators (<P>+</P>, <P>{`>`}</P>, <P>~</P>, <P>_</P>, <P>||</P>) have no effect on specificity! More info on <Link to="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#selector_types">MDN</Link>.
+          </Aside>
+
           <p>
             Fight time! Which of these two rules would win?
           </p>
