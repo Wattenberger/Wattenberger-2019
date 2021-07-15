@@ -285,8 +285,8 @@ d3.forceSimulation(particles)`}
 
             <Code size="m" hasLineNumbers={false}>
 {`d3.forceSimulation()
-  .force("x", d3.forceX(${getForceAttribute("x", "x")}).strength(${getForceAttribute("x", "strength")})))
-  .force("y", d3.forceY(${getForceAttribute("y", "y")}).strength(${getForceAttribute("y", "strength")})))
+  .force("x", d3.forceX(${getForceAttribute("x", "x")}).strength(${getForceAttribute("x", "strength")}))
+  .force("y", d3.forceY(${getForceAttribute("y", "y")}).strength(${getForceAttribute("y", "strength")}))
   .force("collide", d3.forceCollide(${getForceAttribute("collide", "radius")}).strength(${getForceAttribute("collide", "strength")}))`}
             </Code>
 
