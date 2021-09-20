@@ -709,7 +709,7 @@ let params = [
   { name: "bgBlendMode", value: "color-burn", options: blendingModes },
   { name: "cloudBlendMode", value: "screen", options: blendingModes },
   { name: "numberOfFields", value: 174, max: 300, step: 1 },
-  { name: "numberOfClouds", value: 20, max: 30, step: 1 },
+  { name: "numberOfClouds", value: 27, max: 60, step: 1 },
   { name: "numberOfCloudsMid", value: 3, max: 8, step: 1 },
   { name: "numberOfCloudsFore", value: 3, max: 8, step: 1 },
   { name: "numberOfCloudPuffs", value: 16, max: 30, step: 1 },
