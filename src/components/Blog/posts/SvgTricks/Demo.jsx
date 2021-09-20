@@ -53,7 +53,6 @@ const Demo = () => {
       localStorage.setItem(controlParams[key].id, value)
     })
     if (currentSeed.current !== inputs.seed) {
-      Random.setSeed(inputs.seed)
       currentSeed.current = inputs.seed
     }
   }, [inputs])
@@ -85,6 +84,7 @@ const Demo = () => {
     birdsPosition,
     fieldsGroupPaths,
   } = useMemo(() => {
+    Random.setSeed(`fields--${inputs["seed"]}`)
     const perspective = Persp(
       [0, 0, width, 0, width, height, 0, height],
       [

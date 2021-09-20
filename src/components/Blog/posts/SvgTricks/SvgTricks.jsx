@@ -52,7 +52,7 @@ const SvgTricks = () => {
                 <div className="SvgTricks__section">
                   <h2>{section.title}</h2>
                   <p >
-                    The beginning of our journey finds us in a <P>Gauge.jsx</P> file, with a simple functional React component.
+                    Here, we'll talk about the tricks behind the <P>{section.title}</P> 👀
                   </p>
                 </div>
               </ScrollEvent>
