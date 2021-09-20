@@ -109,6 +109,9 @@ const CssPercents = React.lazy(() =>
 const GaugeWalkthrough = React.lazy(() =>
   import("components/Blog/posts/GaugeWalkthrough/GaugeWalkthrough")
 );
+const SvgTricks = React.lazy(() =>
+  import("components/Blog/posts/SvgTricks/SvgTricks")
+);
 const D3Force = React.lazy(() =>
   import("components/Blog/posts/D3Force/D3Force")
 );
@@ -201,6 +204,7 @@ class App extends Component {
             <Route path="/blog/css-percents" component={CssPercents} />
             <Route path="/blog/gauge" component={GaugeWalkthrough} />
             <Route path="/blog/d3-force" component={D3Force} />
+            <Route path="/blog/svg-tricks" component={SvgTricks} />
             <Route path="/blog" component={Blog} />
             <Route path="/guide/scaling-svg" component={ScalingSvg} />
             <Route
