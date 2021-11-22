@@ -34,7 +34,7 @@ const LearnChangeData = ({ onScrollToSectionLocal }) => {
                 <>
                     <b>Native Javascript methods</b>
                     <p>
-                        Vanilla Javascript is pretty powerful these days - there are many methods already available in browsers that can help with transforming data. <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/prototype">Here is a full list of Array methods.</Link>
+                        Vanilla Javascript is pretty powerful these days - there are many methods already available in browsers that can help with transforming data. <Link href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#instance_methods">Here is a full list of Array methods.</Link>
                     </p>
                     <p>
                         Some of these methods were covered in <Link href="https://github.com/d3/d3-collection"><b>d3-collection</b></Link>, which is now deprecated because we don't need a special library anymore!  <Twemoji svg text=":confetti_ball:" />
