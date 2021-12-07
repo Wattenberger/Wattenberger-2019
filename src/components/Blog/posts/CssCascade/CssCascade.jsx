@@ -268,24 +268,24 @@ const CssCascade = () => {
           </h2>
 
           <p>
-            The third tier of the Cascade looks at the <i>Specificity</i> of a rule.
+            The third tier of the Cascade looks at the <i>Specificity</i> of a rule. Specificity is calculated by counting how often a rule matches which levels and how many times.
           </p>
 
           <p>
-            There are four levels of selectors:
+            Below are some levels of specificity, starting with the first level, which is the "highest":
 
             <List className="CssCascade__hover-list" items={[
               <div onMouseEnter={() => setActiveLevel([2, 0])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>inline</b>
                 <br />
-                Styles declared within a <P>style</P> HTML property are the <i>most specific</i>
+                Styles declared within a <P>style</P> HTML attribute are the <i>most specific</i>
               </div>
             ]}
               hasNumbers
             />
             <p>
-              When we create a CSS declaration, we can target specific elements using <b>selectors</b>.
-          </p>
+              When we create a CSS declaration, we can target specific elements using <b>selectors</b>. Selectors have three levels of specificity ranking, the highest below being the second level and the lowest being the fourth level.
+            </p>
             <List className="CssCascade__hover-list" items={[
               null,
               <div onMouseEnter={() => setActiveLevel([2, 1])} onMouseLeave={() => setActiveLevel([2])}>
@@ -369,7 +369,7 @@ const CssCascade = () => {
           <br />
 
           <p>
-            One thing to note about levels on this tier is that <b>the number of hits on the highest-reached level matter</b>.
+            One thing to note about this tier is that it matters <b>how many times</b> the selector matches a level and <b>the ranking of that level</b>.
           </p>
 
           <RuleFight
@@ -394,7 +394,7 @@ const CssCascade = () => {
           <br />
           <br />
           <p>
-            Additionally, on this tier of the Cascade, <b>ties can be broken within this tier</b>. This means that, if two rules have the same number of hits on their highest level, one can win by having a hit on the next level down.
+            Furthermore, on this tier of the Cascade, <b>matches on other levels can break ties</b>. This means that, even if two rules match one identically-ranked level the same amount of times, one can win by matching on another level.
           </p>
 
           <RuleFight
@@ -533,12 +533,12 @@ const fight4Answer = (
 )
 const fight5Answer = (
   <div>
-    <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>), whereas <b>Rule B</b> has only one "hit" on the <b>third level</b> - its "hit" on a lower (fourth) level doesn’t come into play.
+    <b>Rule A</b> matches the <b>third level</b> two times (1 <b>class</b> and 1 <b>pseudo-class</b>), whereas <b>Rule B</b> matches the <b>third level</b> only once - its match on the lower (fourth) level doesn’t come into play.
   </div>
 )
 const fight6Answer = (
   <div>
-    <b>Rules A and B</b> both have 1 hit on the <b>second level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>third level</b> (1 <b>class</b>), which beats <b>Rule A</b>'s hit on the <b>fourth level</b> (1 <b>tag</b>).
+    <b>Rules A and B</b> both match the <b>second level</b> once (1 <b>id</b>), but <b>Rule B</b> additionally matches the <b>third level</b> once (1 <b>class</b>), which, beats <b>Rule A</b>'s match on the <b>fourth level</b> (1 <b>tag</b>).
   </div>
 )
 
