@@ -272,8 +272,12 @@
         // }
       }
 
-      &__step,
       &__step:visited {
+        color: #4a6f75;
+        outline: none;
+      }
+
+      &__step {
         display: flex;
         align-items: center;
         position: relative;
@@ -295,7 +299,6 @@
         font-weight: 600;
         white-space: nowrap;
         z-index: 5;
-        outline: none;
 
         @for $i from 0 through 6 {
           &:nth-child(#{$i}) {
