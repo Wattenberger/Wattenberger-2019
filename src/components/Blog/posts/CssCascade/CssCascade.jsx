@@ -275,7 +275,7 @@ const CssCascade = () => {
           </p>
 
           <p>
-            There are four levels of selectors:
+            There are five levels of selectors:
 
             <List className="CssCascade__hover-list" items={[
               <div id="level_3_1" onMouseEnter={() => setActiveLevel([2, 0])} onMouseLeave={() => setActiveLevel([2])}>
@@ -291,11 +291,37 @@ const CssCascade = () => {
             <div id="level_3_2" onMouseEnter={() => setActiveLevel([2, 1])} onMouseLeave={() => setActiveLevel([2])}>
               <b>layer</b>
               <br />
-              The new kid in town! Soon, we’ll be able to define explicit “layers” of styles, for intentional handling of specificity. <i>Coming in Chromium 99/Canary, Firefox 97/Nightly, and in Safari Tech Preview</i>. <Link to="https://caniuse.com/css-cascade-layers">Keep track of the rollout here</Link>, or read more in <Link to="https://www.w3_org/TR/css-cascade-5/#cascade-layers">the spec</Link> or <Link to="https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/">this wonderful article</Link>.
+              The new kid in town! Soon, we’ll be able to define explicit “layers” of styles, for intentional handling of specificity. Layers "win" by being defined later, for example:
+
+              <Code
+                language="css"
+            fileName="style.css"
+            hasLineNumbers={false}
+            highlightedLines={[1,4,7]}>
+                {
+`@layers one, two; // defining our layers
+
+@layer one {
+  body { color: red; }
+}
+@layer two {
+  body { color: green; }
+}
+`
+              }</Code>
+
+              In this example, our body text will be green, since <P>layer two</P> is defined after layer one (and after anything outside of a layer, for that matter).
+              <br />
+              <br />
+
+              <i>Coming in Chromium 99/Canary, Firefox 97/Nightly, and in Safari Tech Preview</i>. <Link to="https://caniuse.com/css-cascade-layers">Keep track of the rollout here</Link>, or read more in <Link to="https://www.w3_org/TR/css-cascade-5/#cascade-layers">the spec</Link> or <Link to="https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/">this wonderful article</Link>.
             </div>
           ]}
             hasNumbers
-          />
+            />
+              <br />
+              <br />
+
             <p>
               When we create a CSS declaration, we can target specific elements using <b>selectors</b>.
           </p>
