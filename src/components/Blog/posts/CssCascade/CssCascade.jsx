@@ -310,7 +310,7 @@ const CssCascade = () => {
 `
               }</Code>
 
-              In this example, our body text will be green, since <P>layer two</P> is defined after layer one (and after anything outside of a layer, for that matter).
+              In this example, our body text will be green, since <P>layer two</P> is defined after layer one (but before anything outside of a layer).
               <br />
               <br />
 
