@@ -23,6 +23,9 @@ export const steps = [{
   substeps: [{
     name: "inline",
   },{
+    name: "layer",
+    isNew: true,
+  },{
     name: "id",
   },{
     name: "class | attribute | pseudo-class",

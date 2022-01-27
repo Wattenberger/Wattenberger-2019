@@ -198,7 +198,6 @@
             background: #d0e5e9;
           }
           .CssCascadeSteps__item__step {
-
             background: linear-gradient(
               to bottom,
               #c6e2e7 0%,
@@ -273,7 +272,10 @@
         // }
       }
 
-      &__step {
+      &__step,
+      &__step:visited {
+        display: flex;
+        align-items: center;
         position: relative;
         background: #bad8dd;
         background: linear-gradient(
@@ -293,6 +295,7 @@
         font-weight: 600;
         white-space: nowrap;
         z-index: 5;
+        outline: none;
 
         @for $i from 0 through 6 {
           &:nth-child(#{$i}) {
@@ -304,6 +307,20 @@
           &-active {
             color: black;
           }
+        }
+
+        &__new {
+          margin-left: 0.8em;
+          margin-bottom: -0.3em;
+          color: #4a6f75;
+          background: #e3f0f3;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          font-weight: 600;
+          font-size: 0.7em;
+          line-height: 1em;
+          padding: 0.4em 0.6em;
+          border-radius: 16px;
         }
       }
 

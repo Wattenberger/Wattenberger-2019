@@ -111,6 +111,7 @@ const CssCascade = () => {
 
         <ScrollEvent
           hasIndicator={false}
+          id="level_1"
           isInViewChange={d => {
             if (d != 0) return
             setActiveLevel([0])
@@ -129,22 +130,22 @@ const CssCascade = () => {
             There are four basic <i>types</i> of rules:
 
             <List className="CssCascade__hover-list" items={[
-              <div onMouseEnter={() => setActiveLevel([0, 0])} onMouseLeave={() => setActiveLevel([0])}>
+              <div id="level_1_1" onMouseEnter={() => setActiveLevel([0, 0])} onMouseLeave={() => setActiveLevel([0])}>
                 <b>transition</b>
                 <br />
                 Rules that apply to an <i>active transition</i> take the utmost importance
               </div>,
-              <div onMouseEnter={() => setActiveLevel([0, 1])} onMouseLeave={() => setActiveLevel([0])}>
+              <div id="level_1_2" onMouseEnter={() => setActiveLevel([0, 1])} onMouseLeave={() => setActiveLevel([0])}>
                 <b>!important</b>
                 <br />
                 When we add <P>!important</P> to the end of our declaration, it jumps to this level of the Cascade. Ideally, you reserve this level for Hail Marys, which are needed to override styles from third-party libraries.
               </div>,
-              <div onMouseEnter={() => setActiveLevel([0, 2])} onMouseLeave={() => setActiveLevel([0])}>
+              <div id="level_1_3" onMouseEnter={() => setActiveLevel([0, 2])} onMouseLeave={() => setActiveLevel([0])}>
                 <b>animation</b>
                 <br />
                 Rules that apply to an <i>active animation</i> jump up a level in the Cascade
               </div>,
-              <div onMouseEnter={() => setActiveLevel([0, 3])} onMouseLeave={() => setActiveLevel([0])}>
+              <div id="level_1_4" onMouseEnter={() => setActiveLevel([0, 3])} onMouseLeave={() => setActiveLevel([0])}>
                 <b>normal</b>
                 <br />
                 This level is where the bulk of rules live
@@ -187,6 +188,7 @@ const CssCascade = () => {
         </ScrollEvent>
 
         <ScrollEvent
+          id="level_2"
           hasIndicator={false}
           isInViewChange={d => {
             if (d != 0) return
@@ -205,17 +207,17 @@ const CssCascade = () => {
             There are three places where a rule can be defined:
 
             <List className="CssCascade__hover-list" items={[
-              <div onMouseEnter={() => setActiveLevel([1, 0])} onMouseLeave={() => setActiveLevel([1])}>
+              <div id="level_2_1" onMouseEnter={() => setActiveLevel([1, 0])} onMouseLeave={() => setActiveLevel([1])}>
                 <b>website</b>
                 <br />
                 This is the only level that you have control over, as a web developer.
               </div>,
-              <div onMouseEnter={() => setActiveLevel([1, 1])} onMouseLeave={() => setActiveLevel([1])}>
+              <div id="level_2_2" onMouseEnter={() => setActiveLevel([1, 1])} onMouseLeave={() => setActiveLevel([1])}>
                 <b>user</b>
                 <br />
 
               </div>,
-              <div onMouseEnter={() => setActiveLevel([1, 2])} onMouseLeave={() => setActiveLevel([1])}>
+              <div id="level_2_3" onMouseEnter={() => setActiveLevel([1, 2])} onMouseLeave={() => setActiveLevel([1])}>
                 <b>browser</b>
                 <br />
                 Each browser has its own set of styles, which is why things like <P>{`<button>`}</P>s have default styles.
@@ -256,6 +258,7 @@ const CssCascade = () => {
         </ScrollEvent>
 
         <ScrollEvent
+          id="level_3"
           hasIndicator={false}
           isInViewChange={d => {
             if (d != 0) return
@@ -275,7 +278,7 @@ const CssCascade = () => {
             There are four levels of selectors:
 
             <List className="CssCascade__hover-list" items={[
-              <div onMouseEnter={() => setActiveLevel([2, 0])} onMouseLeave={() => setActiveLevel([2])}>
+              <div id="level_3_1" onMouseEnter={() => setActiveLevel([2, 0])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>inline</b>
                 <br />
                 Styles declared within a <P>style</P> HTML property are the <i>most specific</i>
@@ -283,17 +286,28 @@ const CssCascade = () => {
             ]}
               hasNumbers
             />
+          <List className="CssCascade__hover-list" items={[
+            null,
+            <div id="level_3_2" onMouseEnter={() => setActiveLevel([2, 1])} onMouseLeave={() => setActiveLevel([2])}>
+              <b>layer</b>
+              <br />
+              The new kid in town! Soon, we’ll be able to define explicit “layers” of styles, for intentional handling of specificity. <i>Coming in Chromium 99/Canary, Firefox 97/Nightly, and in Safari Tech Preview</i>. <Link to="https://caniuse.com/css-cascade-layers">Keep track of the rollout here</Link>, or read more in <Link to="https://www.w3_org/TR/css-cascade-5/#cascade-layers">the spec</Link> or <Link to="https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/">this wonderful article</Link>.
+            </div>
+          ]}
+            hasNumbers
+          />
             <p>
               When we create a CSS declaration, we can target specific elements using <b>selectors</b>.
           </p>
             <List className="CssCascade__hover-list" items={[
               null,
-              <div onMouseEnter={() => setActiveLevel([2, 1])} onMouseLeave={() => setActiveLevel([2])}>
+              null,
+              <div id="level_3_3" onMouseEnter={() => setActiveLevel([2, 2])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>id</b>
                 <br />
                 We can target elements based on their <P>id</P>, using the syntax <P>#id</P>
               </div>,
-              <div onMouseEnter={() => setActiveLevel([2, 2])} onMouseLeave={() => setActiveLevel([2])}>
+              <div id="level_3_4" onMouseEnter={() => setActiveLevel([2, 3])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>class | attribute | pseudo-class</b>
                 <br />
                 We can target elements based on their <P>class</P>, using the syntax <P>.class</P>
@@ -302,7 +316,7 @@ const CssCascade = () => {
                 <br />
                 This level also includes <b>pseudo-selectors</b>, like <P>:hover</P> and <P>:first-of-type</P>
               </div>,
-              <div onMouseEnter={() => setActiveLevel([2, 3])} onMouseLeave={() => setActiveLevel([2])}>
+              <div id="level_3_5" onMouseEnter={() => setActiveLevel([2, 4])} onMouseLeave={() => setActiveLevel([2])}>
                 <b>type | pseudo-element</b>
                 <br />
                 We can target elements based on their <b>tag type</b>, using the syntax <P>type</P>
@@ -418,6 +432,7 @@ const CssCascade = () => {
         </ScrollEvent>
 
         <ScrollEvent
+          id="level_4"
           hasIndicator={false}
           isInViewChange={d => {
             if (d != 0) return
@@ -428,7 +443,9 @@ const CssCascade = () => {
             <div className="CssCascade__header-number" onClick={setHeaderHashLocal("position")}>4.</div>
             Position
           </h2>
-
+<div id="level_4_1" />
+<div id="level_4_2" />
+<div id="level_4_3" />
           <p>
             And lastly, we descend to the fourth, and final, tier of the Cascade, which looks at <i>the order</i> that the rules were defined in.
           </p>
@@ -565,10 +582,10 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
               { name }
             </div>
             <div className="CssCascadeSteps__item__steps">
-              {substeps.map(({ name }, i) => (
+              {substeps.map(({ name, isNew }, i) => (
                 <CssCascadeStepsLevel
                   key={name}
-                  {...{ stepI, i, name }}
+                  {...{ stepI, i, name, isNew }}
                   isActive={activeLevel && activeLevel[0] == stepI && activeLevel[1] == i}
                 />
               ))}
@@ -586,31 +603,36 @@ const CssCascadeSteps = ({ activeLevel, setHeaderHashLocal }) => {
 
 const CssCascadeImages = memo(() => (
   <>
-      <img src={fishImage} className="CssCascadeSteps__image CssCascadeSteps__image--fish" />
-      <img src={cloud1Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud1" />
-      <img src={cloud2Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud2" />
-      <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks" />
-      <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks2" />
-      <img src={birdsImage} className="CssCascadeSteps__image CssCascadeSteps__image--birds" />
-      <img src={leaf1Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf1" />
-      <img src={leaf2Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf2" />
-      <img src={leaf3Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf3" />
-      <img src={leaf4Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf4" />
-      <img src={leaf5Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf5" />
-      <img src={leaf6Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf6" />
-      <img src={leaf7Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf7" />
-      <img src={leaf8Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf8" />
-      <img src={flower1Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower1" />
-      <img src={flower2Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower2" />
-      <img src={flower3Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower3" />
+      <img src={fishImage} className="CssCascadeSteps__image CssCascadeSteps__image--fish" alt="" />
+      <img src={cloud1Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud1" alt="" />
+      <img src={cloud2Image} className="CssCascadeSteps__image CssCascadeSteps__image--cloud2" alt="" />
+      <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks" alt="" />
+      <img src={rocksImage} className="CssCascadeSteps__image CssCascadeSteps__image--rocks2" alt="" />
+      <img src={birdsImage} className="CssCascadeSteps__image CssCascadeSteps__image--birds" alt="" />
+      <img src={leaf1Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf1" alt="" />
+      <img src={leaf2Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf2" alt="" />
+      <img src={leaf3Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf3" alt="" />
+      <img src={leaf4Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf4" alt="" />
+      <img src={leaf5Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf5" alt="" />
+      <img src={leaf6Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf6" alt="" />
+      <img src={leaf7Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf7" alt="" />
+      <img src={leaf8Image} className="CssCascadeSteps__image CssCascadeSteps__image--leaf8" alt="" />
+      <img src={flower1Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower1" alt="" />
+      <img src={flower2Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower2" alt="" />
+      <img src={flower3Image} className="CssCascadeSteps__image CssCascadeSteps__image--flower3" alt="" />
   </>
 ))
 
 
-const CssCascadeStepsLevel = memo(({ stepI, i, name, isActive })=> (
-  <div id={`CssCascadeSteps__step--${stepI}-${i}`} className={`CssCascadeSteps__item__step CssCascadeSteps__item__step--is-${ isActive ? "active" : "normal" }`}>
+const CssCascadeStepsLevel = memo(({ stepI, i, name, isActive, isNew=false })=> (
+  <a href={`#level_${stepI+1}_${i+1}`} id={`CssCascadeSteps__step--${stepI}-${i}`} className={`CssCascadeSteps__item__step CssCascadeSteps__item__step--is-${ isActive ? "active" : "normal" }`}>
     { name }
-  </div>
+    {!!isNew && (
+      <div className="CssCascadeSteps__item__step__new">
+        New
+      </div>
+    )}
+  </a>
 ))
 
 
