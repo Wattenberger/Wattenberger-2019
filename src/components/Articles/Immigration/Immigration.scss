@@ -1,0 +1,137 @@
+@import "src/styles/lib";
+
+.Immigration {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+
+  &__title {
+    text-align: center;
+    font-size: 3em;
+  }
+
+  &__Legend {
+    position: absolute;
+    top: 3em;
+    left: 33%;
+
+    &__countries {
+      position: relative;
+
+      &__country {
+        position: absolute;
+        top: -1em;
+        transform: translate(-50%, -100%);
+        transition: all 0.3s ease-out;
+      }
+    }
+
+    &__ticks {
+      position: relative;
+
+      &__tick {
+        position: absolute;
+        font-size: 0.6em;
+        bottom: 1em;
+        transform: translate(-50%, 100%);
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 0.5em;
+          border-left: 1px solid;
+        }
+      }
+    }
+  }
+
+  &__Map {
+    position: relative;
+
+    &__label {
+      top: 0;
+      left: 0;
+      line-height: 1em;
+      position: absolute;
+      pointer-events: none;
+      font-size: 0.66em;
+      font-weight: 600;
+    }
+
+      &__number {
+        font-feature-settings: "tnum" 1;
+        font-size: 0.5em;
+        fill: $grey5;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        pointer-events: none;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        // max-width: 60em;
+      }
+      &__earth {
+        fill: $grey2;
+        fill: none;
+        stroke: $grey3;
+        transition: all 0.3s ease-out;
+      }
+      &__graticules {
+        fill: none;
+        stroke: $grey3;
+        stroke-width: 0.5px;
+        transition: all 0.3s ease-out;
+      }
+      &__country {
+        // fill: $a1;
+        // stroke: white;
+        stroke-width: 0.3px;
+        transition: all 0.1s ease-out;
+        cursor: pointer;
+      }
+      &Cycle {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin: 0 -1em 1em -1em;
+
+        &__item {
+          margin: 1em;
+        }
+        b {
+          text-align: center;
+          display: block;
+          font-weight: 600;
+          font-size: 0.8em;
+        }
+        svg {
+          width: 18em;
+          height: 18em;
+        }
+      }
+      &Select {
+        margin-top: 1em;
+        margin-bottom: 2em;
+
+        &__controls {
+            display: flex;
+            margin-bottom: 1em;
+        }
+
+        &__select {
+            flex: 1;
+        }
+      }
+  }
+}

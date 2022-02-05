@@ -21,6 +21,7 @@ const Home = React.lazy(() => import("components/Home/Home"));
 const Sketches = React.lazy(() => import("components/Sketches/Sketches"));
 const Podcasts = React.lazy(() => import("components/Podcasts/Podcasts"));
 const News = React.lazy(() => import("components/News/News"));
+const Immigration = React.lazy(() => import("components/Articles/Immigration/Immigration"));
 
 const DogNames = React.lazy(() =>
   import("components/Articles/DogNames/DogNames")
@@ -162,6 +163,7 @@ class App extends Component {
             <Route path="/dog-breeds" component={DogBreeds} />
             {/* <Route path="/family-tree" component={FamilyTree} /> */}
             <Route path="/news" component={News} />
+            <Route path="/immigration" component={Immigration} />
             {/* <Route path="/wdvpscatter" component={WDVP} /> */}
             <Route path="/wdvpgrid" component={WDVPGrid} />
             <Route path="/wdvp" component={WDVP} />
