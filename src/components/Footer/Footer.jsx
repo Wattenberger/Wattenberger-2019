@@ -17,7 +17,7 @@ class Footer extends Component {
                 <img src={image} alt="Amelia" className="Footer__image" />
                 <div className="Footer__text">
                     <div className="Footer__name">
-                        Amelia Wattenberger © 2021
+                        Amelia Wattenberger © 2022
                     </div>
                     <div className="Footer__siblings">
                         <div className="Footer__links">
