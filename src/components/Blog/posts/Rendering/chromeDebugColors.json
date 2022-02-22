@@ -1,0 +1,61 @@
+[
+  {
+    "name": "Layer border backgrounds",
+    "items": {
+      "Tiled content": "rgba(128, 255, 128, 0)",
+      "Image": "rgba(128, 128, 128, 0)",
+      "Non-tiled content": "rgba(128, 0, 128, 32)",
+      "Other container": "rgba(192, 255, 255, 0)",
+      "Surface": "rgba(128, 0, 255, 136)",
+      "Render surfaces": "rgba(100, 0, 0, 255)"
+    }
+  },
+  {
+    "name": "Tile borders",
+    "items": {
+      "High-res tile": "rgba(100, 80, 200, 200)",
+      "Low-res tile": "rgba(100, 212, 83, 192)",
+      "Other high-resolution tile": "rgba(100, 239, 231, 20)",
+      "Other low-resolution tile": "rgba(100, 93, 186, 18)",
+      "Missing tile": "rgba(64, 64, 64, 0)",
+      "Solid color tile": "rgba(128, 128, 128, 128)",
+      "OOM tile": "rgba(100, 255, 0, 0)",
+      "Direct picture": "rgba(255, 127, 255, 0)",
+      "Compressed tile": "rgba(100, 20, 20, 240)"
+    }
+  },
+  {
+    "name": "Checkerboard colors",
+    "items": {
+      "Non-debug": "rgb(241, 241, 241)",
+      "Invalidated tiles": "rgb(128, 200, 245)",
+      "Evicted tiles": "rgb(255, 200, 200)"
+    }
+  },
+  {
+    "name": "Debug",
+    "items": {
+      "Paint rects": "rgba(255, 0, 195, 0)",
+      "Layout Shift rects": "rgba(0, 0, 0, 255)",
+      "Property-changed rects": "rgba(255, 0, 0, 255)",
+      "Surface damage rects": "rgba(255, 200, 100, 0)",
+      "Surface screen space rects": "rgba(255, 100, 200, 0)",
+      "Touch-event-handler rects": "rgba(255, 239, 229, 60)",
+      "Wheel-event-handler rects": "rgba(255, 189, 209, 57)",
+      "Scroll-event-handler rects": "rgba(255, 24, 167, 181)",
+      "Non-fast-scrollable rects": "rgba(255, 238, 163, 59)",
+      "Main-thread scrolling reason rects": "rgba(255, 200, 100, 0)",
+      "Animation bounds": "rgba(255, 112, 229, 0)",
+      "Picture borders": "rgba(100, 0, 0, 200)"
+    }
+  },
+  {
+    "name": "HUD widget colors",
+    "items": {
+      "dropped compositor frames": "rgb(202, 91, 29)",
+      "a \"partial\" frame, i.e. a frame that missed its commit deadline": "rgb(255, 245, 0)",
+      "a frame that successfully rendered": "rgba(191, 174, 221, 255)",
+      "Paint time": "rgb(75, 155, 55)"
+    }
+  }
+]

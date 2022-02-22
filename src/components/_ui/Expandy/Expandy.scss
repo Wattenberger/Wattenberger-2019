@@ -5,6 +5,22 @@
   margin-top: 0.5em;
   margin-bottom: 1.8em;
 
+  summary {
+    list-style: none;
+    &:focus {
+      outline: none;
+
+      .Expandy__trigger {
+        background: rgba($a2, 0.2);
+      }
+    }
+    &:hover {
+      .Expandy__trigger {
+        background: rgba($a2, 0.2);
+      }
+    }
+  }
+
   &__toggle {
     position: sticky;
     top: 50vh;
@@ -89,68 +105,85 @@
     overflow: hidden;
     visibility: hidden;
     transition: all 0.6s ease-out;
+    background: white;
     // background: rgba($a2, 0.01);
   }
 
-  &--is {
-    &-expanded {
-      .Expandy {
-        &__contents {
-          max-height: 90em;
-          padding: 1em 1.3em;
-          visibility: visible;
-        }
+  &[open] {
+    .Expandy {
+      &__contents {
+        max-height: 90em;
+        padding: 1em 1.3em;
+        visibility: visible;
+      }
 
-        &__trigger__mark {
-          position: relative;
+      &__trigger__mark {
+        position: relative;
 
-          @keyframes popIn {
-              0% { transform: translate(-50%, -50%)   scale(0); opacity: 0; }
-            90% { transform: translate(-50%, -50%)   scale(2); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+        @keyframes popIn {
+          0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
           }
-
-          &:before {
-              content: "";
-              @include abs(50%, auto, auto, 50%);
-              height: 1.5em;
-              width: 1.5em;
-              background: rgba(white, 0.6);
-              border-radius: 100%;
-              transform: translate(-50%, -50%) scale(0);
-              opacity: 0;
-              z-index: 0;
-              animation: popIn 0.4s ease-out;
-              animation-fill-mode: forwards;
+          90% {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
           }
         }
-        &__toggle {
-          @keyframes popIn {
-              0% { transform: translate(-50%, -50%)   scale(0); opacity: 0; }
-            90% { transform: translate(-50%, -50%)   scale(2); opacity: 1; }
-            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
-          }
 
-          &:before {
-              content: "";
-              @include abs(50%, auto, auto, 50%);
-              height: 1.5em;
-              width: 1.5em;
-              background: rgba($a2, 0.3);
-              border-radius: 100%;
-              transform: translate(-50%, -50%) scale(0);
-              opacity: 0;
-              z-index: 0;
-              animation: popIn 0.4s ease-out;
-              animation-fill-mode: forwards;
+        &:before {
+          content: "";
+          @include abs(50%, auto, auto, 50%);
+          height: 1.5em;
+          width: 1.5em;
+          background: rgba(white, 0.6);
+          border-radius: 100%;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+          z-index: 0;
+          animation: popIn 0.4s ease-out;
+          animation-fill-mode: forwards;
+        }
+      }
+      &__toggle {
+        @keyframes popIn {
+          0% {
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
           }
-          &__arrow {
-            &--down {
-              transform: translateY(-15px) rotate(360deg);
-            }
-            &--up {
-              transform: translateY(15px) rotate(360deg);
-            }
+          90% {
+            transform: translate(-50%, -50%) scale(2);
+            opacity: 1;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+          }
+        }
+
+        &:before {
+          content: "";
+          @include abs(50%, auto, auto, 50%);
+          height: 1.5em;
+          width: 1.5em;
+          background: rgba($a2, 0.3);
+          border-radius: 100%;
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+          z-index: 0;
+          animation: popIn 0.4s ease-out;
+          animation-fill-mode: forwards;
+        }
+        &__arrow {
+          &--down {
+            transform: translateY(-15px) rotate(360deg);
+          }
+          &--up {
+            transform: translateY(15px) rotate(360deg);
           }
         }
       }

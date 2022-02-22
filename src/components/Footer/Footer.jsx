@@ -14,7 +14,9 @@ class Footer extends Component {
 
         return (
             <footer className="Footer">
-                <img src={image} alt="Amelia" className="Footer__image" />
+                <Link href="http://fullstack.io/fullstack-d3">
+                    <img src={image} alt="Fullstack D3 & Data Visualization" className="Footer__image" />
+                </Link>
                 <div className="Footer__text">
                     <div className="Footer__name">
                         Amelia Wattenberger © 2022

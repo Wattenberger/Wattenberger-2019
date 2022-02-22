@@ -9,22 +9,27 @@ const Expandy = ({ trigger, triggerExpandText, doHideIfCollapsed=false, classNam
     const [isExpanded, setIsExpanded] = useState(false)
     const ref = useRef()
 
-    const onToggleExpanded = () => {
-        setIsExpanded(!isExpanded)
+    // const onToggleExpanded = () => {
+    //     setIsExpanded(!isExpanded)
 
-        if (isExpanded) {
-            const top = ref.current.getBoundingClientRect().top
-            if (top > window.innerHeight * 0.3) return
-            const y = top
-                + window.scrollY
-                - window.innerHeight * 0.3
-            scrollTo(y, 600)
-        }
-    }
+    //     if (isExpanded) {
+    //         const top = ref.current.getBoundingClientRect().top
+    //         if (top > window.innerHeight * 0.3) return
+    //         const y = top
+    //             + window.scrollY
+    //             - window.innerHeight * 0.3
+    //         scrollTo(y, 600)
+    //     }
+    // }
 
     return (
-        <div className={`Expandy Expandy--is-${isExpanded ? "expanded" : "collapsed"} ${className}`} {...props} ref={ref}>
-            <button className="Expandy__trigger button-no-appearance" onClick={onToggleExpanded}>
+        <details className={`Expandy Expandy--is-${isExpanded ? "expanded" : "collapsed"} ${className}`} {...props} ref={ref}
+            onToggle={e => {
+                const isExpanded = e.target.open
+                setIsExpanded(isExpanded)
+        }}>
+            <summary>
+            <div className="Expandy__trigger button-no-appearance" >
                 <div className="Expandy__trigger__text">
                     <b>{ trigger }</b>
                     <div className="Expandy__trigger__info">
@@ -32,23 +37,24 @@ const Expandy = ({ trigger, triggerExpandText, doHideIfCollapsed=false, classNam
                     </div>
                 </div>
                 <div className="Expandy__trigger__mark">ἰ</div>
-            </button>
+            </div>
 
             <Tooltip
                 className="Expandy__toggle"
                 contents={<button className="button-no-appearance">{isExpanded ? "Collapse me" : "Expand me"}</button>}
-                onClick={onToggleExpanded}>
+                >
                 <div className="Expandy__toggle__arrow Expandy__toggle__arrow--up">
                     <Icon name="arrow" direction="n" size="s" />
                 </div>
                 <div className="Expandy__toggle__arrow Expandy__toggle__arrow--down">
                     <Icon name="arrow" direction="s" size="s" />
                 </div>
-            </Tooltip>
+                </Tooltip>
+                </summary>
             <div className="Expandy__contents">
-                { (!doHideIfCollapsed || isExpanded) && children }
+                {children }
             </div>
-        </div>
+        </details>
     )
 }
 
