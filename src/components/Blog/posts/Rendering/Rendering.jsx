@@ -1,17 +1,38 @@
-import React, { useEffect, useMemo, useState } from "react"
+import React, { createContext, useContext, useEffect, useMemo, useState } from "react"
 import Icon from "components/_ui/Icon/Icon"
 import { Helmet } from "react-helmet"
 import Code from "components/_ui/Code/Code"
 import List from "components/_ui/List/List"
+import Expandy from "components/_ui/Expandy/Expandy"
+import ScrollEventHOC from "components/_ui/ScrollEvent/ScrollEventHOC"
+import ScrollEvent from "components/_ui/ScrollEvent/ScrollEvent"
+import Button from "components/_ui/Button/Button"
 import Aside from "components/_ui/Aside/Aside"
 import { scrollTo } from "utils";
 import Link from "components/_ui/Link/Link"
-import "./Rendering.scss"
 import { RenderingDiagram, RenderingExample, RenderingExampleSvg, RenderingSandbox } from "./RenderingExample"
 import chromeDebugColors from "./chromeDebugColors.json"
+import "./Rendering.scss"
 
+import dog1a from "./dog1a.png"
+import dog1b from "./dog1b.png"
+import dog1c from "./dog1c.png"
+import dog2a from "./dog2a.png"
+import dog2b from "./dog2b.png"
+import dog2c from "./dog2c.png"
+import dog2d from "./dog2d.png"
+import dog3a from "./dog3a.png"
+import dog3b from "./dog3b.png"
+import dog3c from "./dog3c.png"
+import chromeDevTools from "./chromeDevTools.png"
+import chromeDevToolsMenu from "./chromeDevToolsMenu.png"
+
+
+const BowserContext = createContext(true);
 
 const Rendering = () => {
+  const [yesBowser, setYesBowser] = useState(true)
+
   const scrollToId = id => {
     const sectionElement = document.querySelector(`#${id}`)
     if (!sectionElement) return
@@ -31,69 +52,31 @@ const Rendering = () => {
 
   return (
     <div className="Rendering">
+      <BowserContext.Provider value={yesBowser}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>The Pixel Pipeline</title>
+        <title>Rendering CSS</title>
         <link rel="canonical" href="https://wattenberger.com/blog/rendering" />
         <meta property="og:type" content="website" />
         <meta name="description" content="" />
       </Helmet>
 
       <h1>
-        The Pixel Pipeline
+        Rendering CSS
       </h1>
       <h2>
-        or, how your browser turns CSS styles into pixels
+        or, Don't Make {yesBowser ? "Bowser" : "the Browser"} Think
       </h2>
 
       <div className="Rendering__content">
         <p>
-          You write CSS styles all the time, but how does your browser use them?
+          How does the browser turn HTML & CSS into... <em>this</em> complex, interactive painting?
         </p>
         <p>
-          Most of us take our browsers for granted. Or we <em>mostly</em> know what's going on, leaving us vulnerable to uncanny valley-type "this <em>should</em> be working, but it isn't" bugs. So if you're thinking "I know all of this already", stick with me! You might learn something new - I did!
+          Browsers split their internal tasks into <Link to="https://developer.chrome.com/blog/inside-browser-part1/#executing-program-on-process-and-thread">many processes</Link>. One type is the <strong>Renderer Process</strong>, which is responsible for converting JavaScript, HTML, and CSS into the visual web page you interact with.
         </p>
-
-        <SectionHeading>
-          Let's make a web page!
-        </SectionHeading>
-
         <p>
-          Let's start with an example: a website where we'll use three made-up elements: a △ triangle, a □ square, and a ○ circle.
-        </p>
-
-        <p>First, our browser fetches the HTML code:</p>
-
-        <Code language="html" fileName="index.html" hasLineNumbers={false}>{htmlString}</Code>
-
-        <p>
-          It'll parse the HTML and create a <strong>the Document Object Model</strong> (DOM) tree. While parsing the DOM, the browser sees two blocking resources: the CSS stylesheet and the JavaScript script.
-        </p>
-
-        <div className="Rendering__side-by-side">
-          <div className="Rendering__side-by-side__left">
-            <Code language="js" fileName="script.js" hasLineNumbers={false}>{jsString}</Code>
-            <p>
-              Once these assets are loaded, the browser executes the JavaScript, which adds a new <P>{`<circle />`}</P> element to our DOM.
-            </p>
-          </div>
-
-          <div className="Rendering__side-by-side__right">
-            <Code language="css" fileName="style.css" hasLineNumbers={false}>{cssString}</Code>
-            <p>
-              Next, the browser will create <strong>the CSS Object Module</strong> (CSSOM) from the CSS styles.
-            </p>
-          </div>
-        </div>
-
-        <p>
-          We'll combine all of these into a step we'll call <StepName step="trigger" />.
-        </p>
-
-        {/* <RenderingFooter activeStepIndex={0} /> */}
-
-        <p>
-          Next up, we need to match the styles to the DOM elements. To do this, our browser will then combine these into a third tree: <strong>the Render Tree</strong>, which will be used to generate our page. This step is called <StepName step="style" />.
+            The first part of this process involves executing JavaScript, creating a tree of DOM nodes, turning the CSS styles into a tree of CSS rules, then applying those CSS rules to the DOM nodes.
         </p>
 
         <Aside>
@@ -104,125 +87,124 @@ const Rendering = () => {
         </Aside>
 
         <p>
-          Now that we know what we need to render, we can start to build our page.
+            This is all very interesting, but today we want to focus on the next step: <strong>drawing that DOM tree</strong>.
         </p>
 
-        <SectionHeading>
-          Rendering our page
-        </SectionHeading>
+        <hr />
 
-        <div className="Rendering__name-title">
-          <StepName step="layout" />
+        <div className="Rendering__wider">
+          <ScrollEventHOC>
+            {isInView =>
+             (
+              <>
+                <p className="Rendering__relative Rendering__centered">
+                    <span className="Rendering__highlight">
+                      Okay, we're going to do something here. You might hate it.
+                    </span>
+                    <br />
+                    Our browsers do so much for us and are so eager to please, it only<br />makes sense to <em>refer to them as an adorable dog named <strong>Bowser</strong></em>. <div
+                    style={{
+                      opacity: yesBowser ? 0 : 1
+                    }} className="Rendering__note">Just kidding, I would never do that.</div>
+                  </p>
+                  <div className="Rendering__off-to-side-wrapper">
+                    <div className={`Rendering__off-to-side Rendering__off-to-side--${isInView > -1 && yesBowser ? "" : "hidden"}`}>
+                      <img src={dog3a} alt="" />
+                  </div>
+                </div>
+              </>
+            )}
+          </ScrollEventHOC>
         </div>
+
         <p>
-          First up, we need to know <strong>where elements are positioned, and their dimensions</strong>. This is the heavy construction step, with tectonic plates and earthquakes shaping the landscape.
+          <Button onClick={() => {
+            setYesBowser(d => !d)
+          }}>
+            <Icon name="asterisk" style={{marginRight: "0.3em"}} />
+            {yesBowser ? "Wow. No, don't do that." : "Okay, the browser is a dog."}
+          </Button>
         </p>
 
-        <div className="Rendering__name-title">
-          <StepName step="paint" />
-        </div>
-        <p>
-          Next, we get to add some color! We'll turn visual styles into pixels to paint our elements with, similar to creating textures in a 3D engine.
-        </p>
+        <StepIntros />
 
-        <div className="Rendering__name-title">
-          <StepName step="composite" />
-        </div>
         <p>
-          Here's one of the most interesting steps: we split our page into <strong>layers</strong>. Think of transparent slides that can be rearranged and re-ordered. The GPU gets passed these slides and layers them on top of each other - either blending with or occluding the lower layers.
+          What a process! It's enough work for <Bowser alt="our browser" /> to do this once, but this is the web! The Wild West, where anything could happen!
         </p>
         <p>
-          Putting elements on separate layers allows for speedy re-renders - imagine a fixed header with a semi-transparent background. It's way faster to ask the GPU to combine the main page and header than to re-paint all of those pixels.
+          Any time we need to update the page, <Bowser alt="our browser" /> needs to run through these steps again. We might be triggered by...
         </p>
+        <List items={[
+          <>
+            <strong>Javascript</strong> changing the DOM, updating the styles, or querying the DOM,
+          </>,
+          <>
+            <strong>CSS animations</strong> changing the styles,
+          </>,
+          <>
+            <strong>the Web Animation API</strong> changing the styles, or
+          </>,
+          <>
+            <strong>the user</strong> resizing their browser or reorienting their device.
+          </>,
+        ]} />
 
         <Aside>
-          Read more about the compositing step in <Link href="https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/">this wonderful article</Link> from Sergey Chikuyonok.
+            View a more comprehensive list of  <Link to="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">things that force layout / reflow</Link>.
         </Aside>
 
-        <p>
-          And we're done! Those are the main steps in the pixel pipeline, but the web is a dynamic medium and our work is far from over.
-        </p>
-
-        <SectionHeading>
-          And around again!
-        </SectionHeading>
-
-        <p>
-          Remember how we called the first step <StepName step="trigger" />?
-        </p>
-
-        <p>
-          Our browser runs through each of those steps to load the page, but we'll run through each of them again whenever we change the page.
-        </p>
-
-
-        <div className="Rendering__name-title">
-          <StepName step="trigger" />
+        <div className="Rendering__wider Rendering__graphics">
+          {["layout", "paint", "composition"].map(layer => (
+            <LayerGraphic layer={layer} key={layer} />
+          ))}
         </div>
-        <p>
-          This is the web! The Wild West, where anything could happen!
-        </p>
-        <p>
-          Anytime we need to update the page, we'll run through these steps again. We might be triggered by...
-        </p>
-        <List items={[
-          <>
-            <strong>Javascript</strong> changing the DOM, updating the styles, or querying the DOM.
-          </>,
-          <>
-            <strong>CSS animations</strong> changing the styles, or
-          </>,
-          <>
-            <strong>the Web Animation API</strong> changing the styles.
-          </>,
-        ]} />
-
-        <p style={{marginTop: "3em"}}>
-          Then we'll finish our cycle:
-        </p>
-
-        <List items={[
-          <>
-            <StepName step="style" />  apply our CSS styles to the DOM
-          </>,
-          <>
-            <StepName step="layout" />  position the elements
-          </>,
-          <>
-            <StepName step="paint" />  paint the elements
-          </>,
-          <>
-            <StepName step="composite" />  combine the layers
-          </>,
-        ]} />
 
         <SectionHeading>
           Keeping things snappy
         </SectionHeading>
 
         <p>
-          Since we need to run through this process to render any updates, we'll want to make sure we can do it quickly! The exact refresh rate depends on the user's software and hardware, but we generally want to aim to update our page <strong>at least 60 times per second</strong>, or <strong>under 16 ms</strong>. Anything longer and the experience will be noticeably choppy.
+          Since <Bowser alt="our browser" /> needs to run through this process to render any updates, we'll want to make sure we can do it quickly! The exact refresh rate depends on the user's software and hardware, but we generally want to aim to update our page <strong>at least 60 times per second</strong>, or <strong>under 16 ms</strong>. Anything longer and the experience will be noticeably choppy.
         </p>
 
         <p>
-          Let's focus on the last three steps: <StepName step="layout" />, <StepName step="paint" />, and <StepName step="composite" />.
+          Different CSS properties require different steps to run. And as usual, the best performance trick is to <strong>do as little as possible</strong>.
         </p>
 
         <p>
-          As usual, the best performance trick is to <strong>do as little as possible</strong>. CSS properties require different steps to run.
+          For example, if we change the <P>left</P> property of an element, <Bowser alt="our browser" /> will need to re-layout its entire layer. And once elements are moved around, <Bowser alt="our browser" /> needs to run through <StepName step="paint" /> and <StepName step="composition" /> again.
         </p>
+
+        <RenderingExample property="left" />
 
         <p>
-          For example, if we change the <P>left</P> property of an element, our browser will need to re-layout its entire layer. And once elements are moved around, we need to run through <StepName step="paint" /> and <StepName step="composite" /> again.
+          But if we, instead, move our element using the <P>transform</P> property, <Bowser alt="our browser" /> can skip both <StepName step="layout" /> and <StepName step="paint" />. <Bowser alt="Our browser" /> will only need to do <StepName step="composition" /> to re-combine the layers.
         </p>
 
-        <RenderingExample properties={["left"]} />
+          <RenderingExample property="transform" />
+
+
+        <div className="Rendering__wide">
+          <Expandy
+            trigger="Don't take my word for it! Check this out in your browser's Dev Tools.">
+            <p>
+              In the <strong>Chrome Dev Tools</strong>, press <P>Esc</P> to open the bottom panel and select the <strong>Rendering</strong> panel from the kebab menu.
+            </p>
+            <div className="Rendering__double">
+              <img src={chromeDevToolsMenu} alt="" />
+              <img src={chromeDevTools} alt="" />
+            </div>
+            <p>
+            In here, you can toggle <P>Paint flashing</P> to highlight <StepName step="paint" /> changes and <P>Layout Shift Regions</P> to highlight <StepName step="layout" /> changes.
+            </p>
+          </Expandy>
+          </div>
+
+          <hr />
 
         <p>
-          But if we, instead, move our element using the <P>transform</P> property, our browser can skip both <StepName step="layout" /> and <StepName step="paint" />. It will only need to run <StepName step="composite" /> to re-combine the layers.
+          This also allows it to bypass using the main thread (needed for both the <StepName step="layout" /> and <StepName step="paint" /> steps), since <StepName step="composition" /> happens in a separate thread.
         </p>
-
-        <RenderingExample properties={["transform"]} />
 
         <p>
           This might seem like a small improvement, but keep in mind that we're running full-tilt at 60 FPS. Every boost helps, especially when the browser is doing other computations or multiple elements are moving.
@@ -236,18 +218,13 @@ const Rendering = () => {
           Some properties, like <P>color</P>, can skip layout changes but trigger a re-paint.
         </p>
 
-        <RenderingExample properties={["color"]} />
+        <RenderingExample property="color" />
 
         <p>
           There are many, many CSS properties - here's a little sandbox to give you a sense of which ones trigger which steps (depending on the browser engine):
         </p>
 
         <RenderingSandbox />
-
-        <p>
-          Please don't take my word for it! Check this out in your browser's developer tools.
-        </p>
-        {/* TODO instructions */}
 
         <Aside>
           Data pulled from <Link to="https://csstriggers.com/">CSS Triggers</Link> - check it out for a more comprehensive list of CSS properties.
@@ -261,7 +238,7 @@ const Rendering = () => {
         </SectionHeading>
 
         <p>
-          If we need to change CSS properties that trigger the <StepName step="layout" /> step, we can move those elements to a new layer. This makes most sense when the element doesn't need to be re-painted, allowing the browser to skip all but the <StepName step="composite" /> step.
+          If we need to change CSS properties that trigger the <StepName step="layout" /> step, we can move those elements to a new layer. This makes most sense when the element doesn't need to be re-painted, allowing the browser to skip all but the <StepName step="composition" /> step.
         </p>
 
         <p>
@@ -302,37 +279,43 @@ const Rendering = () => {
           That's all the learning we have for today! Hopefully, you take away from this post that:
         </p>
 
-<div style={{maxWidth: "40em"}}>
+        <div style={{ maxWidth: "40em" }}>
           <List items={[
-          <>
-              the basic steps our browser goes through to update the page are:
+            <>
+              the basic steps <Bowser alt="our browser" /> goes through to update the page are:
               <br />
+              <div className="Rendering__label">
+                <div className="Rendering__label__text">
+                  not covered
+                </div>
               <StepName step="trigger" />
               <StepName step="style" />
+              </div>
               <StepName step="layout" />
               <StepName step="paint" />
-              <StepName step="composite" />
-          </>,
-          <>
-            for CSS properties that update often, use ones that don't require <StepName step="layout" /> or <StepName step="paint" /> (mostly <P>transform</P> & <P>opacity</P>)
-          </>,
-          <>
-            for elements that move often but don't need to re-paint, you can promote them to their own layer
-          </>,
-          <>
-          you already knew this, but the web is full of amazing people writing helpful articles! Go explore some of the linked rabbit holes!
-          </>
+              <StepName step="composition" />
+            </>,
+            <>
+              for CSS properties that update often, use ones that don't require <StepName step="layout" /> or <StepName step="paint" /> (mostly <P>transform</P> & <P>opacity</P>)
+            </>,
+            <>
+              for elements that move often but don't need to re-paint, you can promote them to their own layer
+            </>,
+            <>
+              you already knew this, but the web is full of amazing people writing helpful articles! Go explore some of the linked rabbit holes!
+            </>
           ]} />
           </div>
 
-      </div>
+          <hr />
+
+        </div>
+        </BowserContext.Provider>
     </div>
   )
 }
 
 export default Rendering
-
-console.log(chromeDebugColors)
 
 const RenderingBorderColors = () => {
   return (
@@ -393,7 +376,7 @@ const P = ({ children }) => (
 
 
 const steps = [
-  "trigger", "style", "layout", "paint", "composite"
+  "trigger", "style", "layout", "paint", "composition"
 ]
 const RenderingFooter = ({ activeStepIndex }) => {
   return (
@@ -415,5 +398,191 @@ const SectionHeading = ({ children }) => {
       <a href={`#${id}`} className="Heading__hash">#</a>
       {children}
     </h3>
-    )
+  )
+}
+
+const graphicImages = [
+  [{
+    url: dog1c,
+    position: [8, 0],
+    style: { transformOrigin: "30% 70%" },
+    animation: "wobble",
+  }, {
+    url: dog1b,
+    position: [3, 0],
+    style: { zIndex: 0 },
+    animation: "back-and-forth",
+  }, {
+    url: dog1a,
+    position: [8, 0],
+    animation: "",
+  }],
+  [{
+    url: dog2a,
+    position: [20, 15],
+    animation: "",
+  }, {
+    url: dog2b,
+    position: [20, 15],
+    style: { transformOrigin: "38% 60%" },
+    animation: "wobble",
+  }, {
+    url: dog2c,
+    position: [20, 15],
+    style: { transformOrigin: "78% 85%" },
+    animation: "wobble",
+  }, {
+    url: dog2d,
+    position: [13, -1],
+    animation: "",
+  }],
+  [{
+    url: dog3a,
+    position: [12, 3],
+    animation: "",
+  }, {
+    url: dog3b,
+    position: [12, 3],
+    style: { transformOrigin: "60% 56%" },
+    animation: "wobble",
+  }, {
+    url: dog3c,
+    position: [12, 3],
+    animation: "",
+  }],
+]
+const layers = ["layout", "paint", "composition"]
+const shapeColors = [
+  "#EBD46D", "#E5D3D3", "#A0BDA1",
+]
+const LayerGraphic = ({ layer }) => {
+  const layerIndex = layers.indexOf(layer)
+  const images = graphicImages[layerIndex]
+  return (
+    <div className={`LayerGraphic LayerGraphic--${layer}`}>
+      <div className="LayerGraphic__images">
+        {images.map(({ url, animation, style, position }, i) => (
+          <div
+            key={i}
+            className="LayerGraphic__image"
+            style={{
+              ...style || {},
+              top: position[1] + "%",
+              left: position[0] + "%",
+              animationName: animation,
+              backgroundImage: `url(${url})`,
+              // maskImage: `url(${url})`,
+              // webkitMaskImage: `url(${url})`,
+              // "mask-image": `url(${url})`,
+            }}
+          />
+        ))}
+
+        <svg className="LayerGraphic__svg" viewBox="0 0 200 200" fill="white" stroke="#bdbdcf" strokeWidth={layerIndex < 1 ? 2 : 0} strokeLinejoin="round" strokeDasharray={layerIndex < 1 ? "10 10" : 0}>
+          <rect x="60" y="131" width="100" height="65" vectorEffect="non-scaling-stroke" fill={layerIndex < 1 ? "" : shapeColors[0]} />
+          <circle cx="121" cy="100" r="31" vectorEffect="non-scaling-stroke" fill={layerIndex < 1 ? "" : shapeColors[1]} style={{
+            animationName: layerIndex === 0 ? "back-and-forth-svg" : ""
+          }} />
+          <path d="M125,30 l25,38 h-50 Z"
+            vectorEffect="non-scaling-stroke"
+            transform={layerIndex === 0 ? "translate(43,133)" : "rotate(6) translate(5,9)"}
+            strokeWidth={layerIndex < 2 ? 2 : 0}
+            strokeDasharray={layerIndex < 2 ? "10 10" : 0}
+            style={{
+              transformOrigin: "70% 10%",
+              mixBlendMode: layerIndex === 2 ? "multiply": "",
+              animationName: layerIndex === 2 ? "back-and-forth-path" : ""
+            }}
+            fill={layerIndex < 2 ? "" : shapeColors[2]} />
+        </svg>
+      </div>
+
+      <div className="LayerGraphic__label">
+        {layer}
+      </div>
+    </div>
+  )
+}
+
+const Bowser = ({ alt }) => {
+  const yesBowser = useContext(BowserContext)
+  if (yesBowser) return "Bowser"
+  return alt
+}
+
+
+const allSteps = ["layout", "paint", "composition"]
+const StepIntros = () => {
+  const [activeStepIndex, setActiveStepIndex] = useState(0)
+  return (
+    <div className="Rendering__sticky-side">
+    <div className="Rendering__sticky-side__left">
+      <LayerGraphic layer={allSteps[activeStepIndex]}  />
+    </div>
+
+    <div className="Rendering__sticky-side__right">
+      <div className="Rendering__sticky-side__right__section">
+        <div className="Rendering__sticky-side__right__image">
+          <LayerGraphic layer="layout" />
+        </div>
+        <ScrollEvent isInViewChange={isInView => {
+          if (isInView !== 0) return
+          setActiveStepIndex(0)
+          }}>
+          <StepName step="layout" isActive={true} />
+          <p>
+            First up, <Bowser alt="our browser" /> needs to place and size every DOM element. This involves tasks as disparate as...
+          </p>
+          <List items={[
+            "handling many different units (px, em, rem, %, etc)",
+            "jugging different layout flows (inline, block, flex, grid, etc)",
+            "flowing text with proper line-breaks and sizing it correctly with font-sizes and line-heights ",
+            "clipping and overflowing elements",
+            "even down to calculating border widths and box-shadows",
+          ]} />
+          <p>
+            Needless to say, this is a huge endeavor for <Bowser alt="our browser" />! This is the heavy construction step, with tectonic plates and earthquakes shaping the landscape.
+          </p>
+        </ScrollEvent>
+      </div>
+      <div className="Rendering__sticky-side__right__section">
+        <div className="Rendering__sticky-side__right__image">
+          <LayerGraphic layer="paint" />
+        </div>
+        <ScrollEvent isInViewChange={isInView => {
+          if (isInView !== 0) return
+          setActiveStepIndex(1)
+        }}>
+          <StepName step="paint" isActive={true} />
+          <p>
+            With the layout squared away, we get to add some color! <Bowser alt="our browser" /> needs to turn those CSS styles into pixels and paint all of the content, similar to creating textures for a 3d scene or drawing on a canvas.
+          </p>
+        </ScrollEvent>
+      </div>
+      <div className="Rendering__sticky-side__right__section">
+        <div className="Rendering__sticky-side__right__image">
+          <LayerGraphic layer="composition" />
+        </div>
+        <ScrollEvent isInViewChange={isInView => {
+          if (isInView !== 0) return
+          setActiveStepIndex(2)
+        }}>
+          <StepName step="composition" isActive={true} />
+            <p>
+              Here's one of the most interesting steps: <Bowser alt="our browser" /> splits our page into <strong>layers</strong>. Think of transparent slides that can be rearranged and re-ordered. <Bowser alt="Our browser" /> passes those slides to the GPU, which layers them on top of each other - either blending with or occluding the lower layers. Keeping in mind the user's viewport, <Bowser alt="our browser" /> can rasterize exactly what we see on our screens.
+            </p>
+
+          <p>
+            Putting elements on separate layers allows for speedy re-renders - imagine a fixed header with a semi-transparent background. It's much faster for <Bowser alt="our browser" /> to combine the main page and header than to re-paint all of those pixels. Also note that <StepName step="composition" isActive={true} /> happens within its own thread, leaving the main thread alone.
+          </p>
+
+          <Aside>
+            Read more about the compositing step in <Link href="https://www.smashingmagazine.com/2016/12/gpu-animation-doing-it-right/">this wonderful article</Link> from Sergey Chikuyonok.
+          </Aside>
+
+        </ScrollEvent>
+      </div>
+    </div>
+  </div>
+  )
 }

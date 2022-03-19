@@ -85,6 +85,9 @@ export const RenderingExampleDemo = ({
 const levelNames = [
   "layout", "paint", "composite"
 ]
+const levelLabelOverrideMap = {
+composite:"composition"
+}
 export const RenderingExampleData = ({
   property = "left",
   engine = "blink",
@@ -143,21 +146,24 @@ export const RenderingDiagram = ({
 }) => {
   return (
     <div className="RenderingDiagram">
-      {levelNames.map((level, i) => (
-        <div className={[
-          "RenderingDiagram__level",
-          `RenderingDiagram__level--${level}`,
-          `RenderingDiagram__level--is-${levels[i] === true ? "active" : levels[i] === false ? "inactive" : "unknown"}`,
-        ].join(" ")} key={i}>
-          {levels[i] === null ? "?" : level}
-        </div>
-      ))}
+      {levelNames.map((level, i) => {
+        const levelName = levelLabelOverrideMap[level] || level
+        return (
+          <div className={[
+            "RenderingDiagram__level",
+            `RenderingDiagram__level--${levelName}`,
+            `RenderingDiagram__level--is-${levels[i] === true ? "active" : levels[i] === false ? "inactive" : "unknown"}`,
+          ].join(" ")} key={i}>
+            {levels[i] === null ? "?" : levelName}
+          </div>
+        )
+      })}
     </div>
   )
 }
 
 const sandboxColumnLabels = [
-  `🔥\nall steps`, `🔥🔥\npaint & composite`, `🔥🔥🔥\nonly composite`
+  `🔥\nall steps`, `🔥🔥\npaint & composition`, `🔥🔥🔥\nonly composition`
 ]
 const engines = ["blink", "gecko", "webkit", "edgehtml"]
 export const RenderingSandbox = () => {
