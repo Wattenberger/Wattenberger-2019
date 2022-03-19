@@ -38,7 +38,7 @@ const Complex = () => {
       />
 
       <p>
-        From me experience, the most important rule is to{" "}
+        From my experience, the most important rule is to{" "}
         <em>know your tools</em>. Once you're comfortable with drawing with SVG,
         using d3 as a utility library, and building React.js code, you'll truly
         be able to make whatever you can imagine. This is the beauty of learning
