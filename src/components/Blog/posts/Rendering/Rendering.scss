@@ -100,6 +100,16 @@
     width: 100%;
   }
 
+  @media (min-width: 1200px) {
+    &__sidebar {
+      grid-column-start: 4;
+      grid-column-end: 6;
+      font-size: 0.7em;
+      margin-bottom: -60%;
+      transform: translateY(20%);
+    }
+  }
+
   &__graphics {
     display: flex;
 
@@ -347,7 +357,7 @@
       margin: 1em 0;
       min-width: Min(100vw, 60em);
 
-      @media (max-width: 1250px) {
+      @media (max-width: 1350px) {
         display: block;
         width: 100%;
       }
@@ -562,10 +572,10 @@
 
     @keyframes back-and-forth-svg {
       0% {
-        transform: translateX(0);
+        transform: translate(0, 0);
       }
       100% {
-        transform: translateX(3px);
+        transform: translate(3px, 0);
       }
     }
 
@@ -589,10 +599,10 @@
 
     @keyframes back-and-forth-path {
       0% {
-        transform: rotate(5deg) translate(1px, 9px);
+        transform: rotate(5deg) translate(1px, 9px) translateZ(0);
       }
       100% {
-        transform: rotate(7deg) translate(7px, 9px);
+        transform: rotate(7deg) translate(7px, 9px) translateZ(0);
       }
     }
 
@@ -633,18 +643,14 @@
       overflow: visible;
       transform: translate(48%, 19%);
 
-      circle {
-        transition: all 0.3s ease-out;
+      path, circle, rect {
         animation: none 1s ease-out alternate infinite;
-      }
-
-      rect {
         transition: all 0.3s ease-out;
-      }
 
-      path {
-        transition: all 0.3s ease-out;
-        animation: none 2s ease-out alternate infinite;
+        // Safari only
+        @media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) {
+          animation-name: none !important;
+        }}
       }
     }
 
