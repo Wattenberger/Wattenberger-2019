@@ -236,7 +236,7 @@ const Rendering = () => {
           <RenderingExample property="color" />
 
           <p>
-            There are many, many CSS properties - here's a little sandbox to give you a sense of which ones trigger which steps (depending on the browser engine):
+            There are many, many CSS properties - here's a little sandbox to give you a sense of which ones trigger which steps (depending on the browser engine). Hint: make sure to check these out in your browser's Dev Tools!
           </p>
 
           <RenderingSandbox />
