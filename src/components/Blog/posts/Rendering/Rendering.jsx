@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react"
 import Icon from "components/_ui/Icon/Icon"
 import { Helmet } from "react-helmet"
-import Code from "components/_ui/Code/Code"
 import List from "components/_ui/List/List"
 import Expandy from "components/_ui/Expandy/Expandy"
 import ScrollEventHOC from "components/_ui/ScrollEvent/ScrollEventHOC"
@@ -27,6 +26,7 @@ import dog3c from "./dog3c.png"
 import dog3d from "./dog3d.png"
 import dog3e from "./dog3e.png"
 import dogSide from "./dogSide.png"
+import metaImage from "./metaImage.png"
 import chromeDevTools from "./chromeDevTools.png"
 import chromeDevToolsMenu from "./chromeDevToolsMenu.png"
 import safariDevTools from "./safariDevTools.png"
@@ -59,14 +59,15 @@ const Rendering = () => {
       <BowserContext.Provider value={yesBowser}>
         <Helmet>
           <meta charSet="utf-8" />
-          <title>Rendering CSS</title>
+          <title>Writing performant CSS</title>
           <link rel="canonical" href="https://wattenberger.com/blog/rendering" />
           <meta property="og:type" content="website" />
-          <meta name="description" content="" />
+          <meta name="description" content="The one in which we talk about the browser's renderer process and learn how to make performant CSS styles and animations." />
+          <meta name="image" content={metaImage} />
         </Helmet>
 
         <h1>
-          Rendering CSS
+          Writing performant CSS
         </h1>
         <h2>
           or, Don't Make {yesBowser ? "Bowser" : "the Browser"} Think
