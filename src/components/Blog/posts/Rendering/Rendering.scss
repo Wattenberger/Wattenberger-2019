@@ -597,6 +597,36 @@
       }
     }
 
+    @keyframes tail {
+      0% {
+        transform: rotate(-19deg);
+      }
+      100% {
+        transform: rotate(-10deg);
+      }
+    }
+
+    @keyframes pan {
+      0% {
+        transform: translateY(-3px);
+      }
+      100% {
+        transform: translateY(3px);
+      }
+    }
+
+    @keyframes flash {
+      0% {
+        opacity: 0;
+      }
+      89% {
+        opacity: 0;
+      }
+      90% {
+        opacity: 1;
+      }
+    }
+
     @keyframes back-and-forth-path {
       0% {
         transform: rotate(5deg) translate(1px, 9px) translateZ(0);

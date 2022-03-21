@@ -10,7 +10,7 @@ import Button from "components/_ui/Button/Button"
 import Aside from "components/_ui/Aside/Aside"
 import { scrollTo } from "utils";
 import Link from "components/_ui/Link/Link"
-import { RenderingDiagram, RenderingExample, RenderingExampleSvg, RenderingSandbox } from "./RenderingExample"
+import { RenderingExample, RenderingExampleSvg, RenderingSandbox } from "./RenderingExample"
 import chromeDebugColors from "./chromeDebugColors.json"
 import "./Rendering.scss"
 
@@ -24,6 +24,9 @@ import dog2d from "./dog2d.png"
 import dog3a from "./dog3a.png"
 import dog3b from "./dog3b.png"
 import dog3c from "./dog3c.png"
+import dog3d from "./dog3d.png"
+import dog3e from "./dog3e.png"
+import dogSide from "./dogSide.png"
 import chromeDevTools from "./chromeDevTools.png"
 import chromeDevToolsMenu from "./chromeDevToolsMenu.png"
 import safariDevTools from "./safariDevTools.png"
@@ -111,7 +114,7 @@ const Rendering = () => {
                   </p>
                   <div className="Rendering__off-to-side-wrapper">
                     <div className={`Rendering__off-to-side Rendering__off-to-side--${isInView > -1 && yesBowser ? "" : "hidden"}`}>
-                      <img src={dog3a} alt="" />
+                      <img src={dogSide} alt="" />
                     </div>
                   </div>
                 </>
@@ -458,10 +461,19 @@ const graphicImages = [
   }, {
     url: dog3b,
     position: [12, 3],
-    style: { transformOrigin: "60% 56%" },
-    animation: "wobble",
+    animation: "flash",
   }, {
     url: dog3c,
+    position: [12, 3],
+    style: { transformOrigin: "60% 56%" },
+    animation: "pan",
+  }, {
+    url: dog3d,
+    position: [12, 3],
+    style: { transformOrigin: "28.6% 66%" },
+    animation: "tail",
+  }, {
+    url: dog3e,
     position: [12, 3],
     animation: "",
   }],
