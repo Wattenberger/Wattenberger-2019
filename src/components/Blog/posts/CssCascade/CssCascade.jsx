@@ -223,6 +223,10 @@ const CssCascade = () => {
                 Each browser has its own set of styles, which is why things like <P>{`<button>`}</P>s have default styles.
                 <br />
                 <button style={{all: "revert"}}>This is your browser’s default button</button>
+
+                <Aside>
+                  If you’re curious, you can check out <Link to="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/html/resources/html.css">Chromium’s default set of styles</Link>.
+                </Aside>
               </div>,
             ]} hasNumbers />
           </p>
