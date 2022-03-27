@@ -570,22 +570,22 @@ const fight2Answer = (
 )
 const fight3Answer = (
   <div>
-    Remember that <b>inline</b> styles fall on the first level, while <b>type</b> rules fall on the fourth level.
+    Remember that <b>inline</b> styles fall on the first level, while <b>type</b> rules fall on the fifth level.
   </div>
 )
 const fight4Answer = (
   <div>
-    Remember that rules with a <b>class</b> selector fall on the third level, while rules with an <b>id</b> selector fall on the second level.
+    Remember that rules with a <b>class</b> selector fall on the fourth level, while rules with an <b>id</b> selector fall on the third level.
   </div>
 )
 const fight5Answer = (
   <div>
-    <b>Rule A</b> has two "hits" on the <b>third level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>), whereas <b>Rule B</b> has only one "hit" on the <b>third level</b> - its "hit" on a lower (fourth) level doesn’t come into play.
+    <b>Rule A</b> has two "hits" on the <b>fourth level</b> (1 <b>class</b> and 1 <b>pseudo-class</b>), whereas <b>Rule B</b> has only one "hit" on the <b>fourth level</b> - its "hit" on a lower (fifth) level doesn’t come into play.
   </div>
 )
 const fight6Answer = (
   <div>
-    <b>Rules A and B</b> both have 1 hit on the <b>second level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>third level</b> (1 <b>class</b>), which beats <b>Rule A</b>'s hit on the <b>fourth level</b> (1 <b>tag</b>).
+    <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>class</b>), which beats <b>Rule A</b>'s hit on the <b>fifth level</b> (1 <b>tag</b>).
   </div>
 )
 
