@@ -59,7 +59,7 @@
     "lerp": "^1.0.3",
     "leva": "^0.9.14",
     "mini-css-extract-plugin": "0.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-sass": "^4.13.1",
     "numeral": "^2.0.6",
     "optimize-css-assets-webpack-plugin": "5.0.1",
