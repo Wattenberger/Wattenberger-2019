@@ -4,6 +4,7 @@ import _ from "lodash"
 import PropTypes from "prop-types";
 import { areEqual } from 'utils/utils';
 import Icon from 'components/_ui/Icon/Icon';
+import Link from 'components/_ui/Link/Link';
 
 import './Tooltip.scss';
 
@@ -33,6 +34,7 @@ class Tooltip extends Component {
     contents = React.createRef();
 
     static propTypes = {
+        link: PropTypes.string,
         contents: PropTypes.oneOfType([ PropTypes.string, PropTypes.object ]),
         placement: PropTypes.oneOf(placements),
         isExternallyControlled: PropTypes.bool,
@@ -140,7 +142,7 @@ class Tooltip extends Component {
     throttledSetOffset = _.throttle(this.setOffset, 100);
 
     render() {
-        const { isExternallyControlled, contents, placement, isKeptOnScroll, onClose, className, ...props } = this.props;
+        const { isExternallyControlled, contents, placement, link, isKeptOnScroll, onClose, className, ...props } = this.props;
         const { top, left, arrowXOffset, isShowing, isRendered, isUnmounting } = this.state;
         const portal = document.getElementById('app-tooltip-portal');
 
@@ -190,7 +192,11 @@ class Tooltip extends Component {
                         </div>,
                         portal
                     )}
-                {this.props.children}
+                    {!!link ? (
+                    <Link href={link}>{this.props.children}</Link>
+                    ) : (
+                this.props.children
+                )}
             </div>
         );
     }
