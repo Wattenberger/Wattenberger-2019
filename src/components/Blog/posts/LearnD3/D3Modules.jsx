@@ -167,7 +167,7 @@ export const D3ModulesItem = ({ size, title, repo, name, r, x, y, searchValue, i
 
         <div className="D3ModulesItem__children">
             {children.length > 1 && children.map(d => (
-                <Tooltip link={`https://github.com/d3/${repo}`} className={`D3ModulesItem__child D3ModulesItem__child--is-${
+                <Tooltip link={`https://github.com/d3/${repo}#${d.data.name || d.data.title || ""}`} className={`D3ModulesItem__child D3ModulesItem__child--is-${
                         !searchValue ? "normal" :
                         (d.data.name || d.data.title || "").split(" -")[0].toLowerCase().includes(searchValue.toLowerCase()) ? "match" :
                             "not-match"
