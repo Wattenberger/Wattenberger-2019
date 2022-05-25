@@ -309,7 +309,7 @@ d3.forceSimulation(particles)`}
           <Section id="Ticking the simulation">
 
             <p>
-              The simulation works by running a <strong>tick</strong> function on every <Link to="">layout frame</Link>. We've paused the simulation using <P>simulation.stop()</P> - hit the <strong>tick</strong> button (in the top left) to run <P>simulation.tick()</P> and step through one frame at a time.
+              The simulation works by running a <strong>tick</strong> function on every layout frame. We've paused the simulation using <P>simulation.stop()</P> - hit the <strong>tick</strong> button (in the top left) to run <P>simulation.tick()</P> and step through one frame at a time.
             </p>
 
             <p>
