@@ -3,7 +3,6 @@ import RadioGroup from "components/_ui/RadioGroup/RadioGroup";
 import { uniqueId } from 'lodash';
 import React, { useMemo, useRef } from 'react';
 import propertyData from "./propertyData.json";
-console.log({ propertyData })
 
 const getLevels = engine => {
   const levels = [[], [], []]
@@ -19,10 +18,11 @@ const getLevels = engine => {
 export const RenderingExample = ({
   property = "left",
   engine = "blink",
+  ...props
 }) => {
   return (
     <div className="RenderingExample">
-      <RenderingExampleDemo property={property} />
+      <RenderingExampleDemo property={property} {...props} />
       <RenderingExampleData property={property} engine={engine} />
     </div>
   )
@@ -46,6 +46,7 @@ export const RenderingExampleSvg = () => {
 
 export const RenderingExampleDemo = ({
   property = ["left"],
+  ...props
 }) => {
   const duration = 2000
   const itemElement = useRef(null)
@@ -63,10 +64,11 @@ export const RenderingExampleDemo = ({
   const styles = useMemo(() => ({
     ...propertyOptionsAdditionalProperties[property] || {},
     animation: `${id} ${duration}ms steps(6) infinite alternate-reverse`,
+    ...props,
   }), [id, duration, property])
-  const svgStyles = useMemo(() => (
-    propertyOptionsAdditionalPropertiesSvg[property] || {}
-  ), [property])
+  const svgStyles = useMemo(() => ({
+    ...(propertyOptionsAdditionalPropertiesSvg[property] || {}),
+  }), [property])
 
   return (
     <div className="RenderingExampleDemo">

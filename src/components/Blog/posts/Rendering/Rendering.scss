@@ -676,6 +676,7 @@
       path, circle, rect {
         animation: none 1s ease-out alternate infinite;
         transition: all 0.3s ease-out;
+        will-change: transform;
 
         // Safari only
         @media not all and (min-resolution:.001dpcm){ @supports (-webkit-appearance:none) {

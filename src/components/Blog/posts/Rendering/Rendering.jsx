@@ -62,7 +62,7 @@ const Rendering = () => {
           <title>Writing performant CSS</title>
           <link rel="canonical" href="https://wattenberger.com/blog/rendering" />
           <meta property="og:type" content="website" />
-          <meta name="description" content="The one in which we talk about the browser's renderer process and learn how to make performant CSS styles and animations." />
+          <meta name="description" content="The one in which we talk about the browser’s renderer process and learn how to make performant CSS styles and animations." />
           <meta name="image" content={metaImage} />
         </Helmet>
 
@@ -70,7 +70,7 @@ const Rendering = () => {
           Writing performant CSS
         </h1>
         <h2>
-          or, Don't Make {yesBowser ? "Bowser" : "the Browser"} Think
+          or, Don’t Make {yesBowser ? "Bowser" : "the Browser"} Think
         </h2>
 
         <div className="Rendering__content">
@@ -93,7 +93,7 @@ const Rendering = () => {
           <FirstPart />
 
           <p>
-            This is all very interesting, but today we want to focus on the next step: <strong>drawing that DOM tree</strong>.
+            This is all very interesting, but today let’s to focus on the next step: <strong>drawing that DOM tree</strong>.
           </p>
 
           <hr />
@@ -105,7 +105,7 @@ const Rendering = () => {
                 <>
                   <p className="Rendering__relative Rendering__centered">
                     <span className="Rendering__highlight">
-                      Okay, we're going to do something here. You might hate it.
+                      Okay, we’re going to do something here. You might hate it.
                     </span>
                     <br />
                     Our browsers do so much for us and are so eager to please, it only<br />makes sense to <em>refer to them as an adorable dog named <strong>Bowser</strong></em>. <div
@@ -128,14 +128,14 @@ const Rendering = () => {
               setYesBowser(d => !d)
             }}>
               <Icon name="asterisk" style={{ marginRight: "0.3em" }} />
-              {yesBowser ? "Wow. No, don't do that." : "Okay, the browser is a dog."}
+              {yesBowser ? "Wow. No, don’t do that." : "Okay, the browser is a dog."}
             </Button>
           </p>
 
           <StepIntros />
 
           <p>
-            What a process! It's enough work for <Bowser alt="our browser" /> to do this once, but this is the web! The Wild West, where anything could happen!
+            What a process! It’s enough work for <Bowser alt="our browser" /> to do this once, but this is the web! The Wild West, where anything could happen!
           </p>
           <p>
             Any time we need to update the page, <Bowser alt="our browser" /> needs to run through these steps again. We might be triggered by...
@@ -157,7 +157,7 @@ const Rendering = () => {
 
           <div className="Rendering__sidebar">
             <Aside icon="tooltip">
-              View a more comprehensive list of  <Link to="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">things that force layout / reflow</Link>.
+              Check out a more comprehensive list of  <Link to="https://gist.github.com/paulirish/5d52fb081b3570c81e3a">things that force layout / reflow</Link>.
             </Aside>
           </div>
 
@@ -172,7 +172,7 @@ const Rendering = () => {
           </SectionHeading>
 
           <p>
-            Since <Bowser alt="our browser" /> needs to run through this process to render any updates, we'll want to make sure we can do it quickly! The exact refresh rate depends on the user's software and hardware, but we generally want to aim to update our page <strong>at least 60 times per second</strong>, or <strong>under 16 ms</strong>. Anything longer and the experience will be noticeably choppy.
+            Since <Bowser alt="our browser" /> needs to run through this process to render any updates, we’ll want to make sure we can do it quickly! The exact refresh rate depends on the user’s software and hardware, but we generally want to aim to update our page <strong>at least 60 times per second</strong>, or <strong>under 16 ms</strong>. Anything longer and the experience will be noticeably choppy.
           </p>
 
           <p>
@@ -191,10 +191,17 @@ const Rendering = () => {
 
           <RenderingExample property="transform" />
 
+          <p>
+            Note that <Bowser alt="the browser" /> can only do this trick if it knows that the <P>transform</P> property will change 〰 in this case because it has an active animation. <Bowser alt="our browser" /> can be fairly sure that promoting actively animating transforms to their own layer will save time, since the element itself won’t affect any others or need to be re-painted.
+          </p>
 
           <div className="Rendering__wide">
             <Expandy
-              trigger="Don't take my word for it! Check this out in your browser's Dev Tools.">
+              trigger="Don’t take my word for it! Check this out in your browser’s Dev Tools.">
+              <p>
+                Note that these settings will flash colors - please take care of yourself and don’t turn on if that would be dangerous!
+              </p>
+
               <h3>Google Chrome</h3>
               <p>
                 In the <strong>Chrome Dev Tools</strong>, press <P>Esc</P> to open the bottom panel and select the <strong>Rendering</strong> panel from the kebab menu.
@@ -214,24 +221,28 @@ const Rendering = () => {
 
               <h3>Firefox</h3>
               <p>
-                I couldn't find a setting in Firefox to flash on <StepName step="layout" /> or <StepName step="paint" /> changes. Definitely <Link to="http://twitter.com/wattenberger">let me know if this exists</Link>!
+                Firefox doesn’t currently have a setting to show when <StepName step="layout" /> or <StepName step="paint" /> changes, but there is <Link to="https://bugzilla.mozilla.org/show_bug.cgi?id=1612922">an open issue</Link> to add one for <StepName step="paint" />.
               </p>
             </Expandy>
           </div>
-
-          <hr />
 
           <p>
             This also allows it to bypass using the main thread (needed for both the <StepName step="layout" /> and <StepName step="paint" /> steps), since <StepName step="composition" /> happens in a separate thread.
           </p>
 
           <p>
-            This might seem like a small improvement, but keep in mind that we're running full-tilt at 60 FPS. Every boost helps, especially when the browser is doing other computations or multiple elements are moving.
+            This might seem like a small improvement, but keep in mind that we’re running full-tilt at 60 FPS. Every boost helps, especially when the browser is doing other computations or multiple elements are moving.
           </p>
 
           <Aside icon="tooltip">
-            To read about the implications of switching from <P>left</P> to <P>transform</P>, check out this <Link to="/blog/css-percents">article on percents in CSS</Link>.
+            To read about the implications of switching from <P>left</P> to <P>transform</P> when using <P>%</P> units, check out this <Link to="/blog/css-percents">article on percents in CSS</Link>.
           </Aside>
+
+          <p>
+            The same trick can be used for CSS properties that indicate lots of movement around the element (like <P>position: fixed</P>) or for elements that require the GPU (like <P>perspective</P> or <P>translate3d</P>):
+          </p>
+
+          <RenderingExample property="perspective" />
 
           <p>
             Some properties, like <P>color</P>, can skip layout changes but trigger a re-paint.
@@ -240,7 +251,7 @@ const Rendering = () => {
           <RenderingExample property="color" />
 
           <p>
-            There are many, many CSS properties - here's a little sandbox to give you a sense of which ones trigger which steps (depending on the browser engine). Hint: make sure to check these out in your browser's Dev Tools!
+            There are many, many CSS properties - here’s a little sandbox to give you a sense of which ones trigger which steps (depending on the browser engine). Hint: make sure to check these out in your browser’s Dev Tools!
           </p>
 
           <RenderingSandbox />
@@ -257,7 +268,11 @@ const Rendering = () => {
           </SectionHeading>
 
           <p>
-            If we need to change CSS properties that trigger the <StepName step="layout" /> step, we can move those elements to a new layer. This makes most sense when the element doesn't need to be re-painted, allowing the browser to skip all but the <StepName step="composition" /> step.
+            These basic rules exist because browsers are trying their hardest to stay performant. But sometimes we can help them out!
+          </p>
+
+          <p>
+            If we know that we’ll be changing CSS properties that trigger the <StepName step="layout" /> step but don’t need to be re-<StepName step="paint" />ed, we can ask <Bowser alt="the browser" /> to move those elements to a new layer.
           </p>
 
           <p>
@@ -271,6 +286,9 @@ const Rendering = () => {
             <>
               <strong>will-change: transform</strong> or <strong>will-change: opacity</strong> are <em>hints</em> to the browser that it can choose to ignore.
             </>,
+            <>
+              <strong>...</strong> there are other signs the browser uses to determine whether or not to create a new layer - check out the <Link to="https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/platform/graphics/compositing_reasons.cc;l=20">Chromium source for a more comprehensive list</Link>.
+            </>,
           ]} />
 
 
@@ -279,23 +297,23 @@ const Rendering = () => {
           </Aside>
 
           <p>
-            We're getting down into browser-performance territory here. Different browsers will handle layer creation differently, and can choose to ignore these properties. Think of these as <em>hints</em> to the browser - we wouldn't want to micromanage them!
+            We’re getting down into browser-performance territory here. Different browsers will handle layer creation differently, and can choose to ignore these properties. Think of these as <em>hints</em> to the browser - we wouldn’t want to micromanage them!
           </p>
 
           <p>
-            We also don't want to create <em>too many</em> layers - each layer uses GPU memory, which is a limited resources, especially on mobile devices.
+            We also don’t want to create <em>too many</em> layers - each layer uses GPU memory, which is a limited resources, especially on mobile devices.
           </p>
 
           <p>
-            Another gotcha is that any other elements that overlap with the new layer will need to be moved to a new layer. So use this hack with caution and always double-check in your browser's developer tools!
+            Another gotcha is that any other elements that overlap with the new layer will need to be moved to a new layer. So use this hack with caution - the best policy is to build confidently and test on many devices! If you’re seeing any slowdowns, see if a small number of new layers can help out.
           </p>
 
           <SectionHeading>
-            That's all, folks!
+            That’s all, folks!
           </SectionHeading>
 
           <p>
-            That's all the learning we have for today! Hopefully, you take away from this post that:
+            That’s all the learning we have for today! Hopefully, you take away from this post that:
           </p>
 
           <div style={{ maxWidth: "40em" }}>
@@ -315,10 +333,10 @@ const Rendering = () => {
                 <StepName step="composition" />
               </>,
               <>
-                for CSS properties that update often, use ones that don't require <StepName step="layout" /> or <StepName step="paint" /> (mostly <P>transform</P> & <P>opacity</P>)
+                for CSS properties that update often, use ones that don’t require <StepName step="layout" /> or <StepName step="paint" /> (mostly <P>transform</P> & <P>opacity</P>)
               </>,
               <>
-                for elements that move often but don't need to re-paint, you can promote them to their own layer
+                for elements that move often but don’t need to re-paint, you can promote them to their own layer
               </>,
               <>
                 you already knew this, but the web is full of amazing people writing helpful articles! Go explore some of the linked rabbit holes!
@@ -376,15 +394,15 @@ circle   { background: green; }
 `
 const jsString = `(function() {
   document.body.appendChild(
-    document.createElement('circle')
+    document.createElement("circle")
   )
 })()`
 
 export const StepName = ({ step, isActive = true }) => (
   <span className={[
     `RenderingStep RenderingStep--${step}`,
-    `RenderingStep--is-${isActive ? 'active' : 'inactive'}`,
-  ].join(' ')}>
+    `RenderingStep--is-${isActive ? "active" : "inactive"}`,
+  ].join(" ")}>
     {step}
   </span>
 )
@@ -409,7 +427,7 @@ const RenderingFooter = ({ activeStepIndex }) => {
 
 const SectionHeading = ({ children }) => {
   const id = useMemo(() => (
-    children.toLowerCase().replace(/\s/g, '-')
+    children.toLowerCase().replace(/\s/g, "-")
   ), [children])
 
   return (
@@ -510,7 +528,7 @@ const LayerGraphic = ({ layer }) => {
         <svg className="LayerGraphic__svg" viewBox="0 0 200 200" fill="white" stroke="#bdbdcf" strokeWidth={layerIndex < 1 ? 2 : 0} strokeLinejoin="round" strokeDasharray={layerIndex < 1 ? "10 10" : 0}>
           <rect x="60" y="131" width="100" height="65" vectorEffect="non-scaling-stroke" fill={layerIndex < 1 ? "" : shapeColors[0]} />
           <circle cx="121" cy="100" r="31" vectorEffect="non-scaling-stroke" fill={layerIndex < 1 ? "" : shapeColors[1]} style={{
-            animationName: layerIndex === 0 ? "back-and-forth-svg" : "",
+            animationName: layerIndex === 0 ? "back-and-forth-svg" : "none",
           }} />
           <path
             d="M125,30 l25,38 h-50 Z"
@@ -521,7 +539,7 @@ const LayerGraphic = ({ layer }) => {
             style={{
               transformOrigin: "70% 10%",
               mixBlendMode: layerIndex === 2 ? "multiply" : "",
-              animationName: layerIndex === 2 ? "back-and-forth-path" : "",
+              // animationName: layerIndex === 2 ? "back-and-forth-path" : "none",
             }}
             fill={layerIndex < 2 ? "" : shapeColors[2]} />
         </svg>
@@ -599,11 +617,11 @@ const StepIntros = () => {
           }}>
             <StepName step="composition" isActive={true} />
             <p>
-              Here's one of the most interesting steps: <Bowser alt="our browser" /> splits our page into <strong>layers</strong>. Think of transparent slides that can be rearranged and re-ordered. <Bowser alt="Our browser" /> passes those slides to the GPU, which layers them on top of each other - either blending with or occluding the lower layers. Keeping in mind the user's viewport, <Bowser alt="our browser" /> can rasterize exactly what we see on our screens.
+              Here’s one of the most interesting steps: <Bowser alt="our browser" /> splits our page into <strong>layers</strong>. Think of transparent slides that can be rearranged and re-ordered. <Bowser alt="Our browser" /> passes those slides to the GPU, which layers them on top of each other - either blending with or occluding the lower layers. Keeping in mind the user’s viewport, <Bowser alt="our browser" /> can rasterize exactly what we see on our screens.
             </p>
 
             <p>
-              Putting elements on separate layers allows for speedy re-renders - imagine a fixed header with a semi-transparent background. It's much faster for <Bowser alt="our browser" /> to combine the main page and header than to re-paint all of those pixels. Also note that <StepName step="composition" isActive={true} /> happens within its own thread, leaving the main thread alone.
+              Putting elements on separate layers allows for speedy re-renders - imagine a fixed header with a semi-transparent background. It’s much faster for <Bowser alt="our browser" /> to combine the main page and header than to re-paint all of those pixels. Also note that <StepName step="composition" isActive={true} /> happens within its own thread, leaving the main thread alone.
             </p>
 
             <Aside icon="tooltip">
@@ -623,11 +641,11 @@ const FirstPart = () => {
   return (
     <p>
       The first part of the Renderer process <span className="transition-all" style={{ fontSize: doGoOn ? 0 : "1em" }} aria-hidden={!doGoOn}>
-        creates the DOM with CSS styles. <Button onClick={() => setDoGoOn(true)}>Do go on</Button>
+        creates the DOM with CSS styles. <Button onClick={() => setDoGoOn(true)}>Do go on...</Button>
       </span>
       <span className="transition-all" style={{ fontSize: doGoOn ? "1em" : 0 }}
         aria-hidden={doGoOn}>
-        involves executing JavaScript, creating a tree of DOM nodes, turning the CSS styles into a tree of CSS rules, then applying those CSS rules to the DOM nodes. <Button onClick={() => setDoGoOn(false)}>TMI, less info please.</Button>
+        involves executing JavaScript, creating a tree of DOM nodes, turning the CSS styles into a tree of CSS rules, then applying those CSS rules to the DOM nodes. <Button onClick={() => setDoGoOn(false)}>Less info, please.</Button>
       </span>
     </p>
   )

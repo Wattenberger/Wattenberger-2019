@@ -12,6 +12,17 @@ import svelteRadioImage from "./images/svelte-radio.png"
 import juniorToSeniorImage from "./images/juniortosenior.jpg"
 
 export default [{
+  name: "Running host on JSParty",
+  podcast: "JSParty",
+  googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9jaGFuZ2Vsb2cuY29tL2pzcGFydHkvZmVlZA?sa=X&ved=0CAIQ4aUDahcKEwjo37eHsfr6AhUAAAAAHQAAAAAQAQ&hl=en",
+  url: "https://changelog.com/person/wattenberger",
+  date: "01/01/2022",
+  description: <>
+    It's always hanging out with my fellow hosts on JSParty - interviewing interesting people, <strike>playing</strike> losing games, and chatting about the latest in the front-end world.
+  </>,
+  image: jsPartyImage,
+  colors: ["#E4BC24", "#101820", "#E0E0Ed"],
+},{
   name: "Amelia Wattenberger - Senior Journalist-Engineer at Polygraph/The Pudding",
   podcast: "Junior to Senior with David Guttman",
   googleUrl: "https://podcasts.google.com/feed/aHR0cHM6Ly9mZWVkcy50cmFuc2lzdG9yLmZtL2p1bmlvci10by1zZW5pb3I/episode/MWNlNjM0N2ItNzQwZi00MDcwLTgxNGEtZjg0NDQzZGY2NTU0?sa=X&ved=0CAUQkfYCahcKEwjooOyXiobuAhUAAAAAHQAAAAAQCA&hl=en",

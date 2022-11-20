@@ -23,8 +23,6 @@ import lucha2 from "./Images/lucha2.jpg";
 import lucha4 from "./Images/lucha4.jpg";
 // import ca from "./Images/ca.png"
 import newsImage from "./Images/news.png";
-import dogs from "./Images/dogs.png";
-import dogBreeds from "./Images/dog-breeds.png";
 import Day8 from "components/Sketches/sketches/Day8";
 import WDVPMap from "components/Articles/WDVP/WDVPMap";
 import List from "components/_ui/List/List";
@@ -63,73 +61,6 @@ export const projects = [
   {
     category: "Development & Data Visualization",
     projects: [
-      {
-        title: "Intro to D3.js",
-        description: (
-          <div>
-            <p>
-              D3.js is the de facto library for drawing data visualization on
-              the web. Unless you are very intimately familiar with the API, you
-              probably view it as a monolithic framework, and make charts by
-              copy + pasting code from bl.ocks.
-            </p>
-
-            <p>
-              In this extensive article, I talk about every individual D3.js
-              module, and how they factor into your goals. Writing this article
-              was really rewarding, since I got to delve into parts of the API
-              that I had never looked at before. For example, the{" "}
-              <a href="/blog/d3#maps-and-globes">
-                different geographic projections
-              </a>{" "}
-              and <a href="/blog/d3#drawing-svg-shapes">polygon methods</a> will
-              definitely come in handy in the future!
-            </p>
-          </div>
-        ),
-        tools: ["D3.js", "React.js", "SVG"],
-        images: [d3js],
-        imageContentStyle: { backgroundPosition: "top" },
-        link: "/blog/d3",
-      },
-    ],
-  },
-  {
-    category: "Development & Data Visualization",
-    projects: [
-      {
-        title: "Interactive Charts with D3.js",
-        description: (
-          <div>
-            <p>
-              This article is the first in a series, showing how to make your
-              web charts interactive. It runs through two ways to add a tooltip
-              to a histogram, while trying to show how to generalize this
-              knowledge to create your own custom interactions.
-            </p>
-
-            <p>
-              I love experimenting with taking advantage of the web to innovate
-              on teaching. I experimented with ways to consistently keep the
-              main code to the right of the article, which really helps keep
-              changes in context.
-            </p>
-
-            <p>
-              There are some really interesting bits of code involved in making
-              this article - check them out in{" "}
-              <Link href="https://github.com/wattenberger/wattenberger-2019">
-                this website's repo
-              </Link>
-              .
-            </p>
-          </div>
-        ),
-        tools: ["D3.js", "React.js", "SVG"],
-        images: [interaction],
-        // imageContentStyle: {backgroundPosition: "top"},
-        link: "/blog/d3-interactive-charts",
-      },
       {
         title: "Fullstack D3 and Data Visualization",
         description: (
@@ -200,40 +131,6 @@ export const projects = [
         imageStyle: { height: "auto" },
         component: WDVPMap,
         link: "/wdvp",
-      },
-      {
-        title: "Dog Names in NYC",
-        description: (
-          <div>
-            <p>
-              I found this great dataset of registered dog names in New York
-              City and had to dig in. Did you know that Yorkies are the most
-              common NYC dog? Or that a dog named Molly is most likely a Lab
-              from Staten Island? Explore for more important dog facts!
-            </p>
-          </div>
-        ),
-        tools: ["d3.js", "SVG"],
-        images: [dogs],
-        imageContentStyle: { backgroundPosition: "top" },
-        link: "/dogs",
-      },
-      {
-        title: "Dog Breeds",
-        description: (
-          <div>
-            <p>
-              I found another great doggy dataset of breed popularity over time
-              from the American Kennel Club. This chart was an experiment to
-              test out a new kind of tooltip that scrolls a list - check it out
-              and tell me what you think!
-            </p>
-          </div>
-        ),
-        tools: ["d3.js", "SVG"],
-        images: [dogBreeds],
-        imageContentStyle: { backgroundPosition: "bottom" },
-        link: "/dog-breeds",
       },
       {
         title: "Sketches",
@@ -436,47 +333,47 @@ export const projects = [
       // },
     ],
   },
-  {
-    category: "Other",
-    projects: [
-      {
-        title: "Foosball Table",
-        description: (
-          <div>
-            <p>
-              From time to time, I find myself being more ambitious than I have
-              time for. In Fall 2015, I started with the idea of scanning
-              coworkers and replacing the players on a foosball field with their
-              3d-printed heads, and ended up building a whole table from
-              scratch.
-            </p>
-            <p>
-              I used <b>Adobe Illustrator</b> to create a design for the table,
-              and reproduced it in <b>Cinema 4D</b> to get an idea of how it
-              would look when finished. A coworker, who happens to be an amazing
-              woodworker, turned the bed design into a real, wooden table. Along
-              with another coworker, I cut and etched the field out of a sheet
-              of brand-colored acrylic, using a laser cutter.
-            </p>
-            <p>
-              All 26 foosball players’ bodies have been 3d printed, with a
-              threaded hole in the top for the heads to screw into. One by one,
-              I am molding 3D scans of coworkers and printing them with screws
-              on the bottom. Sometime in the next month, the players will be
-              installed, along with LED lights around the field that change
-              color when the ball is hit.
-            </p>
-          </div>
-        ),
-        category: "Other",
-        tools: [
-          "3D Printer (Ultimaker 2)",
-          "Laser Cutter",
-          "Cinema 4D",
-          "Blender",
-        ],
-        images: [foos3, foos2, foos1],
-      },
-    ],
-  },
+  // {
+  //   category: "Other",
+  //   projects: [
+  //     {
+  //       title: "Foosball Table",
+  //       description: (
+  //         <div>
+  //           <p>
+  //             From time to time, I find myself being more ambitious than I have
+  //             time for. In Fall 2015, I started with the idea of scanning
+  //             coworkers and replacing the players on a foosball field with their
+  //             3d-printed heads, and ended up building a whole table from
+  //             scratch.
+  //           </p>
+  //           <p>
+  //             I used <b>Adobe Illustrator</b> to create a design for the table,
+  //             and reproduced it in <b>Cinema 4D</b> to get an idea of how it
+  //             would look when finished. A coworker, who happens to be an amazing
+  //             woodworker, turned the bed design into a real, wooden table. Along
+  //             with another coworker, I cut and etched the field out of a sheet
+  //             of brand-colored acrylic, using a laser cutter.
+  //           </p>
+  //           <p>
+  //             All 26 foosball players’ bodies have been 3d printed, with a
+  //             threaded hole in the top for the heads to screw into. One by one,
+  //             I am molding 3D scans of coworkers and printing them with screws
+  //             on the bottom. Sometime in the next month, the players will be
+  //             installed, along with LED lights around the field that change
+  //             color when the ball is hit.
+  //           </p>
+  //         </div>
+  //       ),
+  //       category: "Other",
+  //       tools: [
+  //         "3D Printer (Ultimaker 2)",
+  //         "Laser Cutter",
+  //         "Cinema 4D",
+  //         "Blender",
+  //       ],
+  //       images: [foos3, foos2, foos1],
+  //     },
+  //   ],
+  // },
 ];
