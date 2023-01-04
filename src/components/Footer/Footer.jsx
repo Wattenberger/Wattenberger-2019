@@ -19,7 +19,7 @@ class Footer extends Component {
                 </Link>
                 <div className="Footer__text">
                     <div className="Footer__name">
-                        Amelia Wattenberger © 2022
+                        Amelia Wattenberger © 2023
                     </div>
                     <div className="Footer__siblings">
                         <div className="Footer__links">
