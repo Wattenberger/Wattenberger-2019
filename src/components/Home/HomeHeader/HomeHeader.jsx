@@ -22,7 +22,7 @@ class HomeHeader extends Component {
             <div className="HomeHeader__content__text__description">
               I write code, think about data, and create digital experiences.
               <br />
-              Currently Staff Research Engineer doing R&D on developer experience on the Github Office of the CTO team.
+              Currently Principal Research Engineer doing R&D on developer experience on the Github Office of the CTO team.
               <br />
               <br />
               Listen to <Link to="/podcasts">podcasts I've been on</Link>, or read <Link to="/blog">articles I've written</Link>.
