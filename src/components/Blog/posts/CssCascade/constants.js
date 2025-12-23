@@ -24,7 +24,6 @@ export const steps = [{
     name: "inline",
   },{
     name: "layer",
-    isNew: true,
   },{
     name: "id",
   },{

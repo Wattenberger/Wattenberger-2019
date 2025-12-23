@@ -295,7 +295,7 @@ const CssCascade = () => {
             <div id="level_3_2" onMouseEnter={() => setActiveLevel([2, 1])} onMouseLeave={() => setActiveLevel([2])}>
               <b>layer</b>
               <br />
-              The new kid in town! Soon, we’ll be able to define explicit “layers” of styles, for intentional handling of specificity. Layers "win" by being defined later, for example:
+              Cascade layers allow you to define explicit "layers" of styles, for intentional handling of specificity. Layers "win" by being defined later, for example:
 
               <Code
                 language="css"
@@ -318,7 +318,7 @@ const CssCascade = () => {
               <br />
               <br />
 
-              <i>Coming in Chromium 99/Canary, Firefox 97/Nightly, and in Safari Tech Preview</i>. <Link to="https://caniuse.com/css-cascade-layers">Keep track of the rollout here</Link>, or read more in <Link to="https://www.w3_org/TR/css-cascade-5/#cascade-layers">the spec</Link> or <Link to="https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/">this wonderful article</Link>.
+              Supported in all major browsers since 2022. Read more in <Link to="https://www.w3_org/TR/css-cascade-5/#cascade-layers">the spec</Link> or <Link to="https://www.bram.us/2021/09/15/the-future-of-css-cascade-layers-css-at-layer/">this wonderful article</Link>.
             </div>
           ]}
             hasNumbers
@@ -585,7 +585,7 @@ const fight5Answer = (
 )
 const fight6Answer = (
   <div>
-    <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>class</b>), which beats <b>Rule A</b>'s hit on the <b>fifth level</b> (1 <b>tag</b>).
+    <b>Rules A and B</b> both have 1 hit on the <b>third level</b> (1 <b>id</b>), but <b>Rule B</b> additionally has 1 hit on the <b>fourth level</b> (1 <b>class</b>), which beats <b>Rule A</b>’s hit on the <b>fifth level</b> (1 <b>tag</b>).
   </div>
 )
 
