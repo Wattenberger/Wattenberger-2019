@@ -69,7 +69,7 @@
     "postcss-normalize": "7.0.1",
     "postcss-preset-env": "6.6.0",
     "postcss-safe-parser": "4.0.1",
-    "prismjs": "^1.19.0",
+    "prismjs": "^1.27.0",
     "raw-loader": "^2.0.0",
     "rc-slider": "^8.7.1",
     "react": "^18.0.0-alpha-7ec4c5597",
