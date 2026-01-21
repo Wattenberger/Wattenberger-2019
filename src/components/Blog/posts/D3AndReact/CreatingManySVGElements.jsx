@@ -295,7 +295,7 @@ const CreatingManySVGElements = () => {
           d3.range(30, 37),
           [39],
         ]}
-        fileName="Transitions.jsx (d3 version)"
+        fileName="Transitions.jsx (React version)"
         // size="s"
         example={(getHighlightedMarkerProps) => (
           <>
