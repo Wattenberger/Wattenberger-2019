@@ -96,7 +96,7 @@
     "style-loader": "0.23.1",
     "svgpath": "^2.3.1",
     "terser-webpack-plugin": "1.2.3",
-    "three": "^0.129.0",
+    "three": "^0.137.0",
     "three-orbit-controls": "^82.1.0",
     "troika-three-text": "^0.34.0",
     "ts-pnp": "1.1.2",
